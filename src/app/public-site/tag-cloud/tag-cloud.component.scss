@@ -1,0 +1,54 @@
+.tag-container
+{
+
+  /*background-image: url("../../../assets/images/background/leaves1.png") !important;*/
+  background-repeat:repeat;
+  background-position: 0% 70%;
+  /*background-size: cover;*/
+
+
+}
+
+
+.textBigger
+{
+  color: rgb(247, 244, 96);
+
+  text-shadow: rgb(253, 220, 90) 10px 1px 45px;
+}
+
+
+.rectangle {
+  height: 40px;
+  width: 55px;
+  border-radius: 17px;;
+
+}
+
+
+
+.tag-opacit1
+{
+  background-color: rgba(83, 58, 21, 0.85);
+}
+
+.demo_wrap {
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+  border: 1px dashed green;
+}
+.demo_wrap_content {
+  padding: 100px;
+  position: relative;
+  z-index: 2;
+  opacity: 1.0;
+}
+.demo_wrap img {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0.6;
+}

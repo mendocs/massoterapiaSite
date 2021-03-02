@@ -1,0 +1,109 @@
+
+@import "../../shared-kernel/css/mediaqueries.scss";
+
+.circle  {
+	height: 30px;
+	width: 30px;
+	margin: 20px 0px;
+	border-radius: 100%;
+	background: #789b51;
+  }
+
+
+  .left-side
+  {
+    transform: translate(0,0);
+  }
+  .right-Side
+  {
+    transform: translate(0,0);
+  }
+
+
+
+
+  @include respond-above(xs) {
+
+	  }
+
+
+	  @include respond-above(sm) {
+
+	  }
+
+
+	  @include respond-above(md) { //lg
+    .left-side
+    {
+      transform: translate(25%,-45px);
+      z-index: 4
+    }
+
+    .right-Side
+    {
+      transform: translate(-25%,45px);
+      z-index: 4
+    }
+
+	  }
+
+	  @include respond-above(lg) { //xl
+      .left-side
+      {
+        transform: translate(25%,-45px);
+        z-index: 4
+      }
+
+      .right-Side
+      {
+        transform: translate(-25%,45px);
+        z-index: 4
+      }
+	  }
+
+
+.background-selected
+{
+  //background-size: 90% 90%;
+  background-size: contain;
+  //background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 40% -90px;
+}
+
+
+.parallaxFront
+{
+	height: 100%;
+	background-attachment: fixed;
+	//background-image: url("../../../assets/images/logo/bolastransparente.png");
+	/*background-size: auto !important;*/
+	background-position: 0% 100%;
+	background-repeat: no-repeat;
+	//background-size: 100% auto;
+  //background-size: auto 100%;
+}
+
+.parallaxFront_l
+{
+  background-size: 100% auto;
+}
+
+.parallaxFront_m
+{
+  background-size: auto 100%;
+}
+
+
+.parallaxBgPosition
+{
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .75;
+  width: 100%;
+  height: 100%;
+}

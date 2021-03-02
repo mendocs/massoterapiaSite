@@ -1,0 +1,82 @@
+
+
+
+ <div class="container mt-3 d-none" style="position: fixed ; top: 70px; z-index: 999;">
+  <span class="d-block bg-success d-nome1 d-sm-none d-md-none d-lg-none d-xl-none "> MIM </span>
+  <span class="d-sm-block bg-info d-none d-sm-none1 d-md-none d-lg-none d-xl-none">SM</span>
+  <span class="d-md-block bg-warning d-none d-sm-none d-md-none1 d-lg-none d-xl-none">MD</span>
+  <span class="d-lg-block bg-danger d-none d-sm-none d-md-none d-lg-none1 d-xl-none">LG</span>
+  <span class="d-xl-block bg-dark d-none d-sm-none d-md-none d-lg-none d-xl-none1">XL</span>
+</div>
+
+
+
+<div id="scrollSpyDiv" style="position: fixed ; top: 50%; right: 0; z-index: 999;" class="shadow">
+
+
+  <div  *ngFor="let section of sections">
+    <button type="button" (click)="triggerScrollTo(section.nameSpied)" class="btn btn-outline-light text-dark border-0"
+    [ngClass] = "{'d-none ':verifyCurrentSection(section.nameSpied)}"
+     > <span style="color: black; text-shadow: 0px -2px 0px white;"> {{section.name}} </span>  </button>
+
+
+    <button type="button" (click)="triggerScrollTo(section.nameSpied)" class="btn btn-outline-light text-dark border shadow"
+    [ngClass] = "{'d-none ':!verifyCurrentSection(section.nameSpied)}"
+    > <span style="color: black; text-shadow: 0px -2px 0px white;"> {{section.name}} </span> </button>
+  </div>
+
+
+
+</div>
+
+
+<!--
+
+    <div  *ngFor="let section of sections">
+      <button type="button" (click)="triggerScrollTo(section.nameSpied)" class="btn btn-outline-light text-dark border-0"
+      [ngClass] = "{'d-none ':verifyCurrentSection(section.nameSpied)}"
+       >{{section.name}} </button>
+
+
+      <button type="button" (click)="triggerScrollTo(section.nameSpied)" class="btn btn-outline-light text-dark border shadow"
+      [ngClass] = "{'d-none ':!verifyCurrentSection(section.nameSpied)}"
+      >{{section.name}} </button>
+    </div>
+
+-->
+
+
+
+
+<app-top-logo></app-top-logo>
+
+<div appScrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)" >
+<div id="home_spied" #home_spied></div>
+<app-top-toolbar></app-top-toolbar>
+
+<app-big-carousel></app-big-carousel>
+
+<app-tag-cloud></app-tag-cloud>
+<div class="mb-3" ><br></div>
+
+<div id="therapy_section_spied" #therapy_section_spied></div>
+<app-therapy-section></app-therapy-section>
+<div class="mb-3" ><br></div>
+
+<div id="therapist_spied" #therapist_spied></div>
+<app-therapist></app-therapist>
+<div class="mb-3" ><br></div>
+
+<div id="price_spied" #price_spied></div>
+<app-price></app-price>
+
+<div id="contact_spied" #contact_spied></div>
+<div class="mb-3" ><br></div>
+<app-contact></app-contact>
+
+<div class="mb-3" ><br></div>
+
+<app-footer></app-footer>
+
+</div>
+

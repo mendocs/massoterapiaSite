@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~aos/dist/aos.css";
+
+
+
+body
+{
+ background-color: rgba(249, 249, 249, 1);
+}
+
+.transparent-background
+{
+  background-color: rgba(204, 33, 33, 0);
+
+}
+
+
+.bg-site-middle
+{
+  //background-color: rgba(98,56,4,0.75);
+  //background-color: rgb(239, 232, 212)
+  //background-color: rgb(214, 216, 163)
+  background-color: rgb(191, 194, 164);
+  //background-image: url("./assets/images/background/marmore.jpg");
+  background-repeat: repeat;
+}
+
+
+.bg-site-clear
+{
+  //background-color:rgb(232, 233, 232)
+  background-color:rgb(232, 232, 232)
+}
+
+.bg-site-strong
+{
+  background-color:rgb(51, 42, 14)
+}
+
+.text-site-strong
+{
+  color:rgb(51, 42, 14)
+}
+
+.bg-button
+{
+  background-color: rgba(77, 114, 40, 0.75);
+}
+
+
+
+.pointer {cursor: pointer;}

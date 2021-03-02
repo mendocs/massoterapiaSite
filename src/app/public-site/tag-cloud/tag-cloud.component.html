@@ -1,0 +1,30 @@
+<!--<div class="container-fluid mt-sm-n2 mt-md-n3 mt-lg-n4 mt-xl-n5 " style="z-index: 5;"> //mt-sm-n2 mt-md-n3 mt-lg-n4 mt-xl-n5-->
+<div class="container-fluid "   ><!--mt-sm-n2 mt-md-n3 mt-lg-n4 mt-xl-n5-->
+
+    <div class="row ml-0 pr-1 " >
+    <div class="col-1 col-sm-2 col-lg-3  "></div>
+    <div class="col-11  col-sm-9 col-lg-7 bg-site-middle">
+
+      <h4 class=" m-3">Clique na massagem/terapia desejada</h4>
+      <div class="d-flex p-3 m-1 flex-wrap transparent-background" id="divpai">
+
+
+        <div class="m-1 p-1 " *ngFor="let therapy of therapies">
+          <!--<a href="#" class=" h-100 w-100" >-->
+
+
+            <button type="button" class="btn btn-outline-success border-0 text-light rounded-radius " (click)="logClicked(therapy.id)">
+              <div class="d-flex">
+              <div class="rectangle border border-top-0 border-left-1 border-right-0 border-bottom-0 bg-button"></div>
+              <div class="rectangle border  border-top-0 border-left-0 border-right-0 border-bottom-0 ml-n5   "></div>
+              <p  class="ml-n5  mt-2 font-weight-bold "> {{therapy.id}} </p></div>
+
+            </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,108 @@
+
+
+<div class="container-fluid mt-2 mt-lg-3 mb-2 mb-lg-5 " style="position: relative;">
+
+<div style="line-height: 2000%;">
+<br>
+</div>
+
+
+
+  <div class="d-lg-none parallaxFront parallaxBgPosition parallaxFront_m"
+  style="background-image: url('../../../assets/images/therapies/terpeutica_m.jpg');"
+  appParallax [ratio]="0.04" [BackGround]="true" [BackGroundHorizontallPosition]=0 [BackGroundImageHeigth]=-0 >  </div>
+
+
+  <div class="d-none d-lg-block parallaxFront parallaxBgPosition parallaxFront_l"
+  style="background-image: url('../../../assets/images/therapies/terpeutica.jpg');"
+  appParallax [ratio]="0.04" [BackGround]="true" [BackGroundHorizontallPosition]=0 [BackGroundImageHeigth]=-0 >  </div>
+
+
+
+<div class="row " >
+  <div class="col-10 col-lg-5 ml-3 ml-lg-0 mb-n5 mb-lg-0 left-side bg-site-middle" > <!---->
+    <div class="container-fluid d-flex justify-content-center text-center ">
+      <div class="row mb-5 mb-md-5 ">
+        <div class="row">
+          <div class="col-12 align-self-center p-4 ">
+            <img src="../assets/images/tag/images.jfif" data-aos="fade-up" class="rounded-circle" alt="Cinque Terre" width="150" height="150">
+          </div>
+          <div class="col-12 align-self-center ">
+            <h2 class="text" data-aos="flip-left" data-aos-delay="300"><h1 > {{selectedTherapy}} </h1></h2>
+          </div>
+
+          <h6 class="text-center p-3 pl-4 pr-5 mr-3"> {{therapyTextShort}}</h6>
+        </div>
+
+        <div class="row">
+          <div class="pb-3 pl-4 pr-5 text-left">
+            <button type="button " class="btn mx-2 text-white bg-button" (click)="goBackTherapy()"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" *ngIf="verifyBackPossibilit()" >Voltar
+            </button>
+
+            <button type="button " class="btn text-white bg-button" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Mostrar Detalhes
+            </button>
+
+            <div class="pt-3" id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+              <div class="well well-lg card card-block card-header" [innerHTML]="therapyTextLong | dotToParagraph"></div>
+            </div>
+          </div>
+        </div>
+
+       </div>
+
+
+    </div>
+
+  </div>
+  <div class="col-2 d-lg-none " style="z-index: -1;" ></div>
+  <div class="col-9 col-lg-2 bg-site-clear" style="z-index: -1; "> <br> <div class="d-lg-none" style="height: 100px; "> </div> </div>
+  <div class="col-10 col-lg-5 ml-3 ml-lg-0  mt-n4 mt-lg-0 right-Side bg-site-middle" >
+    <div class="p-3" style="font-weight: bolder; font-size: 120%;">
+      <accordion [isAnimated]="true" class=" transparent_class text-body" >
+          <accordion-group heading="" [isOpen]="true">
+              <div accordion-heading style="color: green; font-size: 130%;">{{therapyBenefitsTitle}}</div>
+              <div class="row h-100 ">
+                <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 align-self-center " *ngFor="let benefit of therapyBenefits; index as i; first as isFirst">
+
+                  <div class="row h-100 ">
+                    <div class="col-3 align-self-center mr-n4">
+                      <div class="d-flex flex-row-reverse w-100 mr-n4">
+                        <i class="material-icons" style="font-size:36px;color:green">done</i>
+                      </div>
+                    </div>
+                    <div class="col-9 align-self-center border border-top-0 border-left-0 border-right-0 border-success">
+                      <div>{{benefit}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </accordion-group>
+          <accordion-group heading=""  [isOpen]="false">
+              <div accordion-heading style="color: green; font-size: 110%;">{{therapyInformationTitle}}</div>
+              <div class="row h-100">
+                <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 align-self-center" *ngFor="let information of therapyInformation; index as i; first as isFirst">
+                  <div class="row h-100 ">
+                    <div class="col-3 align-self-center mr-n4" >
+                      <div class="d-flex flex-row-reverse w-100 mr-n4">
+                        <i class="material-icons text-right" style="font-size:36px;color:green;">add</i>
+                      </div>
+                    </div>
+                    <div class="col-9 align-self-center border border-top-0 border-left-0 border-right-0 border-success ">
+                      <div>{{information}}</div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+          </accordion-group>
+      </accordion>
+    </div>
+  </div>
+</div>
+</div>
+
+

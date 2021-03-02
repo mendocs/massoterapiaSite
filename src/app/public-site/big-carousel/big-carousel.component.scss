@@ -1,0 +1,83 @@
+@import "../../shared-kernel/css/mediaqueries.scss";
+
+.left-side
+{
+  transform: translate(10%,25px);
+  z-index: 4
+}
+
+.right-Side
+{
+  transform: translate(0%,-105px);
+  z-index: 2
+}
+
+
+
+
+@include respond-above(xs) {
+
+}
+
+
+@include respond-above(sm) { //md
+
+}
+
+
+@include respond-above(md) { //lg
+.left-side
+{
+  transform: translate(15%,25px);
+  z-index: 4
+}
+
+.right-Side
+{
+  transform: translate(-15%,-25px);
+  z-index: 2
+}
+
+}
+
+@include respond-above(lg) { //xl
+  .left-side
+  {
+    transform: translate(15%,32px);
+    z-index: 4
+  }
+
+  .right-Side
+  {
+    transform: translate(-15%,-32px);
+    z-index: 2
+  }
+}
+
+
+
+
+
+    ::ng-deep .carousel-control-prev, ::ng-deep .carousel-control-next {
+      //background-color: white;
+    }
+
+    ::ng-deep .carousel .carousel-control-prev-icon, ::ng-deep .carousel .carousel-control-next-icon {
+      background-color: rgba(77, 114, 40, 1);
+      width: 50px;
+      height: 50px;
+      background-size: 41%;
+      border-radius: 50%;
+    }
+
+    ::ng-deep .carousel .carousel-control-prev-icon .sr-only
+    {
+      background-color: rgba(77, 114, 40, 0.75);
+      color: black;
+    }
+
+
+    ::ng-deep .carousel .carousel-indicators li
+    {
+      background-color: rgba(77, 114, 40, 0.75);
+    }

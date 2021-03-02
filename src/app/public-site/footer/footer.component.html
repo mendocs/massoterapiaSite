@@ -1,0 +1,64 @@
+<div class="container-fluid bg-site-strong">
+  <div class="container  text-white">
+    <div class="row align-middle">
+      <div class="col-6 col-sm-6 col-lg-3 ">
+        <img src="../../../assets/images/logo/logosimplestransparente.png" style="height: 240px; width: auto;" alt="">
+      </div>
+
+      <div class="col-6 col-sm-6 col-lg-3 ">
+
+        <div class="d-flex flex-column">
+          <div class="p-2 shadow">Massoterapia Integral</div>
+          <div class="p-2 ">um espaço construido com todo carinho, a massagem cura a tristeza, melhora o humor , aquece o corpo e alivia qualquer dor</div>
+        </div>
+      </div>
+
+
+      <div class="col-6 col-lg-2 ">
+        <div class="d-flex flex-column">
+          <div class="p-2 shadow">Terapias</div>
+          <div class="p-2 pointer1" *ngFor="let therapy of therapies" >
+            <button type="button" class="btn btn-success text-white border-0 bg-site-strong" (click)="navigateTo(therapy.id)">{{therapy.id}}</button>
+
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-2 ">
+
+        <div class="d-flex flex-column">
+          <div class="p-2 shadow">Localização</div>
+          <div class="p-2 ">
+            <p>Rua Porto Rico, 34</p>
+            <p>Parque das Nações - Santo André</p>
+            <p>(esaço para estacionar em Frente))</p>
+          </div>
+        </div>
+
+        <div class="d-lg-none d-flex flex-column">
+          <br>
+          <div class="p-2 shadow">Contato</div>
+          <div class="p-2 ">
+            <p>Whatsapp</p>
+            <p>(11)98099-0048</p>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="d-none  d-lg-flex col-6 col-lg-2 ">
+        <div class="d-flex flex-column">
+          <div class="p-2 shadow">Contato</div>
+          <div class="p-2 ">
+            <p>Whatsapp</p>
+            <p>(11)98099-0048</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
