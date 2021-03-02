@@ -75,23 +75,19 @@
 .parallaxFront
 {
 	height: 100%;
-	background-attachment: fixed;
-	//background-image: url("../../../assets/images/logo/bolastransparente.png");
-	/*background-size: auto !important;*/
-	background-position: 0% 100%;
 	background-repeat: no-repeat;
-	//background-size: 100% auto;
-  //background-size: auto 100%;
 }
 
 .parallaxFront_l
 {
-  background-size: 100% auto;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 .parallaxFront_m
 {
-  background-size: auto 100%;
+  background-position: 0% 100%;
+  background-size: 100% auto;
 }
 
 

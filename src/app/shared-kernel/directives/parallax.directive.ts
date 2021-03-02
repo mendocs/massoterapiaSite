@@ -8,8 +8,8 @@ export class ParallaxDirective implements OnInit {
 
 	@Input('ratio') parallaxRatio : number = 1
 	@Input('BackGround') parallaxBackGround : boolean = false;
-	@Input('BackGroundHorizontallPosition') parallaxBackGroundVerticalPosition : number = 0;
-	@Input('BackGroundImageHeigth') parallaxBackGroundImageHeigth : number = 0;
+	@Input('BackGroundHorizontallPosition') BackGroundHorizontallPosition : number = 0;
+	@Input('BackGroundImageTop') BackGroundImageTop : number = 0;
 
 	initialTop : number = 0;
 	initialposition : string[] ;
@@ -35,15 +35,16 @@ export class ParallaxDirective implements OnInit {
 
 			if(posicao < vh){
 
-				let diferencaAltura = (this.parallaxBackGroundImageHeigth != 0 ? ((vh- this.parallaxBackGroundImageHeigth)) : 0);
+				//let diferencaAltura = (this.BackGroundImageTop != 0 ? ((vh- this.BackGroundImageTop)) : 0);
+        let diferencaAltura = (this.BackGroundImageTop != 0 ? (( this.BackGroundImageTop)) : 0);
 
 				let alturaCalulada = ((vh - posicao  ) * this.parallaxRatio) + diferencaAltura; //- 100;
 
-				this.eleRef.nativeElement.style.backgroundPosition = `${this.parallaxBackGroundVerticalPosition}%  ${ alturaCalulada }px`
+				this.eleRef.nativeElement.style.backgroundPosition = `${this.BackGroundHorizontallPosition}px  ${ alturaCalulada }px`
 
 			}
 			else
-				this.eleRef.nativeElement.style.backgroundPosition =  `${this.parallaxBackGroundVerticalPosition}% 100%`;
+				this.eleRef.nativeElement.style.backgroundPosition =  `${this.BackGroundHorizontallPosition}% 100%`;
 		}
 		else{
 			this.eleRef.nativeElement.style.top = (this.initialTop - (window.scrollY * this.parallaxRatio)) + 'px'

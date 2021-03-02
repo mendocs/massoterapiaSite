@@ -26,17 +26,17 @@
 
 
 @include respond-above(md) { //lg
-.left-side
-{
-  transform: translate(15%,25px);
-  z-index: 4
-}
+  .left-side
+  {
+    transform: translate(15%,25px);
+    z-index: 4
+  }
 
-.right-Side
-{
-  transform: translate(-15%,-25px);
-  z-index: 2
-}
+  .right-Side
+  {
+    transform: translate(-15%,-25px);
+    z-index: 2
+  }
 
 }
 

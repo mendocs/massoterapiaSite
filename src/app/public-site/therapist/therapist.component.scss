@@ -1,24 +1,51 @@
+@import "../../shared-kernel/css/mediaqueries.scss";
+
+
 .parallaxParent {
-    //background-image: url("../../../assets/images/background/zen.webp");
-    background-image: url("../../../assets/images/logo/logotransparente.png");
-    /*height: 900px;*/
-    background-attachment: fixed;
-    background-position: 100% 50%;
+
+    background-image: url("../../../assets/images/logo/mobile/logoTransparenteMobile.png");
+    background-size: 100% auto;
     background-repeat: no-repeat;
-    background-size: cover;
+
+}
+
+
+.parallaxFront{
+	height: 100%;
+	background-image: url("../../../assets/images/logo/mobile/bolasTransparenteMobile.png");
+	background-position: 0% 0%;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+
+
+  @include respond-above(md) { //lg
+    .parallaxParent {
+
+      background-image: url("../../../assets/images/logo/desktop/logotransparente.png");
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .parallaxFront{
+      height: 100%;
+      background-attachment: fixed;
+      background-image: url("../../../assets/images/logo/desktop/bolastransparente.png");
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
   }
 
 
-  .parallaxFront
-{
-	height: 100%;
-	background-attachment: fixed;
-	background-image: url("../../../assets/images/logo/bolastransparente.png");
-	/*background-size: auto !important;*/
-	background-position: 100% 100%;
-	background-repeat: no-repeat;
-	//background-size: cover;
-}
+
+
+
+
+
+
+
 
 .parallaxBgPosition
 {
@@ -28,7 +55,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: .3;
+  opacity: 0.3;
   width: 100%;
   height: 100%;
 }
