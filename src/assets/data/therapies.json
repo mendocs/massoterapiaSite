@@ -1,7 +1,7 @@
 [
   {
     "id": "Massoterapia",
-    "background" : "home.jpg",
+    "background" : "terapeutica",
     "resumido": "Os vários estilos dessa antiga terapia são capazes de promover benefícios físicos, fisiológicos, energéticos e emocionais para a saúde e qualidade de vida",
     "detalhado": "São diversos os benefícios da massoterapia: Relaxamento muscular, alívio de dores, melhora da circulação sanguínea e linfática, melhora da nutrição dos tecidos, remodelação corporal, melhora do movimento articular, tonifica a musculatura para a prática esportiva, auxilia na prevenção de lesões, auxilia na recuperação muscular, auxilia nos cuidados pré e pós-cirúrgicos, estimula o peristaltismo intestinal, reequilibra o nível energético, aumenta a liberação de endorfinas, serotonina e ocitocina, auxilia no controle dos sintomas do estresse e da ansiedade, e contribui para o equilíbrio emocional. Os vários estilos dessa antiga terapia são capazes de promover benefícios físicos, fisiológicos, energéticos e emocionais para a saúde e qualidade de vida",
     "beneficiosTitulo" : "A massoterapia lida com:",
@@ -22,7 +22,7 @@
   },
   {
     "id": "Relaxante",
-    "background" : "MASSAGEM_RELAXANTE.jpg",
+    "background" : "desportiva",
     "resumido": "Relaxamento muscular e geral do organismo",
     "detalhado": "A massagem relaxante promove, como o próprio nome já diz, um relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo. O massoterapeuta pode integrar técnicas que poderão colaborar no auxílio do relaxamento muscular e geral do organismo, sempre em concordância com as necessidades e preferências da cliente. Veja algumas dessas técnicas na lista abaixo. Mas acima de tudo, a massagem relaxante proporciona, através do toque, acolhimento, atenção, respeito e cuidado, sendo uma poderosa aliada na busca por uma vida mais saudável e feliz.",
     "beneficiosTitulo" : "Outras técnicas integrativas",
@@ -40,7 +40,7 @@
   },
   {
     "id": "Terapêutica",
-    "background" : "MASSAGEM_TERAPeUTICA.jpg",
+    "background" : "terapeutica",
     "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
     "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
     "beneficiosTitulo" : "A massoterapia lida com:",
@@ -58,7 +58,7 @@
   },
   {
     "id": "Modeladora",
-    "background" : "MASSAGEM_TERAPeUTICA.jpg",
+    "background" : "desportiva",
     "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
     "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
     "beneficiosTitulo" : "A massoterapia lida com:",
@@ -76,7 +76,7 @@
   },
   {
     "id": "Desportiva",
-    "background" : "MASSAGEM_TERAPeUTICA.jpg",
+    "background" : "desportiva",
     "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
     "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
     "beneficiosTitulo" : "A massoterapia lida com:",
@@ -94,7 +94,7 @@
   },
   {
     "id": "Linfática",
-    "background" : "MASSAGEM_TERAPeUTICA.jpg",
+    "background" : "terapeutica",
     "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
     "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
     "beneficiosTitulo" : "A massoterapia lida com:",
@@ -112,7 +112,7 @@
   },
   {
     "id": "Shiatsu",
-    "background" : "MASSAGEM_TERAPeUTICA.jpg",
+    "background" : "desportiva",
     "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
     "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
     "beneficiosTitulo" : "A massoterapia lida com:",
@@ -130,7 +130,7 @@
   },
   {
     "id": "TUI NA",
-    "background" : "MASSAGEM_TERAPeUTICA.jpg",
+    "background" : "terapeutica",
     "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
     "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
     "beneficiosTitulo" : "A massoterapia lida com:",
