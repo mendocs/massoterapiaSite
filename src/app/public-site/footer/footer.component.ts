@@ -3,6 +3,7 @@ import { therapy } from 'src/app/therapy/models/therapy-model';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
 import { PublicSiteService } from '../public-site.service';
 
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -16,12 +17,22 @@ export class FooterComponent implements OnInit {
 		complete: () => console.log(''),
 	  };
 
+  phoneContactMask : string;
+  phoneContactNoMask : string;
+  whatsapplink : string;
+  addressLocalService : string;
+
   therapies : therapy[];
 
   constructor(private therapyDataService : TherapyDataService, private publicSiteService: PublicSiteService) { }
 
   ngOnInit(): void {
     this.therapyDataService.getAllTherapies().subscribe(this.therapiesFile);
+
+    this.phoneContactMask = this.publicSiteService.phoneContactMask;
+    this.phoneContactNoMask = this.publicSiteService.phoneContactNoMask;
+    this.whatsapplink = this.publicSiteService.whatsapplink;
+    this.addressLocalService = this.publicSiteService.addressLocalService;
   }
 
   populateControlsFromTherapies(_therapies: therapy[])

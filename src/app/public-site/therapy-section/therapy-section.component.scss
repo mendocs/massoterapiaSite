@@ -20,30 +20,75 @@
   }
 
 
+  .bg-site-middle-left
+  {
+    background-color: rgba(191, 194, 164, 0.4);
+  }
+
+
+  .bg-site-middle-right
+  {
+    //background-color:rgb(232, 233, 232)
+    background-color: rgba(191, 194, 164, 1);
+  }
+
+
+  .bg-site-clear-opacity
+  {
+    //background-color:rgb(232, 233, 232)
+    background-color:rgba(232, 232, 232,1)
+  }
+
+  .bg-site-clear-opacity
+  {
+    //background-color:rgb(232, 233, 232)
+    background-color:rgba(232, 232, 232,0.4);
+  }
+
+  .bg-site-middle-right
+  {
+    //background-color:rgb(232, 233, 232)
+    background-color: rgba(191, 194, 164, 0.4);
+  }
 
 
   @include respond-above(xs) {
 
-	  }
+    ::ng-deep .card.accordion-group,
+    ::ng-deep .card.accordion-group .card-header,
+    ::ng-deep .panel.accordion-group {
+      background-color: rgba(255, 255, 255,0.1);
+
+    }
+    ::ng-deep .panel.accordion-group .panel-body {
+      background-color: rgba(255, 255, 255,0.1);
+    }
+
+	}
 
 
-	  @include respond-above(sm) {
+	  @include respond-above(sm) { //md
+
 
 	  }
 
 
 	  @include respond-above(md) { //lg
-    .left-side
-    {
-      transform: translate(25%,-45px);
-      z-index: 4
-    }
+      .left-side
+      {
+        transform: translate(25%,-45px);
+        z-index: 4
+      }
 
-    .right-Side
-    {
-      transform: translate(-25%,45px);
-      z-index: 4
-    }
+      .right-Side
+      {
+        transform: translate(-25%,45px);
+        z-index: 4
+      }
+
+
+
+
 
 	  }
 
@@ -81,13 +126,15 @@
 .parallaxFront_l
 {
   background-attachment: fixed;
-  background-size: 100% 100%;
+  //background-size: 100% 100%;
+  background-size: cover;
 }
 
 .parallaxFront_m
 {
   background-position: 0% 100%;
   background-size: 100% auto;
+  //background-size: cover;
 }
 
 
@@ -99,7 +146,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: .75;
+  opacity: 1;
   width: 100%;
   height: 100%;
 }
+
+
+

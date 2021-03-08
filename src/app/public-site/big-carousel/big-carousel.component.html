@@ -4,26 +4,26 @@
 
 
 
-  <div class="row ml-0 pr-1" style="margin-top: 70px;">
-    <div class="col-1 col-sm-2 col-lg-3  "><br><br></div>
-    <div class="col-11  col-sm-9 col-lg-7 bg-site-middle"></div>
+  <div class="row ml-0 pr-1. " style="margin-top: 70px;">
+    <div class="col-1 col-sm-2 col-lg-3 col-xl-3 "><br><br></div>
+    <div class="col-11 col-sm-9 col-lg-9 col-xl-8 bg-site-middle "></div>
   </div>
 
-  <div class="row pr-1 " style="margin-left: 1px;">
-    <div class="col-11 col-sm-10 col-lg-9 bg-site-clear text-white" >
+  <div class="row pr-n1 " style="margin-left: 0px;">
+    <div class="col-11 col-sm-10 col-lg-11 col-xl-10 bg-site-clear  text-white" >
         <carousel [noPause]="false"  [activeSlide]="2"  style="z-index: 20;">
-          <slide *ngFor="let slide of slides" class="p-lg-4 " >
+          <slide *ngFor="let slide of slides" class="pl-n5 p-lg-4 pointer" (click) = "slideClick(slide.link)">
               <!-- p-1 m-1 p-md-2 m-md-2 p-lg-4 m-lg-4  -->
-              <div class=" row w-100 p-1 m-1 p-md-2 m-md-2 p-lg-4 m-lg-4 " >
-                <div class="col-lg-5 col-10 left-side " >
-                  <img src="assets/images/big-carousel/masoterapia_p.jpg" alt="First slide" style="display: block; width: 100%; " >
+              <div class=" row w-100 p-1 m-1 p-md-2 m-md-2 p-lg-4 m-lg-0 " >
+                <div class="col-10 col-lg-6 left-side " >
+                  <img src="assets/images/big-carousel/{{slide.image}}.jpg" alt="First slide"  class="float-right image-carrousel" >
                 </div>
 
-                <div class="col-lg-7 col-10 right-Side bg-site-middle" style="z-index: 1;">
+                <div class="col-10 col-lg-6 right-Side bg-site-middle texto-carrousel"  style="z-index: 1;">
 
                   <div class="row mt-5  ">
-                    <div class="col-lg-3 mt-5   col-md-6"></div>
-                    <div class=" col-lg-8  col-md-8 mt-5"><h1>{{slide}} </h1> <h5> alivio de dores, relaxante, temos a massagem ideal para você.</h5></div>
+                    <div class="col-lg-3 mt-5 col-md-6"></div>
+                    <div class=" col-lg-8 col-md-8 mt-5  ml-3 pl-xl-5"><h1 class="pl-xl-n5">{{slide.titulo}} </h1> <h5 class="pl-xl-n5"> {{slide.resumido}}</h5> <h5 class="d-none "> {{slide.detalhado}}</h5> </div>
                   </div>
 
 
@@ -41,13 +41,13 @@
 
         </carousel>
     </div>
-    <div class="col-1 bg-site-middle"></div>
+    <div class="col-1 bg-site-middle"> </div>
 
   </div>
 
-  <div class="row ml-0" >
+  <div class="row ml-0 d-none1" >
     <div class="col-1 col-sm-2 col-lg-3  "></div>
-    <div class="col-11  col-sm-10 col-md-8 col-lg-7 bg-site-middle"> </div>
+    <div class="col-11  col-sm-10 col-md-8 col-lg-9 bg-site-middle"> </div>
   </div>
 </div>
 

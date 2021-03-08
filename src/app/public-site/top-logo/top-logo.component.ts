@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PublicSiteService } from '../public-site.service';
 
 @Component({
   selector: 'app-top-logo',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopLogoComponent implements OnInit {
 
-  constructor() { }
+  phoneContactMask : string;
+  phoneContactNoMask : string;
+  whatsapplink : string;
+
+
+  constructor(private publicSiteService: PublicSiteService) { }
 
   ngOnInit(): void {
+    this.phoneContactMask = this.publicSiteService.phoneContactMask;
+    this.phoneContactNoMask = this.publicSiteService.phoneContactNoMask;
+    this.whatsapplink = this.publicSiteService.whatsapplink;
+
   }
 
 }

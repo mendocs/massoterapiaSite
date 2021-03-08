@@ -19,6 +19,7 @@ export class TopToolbarComponent implements OnInit {
 
   isCollapsed = true;
 
+
   therapies : therapy[];
 
   sections : section[] ;
@@ -45,15 +46,27 @@ export class TopToolbarComponent implements OnInit {
 
   navigateTo(navigateId: string)
   {
-    if (navigateId.includes("spied"))
+
+    this.isCollapsed = true;
+
+    //para dar tempo do navbar fechar, ajustar o scroll e depois posicionar
+    setTimeout(()=>{
+
+
+      if (navigateId.includes("spied"))
       this.triggerScrollTo(navigateId)
     else
       this.publicSiteService.SetTherapy(navigateId);
+
+
+ }, 200);
+
+
   }
 
   toggleCollapsed() {
 	  this.isCollapsed = !this.isCollapsed;
-	  console.log(this.isCollapsed);
+
   }
 
 

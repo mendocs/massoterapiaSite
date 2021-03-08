@@ -1,0 +1,26 @@
+@import "../../shared-kernel/css/mediaqueries.scss";
+
+
+.position-therapy
+{
+  transform: translate(0%,415px);
+}
+
+@include respond-above(sm) { //md
+
+  .position-therapy
+  {
+    transform: translate(0%,655px);
+  }
+
+}
+
+
+@include respond-above(md) { //lg
+
+  .position-therapy
+  {
+    transform: translate(0%,305px);
+  }
+
+}

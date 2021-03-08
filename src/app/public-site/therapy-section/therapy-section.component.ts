@@ -10,6 +10,11 @@ import { TherapyDataService } from 'src/app/therapy/services/therapy-data.servic
 })
 export class TherapySectionComponent implements OnInit {
 
+  phoneContactMask : string;
+  phoneContactNoMask : string;
+  whatsapplink : string;
+
+
   isCollapsed:boolean = true;
   isSomeTherapySelected:boolean = false;
 
@@ -37,6 +42,10 @@ export class TherapySectionComponent implements OnInit {
   ngOnInit(): void {
       this.publicSiteService.selectTherapy$.subscribe( valor =>
       this.therapyDataService.getTherapyByName(valor).subscribe(this.therapiesFile));
+
+      this.phoneContactMask = this.publicSiteService.phoneContactMask;
+      this.phoneContactNoMask = this.publicSiteService.phoneContactNoMask;
+      this.whatsapplink = this.publicSiteService.whatsapplink;
 
   }
 

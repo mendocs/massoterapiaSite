@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  phoneContactMask : "(11) 98099-0048",
+  phoneContactnoMask : "5511980990048",
+  whatsapplink : "https://api.whatsapp.com/send?l=pt-BR&phone=",
+  address : "Rua Porto Rico, 27.Parque das Nações - Santo André.(esaço para estacionar em Frente))"
 };
 
 /*
@@ -13,4 +17,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.s

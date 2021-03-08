@@ -12,15 +12,51 @@
   z-index: 2
 }
 
+.image-carrousel
+{
+  display: block;
+  width: 100%;
+  //height: 250px;
+}
+
+.texto-carrousel
+{
+  height: 500px;
+}
 
 
+@include respond-above(xs) { //sm
 
-@include respond-above(xs) {
+  .image-carrousel
+  {
+    display: block;
+    width: 100%;
+
+  }
+
+  .texto-carrousel
+  {
+    height: 330px;
+  }
+
 
 }
 
 
 @include respond-above(sm) { //md
+
+  .image-carrousel
+  {
+    display: block;
+    width: auto;
+    height: 420px;
+    float: left !important;
+  }
+
+  .texto-carrousel
+  {
+    height: 380px;
+  }
 
 }
 
@@ -38,6 +74,16 @@
     z-index: 2
   }
 
+  .image-carrousel
+  {
+    display: block;
+    width: auto;
+    //height: 550px;
+    float: right !important;
+
+  }
+
+
 }
 
 @include respond-above(lg) { //xl
@@ -52,6 +98,15 @@
     transform: translate(-15%,-32px);
     z-index: 2
   }
+
+  .image-carrousel
+  {
+    display: block;
+    width: auto;
+    height: 550px;
+  }
+
+
 }
 
 

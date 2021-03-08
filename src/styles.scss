@@ -2,6 +2,8 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "~aos/dist/aos.css";
 
+@import url('https://fonts.googleapis.com/css2?family=Bubbler+One&family=Dr+Sugiyama&display=swap');
+
 
 
 body
@@ -27,11 +29,19 @@ body
 }
 
 
+
 .bg-site-clear
 {
   //background-color:rgb(232, 233, 232)
   background-color:rgba(232, 232, 232,1)
 }
+
+.bg-site-white-opacity-6
+{
+  //background-color:rgb(232, 233, 232)
+  background-color:rgba(255, 255, 255,0.6)
+}
+
 
 .bg-site-strong
 {
@@ -51,3 +61,7 @@ body
 
 
 .pointer {cursor: pointer;}
+
+
+
+

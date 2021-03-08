@@ -30,10 +30,8 @@
 
         <div class="d-flex flex-column">
           <div class="p-2 shadow">Localização</div>
-          <div class="p-2 ">
-            <p>Rua Porto Rico, 34</p>
-            <p>Parque das Nações - Santo André</p>
-            <p>(esaço para estacionar em Frente))</p>
+          <div class="p-2 " [innerHTML]="addressLocalService | dotToParagraph">
+
           </div>
         </div>
 
@@ -41,8 +39,14 @@
           <br>
           <div class="p-2 shadow">Contato</div>
           <div class="p-2 ">
-            <p>Whatsapp</p>
-            <p>(11)98099-0048</p>
+
+
+              <a  target="_blank"
+              href="{{whatsapplink}}{{phoneContactNoMask}}&text=Ola, Gostaria de agendar para dia e horario: "
+              >
+                <p>Whatsapp</p>
+                <p>{{phoneContactMask}}</p>
+              </a>
           </div>
         </div>
 
@@ -53,8 +57,12 @@
         <div class="d-flex flex-column">
           <div class="p-2 shadow">Contato</div>
           <div class="p-2 ">
-            <p>Whatsapp</p>
-            <p>(11)98099-0048</p>
+            <a  target="_blank"
+            href="{{whatsapplink}}{{phoneContactNoMask}}&text=Ola, Gostaria de agendar para dia e horario: "
+            >
+              <p>Whatsapp</p>
+              <p>{{phoneContactMask}}</p>
+            </a>
           </div>
         </div>
       </div>

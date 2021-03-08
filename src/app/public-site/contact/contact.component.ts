@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { PublicSiteService } from '../public-site.service';
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -7,9 +9,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  @ViewChild('classParentSquares') classParentSquares: any
+  @ViewChild('classParentSquares') classParentSquares: any;
 
-  constructor() { }
+  phoneContactNoMask : string;
+  phoneContactMask : string;
+  whatsapplink : string;
+  addressLocalService : string;
+
+  constructor(private publicSiteService: PublicSiteService) { }
 
   ngOnInit(): void {
 
@@ -17,7 +24,10 @@ export class ContactComponent implements OnInit {
 
     //console.log(myvar);
 
-    console.log(window.getComputedStyle(myvar).display);
+    this.phoneContactMask = this.publicSiteService.phoneContactMask;
+    this.phoneContactNoMask = this.publicSiteService.phoneContactNoMask;
+    this.whatsapplink = this.publicSiteService.whatsapplink;
+    this.addressLocalService = this.publicSiteService.addressLocalService;
   }
 
   ngAfterViewInit1() : void
