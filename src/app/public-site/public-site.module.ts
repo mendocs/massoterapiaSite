@@ -14,6 +14,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PriceComponent } from './price/price.component';
 import { FooterComponent } from './footer/footer.component';
 import { TopLogoComponent } from './top-logo/top-logo.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -32,7 +33,8 @@ import { TopLogoComponent } from './top-logo/top-logo.component';
     TopLogoComponent],
   imports: [
     CommonModule,
-    SharedKernelModule
+    SharedKernelModule,
+    RouterModule
   ],
   providers: [PublicSiteService],
 })

@@ -14,6 +14,7 @@ import {TherapyModule} from "./therapy/therapy.module";
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -27,9 +28,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PublicSiteModule,
     TherapyModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [HttpClientModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports : [RouterModule]
 })
 export class AppModule { }
