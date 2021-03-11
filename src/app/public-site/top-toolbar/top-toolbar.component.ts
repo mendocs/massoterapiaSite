@@ -13,8 +13,8 @@ import { PublicSiteService } from '../public-site.service';
 })
 export class TopToolbarComponent implements OnInit {
 
-  pathsFirst= ["Sobre","Espaço e Terapeuta"];
-  pathsLast= ["Valores","Contato e Localização"];
+  pathsFirst= ["Sobre"];
+  pathsLast= ["Espaço e Terapeuta", "Valores","Contato e Localização"];
 
 
   isCollapsed = true;
@@ -42,6 +42,7 @@ export class TopToolbarComponent implements OnInit {
   populateControlsFromTherapies(_therapies: therapy[])
   {
     this.therapies = _therapies;
+
   }
 
   navigateTo(navigateId: string)

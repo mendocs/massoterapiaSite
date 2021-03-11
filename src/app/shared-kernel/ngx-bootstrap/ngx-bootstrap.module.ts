@@ -8,7 +8,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
@@ -28,14 +28,16 @@ import { FormsModule }   from '@angular/forms';
     AccordionModule.forRoot(),
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
-    BrowserAnimationsModule,
+    //BrowserAnimationsModule,
     CarouselModule.forRoot(),
     AlertModule.forRoot(),
     ProgressbarModule.forRoot(),
     TypeaheadModule.forRoot()
   ],
   exports:[TooltipModule,ModalModule,AccordionModule,CollapseModule,
-    BsDropdownModule,BrowserAnimationsModule,CarouselModule,
+    BsDropdownModule,
+    //BrowserAnimationsModule,
+    CarouselModule,
     AlertModule,ProgressbarModule, TypeaheadModule,FormsModule
     //NgxSpinnerModule
   ]

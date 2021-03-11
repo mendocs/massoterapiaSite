@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {therapy} from "../models/therapy-model";
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,17 @@ export class TherapyDataService {
 
 
     getAllTherapies() {
-      return this.http.get<therapy[]>('assets/data/therapies.json');
-      }
+      return this.http.get<therapy[]>('assets/data/therapies.json').
+      pipe(
+        switchMap((therapies: therapy[]) => of(this.removeFistItem(therapies)))
+      )
+      ;
+    }
+
+    removeFistItem(therapies: therapy[]) : therapy[]
+    {
+      therapies.shift();
+      return therapies;
+    }
 
 }

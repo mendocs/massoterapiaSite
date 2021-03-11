@@ -1,0 +1,30 @@
+
+<div class="container mat-typography" style="font-size: 100%;">
+  <h1> Login </h1>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+
+  <app-input-field  formControlName="user"
+  [classeCss]="aplicaCssErro('user')"
+  id="user" label="Usuário" [control]="formulario.get('user')"
+  ></app-input-field>
+
+
+  <app-input-field  formControlName="password"
+  [classeCss]="aplicaCssErro('password')"
+  id="password" label="Senha" type="password" [control]="formulario.get('password')"
+  ></app-input-field>
+
+
+  <button type="submit" class="btn btn-outline-success">Logar</button>
+
+</form>
+
+<div *ngIf= "authenticatefail"  class="alert alert-danger alert-dismissible fade show mt-4">
+  Usuário ou senha inválidos
+</div>
+
+
+
+</div>

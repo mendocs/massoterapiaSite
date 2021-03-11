@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainContainerComponent } from './public-site/main-container/main-container.component';
 
+
 const routes: Routes = [
-  {path: '', component: MainContainerComponent} ,
+  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  {path: '', component: MainContainerComponent}
+
 ];
 
 @NgModule({

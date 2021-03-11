@@ -74,7 +74,7 @@ export class TagCloudComponent implements OnInit {
   populateControlsFromTherapies(_therapies: therapy[])
   {
     this.therapies = _therapies;
-    this.publicSiteService.SetTherapy(this.therapies[0].id,true);
+    this.publicSiteService.SetTherapy("Massoterapia",true);
   }
 
 }

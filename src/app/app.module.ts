@@ -10,7 +10,10 @@ import {SharedKernelModule} from "./shared-kernel/shared-kernel.module";
 
 import {PublicSiteModule} from "./public-site/public-site.module"
 
-import {TherapyModule} from "./therapy/therapy.module"
+import {TherapyModule} from "./therapy/therapy.module";
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -20,10 +23,11 @@ import {TherapyModule} from "./therapy/therapy.module"
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule,
     SharedKernelModule,
     PublicSiteModule,
-    TherapyModule
+    TherapyModule,
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
