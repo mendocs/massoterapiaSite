@@ -5,22 +5,28 @@ import { LoginComponent } from './login/login.component';
 import {AdminRoutingModule} from "./admin-routing/admin-routing.module";
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-import {AuthService} from "./services/auth.service";
+//import {AuthService} from "./services/auth.service";
+import { PatientService} from "../patient/patient-data/services/patient.service"
 import { AuthGuard } from './guards/auth-guard';
 import { SharedKernelModule } from '../shared-kernel/shared-kernel.module';
+import { PatientHeaderComponent } from './patient-components/patient-header/patient-header.component';
+import { PatientRegisterLineComponent } from './patient-components/patient-register-line/patient-register-line.component';
+import {DashboardService } from "./services/dashboard.service";
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    PatientHeaderComponent,
+    PatientRegisterLineComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedKernelModule
   ],
-  providers: [AuthService, AuthGuard]
+  providers: [ AuthGuard, PatientService, DashboardService]
 })
 export class AdminModule { }

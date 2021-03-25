@@ -16,6 +16,8 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { FormsModule }   from '@angular/forms';
 
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 
@@ -32,13 +34,15 @@ import { FormsModule }   from '@angular/forms';
     CarouselModule.forRoot(),
     AlertModule.forRoot(),
     ProgressbarModule.forRoot(),
-    TypeaheadModule.forRoot()
+    TypeaheadModule.forRoot(),
+    TimepickerModule.forRoot(),
+    BsDatepickerModule.forRoot(),
   ],
   exports:[TooltipModule,ModalModule,AccordionModule,CollapseModule,
     BsDropdownModule,
     //BrowserAnimationsModule,
     CarouselModule,
-    AlertModule,ProgressbarModule, TypeaheadModule,FormsModule
+    AlertModule,ProgressbarModule, TypeaheadModule,FormsModule, TimepickerModule, BsDatepickerModule
     //NgxSpinnerModule
   ]
 })

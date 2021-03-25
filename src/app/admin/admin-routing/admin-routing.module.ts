@@ -21,13 +21,3 @@ const routes: Routes = [
 })
 export class AdminRoutingModule { }
 
-
-/*
-{path: "", component :Modulo1Component },
-{path: "filho1", component :Modulo1Filho1Component ,
-    canDeactivate: [Modulo1Filho1deactivateServiceService]
-    ,canActivate : [Modulo1Filho1CanActivateService]
-    ,canActivateChild: [Modulo1Filho1CanActivateChildService]
-    ,children : [{path: ":variavalParametro", component :Modulo1Filho1DetalheComponent}]
-  }
-  */

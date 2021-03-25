@@ -30,7 +30,7 @@ export class PublicSiteService {
   public sections :section[] =
   [
     {name: "Inicio", nameSpied: "home_spied"},
-    {name: "Terapias", nameSpied: "therapy_section_spied"},
+    {name: "Terapias", nameSpied: "tag_cloud_spied"},
     {name: "Terapeuta", nameSpied: "therapist_spied"},
     {name: "Valores", nameSpied: "price_spied"},
     {name: "Contato", nameSpied: "contact_spied"}

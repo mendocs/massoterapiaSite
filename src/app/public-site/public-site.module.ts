@@ -15,6 +15,8 @@ import { PriceComponent } from './price/price.component';
 import { FooterComponent } from './footer/footer.component';
 import { TopLogoComponent } from './top-logo/top-logo.component';
 import { RouterModule } from '@angular/router';
+import { WhatsappComponent } from './whatsapp/whatsapp.component';
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 
 
@@ -30,7 +32,9 @@ import { RouterModule } from '@angular/router';
     ContactComponent,
     PriceComponent,
     FooterComponent,
-    TopLogoComponent],
+    TopLogoComponent,
+    PageNotFoundComponent,
+    WhatsappComponent],
   imports: [
     CommonModule,
     SharedKernelModule,

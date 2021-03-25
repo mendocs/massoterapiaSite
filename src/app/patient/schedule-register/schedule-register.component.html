@@ -1,0 +1,87 @@
+
+<!-- <form [formGroup]="formulario" (ngSubmit)="onSubmit()">-->
+  <div class="form-group" >
+
+  <div class="card my-3 schedule-card rounded ">
+    <div class="card-header">
+
+      <div class="row clearfix">
+        <div class="w-100 " *ngIf="!readonly">
+          <a class=" text-white  mx-2 float-right" (click)="removeMySelf()">
+            <span class="material-icons remove-icon pointer">delete_forever</span>
+          </a>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-7 align-self-center mb-n4">
+          <mat-form-field appearance="fill" >
+            <mat-label>Data </mat-label>
+            <input matInput [matDatepicker]="startdDate" [readonly]="readonly" [(ngModel)]="innerValue['startdDate']" (ngModelChange) = "sincronizeSchedule()" > <!--formControlName="startdDate"-->
+            <mat-datepicker-toggle matSuffix [for]="startdDate" *ngIf="!readonly"></mat-datepicker-toggle>
+            <mat-datepicker #startdDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+
+          <div class="col-5 aling-self-center">
+            <timepicker id="scheduletime" #scheduletime [readonlyInput]="readonly" [showMeridian]="ismeridian" [(ngModel)]="timepicker" (ngModelChange) = "sincronizeSchedule()"
+            ></timepicker>
+
+          </div>
+
+
+    </div>
+
+    </div>
+
+
+
+    <div class="card-body">
+
+      <div class="row">
+        <div class="col-6">
+          <div class="checkbox" >
+            <label class="checkbox-inline"  >
+              <input type="checkbox" [(ngModel)]="innerValue['confirmed']" (click)="!readonly" > Confirmado <!--formControlName="confirmed"-->
+            </label>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="checkbox" >
+            <label class="checkbox-inline" >
+              <input type="checkbox" [(ngModel)]="innerValue['executed']" (click)="!readonly"> Realizado <!--formControlName=formControlName="executed"-->
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div  class="row">
+        <mat-form-field appearance="fill" >
+          <mat-label> Comentários  </mat-label>
+          <textarea matInput [(ngModel)]="innerValue['comments']"   [readonly]="readonly"></textarea> <!--formControlName="comments"-->
+        </mat-form-field>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--<app-form-debug [form] = "formulario"></app-form-debug>-->
+
+<!--</form>-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,11 +7,12 @@ import { ParallaxDirective } from './directives/parallax.directive'
 import { DotToParagraphPipe } from './pipes/dot-to-paragraph.pipe';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { FormBaseModule } from '../shared-kernel/forms/form.-base.module';
+import { PortugueseBooleanPipe } from './pipes/portuguese-boolean.pipe';
 
 
 
 @NgModule({
-  declarations: [ScrollSpyDirective, ParallaxDirective, DotToParagraphPipe],
+  declarations: [ScrollSpyDirective, ParallaxDirective, DotToParagraphPipe, PortugueseBooleanPipe],
   imports: [
     CommonModule,
     NgxBootsrapModule,
@@ -24,6 +25,7 @@ import { FormBaseModule } from '../shared-kernel/forms/form.-base.module';
     FormBaseModule,
     //TagCloudModule,
     DotToParagraphPipe,
+    PortugueseBooleanPipe,
     ParallaxDirective,
     ScrollSpyDirective]
 })

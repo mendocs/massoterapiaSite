@@ -1,12 +1,15 @@
-import { Component, OnInit, Directive } from '@angular/core';
-import { FormGroup, FormArray } from '@angular/forms';
+import { Component, OnInit, Directive, Optional } from '@angular/core';
+import { FormGroup, FormArray, FormControl, FormBuilder } from '@angular/forms';
 
 @Directive()
 export abstract class BaseFormComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor() { }
+  //constructor(private formBuilder: FormBuilder) { }
+
+  constructor(@Optional() public formBuilder?: FormBuilder) { }
+
 
   ngOnInit() {
   }
@@ -27,7 +30,7 @@ export abstract class BaseFormComponent implements OnInit {
   verificaValidacoesForm(formGroup: FormGroup | FormArray) {
 
     Object.keys(formGroup.controls).forEach(campo => {
-      console.log(campo);
+
       const controle = formGroup.get(campo);
       controle.markAsDirty();
       controle.markAsTouched();
@@ -69,5 +72,40 @@ export abstract class BaseFormComponent implements OnInit {
     };
   }
 
+
+  builddFormArray(arrayFields : string[]) {
+    const values = arrayFields.map(v => new FormControl(false));
+    return this.formBuilder.array(values);
+  }
+
+  getArrayControls(formArrayName : string) {
+    return this.formulario.get(formArrayName) ? (<FormArray>this.formulario.get(formArrayName)).controls : null;
+  }
+
+ convertFormArrayToValues(formArrayName: string, valueSubmit: any) : any
+ {
+    let objeto = new Object()
+    return Object.assign(valueSubmit, {
+      [formArrayName]: valueSubmit[formArrayName]
+      .map((v, i) => v ? this[formArrayName][i] : null)
+      .filter(v => v !== null)
+    });
+ }
+
+
+ getArray(currentModel : object, formArrayName : string)
+ {
+
+  const arrayData : Array<string> = currentModel[formArrayName];
+
+   (<FormArray>this.formulario.get(formArrayName)).reset();
+   this[formArrayName].forEach((value, index) => {
+     if (arrayData.includes(value))
+       (<FormArray>this.formulario.get(formArrayName)).controls[index].setValue(true);
+
+   });
+
+
+ }
 
 }

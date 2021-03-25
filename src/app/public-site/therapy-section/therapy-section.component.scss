@@ -1,4 +1,4 @@
-
+@import "../../style/globalStyleTheme.scss";
 @import "../../shared-kernel/css/mediaqueries.scss";
 
 .circle  {
@@ -28,8 +28,9 @@
 
   .bg-site-middle-right
   {
+    @extend .bg-site-middle;
     //background-color:rgb(232, 233, 232)
-    background-color: rgba(191, 194, 164, 1);
+    //background-color: rgba(191, 194, 164, 1);
   }
 
 
@@ -151,5 +152,21 @@
   height: 100%;
 }
 
+.accordion-heading
+{
+  color: green;
+  font-size: 130%;
+}
 
+.icon{
+  font-size:36px;
+  color:green
+}
 
+.acordion-container
+{
+  //font-weight: bold;
+  font-size: 100%;
+  font-weight:500;
+
+}

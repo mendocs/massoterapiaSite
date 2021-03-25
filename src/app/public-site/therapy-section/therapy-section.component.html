@@ -86,20 +86,20 @@
   <div class="col-2 d-lg-none " style="z-index: -1;" ></div>
   <div class="col-9 col-lg-2 bg-site-clear-opacity" style="z-index: -1; "> <br> <div class="d-lg-none" style="height: 100px; "> </div> </div>
   <div class="col-10 col-lg-5 ml-3 ml-lg-0  mt-n4 mt-lg-0 right-Side bg-site-middle-right" >
-    <div class="p-3" style="font-weight: bolder; font-size: 120%;" >
+    <div class="p-3" class="acordion-container" >
       <accordion [isAnimated]="true" class=" text-body  p-1"  >
           <accordion-group heading="" [isOpen]="true" panelClass="accordion-group">
-              <div accordion-heading   style="color: green; font-size: 130%;" >{{therapyBenefitsTitle}}</div>
+              <div accordion-heading class="accordion-heading"   >{{therapyBenefitsTitle}}</div>
               <div class="row h-100 ">
-                <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 align-self-center " *ngFor="let benefit of therapyBenefits; index as i; first as isFirst">
+                <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 align-self-center1 " *ngFor="let benefit of therapyBenefits; index as i; first as isFirst">
 
                   <div class="row h-100 ">
-                    <div class="col-3 align-self-center mr-n4">
+                    <div class="col-3 align-self-center1 mr-n4">
                       <div class="d-flex flex-row-reverse w-100 mr-n4">
-                        <i class="material-icons" style="font-size:36px;color:green">done</i>
+                        <i class="material-icons" style="font-size:24px;color:green">done</i>
                       </div>
                     </div>
-                    <div class="col-9 align-self-center border border-top-0 border-left-0 border-right-0 border-success">
+                    <div class="col-9 align-self-center1 border-0 border-top-0 border-left-0 border-right-0 border-success">
                       <div>{{benefit}}</div>
                     </div>
                   </div>
@@ -108,16 +108,16 @@
 
           </accordion-group>
           <accordion-group heading=""  [isOpen]="false" panelClass="accordion-group">
-              <div accordion-heading style="color: green; font-size: 110%;">{{therapyInformationTitle}}</div>
+              <div accordion-heading class="accordion-heading">{{therapyInformationTitle}}</div>
               <div class="row h-100">
                 <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 align-self-center" *ngFor="let information of therapyInformation; index as i; first as isFirst">
                   <div class="row h-100 ">
-                    <div class="col-3 align-self-center mr-n4" >
+                    <div class="col-3 align-self-center1 mr-n4" >
                       <div class="d-flex flex-row-reverse w-100 mr-n4">
-                        <i class="material-icons text-right" style="font-size:36px;color:green;">add</i>
+                        <i class="material-icons text-right" style="font-size:24px;color:green;">add</i>
                       </div>
                     </div>
-                    <div class="col-9 align-self-center border border-top-0 border-left-0 border-right-0 border-success ">
+                    <div class="col-9 align-self-center1 border-0 border-top-0 border-left-0 border-right-0 border-success ">
                       <div>{{information}}</div>
                     </div>
                   </div>

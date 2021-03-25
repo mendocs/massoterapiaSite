@@ -1,0 +1,36 @@
+<div class="container">
+
+  <table class="table table-hover">
+
+    <thead>
+
+      <tr>
+        <th>Paciente</th>
+        <th>telefone</th>
+        <th>prox consulta</th>
+        <th>confirmada</th>
+        <th>executada</th>
+      </tr>
+
+    </thead>
+    <tbody>
+
+
+  <tr *ngFor = "let patientSelected of patientRegisters">
+    <td><a routerLink="/areacliente/{{patientSelected.id}}" >{{patientSelected.name}}</a></td>
+    <td>
+      <a target="_blank" href="{{whatsapplink}}{{patientSelected.phone}}&text=Olá {{patientSelected.name}}, Gostaria de lhe pedir a gentileza de preencher alguns dados de saúde para personalizar seu atendimento, neste link: {{this.href}}{{patientSelected.id}}" >{{patientSelected.phone.substring(0,7)}}</a>
+      <a target="_blank" href="{{whatsapplink}}{{patientSelected.phone}}&text=Olá {{patientSelected.name}}, Gostaria de lhe pedir para confirmar seu atendimento em {{getDateFormated(patientSelected)}}, para confirmar é só responder : sim" >-{{patientSelected.phone.substring(7,12)}}</a></td>
+
+    <td>{{getDateFormated(patientSelected)}} ({{patientSelected.schedules.length}})</td>
+    <td>{{getNextSchedule(patientSelected).confirmed | portugueseBoolean}}</td>
+    <td>{{getNextSchedule(patientSelected).executed | portugueseBoolean}}</td>
+
+  </tr>
+
+  </tbody>
+  </table>
+
+</div>
+
+

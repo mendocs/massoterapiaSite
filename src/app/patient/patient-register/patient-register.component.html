@@ -1,0 +1,420 @@
+
+<app-patient-register-logo-top></app-patient-register-logo-top>
+
+
+<div class="container mat-typography" style="font-size: 100%;">
+
+
+
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+     <accordion [isAnimated]="true">
+      <accordion-group id="accordion_contact" heading="Informações de Contato" [(isOpen)]="accordionGroupOpen[0]" panelClass="panelClass" (isOpenChange)="gotoTop($event, 'accordion_contact')">
+        <div class="row">
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="name"
+            [classeCss]="aplicaCssErro('name')"
+            id="name1" label="Nome" [control]="formulario.get('name')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <mat-form-field appearance="fill" >
+              <mat-label>Data Preenchimento</mat-label>
+              <input matInput [matDatepicker]="pickerdateFillData" formControlName="dateFillData" >
+              <mat-datepicker-toggle matSuffix [for]="pickerdateFillData"></mat-datepicker-toggle>
+              <mat-datepicker #pickerdateFillData></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+              <mat-form-field appearance="fill" >
+                <mat-label>Data Nascimento</mat-label>
+                <input matInput [matDatepicker]="pickerdateBorn" formControlName="dateBorn"
+                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"
+                >
+                <mat-datepicker-toggle matSuffix [for]="pickerdateBorn"></mat-datepicker-toggle>
+                <mat-datepicker #pickerdateBorn startView="year" [startAt]="startDate"></mat-datepicker>
+              </mat-form-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="phone"
+            [classeCss]="aplicaCssErro('phone')"
+            id="phone" label="telefone" [control]="formulario.get('phone')"
+            mask="(00)00000-0000"
+            placeholder="(__)_____-____"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="phoneContact"
+            [classeCss]="aplicaCssErro('phoneContact')"
+            id="phoneContact" label="telefone contato emergencia" [control]="formulario.get('phoneContact')"
+            mask="(00)00000-0000"
+            placeholder="(__)_____-____"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+              <app-input-field  formControlName="occupation"
+              [classeCss]="aplicaCssErro('occupation')"
+              id="occupation" label="Profissão" [control]="formulario.get('occupation')"
+              ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <mat-form-field appearance="fill" >
+              <mat-label>Estado Civil</mat-label>
+              <mat-select formControlName="maritalStatus" >
+                <mat-option value="Soleira">Solteira</mat-option>
+                <mat-option value="Casada">Casada</mat-option>
+                <mat-option value="Divorciada">Divorciada</mat-option>
+                <mat-option value="Viuva">Viúva</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <mat-form-field appearance="fill" >
+              <mat-label>Filhos</mat-label>
+              <mat-select formControlName="sons" >
+                <mat-option [value]="i" *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]; let i= index" >{{i}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="weight"
+            [classeCss]="aplicaCssErro('weight')"
+            id="weight" label="Peso" [control]="formulario.get('weight')"
+            mask="00,0"
+            placeholder="__,_"
+
+            ></app-input-field>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <a class="btn text-white bg-button mx-2" (click)="nextStepOnClick(1)">Proximo</a>
+        </div>
+
+
+      </accordion-group>
+      <accordion-group id="accordion_motivation" heading="Motivo da Procura" [(isOpen)]="accordionGroupOpen[1]" (isOpenChange)="gotoTop($event, 'accordion_motivation')">
+
+        <div id="motivation" class="row">
+          <div class="checkbox" class="col-6 col-sm-3"
+            formArrayName="motivation"
+            *ngFor="let item of getArrayControls('motivation'); let i = index" >
+            <label class="checkbox-inline">
+              <input type="checkbox" [formControlName]="i"  > {{ motivation[i] }}
+            </label>
+          </div>
+        </div>
+
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label>Queixa Principal</mat-label>
+            <textarea matInput formControlName="mainComplaint" ></textarea>
+          </mat-form-field>
+        </div>
+
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label>História da queixa: (desde quando; localização anatômica; frequência e intensidade do incômodo e em qual momento aparece)</mat-label>
+            <textarea matInput formControlName="historyComplaint"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label>Queixa Secundária</mat-label>
+            <textarea matInput formControlName="secundaryComplaint"></textarea>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="row">
+          <a  class="btn text-white bg-button mx-2" (click)="nextStepOnClick(2)">Proximo</a>
+        </div>
+      </accordion-group>
+      <accordion-group id="accordion_habits" heading="Hábitos de Vida" [(isOpen)]="accordionGroupOpen[2]" (isOpenChange)="gotoTop($event, 'accordion_habits')">
+
+        <div class="row">
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="ingestionLiquid"
+            [classeCss]="aplicaCssErro('ingestionLiquid')"
+            id="ingestionLiquid" label="Ingestão de líquidos: (litros aproximados)" [control]="formulario.get('ingestionLiquid')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="liquidTypes"
+            [classeCss]="aplicaCssErro('liquidTypes')"
+            id="liquidTypes" label="Quais líquidos:" [control]="formulario.get('liquidTypes')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="smoking"
+            [classeCss]="aplicaCssErro('smoking')"
+            id="smoking" label="Tabagismo:" [control]="formulario.get('smoking')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="alcohol"
+            [classeCss]="aplicaCssErro('alcohol')"
+            id="alcohol" label="Consome bebidas alcoólicas?" [control]="formulario.get('alcohol')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="psychoactive"
+            [classeCss]="aplicaCssErro('psychoactive')"
+            id="psychoactive" label="Consome outras substâncias psicoativas?" [control]="formulario.get('psychoactive')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="addiction"
+            [classeCss]="aplicaCssErro('addiction')"
+            id="addiction" label="Apresenta outros vícios:" [control]="formulario.get('addiction')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="physicalActivity"
+            [classeCss]="aplicaCssErro('physicalActivity')"
+            id="physicalActivity" label="Atividade Física:" [control]="formulario.get('physicalActivity')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="physicalActivityFrequency"
+            [classeCss]="aplicaCssErro('physicalActivityFrequency')"
+            id="physicalActivityFrequency" label="Frequência: " [control]="formulario.get('physicalActivityFrequency')"
+            ></app-input-field>
+          </div>
+        </div>
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label>Qualidade do sono: (horas de sono; ignição do sono; se é reparador; se acorda durante a noite/qual horário; se as horas dormidas são suficientes? Sono agitado; sono leve) </mat-label>
+            <textarea matInput formControlName="qualitySleep"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label>Alimentação: (quantas refeições ao dia; qualidade e quantidade das refeições) </mat-label>
+            <textarea matInput formControlName="food"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div  class="row">
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="feces"
+            [classeCss]="aplicaCssErro('feces')"
+            id="feces" label="Fezes: (frequência e características)" [control]="formulario.get('feces')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="lastFeces"
+            [classeCss]="aplicaCssErro('lastFeces')"
+            id="lastFeces" label="Urina: (frequência e características)" [control]="formulario.get('lastFeces')"
+            ></app-input-field>
+          </div>
+        </div>
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label>Realiza atividades de lazer? (quais e em qual frequência?) </mat-label>
+            <textarea matInput formControlName="leisureActivities"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label>Qual a relação entre: trabalho X descanso X lazer (em uma semana)?  </mat-label>
+            <textarea matInput formControlName="leisureRestWork"></textarea>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="row">
+          <a class="btn text-white bg-button mx-2" (click)="nextStepOnClick(3)">Proximo</a>
+        </div>
+      </accordion-group>
+      <accordion-group id="accordion_disease" heading="Histórico  Clinico" [(isOpen)]="accordionGroupOpen[3]" (isOpenChange)="gotoTop($event, 'accordion_disease')">
+
+        <div id="disease" class="row">
+          <div class="checkbox" class="col-6 col-sm-3"
+            formArrayName="disease"
+            *ngFor="let item of getArrayControls('disease'); let i = index" >
+            <label class="checkbox-inline">
+              <input type="checkbox" [formControlName]="i"> {{ disease[i] }}
+            </label>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-header">
+            Alterações
+          </div>
+          <div class="card-body">
+              <div id="healthChanges" class="row">
+                <div class="checkbox" class="col-6 col-sm-4 col-lg-3"
+                  formArrayName="healthChanges"
+                  *ngFor="let item of getArrayControls('healthChanges'); let i = index" >
+                  <label class="checkbox-inline">
+                    <input type="checkbox" [formControlName]="i"> {{ healthChanges[i] }}
+                  </label>
+                </div>
+              </div>
+
+          </div>
+        </div>
+
+
+        <div class="card my-3">
+          <div class="card-header">
+            Tratamentos
+          </div>
+          <div class="card-body">
+              <div id="treatments" class="row">
+                <div class="checkbox" class="col-6 col-sm-4 ol-lg-3"
+                  formArrayName="treatments"
+                  *ngFor="let item of getArrayControls('treatments'); let i = index" >
+                  <label class="checkbox-inline">
+                    <input type="checkbox" [formControlName]="i"> {{ treatments[i] }}
+                  </label>
+                </div>
+              </div>
+
+              <div  class="row">
+                <mat-form-field appearance="fill" >
+                  <mat-label>Algum outro tratamento?   </mat-label>
+                  <textarea matInput formControlName="othersTreatments"></textarea>
+                </mat-form-field>
+              </div>
+
+              <div  class="row">
+                <mat-form-field appearance="fill" >
+                  <mat-label>Faz uso de medicamentos? Quais:  </mat-label>
+                  <textarea matInput formControlName="medicines"></textarea>
+                </mat-form-field>
+              </div>
+
+          </div>
+        </div>
+
+        <div  class="row">
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="dum"
+            [classeCss]="aplicaCssErro('dum')"
+            id="dum" label="D.U.M." [control]="formulario.get('dum')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <div class="checkbox" >
+              <label class="checkbox-inline">
+                <input type="checkbox" formControlName="diu"> Faz uso de D.I.U.
+              </label>
+            </div>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <div class="checkbox" >
+              <label class="checkbox-inline">
+                <input type="checkbox" formControlName="subcutaneous"> Implante subcutâneo
+              </label>
+            </div>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="subcutaneousOther"
+            [classeCss]="aplicaCssErro('subcutaneousOther')"
+            id="subcutaneousOther" label="Outros" [control]="formulario.get('subcutaneousOther')"
+            ></app-input-field>
+          </div>
+
+
+
+        </div>
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label> Histórico de Cirurgias: (quais e há quanto tempo), Realizou cirurgia de retirada de cisto na região do pescoço posterior  </mat-label>
+            <textarea matInput formControlName="surgeries"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label> Doenças familiares pregressas: (pais e avós)  </mat-label>
+            <textarea matInput formControlName="familyIllnessess"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <button type="submit" class="btn text-white bg-button mx-2" >Enviar</button>
+        </div>
+      </accordion-group>
+     </accordion>
+
+
+
+     <h1 class="mt-4 mb-1">Atendimentos <a class="btn" (click)="addSchedule()"><span class="material-icons" *ngIf="isAuthenticated()">note_add</span></a> </h1>
+
+     <div id="schedules" class="row" *ngIf="schedulesPopulated" #container>
+       <div class="col-12 col-md-6 col-lg-4"
+         formArrayName="schedules"
+         *ngFor="let item of getSchedules(); let i = index" >
+
+         <app-schedule-register [formControlName]="i" [index]="i"  [readonly]= "!isAuthenticated()"></app-schedule-register>
+       </div>
+     </div>
+
+     <div class="row" >
+      <div class="col-6 mb-4" *ngIf="isAuthenticated()">
+        <button type="submit" class="btn text-white bg-button " >Salvar</button>
+      </div>
+
+
+      <div class="col-6 " *ngIf="savedData">
+          <alert type="success" [dismissible]="true" (onClosed)="onClosed()">Informações gravadas com sucesso!</alert>
+      </div>
+
+      <div class="col-6 " *ngIf="messageError.length > 0">
+          <alert type="danger" [dismissible]="true" (onClosed)="onClosed()">{{messageError}}</alert>
+      </div>
+    </div>
+
+
+    <div class="row mt-4" *ngIf="isAuthenticated()"> <!--*ngIf="isAuthenticated()"-->
+      <a routerLink="/admin" class="btn text-white bg-button " >Voltar Dashboard</a>
+    </div>
+
+  </form>
+
+
+
+
+
+
+
+   <!-- <app-form-debug [form] = "formulario"></app-form-debug> -->
+
+</div>

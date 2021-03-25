@@ -23,7 +23,7 @@ export class BigCarouselComponent implements OnInit {
       resumido: "Massagem relaxante, terapêutica, modeladora, drenagem linfática, Shiatsu, reflexologia, aromaterapia e mais...",
       detalhado: "Aqui você encontra técnicas de massagem relaxante, massagem terapêutica, massagem modeladora, massagem desportiva, drenagem linfática, Shiatsu, Tui Na, escalda-pés, reflexologia podal, reflexologia manual, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, bambuterapia, cromoterapia e aromaterapia",
       image : "therapy" ,
-      link : "Massoterapia"
+      link : "tag_cloud_spied"
     },
     { titulo: "Benefícios",
       resumido: "Benefícios da massagem: relaxamento, tratamento da dor, apoio à prática esportiva, estética, edema, reequilíbrio fisiológico, energético e emocional,  consciência corporal,  e mais...",

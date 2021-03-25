@@ -1,0 +1,21 @@
+[
+  {
+    "id" : "ca3aa919-c935-4c9f-b304-7d744dbe050e",
+    "phone": "22222222222",
+    "name": "teste3",
+    "schedules" : [
+      {
+        "startdDate" : "2021-03-21T11:30:00.840Z",
+        "comments" : "primeira consulta",
+        "confirmed" : false,
+        "executed" : false
+      },
+      {
+        "startdDate" : "2021-04-13T11:30:00.840Z",
+        "comments" : "segunda consulta",
+        "confirmed" : false,
+        "executed" : false
+      }
+    ]
+  }
+]

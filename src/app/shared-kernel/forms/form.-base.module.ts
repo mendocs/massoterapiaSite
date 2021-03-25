@@ -9,6 +9,12 @@ import { FormDebugComponent } from './form-debug/form-debug.component';
 
 import { MaterialModule } from '../material/material.module';
 
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 
 @NgModule({
@@ -17,8 +23,9 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
 	  ReactiveFormsModule,
 	  FormsModule,
-    MaterialModule
+    MaterialModule,
+    NgxMaskModule.forRoot()
   ],
-  exports : [ InputFieldComponent, MaterialModule, ReactiveFormsModule, FormsModule ]
+  exports : [ InputFieldComponent, FormDebugComponent, MaterialModule, ReactiveFormsModule, FormsModule, NgxMaskModule ]
 })
 export class FormBaseModule { }

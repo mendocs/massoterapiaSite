@@ -1,0 +1,29 @@
+@import "../../style/globalStyleTheme.scss";
+
+.readOnly_checkbox{
+pointer-events: none;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+
+app-input-field , mat-form-field
+{
+  width: 100%;
+}
+
+
+.remove-icon
+{
+  font-size: 28px;
+  color: red;
+}
+
+
+.schedule-card
+{
+  border: solid 5px;
+  border-color:  rgba($base-color, 1);
+}

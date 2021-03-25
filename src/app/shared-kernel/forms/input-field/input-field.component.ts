@@ -39,6 +39,10 @@ export class InputFieldComponent implements ControlValueAccessor  {
 	@Input() type = 'text';
 	@Input() control;
 	@Input() isReadOnly = false;
+  @Input() mask="";
+  @Input() placeholder="";
+
+
 	checked: boolean = false;
 
 

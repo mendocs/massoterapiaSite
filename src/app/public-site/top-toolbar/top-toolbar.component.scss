@@ -1,4 +1,69 @@
+@import "../../style/globalStyleTheme.scss";
+
 .navbar-light
 {
   color: red;
 }
+
+.destaque_hover
+{
+  background-color: rgba(203, 235, 195, 0.81);
+  //background-color:rgba(232, 232, 232,0.4)
+}
+
+
+.nav-item :hover
+{
+  @extend .destaque_hover;
+}
+
+
+.nav-item .btn-group :hover
+{
+  @extend .bg-site-middle;
+
+
+}
+
+
+.nav-item .btn-group h5 :hover
+{
+  @extend .destaque_hover;
+}
+
+
+.nav-item .btn-group ul :hover
+{
+  @extend .destaque_hover;
+}
+
+//li :hover
+
+
+/*
+
+.nav-item .btn-group .nav-item :hover
+{
+  background-color : blue ;
+}
+
+
+/*
+.navbar-nav .nav-item :hover
+{
+  background-color: green;
+}
+
+
+.navbar-nav .nav-item .btn-group :hover
+{
+  background-color: black;
+}
+
+
+
+.nav-item .nav-item :hover
+{
+  background-color: yellow;
+}
+*/

@@ -1,0 +1,81 @@
+<div class="container mat-typography" style="font-size: 100%;">
+
+  <div class="jumbotron">
+
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <h1> <span *ngIf="!searchMode">Cadastro</span> <span *ngIf="searchMode">Buscar</span> Paciente</h1>
+
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input"
+        id="searchModeControl"
+        (change)="chooseFormMode()"
+        formControlName="formMode">
+      <label class="custom-control-label" for="searchModeControl">Buscar</label>
+    </div>
+
+
+
+
+    <div class="row ">
+      <div class="col-3 align-self-center">
+        <app-input-field  formControlName="name"
+        [classeCss]="aplicaCssErro('name')"
+        id="name" label="Nome" [control]="formulario.get('name')"
+        ></app-input-field>
+      </div>
+
+      <div class="col-3 align-self-center ">
+        <app-input-field  formControlName="phone"
+
+        [classeCss]="aplicaCssErro('phone')"
+        id="phone" label="telefone" [control]="formulario.get('phone')"
+        mask="(00)00000-0000"
+        placeholder="(__)_____-____"
+
+        ></app-input-field>
+      </div>
+
+
+      <div class="col-3  align-self-center">
+      <input type="text" *ngIf="!searchMode"
+             placeholder="Data Agendamento"
+             formControlName="scheduledate"
+             class="form-control"
+             bsDatepicker
+             (bsValueChange)="onValueChangeScheduledate($event)"
+             [bsConfig]="{ isAnimated: true,  dateInputFormat: 'DD/MM/YYYY' }">
+
+
+      <input type="text" *ngIf="searchMode"
+              placeholder="Data Agendamento"
+              formControlName="scheduledateRange"
+              class="form-control"
+              bsDaterangepicker
+              [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', rangeInputFormat: 'DD/MM/YYYY' }">
+      </div>
+
+
+
+
+      <div class="col-3 aling-self-center">
+        <timepicker formControlName="scheduletime" [showMeridian]="ismeridian" (ngModelChange)="onCcheduletimeChanged()" *ngIf="!searchMode"></timepicker>
+
+
+
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success mt-3">
+      <span *ngIf="!searchMode">Criar</span> <span *ngIf="searchMode">Buscar</span>
+    </button>
+    </form>
+  </div>
+</div>
+
+
+<app-patient-register-line [patientRegisters] = "newPatient" *ngIf="showPatient"></app-patient-register-line>
+
+<!--
+<app-form-debug [form] = "formulario"></app-form-debug>
+-->
+
+

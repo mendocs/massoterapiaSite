@@ -1,0 +1,60 @@
+body
+{
+ background-color: rgba(249, 249, 249, 1);
+}
+
+.transparent-background
+{
+  background-color: rgba(204, 33, 33, 0);
+}
+
+
+$base-color:  rgba(191, 194, 164);
+
+.bg-site-middle
+{
+
+  //background-color: rgba(191, 194, 164, 1);
+  background-color: rgba($base-color, 1);
+
+
+  //background-image: url("./assets/images/background/marmore.jpg");
+}
+
+
+
+.bg-site-clear
+{
+  //background-color:rgb(232, 233, 232)
+  background-color:rgba(232, 232, 232,1)
+}
+
+.bg-site-white-opacity-6
+{
+  //background-color:rgb(232, 233, 232)
+  background-color:rgba(255, 255, 255,0.6)
+}
+
+
+.bg-site-strong
+{
+  background-color:rgb(51, 42, 14)
+}
+
+.text-site-strong
+{
+  color:rgb(51, 42, 14)
+}
+
+.bg-button
+{
+  background-color: rgba(77, 114, 40, 0.75);
+}
+
+.pointer {cursor: pointer;}
+
+
+.bg-site-middle-left
+{
+  background-color: rgba(191, 194, 164, 0.4);
+}

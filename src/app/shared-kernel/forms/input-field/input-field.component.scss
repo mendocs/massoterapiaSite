@@ -1,14 +1,20 @@
 
 
+  .ng-valid input{
+    //background-color: rgb(146, 220, 238);
+    //border:  solid ;
+    //border-color: green;
 
-  .ng-valid1 {
-    background-color: rgb(146, 220, 238);
     }
 
     .ng-invalid {
-    background-color: pink;
+    background-color: rgba(255, 255, 255,0);
     }
 
     .invalido {
     //background-color: rgba($color: #c90b0b, $alpha: 1.0);
     }
+
+    .full-width-field {
+      width: 100%;
+   }
