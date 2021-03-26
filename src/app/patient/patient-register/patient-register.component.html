@@ -42,7 +42,7 @@
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="phone"
             [classeCss]="aplicaCssErro('phone')"
-            id="phone" label="telefone" [control]="formulario.get('phone')"
+            id="phone" label="Telefone:" [control]="formulario.get('phone')"
             mask="(00)00000-0000"
             placeholder="(__)_____-____"
             ></app-input-field>
@@ -51,7 +51,7 @@
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="phoneContact"
             [classeCss]="aplicaCssErro('phoneContact')"
-            id="phoneContact" label="telefone contato emergencia" [control]="formulario.get('phoneContact')"
+            id="phoneContact" label="Telefone Contato Emergência:" [control]="formulario.get('phoneContact')"
             mask="(00)00000-0000"
             placeholder="(__)_____-____"
             ></app-input-field>
@@ -60,7 +60,7 @@
           <div [ngClass]="cssCol">
               <app-input-field  formControlName="occupation"
               [classeCss]="aplicaCssErro('occupation')"
-              id="occupation" label="Profissão" [control]="formulario.get('occupation')"
+              id="occupation" label="Profissão:" [control]="formulario.get('occupation')"
               ></app-input-field>
           </div>
 
@@ -99,7 +99,7 @@
 
 
         <div class="row">
-          <a class="btn text-white bg-button mx-2" (click)="nextStepOnClick(1)">Proximo</a>
+          <a class="btn text-white bg-button mx-2" (click)="nextStepOnClick(1)">Próximo</a>
         </div>
 
 
@@ -142,7 +142,7 @@
 
 
         <div class="row">
-          <a  class="btn text-white bg-button mx-2" (click)="nextStepOnClick(2)">Proximo</a>
+          <a  class="btn text-white bg-button mx-2" (click)="nextStepOnClick(2)">Próximo</a>
         </div>
       </accordion-group>
       <accordion-group id="accordion_habits" heading="Hábitos de Vida" [(isOpen)]="accordionGroupOpen[2]" (isOpenChange)="gotoTop($event, 'accordion_habits')">
@@ -158,7 +158,7 @@
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="liquidTypes"
             [classeCss]="aplicaCssErro('liquidTypes')"
-            id="liquidTypes" label="Quais líquidos:" [control]="formulario.get('liquidTypes')"
+            id="liquidTypes" label="Quais líquidos?:" [control]="formulario.get('liquidTypes')"
             ></app-input-field>
           </div>
 
@@ -252,7 +252,7 @@
 
 
         <div class="row">
-          <a class="btn text-white bg-button mx-2" (click)="nextStepOnClick(3)">Proximo</a>
+          <a class="btn text-white bg-button mx-2" (click)="nextStepOnClick(3)">Próximo</a>
         </div>
       </accordion-group>
       <accordion-group id="accordion_disease" heading="Histórico  Clinico" [(isOpen)]="accordionGroupOpen[3]" (isOpenChange)="gotoTop($event, 'accordion_disease')">
@@ -323,7 +323,7 @@
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="dum"
             [classeCss]="aplicaCssErro('dum')"
-            id="dum" label="D.U.M." [control]="formulario.get('dum')"
+            id="dum" label="D.U.M. (Data última menstruação)" [control]="formulario.get('dum')"
             ></app-input-field>
           </div>
 
