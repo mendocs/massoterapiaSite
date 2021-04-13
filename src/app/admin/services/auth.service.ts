@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import { Observable } from 'rxjs';
+import { loginResult} from "../models/loginResult"
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +12,7 @@ export class AuthService {
 
   private isUserAuthenticated : boolean = false;
   private userAuthenticated : string;
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   isAuthenticated() : boolean
   {
@@ -15,20 +20,19 @@ export class AuthService {
     return this.isUserAuthenticated;
   }
 
-  authenticate(user: string, password : string) : boolean
+
+  authenticate(name: string, password : string) : Observable<{}>
   {
 
-      if (user === "aaaaa" && password === "aaaaa")
-      {
-        this.userAuthenticated = user;
-        this.isUserAuthenticated = true;
-        return true;
+    let user = {
+      Name: name,
+      Password_Text: password
+    };
 
-
-      }
-
-      return false;
+    return this.http.post<loginResult>(environment.UrlApi + "user", user)
+    .pipe(tap((results) => {
+      this.userAuthenticated = name;
+      this.isUserAuthenticated = (<loginResult>results).result;
+    }));
   }
-
-
 }

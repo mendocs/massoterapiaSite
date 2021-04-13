@@ -37,3 +37,13 @@ accordion-group {
     }
   }
 }
+
+
+a:hover {
+  box-shadow: 0 2px #999;
+}
+
+a:active , button:active  {
+  //box-shadow: 0 1px #666;
+  transform: translateY(3px);
+}
