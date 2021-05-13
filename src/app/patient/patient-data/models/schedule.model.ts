@@ -3,4 +3,5 @@ export class schedule {
 	public comments: string;
   public confirmed: boolean;
   public executed: boolean;
+  public canceled: boolean;
 }

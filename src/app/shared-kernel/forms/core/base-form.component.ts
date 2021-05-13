@@ -98,13 +98,15 @@ export abstract class BaseFormComponent implements OnInit {
 
   const arrayData : Array<string> = currentModel[formArrayName];
 
-   (<FormArray>this.formulario.get(formArrayName)).reset();
-   this[formArrayName].forEach((value, index) => {
-     if (arrayData.includes(value))
-       (<FormArray>this.formulario.get(formArrayName)).controls[index].setValue(true);
+  if (arrayData)
+  {
+    (<FormArray>this.formulario.get(formArrayName)).reset();
+    this[formArrayName].forEach((value, index) => {
+      if (arrayData.includes(value))
+        (<FormArray>this.formulario.get(formArrayName)).controls[index].setValue(true);
 
-   });
-
+    });
+  }
 
  }
 

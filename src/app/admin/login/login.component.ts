@@ -14,11 +14,12 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 
   loginObserver = {
 		next: (LoginResult : loginResult) => this.submitResult(LoginResult),
-		error: err => {this.messageError =  "Sem conexão com o Servidor "; this.authenticatefail = true},
+		error: err => {this.messageError =  "Sem conexão com o Servidor "; this.authenticatefail = true; this.isLoading = false;},
 		complete: () => {},
 	  };
 
    messageError : string;
+   isLoading : boolean = false;
 
   authenticatefail : boolean = false;
 
@@ -38,14 +39,10 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 
   submit(): void {
 
+    this.isLoading = true;
+
     this.authService.authenticate(this.formulario.get("user").value, this.formulario.get("password").value).subscribe(this.loginObserver);
 
-/*
-    if (this.authService.authenticate( this.formulario.get("user").value, this.formulario.get("password").value ))
-      this.router.navigate(["/admin"]);
-    else
-      this.authenticatefail = true;
-*/
   }
 
   submitResult(LoginResult : loginResult)
@@ -62,6 +59,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
     {
       this.messageError =  "Usuário ou senha inválidos";
       this.authenticatefail = true;
+      this.isLoading = false;
     }
   }
 

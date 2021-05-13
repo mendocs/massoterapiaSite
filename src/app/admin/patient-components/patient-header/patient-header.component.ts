@@ -6,6 +6,7 @@ import { BaseFormComponent } from 'src/app/shared-kernel/forms/core/base-form.co
 import { PatientService} from "../../../patient/patient-data/services/patient.service"
 import { DashboardService } from '../../services/dashboard.service';
 import { ThrowStmt } from '@angular/compiler';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -22,11 +23,14 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
   newPatient : patientList[];
   showPatient : boolean;
   searchMode : boolean = false;
+  isLoading : boolean = false;
+  showMessage  : boolean = false;
+  messageError : string = "";
 
 
   patientObserver = {
 		next: (newPatient : patientList[]) => this.getNewpatient(newPatient),
-		error: err => console.log(err),
+		error: err => this.getError(err) ,
 		complete: () => {},
 	  };
 
@@ -34,27 +38,51 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
 
 submit(){
 
+  this.isLoading = true;
   var patientCurrentForm = Object.assign(new patientForm, this.formulario.value);
 
+  //console.log(patientCurrentForm);
   if(this.formulario.get("formMode").value)
     this.patientService.searchPatient(patientCurrentForm).subscribe(this.patientObserver);
   else
     this.patientService.createPatient(patientCurrentForm).subscribe(this.patientObserver);
 
-
   this.dashboardService.saveDashboardForm(patientCurrentForm) ;
-
-
 
 }
 
 submitFail(){}
 
+getError(err : HttpErrorResponse): void{
+  this.isLoading = false;
+  this.showMessage = true;
+
+  if (err.statusText.includes("Unknown Error") )
+    this.messageError = "Sem conexão com o servidor";
+  else
+    this.messageError = err.error;
+
+  console.log(err);
+
+}
 
 getNewpatient(newPatient : patientList[]): void{
   this.newPatient = newPatient;
   this.showPatient = true;
+  this.isLoading = false;
+
+  if (this.patientService.lasPatientCreateStatus() == 200)
+  {
+    this.showMessage = true;
+    this.messageError = "Paciente já existente";
+  }
+  else
+    this.showMessage = false;
+
 }
+
+
+
 
 
   ngOnInit(): void {
@@ -64,8 +92,6 @@ getNewpatient(newPatient : patientList[]): void{
       {
         phone : new FormControl(''),
         name:  new FormControl(''),
-        //scheduledate:  new FormControl(new Date(), ),
-        //scheduletime:  new FormControl(new Date(), ),
         scheduledateRange:  new FormControl() ,
         scheduledate:  new FormControl(new Date(), ),
         scheduletime:  new FormControl(new Date(), ),

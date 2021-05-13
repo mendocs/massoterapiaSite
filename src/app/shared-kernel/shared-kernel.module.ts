@@ -8,6 +8,7 @@ import { DotToParagraphPipe } from './pipes/dot-to-paragraph.pipe';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { FormBaseModule } from '../shared-kernel/forms/form.-base.module';
 import { PortugueseBooleanPipe } from './pipes/portuguese-boolean.pipe';
+import { UtilsService} from "./tools/utils.service";
 
 
 
@@ -27,6 +28,7 @@ import { PortugueseBooleanPipe } from './pipes/portuguese-boolean.pipe';
     DotToParagraphPipe,
     PortugueseBooleanPipe,
     ParallaxDirective,
-    ScrollSpyDirective]
+    ScrollSpyDirective],
+    providers : [UtilsService]
 })
 export class SharedKernelModule { }

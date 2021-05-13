@@ -17,7 +17,11 @@
   ></app-input-field>
 
 
-  <button type="submit" class="btn btn-outline-success">Logar</button>
+
+
+  <button type="submit" class="btn btn-outline-success" [disabled]="isLoading" >Logar </button>
+  <div class="d-inline ml-2" *ngIf = "isLoading"> <mat-progress-spinner class="d-inline" diameter="30" value="30" mode="indeterminate" ></mat-progress-spinner> </div>
+
 
 </form>
 

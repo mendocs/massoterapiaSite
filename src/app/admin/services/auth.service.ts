@@ -16,7 +16,6 @@ export class AuthService {
 
   isAuthenticated() : boolean
   {
-
     return this.isUserAuthenticated;
   }
 
@@ -25,8 +24,8 @@ export class AuthService {
   {
 
     let user = {
-      Name: name,
-      Password_Text: password
+      name: name,
+      password_Text: password
     };
 
     return this.http.post<loginResult>(environment.UrlApi + "user", user)

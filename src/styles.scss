@@ -14,10 +14,17 @@
 // hue. Available color palettes: https://material.io/design/color/
 
 $MassoterapiaSite-primary: mat-palette($mat-indigo);
+$MassoterapiaSite-primary: mat-palette($mat-green);
 $MassoterapiaSite-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $MassoterapiaSite-warn: mat-palette($mat-red);
+
+$MassoterapiaSite-green: mat-palette($mat-green);
+
+
+
+
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -26,6 +33,7 @@ $MassoterapiaSite-theme: mat-light-theme((
     primary: $MassoterapiaSite-primary,
     accent: $MassoterapiaSite-accent,
     warn: $MassoterapiaSite-warn,
+    success : $MassoterapiaSite-green,
   )
 ));
 

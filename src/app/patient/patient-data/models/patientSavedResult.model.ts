@@ -1,4 +1,3 @@
 export class patientSaved {
-  public result: boolean;
-  public messageError: string;
+  public result: number;
 }

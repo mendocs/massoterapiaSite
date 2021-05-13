@@ -64,9 +64,24 @@
 
       </div>
     </div>
-    <button type="submit" class="btn btn-success mt-3">
-      <span *ngIf="!searchMode">Criar</span> <span *ngIf="searchMode">Buscar</span>
-    </button>
+    <div class="mt-3">
+      <button type="submit" class="btn btn-success " [disabled]="isLoading">
+        <span *ngIf="!searchMode">Criar</span> <span *ngIf="searchMode">Buscar</span>
+      </button>
+      <div class="d-inline ml-2" *ngIf = "isLoading">
+        <mat-progress-spinner class="d-inline" diameter="30" value="30" mode="indeterminate" ></mat-progress-spinner>
+      </div>
+
+
+      <div class="ml-5 d-inline " >
+        <div class="alert alert-danger alert-dismissible fade show d-inline ml-5" *ngIf= "showMessage">
+          {{messageError}}
+        </div>
+      </div>
+    </div>
+
+
+
     </form>
   </div>
 </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { patientList } from 'src/app/patient/patient-data/models/patientviewModelList.model';
 import { schedule } from 'src/app/patient/patient-data/models/schedule.model';
 import { environment } from 'src/environments/environment';
+import { UtilsService } from "../../../shared-kernel/tools/utils.service";
 
 @Component({
   selector: 'app-patient-register-line',
@@ -20,7 +21,7 @@ export class PatientRegisterLineComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private utilsService : UtilsService) { }
 
   ngOnInit(): void {
 
@@ -37,7 +38,8 @@ export class PatientRegisterLineComponent implements OnInit {
   {
     //const index = patientCurrent.schedules.length-1;
     let data : Date = new Date(this.getNextSchedule(patientCurrent).startdDate.toString());
-    return `${data.getDate()}/${ (data.getMonth() + 1) }/${data.getFullYear()} as ${data.getHours()}:${data.getMinutes()}`;
+    return this.utilsService.getDateFormated(data);
+    //`${data.getDate()}/${ (data.getMonth() + 1) }/${data.getFullYear()} as ${data.getHours()}:${data.getMinutes()}`;
 
   }
 
@@ -51,15 +53,16 @@ export class PatientRegisterLineComponent implements OnInit {
 
   getNextSchedule(patientCurrent: patientList) : schedule
   {
-
     let returnnedValue : schedule = null;
-
-    patientCurrent.schedules.every(scheduleCurrent => {
-      if (new Date(scheduleCurrent.startdDate) > new Date())
+    patientCurrent.schedules.sort(
+      (a,b)=> new Date(a.startdDate).getTime() - new Date(b.startdDate).getTime()
+      ).every(scheduleCurrent => {
+      if (!(scheduleCurrent.canceled || scheduleCurrent.executed) && new Date(scheduleCurrent.startdDate) > new Date(Date.now()))
       {
         returnnedValue = scheduleCurrent;
         return false;
       }
+      return true;
     });
 
 

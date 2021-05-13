@@ -64,12 +64,12 @@ export class ScheduleRegisterComponent implements OnInit , ControlValueAccessor 
   @ViewChild('scheduletime') scheduletime: any;
 
   ismeridian: boolean = false;
-
+  innerValue: schedule = new schedule;
   timepicker : Date;
 
 
   constructor(private patientService : PatientService) { }
-	innerValue: schedule = new schedule;
+
 
 	get value() {
 	  return this.innerValue;

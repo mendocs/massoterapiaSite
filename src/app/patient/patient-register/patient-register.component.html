@@ -5,6 +5,13 @@
 <div class="container mat-typography" style="font-size: 100%;">
 
 
+    <div class="alert alert-success text-center" *ngIf = "isLoading">
+      <mat-progress-spinner class="d-inline mx-auto" diameter="30" value="30" mode="indeterminate" ></mat-progress-spinner><strong class="ml-5">Carregando</strong>
+    </div>
+
+    <div class="alert alert-danger text-center" *ngIf = "isError">
+      <strong class="ml-5">{{messageErrorLoading}}</strong>
+    </div>
 
   <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
@@ -378,9 +385,9 @@
 
      <h1 class="mt-4 mb-1">Atendimentos <a class="btn" (click)="addSchedule()" *ngIf="isAuthenticated()"><span class="material-icons" >note_add</span></a> </h1>
 
-     <div id="schedules" class="row" *ngIf="schedulesPopulated" #container>
+     <div id="Schedules" class="row" *ngIf="schedulesPopulated" #container>
        <div class="col-12 col-md-6 col-lg-4"
-         formArrayName="schedules"
+         formArrayName="Schedules"
          *ngFor="let item of getSchedules(); let i = index" >
 
          <app-schedule-register [formControlName]="i" [index]="i"  [readonly]= "!isAuthenticated()"></app-schedule-register>
@@ -393,13 +400,16 @@
       </div>
 
 
-      <div class="col-6 " *ngIf="savedData">
-          <alert type="success" [dismissible]="true" (onClosed)="onClosed()">Informações gravadas com sucesso!</alert>
+      <div class="col-6 " *ngIf="savedData == 1">
+          <alert type="success" [dismissible]="true" (onClosed)="onClosed()">Informações gravadas com sucesso em {{saveTime}} </alert>
       </div>
 
-      <div class="col-6 " *ngIf="messageError.length > 0">
-          <alert type="danger" [dismissible]="true" (onClosed)="onClosed()">{{messageError}}</alert>
-      </div>
+
+    </div>
+
+
+    <div class="alert alert-danger text-center" *ngIf = "isError">
+      <strong class="ml-5">{{messageErrorLoading}}</strong>
     </div>
 
 

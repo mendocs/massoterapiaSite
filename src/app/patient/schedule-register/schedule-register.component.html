@@ -41,18 +41,27 @@
     <div class="card-body">
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-4">
           <div class="checkbox" >
             <label class="checkbox-inline"  >
-              <input type="checkbox" [(ngModel)]="innerValue['confirmed']" (click)="!readonly" > Confirmado <!--formControlName="confirmed"-->
+              <input type="checkbox" [(ngModel)]="innerValue['canceled']" (click)="!readonly" > Cancelado
             </label>
           </div>
         </div>
 
-        <div class="col-6">
+
+        <div class="col-4">
+          <div class="checkbox" >
+            <label class="checkbox-inline"  >
+              <input type="checkbox" [(ngModel)]="innerValue['confirmed']" (click)="!readonly" > Confirmado
+            </label>
+          </div>
+        </div>
+
+        <div class="col-4">
           <div class="checkbox" >
             <label class="checkbox-inline" >
-              <input type="checkbox" [(ngModel)]="innerValue['executed']" (click)="!readonly"> Realizado <!--formControlName=formControlName="executed"-->
+              <input type="checkbox" [(ngModel)]="innerValue['executed']" (click)="!readonly"> Realizado
             </label>
           </div>
         </div>
