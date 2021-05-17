@@ -24,7 +24,18 @@ export class PatientService {
   private  lastGetPatientByIdStatusCode : number = 0;
 
 
+
+  private initializeLastsVariables()
+  {
+    this.lastCreatedPatient = [];
+
+    this.lastCreatedPatientStatusCode  = 0;
+    this.lastUpdatePatientStatusCode  = 0;
+    this.lastGetPatientByIdStatusCode  = 0;
+  }
+
   createPatient( newPatient : patientForm) : Observable<patientList[]> {
+    this.initializeLastsVariables();
     return this.http.post <patientList[]> (environment.UrlApi + 'patient', newPatient, {observe: 'response'})
         .pipe(
           tap(results =>  this.lastCreatedPatient= results.body),
@@ -32,6 +43,8 @@ export class PatientService {
           map (results => results.body )
         );
   }
+
+
 
 
   lasPatientCreateStatus() : number{
@@ -59,6 +72,7 @@ export class PatientService {
 
   searchPatient( newPatient : patientForm) : Observable<patientList[]> {
 
+    this.initializeLastsVariables();
     let parametersSerach : string = "";
 
     parametersSerach +=  newPatient.name ? `name=${newPatient.name}&` : "";
