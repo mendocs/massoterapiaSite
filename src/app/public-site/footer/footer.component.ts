@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { therapy } from 'src/app/therapy/models/therapy-model';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
@@ -13,8 +14,8 @@ export class FooterComponent implements OnInit {
 
   therapiesFile = {
 		next: (_therapies : therapy[]) => this.populateControlsFromTherapies(_therapies),
-		error: err => console.log(err),
-		complete: () => console.log(''),
+		error: err =>this.getError(err) ,
+		complete: () => {},
 	  };
 
   phoneContactMask : string;
@@ -43,6 +44,10 @@ export class FooterComponent implements OnInit {
   navigateTo(navigateId: string)
   {
       this.publicSiteService.SetTherapy(navigateId);
+  }
+
+  getError(err : HttpErrorResponse): void{
+    console.log(err);
   }
 
 }

@@ -22,8 +22,6 @@ export class ContactComponent implements OnInit {
 
     var myvar = document.getElementById("squareContainer");
 
-    //console.log(myvar);
-
     this.phoneContactMask = this.publicSiteService.phoneContactMask;
     this.phoneContactNoMask = this.publicSiteService.phoneContactNoMask;
     this.whatsapplink = this.publicSiteService.whatsapplink;
@@ -32,16 +30,7 @@ export class ContactComponent implements OnInit {
 
   ngAfterViewInit1() : void
   {
-
-    //console.log(document.getElementById("squareContainer").style);
-
     var myvar = document.getElementById("squareContainer");
-
-    //console.log(myvar);
-
-    console.log(window.getComputedStyle(myvar).display);
-
-
   }
 
   verifyDisplayMD(): boolean

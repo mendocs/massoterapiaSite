@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { therapy } from 'src/app/therapy/models/therapy-model';
@@ -20,8 +21,8 @@ export class TagCloudComponent implements OnInit {
 
     therapiesFile = {
     next: (_therapies : therapy[]) => this.populateControlsFromTherapies(_therapies),
-    error: err => console.log(err),
-    complete: () => console.log('Completo myObserverIP'),
+    error: err => this.getError(err),
+    complete: () => {},
     };
 
   constructor(private publicSiteService: PublicSiteService,private therapyDataService : TherapyDataService) {  }
@@ -37,6 +38,9 @@ export class TagCloudComponent implements OnInit {
 
   }
 
+  getError(err : HttpErrorResponse): void{
+    console.log(err)
+  }
 
   ngAfterViewChecked(): void {
 

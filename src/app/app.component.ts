@@ -10,13 +10,12 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 export class AppComponent {
 
 
-  paths= ["primeiro","diretivas","add","observer","disparador2","forms/driven","boot"];
+  //paths= ["primeiro","diretivas","add","observer","disparador2","forms/driven","boot"];
 
   isCollapsed = true;
 
   toggleCollapsed() {
 	  this.isCollapsed = !this.isCollapsed;
-	  console.log(this.isCollapsed);
   }
 
 }

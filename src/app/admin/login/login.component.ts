@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {BaseFormComponent} from "../../shared-kernel/forms/core/base-form.component";
 import { AuthService } from '../services/auth.service';
 import { loginResult} from "../models/loginResult"
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 
   loginObserver = {
 		next: (LoginResult : loginResult) => this.submitResult(LoginResult),
-		error: err => {this.messageError =  "Sem conexão com o Servidor "; this.authenticatefail = true; this.isLoading = false;},
+		error: err => this.getError(err),
 		complete: () => {},
 	  };
 
@@ -45,14 +46,19 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 
   }
 
+  getError(err : HttpErrorResponse): void{
+
+    this.messageError =  "Sem conexão com o Servidor ";
+    this.authenticatefail = true;
+    this.isLoading = false;
+  }
+
   submitResult(LoginResult : loginResult)
   {
 
-    console.log(LoginResult.result);
 
     if (LoginResult.result)
     {
-      console.log("admin");
       this.router.navigate(["/admin"]);
     }
     else
@@ -64,7 +70,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
   }
 
 
-  submitFail()
+  submitFail(): void
   {
 
   }

@@ -397,6 +397,9 @@
      <div class="row" >
       <div class="col-6 mb-4" *ngIf="isAuthenticated()">
         <button type="submit" class="btn text-white bg-button " >Salvar</button>
+        <div class="d-inline ml-2" *ngIf = "isLoadingSaveData">
+          <mat-progress-spinner class="d-inline" diameter="30" value="30" mode="indeterminate" ></mat-progress-spinner>
+        </div>
       </div>
 
 

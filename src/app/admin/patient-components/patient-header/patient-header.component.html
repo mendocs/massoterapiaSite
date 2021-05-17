@@ -87,7 +87,7 @@
 </div>
 
 
-<app-patient-register-line [patientRegisters] = "newPatient" *ngIf="showPatient"></app-patient-register-line>
+<app-patient-register-line [patientRegisters] = "newPatient" [SearchDateRange]="getScheduleDateRange()" *ngIf="showPatient"></app-patient-register-line>
 
 <!--
 <app-form-debug [form] = "formulario"></app-form-debug>

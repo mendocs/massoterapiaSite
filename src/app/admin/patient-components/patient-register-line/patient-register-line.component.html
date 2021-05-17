@@ -7,7 +7,7 @@
       <tr>
         <th>Paciente</th>
         <th>telefone</th>
-        <th>prox consulta</th>
+        <th>Atendimento ({{patientViewModelSearchListFromDBCount}})</th>
         <th>confirmada</th>
         <th>executada</th>
       </tr>
@@ -16,16 +16,48 @@
     <tbody>
 
 
-  <tr *ngFor = "let patientSelected of patientRegisters">
+  <tr *ngFor = "let patientSelected of patientViewModelSearchListFromDB">
     <td><a routerLink="/areacliente/{{patientSelected.key}}" >{{patientSelected.name}}</a></td>
     <td>
-      <a target="_blank" href="{{whatsapplink}}{{patientSelected.phone}}&text=Olá {{patientSelected.name}}, Gostaria de lhe pedir a gentileza de preencher alguns dados de saúde para personalizar seu atendimento, neste link: {{this.href}}{{patientSelected.id}}" >{{patientSelected.phone.substring(0,7)}}</a>
-      <a target="_blank" href="{{whatsapplink}}{{patientSelected.phone}}&text=Olá {{patientSelected.name}}, Gostaria de lhe pedir para confirmar seu atendimento em {{getDateFormated(patientSelected)}}, para confirmar é só responder : sim" >-{{patientSelected.phone.substring(7,12)}}</a></td>
+      <div *ngIf = "patientSelected.lineSchedule" >
+        <a target="_blank" href="{{whatsapplink}}{{patientSelected.phone}}&text=Olá {{patientSelected.name}}, Gostaria de lhe pedir a gentileza de preencher alguns dados de saúde para personalizar seu atendimento, neste link: {{this.href}}{{patientSelected.key}}" >{{patientSelected.phone.substring(0,7)}}</a>
+        <a target="_blank" href="{{whatsapplink}}{{patientSelected.phone}}&text=Olá {{patientSelected.name}}, Gostaria de lhe pedir para confirmar seu atendimento em {{getDateFormatedToShow(patientSelected.scheduleStart)}}, para confirmar é só responder : sim" >-{{patientSelected.phone.substring(7,12)}}</a>
+      </div>
+      <div *ngIf = "!patientSelected.lineSchedule">
+        <div class="text-danger">{{patientSelected.phone}}</div>
+      </div>
+    </td>
 
-    <td>{{getDateFormated(patientSelected)}} ({{patientSelected.schedules.length}})</td>
 
-    <td>{{getNextSchedule(patientSelected).confirmed | portugueseBoolean}}</td>
-    <td>{{getNextSchedule(patientSelected).executed | portugueseBoolean}}</td>
+
+    <td>
+      <div *ngIf = "patientSelected.lineSchedule" >
+        {{patientSelected.description}} <!--({{patientSelected.schedules.length}})-->
+      </div>
+      <div *ngIf = "!patientSelected.lineSchedule">
+        <div class="text-success">{{patientSelected.description}}</div>
+      </div>
+    </td>
+
+    <td>
+      <div *ngIf = "patientSelected.lineSchedule" >
+        {{patientSelected.confirmed | portugueseBoolean}}
+      </div>
+    </td>
+
+
+
+    <td>
+      <div *ngIf = "patientSelected.lineSchedule" >
+        {{patientSelected.executed | portugueseBoolean}}
+      </div>
+    </td>
+
+
+
+
+
+
 
   </tr>
 

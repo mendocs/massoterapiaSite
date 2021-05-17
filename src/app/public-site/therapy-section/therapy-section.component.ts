@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PublicSiteService } from '../public-site.service';
 import {therapy} from "../../therapy/models/therapy-model";
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-therapy-section',
@@ -30,8 +31,8 @@ export class TherapySectionComponent implements OnInit {
 
    therapiesFile = {
 		next: (selectedTherapy : therapy[]) => this.populateControlsFromSelectedTherapy(selectedTherapy),
-		error: err => this.selectedTherapy = err,
-		complete: () => console.log(''),
+		error: err => this.getError(err),
+		complete: () => {},
 	  };
 
 
@@ -49,7 +50,9 @@ export class TherapySectionComponent implements OnInit {
 
   }
 
-
+  getError(err : HttpErrorResponse): void{
+    console.log(err);
+  }
 
 
   populateControlsFromSelectedTherapy(selectedTherapy: therapy[]) : void
@@ -69,7 +72,7 @@ export class TherapySectionComponent implements OnInit {
   }
 
 
-  goBackTherapy()
+  goBackTherapy(): void
   {
     this.publicSiteService.goBackTherapy();
   }

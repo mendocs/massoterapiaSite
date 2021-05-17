@@ -36,12 +36,13 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
 
   constructor(private patientService : PatientService, private dashboardService: DashboardService) { super();}
 
-submit(){
+submit(): void{
 
   this.isLoading = true;
+  this.showPatient = false;
+  this.showMessage = false;
   var patientCurrentForm = Object.assign(new patientForm, this.formulario.value);
 
-  //console.log(patientCurrentForm);
   if(this.formulario.get("formMode").value)
     this.patientService.searchPatient(patientCurrentForm).subscribe(this.patientObserver);
   else
@@ -51,7 +52,7 @@ submit(){
 
 }
 
-submitFail(){}
+submitFail():void{}
 
 getError(err : HttpErrorResponse): void{
   this.isLoading = false;
@@ -61,8 +62,6 @@ getError(err : HttpErrorResponse): void{
     this.messageError = "Sem conexão com o servidor";
   else
     this.messageError = err.error;
-
-  console.log(err);
 
 }
 
@@ -198,5 +197,23 @@ sincronizeSchedule() : void
       }
   }
 
+  getScheduleDateRange() : Date[]
+  {
+    try{
+      let dateRange : Date[] =[] ;
+      dateRange.push(new Date(this.formulario.get("scheduledateRange").value[0]))
+      dateRange.push(new Date(this.formulario.get("scheduledateRange").value[1]))
+
+      dateRange[0].setHours(0);
+      dateRange[0].setMinutes(0);
+
+      dateRange[1].setHours(23);
+      dateRange[1].setMinutes(59);
+      return dateRange;
+    }
+    catch{
+      return null;
+    }
+  }
 
 }

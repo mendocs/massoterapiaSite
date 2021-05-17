@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { section } from 'src/app/section/models/Isection';
@@ -26,8 +27,8 @@ export class TopToolbarComponent implements OnInit {
 
   therapiesFile = {
 		next: (_therapies : therapy[]) => this.populateControlsFromTherapies(_therapies),
-		error: err => console.log(err),
-		complete: () => console.log(''),
+		error: err => this.getError(err),
+		complete: () => {},
 	  };
 
 
@@ -43,6 +44,10 @@ export class TopToolbarComponent implements OnInit {
   {
     this.therapies = _therapies;
 
+  }
+
+  getError(err : HttpErrorResponse): void{
+    console.log(err);
   }
 
   navigateTo(navigateId: string)

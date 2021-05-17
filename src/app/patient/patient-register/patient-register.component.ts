@@ -63,6 +63,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
   schedulesPopulated = false;
 
+  isLoadingSaveData : boolean = false;
   isLoading : boolean = true;
   isError : boolean = false;
   messageErrorLoading : string = "";
@@ -125,6 +126,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
       this.router.navigate(["/paginanaoencontrada"]);
 
     this.isLoading = false;
+    this.isLoadingSaveData = false;
 
     this.isError = true;
 
@@ -146,6 +148,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   submit():void{
 
     this.savedData = 0;
+    this.isLoadingSaveData = true;
 
     let valueSubmit = Object.assign({}, this.formulario.value);
 
@@ -260,7 +263,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   patientSaved(result: number)
   {
     this.saveTime =  this.utilsService.getDateFormated(new Date( Date.now()));
-
+    this.isLoadingSaveData = false;
     this.savedData = result;
     this.isError = false;
     if (this.savedData == 0)
