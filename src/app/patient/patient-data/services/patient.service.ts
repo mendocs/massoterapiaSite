@@ -28,7 +28,6 @@ export class PatientService {
   private initializeLastsVariables()
   {
     this.lastCreatedPatient = [];
-
     this.lastCreatedPatientStatusCode  = 0;
     this.lastUpdatePatientStatusCode  = 0;
     this.lastGetPatientByIdStatusCode  = 0;
