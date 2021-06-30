@@ -28,8 +28,6 @@ export class BlogMainComponent implements OnInit {
 
   populateBlogs (_blogs : blogs[]) : void{
     this.blogsListRegister = _blogs;
-    console.log(this.utilsService.removeAccent(_blogs[0].title));
-    console.log(this.utilsService.removeAccent(_blogs[1].title));
   }
 
   ngOnInit(): void {

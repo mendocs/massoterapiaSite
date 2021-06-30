@@ -56,24 +56,21 @@ export class TopToolbarComponent implements OnInit {
 
   navigateTo(navigateId: string)
   {
-
     this.isCollapsed = true;
 
+    this.publicSiteService.navigateTo(navigateId);
+
     //para dar tempo do navbar fechar, ajustar o scroll e depois posicionar
+    /*
     setTimeout(()=>{
-
-
-    if (navigateId.includes("spied"))
-      this.triggerScrollTo(navigateId)
-    else if (navigateId.includes("ext")) //externo
-      this.router.navigate(["/blog"]);
-    else
-      this.publicSiteService.SetTherapy(navigateId);
-
-
- }, 200);
-
-
+        if (navigateId.includes("spied"))
+          this.triggerScrollTo(navigateId)
+        else if (navigateId.includes("ext")) //externo
+          this.router.navigate(["/blog"]);
+        else
+          this.publicSiteService.SetTherapy(navigateId);
+    }, 200);
+    */
   }
 
   toggleCollapsed() {

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ScrollToConfigOptions, ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
 import { Subject } from 'rxjs';
 import { section } from '../section/models/Isection';
@@ -12,10 +13,12 @@ export class PublicSiteService {
 
   therapyListVisited : string[] = [];
 
+  public LinkVisited : string;
+
 
   public currentSection:string = 'home_spied';
 
-  constructor(private _scrollToService: ScrollToService) {
+  constructor(private _scrollToService: ScrollToService, private router: Router) {
 
   }
 
@@ -40,7 +43,7 @@ export class PublicSiteService {
 
 
 
-  goBackTherapy()
+  goBackTherapy() : void
   {
     if (this.therapyListVisited.length > 1)
     {
@@ -49,9 +52,10 @@ export class PublicSiteService {
     }
   }
 
-  SetTherapy (therapySelected:string, ignoreGoToScrollTherapySelected? : boolean)
+  SetTherapy (therapySelected:string, ignoreGoToScrollTherapySelected? : boolean) : void
   {
 
+    this.router.navigate(["/"]);
     this.SetTherapyListVisited(therapySelected);
 
     if (!ignoreGoToScrollTherapySelected)
@@ -61,15 +65,17 @@ export class PublicSiteService {
 
   }
 
- GoToScrollTherapySelected(therapySelected:string)
+ GoToScrollTherapySelected(therapySelected:string): void
  {
 
    if (this.currentSection != "therapy_section_spied")
       this.triggerScrollTo("therapy_section_spied");
+
+   this.LinkVisited = therapySelected;
  }
 
 
-  SetTherapyListVisited(therapySelected: string )
+  SetTherapyListVisited(therapySelected: string ): void
   {
 
     if (this.therapyListVisited[this.therapyListVisited.length - 1] != therapySelected){
@@ -79,9 +85,26 @@ export class PublicSiteService {
   }
 
 
+  navigateTo(navigateId: string)
+  {
+    //para dar tempo do navbar fechar, ajustar o scroll e depois posicionar
+    setTimeout(()=>{
+        if (navigateId.includes("spied"))
+          this.triggerScrollTo(navigateId)
+        else if (navigateId.includes("ext")) //externo
+          this.router.navigate(["/blog"]);
+        else
+          this.SetTherapy(navigateId);
+    }, 200);
+  }
 
-  public triggerScrollTo(destination : string) {
 
+
+  public triggerScrollTo(destination : string): void {
+
+    this.LinkVisited = destination;
+
+    this.router.navigate(["/"]);
 
 
     const config: ScrollToConfigOptions = {

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PatientRegisterComponent } from "./patient-register/patient-register.component"
 
 const routes: Routes = [
-  {path: ":title", component :PatientRegisterComponent },
+  {path: ":key", component :PatientRegisterComponent },
   {path: "", redirectTo : "/" },
 ];
 

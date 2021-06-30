@@ -83,7 +83,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 	  };
 
   parameterIdObserver = {
-    next: (params) => this.getPatient(params["id"] ),
+    next: (params) => this.getPatient(params["key"] ),
     error: err => this.getError(err),
     complete: () => {},
     };

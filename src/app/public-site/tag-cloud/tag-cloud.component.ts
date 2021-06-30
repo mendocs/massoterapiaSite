@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { therapy } from 'src/app/therapy/models/therapy-model';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
 import { PublicSiteService } from '../public-site.service';
@@ -25,7 +26,10 @@ export class TagCloudComponent implements OnInit {
     complete: () => {},
     };
 
-  constructor(private publicSiteService: PublicSiteService,private therapyDataService : TherapyDataService) {  }
+  constructor(private publicSiteService: PublicSiteService,
+              private therapyDataService : TherapyDataService,
+              private router: Router
+              ) {  }
 
   logClicked(therapyId: string){
     this.publicSiteService.SetTherapy(therapyId);
@@ -44,10 +48,20 @@ export class TagCloudComponent implements OnInit {
 
   ngAfterViewChecked(): void {
 
+
+
+
     if(document.getElementById("divpai").children.length>1 && !this.ButtonsInitialized){ //element loaded
       this.ButtonsInitialized = true;
 
-      setTimeout( function AnimateMenu(){
+     var TimeoutMenu = setTimeout( function AnimateMenu(){
+
+        if (!document.getElementById("divpai"))
+        {
+          clearInterval(TimeoutMenu);
+          return;
+        }
+
 
           for (let i = 0; i < document.getElementById("divpai").children.length; i++) {
 
@@ -60,7 +74,6 @@ export class TagCloudComponent implements OnInit {
                 function EnableClass(){
                   elemtChildren.classList.toggle("textBigger");
                   setTimeout( function DisabelClass(){ elemtChildren.classList.toggle("textBigger")},180);
-                  //; setTimeout(EnableClass, 20000)
                 }
                 , 1000 );
             }

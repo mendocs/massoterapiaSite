@@ -27,6 +27,11 @@ export class MainContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //console.log(this.publicSiteService.lastVisited);
+    if (this.publicSiteService.LinkVisited)
+      this.publicSiteService.navigateTo(this.publicSiteService.LinkVisited);
+
+
     this.whatsapplink = this._CommomComponentsService.whatsapplink;
     this.phoneContactNoMask = this._CommomComponentsService.phoneContactNoMask;
     this.phoneContactMask = this._CommomComponentsService.phoneContactMask;

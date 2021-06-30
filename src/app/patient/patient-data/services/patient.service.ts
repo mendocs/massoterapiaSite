@@ -94,6 +94,9 @@ export class PatientService {
   }
 
   getPatientById (key: string) : Observable<patient> {
+
+    console.log(key);
+
     //return this.http.get<patient>('assets/data/patientFull.json');
     return this.http.get<patient>(environment.UrlApi + 'patient/getkey/' + key, {observe: 'response'})
     .pipe(
