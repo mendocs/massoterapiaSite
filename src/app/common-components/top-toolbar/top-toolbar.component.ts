@@ -1,10 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { PublicSiteService } from 'src/app/public-site/public-site.service';
 import { section } from 'src/app/section/models/Isection';
 import { therapy } from 'src/app/therapy/models/therapy-model';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
-import { PublicSiteService } from '../public-site.service';
+
 
 @Component({
   selector: 'app-top-toolbar',
@@ -15,7 +17,7 @@ import { PublicSiteService } from '../public-site.service';
 export class TopToolbarComponent implements OnInit {
 
   pathsFirst= ["Sobre"];
-  pathsLast= ["Espaço e Terapeuta", "Valores","Contato e Localização"];
+  pathsLast= ["Espaço e Terapeuta", "Valores","Contato e Localização", "Blog"];
 
 
   isCollapsed = true;
@@ -32,7 +34,9 @@ export class TopToolbarComponent implements OnInit {
 	  };
 
 
-  constructor(private publicSiteService: PublicSiteService,private therapyDataService : TherapyDataService) { }
+  constructor(private publicSiteService: PublicSiteService,
+              private therapyDataService : TherapyDataService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.sections = this.publicSiteService.sections;
@@ -59,8 +63,10 @@ export class TopToolbarComponent implements OnInit {
     setTimeout(()=>{
 
 
-      if (navigateId.includes("spied"))
+    if (navigateId.includes("spied"))
       this.triggerScrollTo(navigateId)
+    else if (navigateId.includes("ext")) //externo
+      this.router.navigate(["/blog"]);
     else
       this.publicSiteService.SetTherapy(navigateId);
 

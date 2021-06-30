@@ -1,0 +1,25 @@
+<app-header>
+  <div textoLateralDireito>
+    <h5>seu espaço exclusivamente feminino para massagem terapêutica em Santo André </h5>
+    <h6>Aqui no blog temos matérias e dicas, sempre dê uma olhada nas novidades </h6>
+  </div>
+</app-header>
+<app-top-toolbar></app-top-toolbar>
+
+<div class="container ">
+
+  <div class="row m-2">
+
+    <div class="col-12 col-md-6 col-lg-4 p-4" *ngFor = "let blogsRegister of blogsListRegister">
+      <div class="card d-inline-block shadow-bg-site-middle h-100 " >
+        <img class="card-img-top" [src]="blogsRegister.imageCard" alt="Card image" style="width:100%; height: 250px;">
+        <div class="card-body ">
+          <h4 class="card-title">{{ blogsRegister.title }}</h4>
+          <p class="card-text" >{{ getPlainTextblog(blogsRegister.text) }}  </p>
+          <a [href]="'blog/' + blogsRegister.titleNFD" class="stretched-link">Leia Mais >></a>
+        </div>
+      </div>
+    </div>
+
+</div>
+<app-footer></app-footer>

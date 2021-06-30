@@ -3,6 +3,7 @@ import { PublicSiteService } from '../public-site.service';
 import {therapy} from "../../therapy/models/therapy-model";
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CommomComponentsService } from 'src/app/common-components/commom-components.service';
 
 @Component({
   selector: 'app-therapy-section',
@@ -22,7 +23,7 @@ export class TherapySectionComponent implements OnInit {
   selectedTherapy: string = "";
   therapyBenefitsTitle: string = "";
   therapyInformationTitle: string = "";
-  therapyBackground: string = "";
+  therapyBackground: string = "vazio";
   therapyTextShort: string = "";
   therapyTextLong: string = "";
   therapyBenefits: string[];
@@ -38,15 +39,15 @@ export class TherapySectionComponent implements OnInit {
 
 
 
-  constructor(private publicSiteService: PublicSiteService, private therapyDataService : TherapyDataService) { }
+  constructor(private publicSiteService: PublicSiteService, private therapyDataService : TherapyDataService, private _CommomComponentsService : CommomComponentsService) { }
 
   ngOnInit(): void {
       this.publicSiteService.selectTherapy$.subscribe( valor =>
       this.therapyDataService.getTherapyByName(valor).subscribe(this.therapiesFile));
 
-      this.phoneContactMask = this.publicSiteService.phoneContactMask;
-      this.phoneContactNoMask = this.publicSiteService.phoneContactNoMask;
-      this.whatsapplink = this.publicSiteService.whatsapplink;
+      this.phoneContactMask = this._CommomComponentsService.phoneContactMask;
+      this.phoneContactNoMask = this._CommomComponentsService.phoneContactNoMask;
+      this.whatsapplink = this._CommomComponentsService.whatsapplink;
 
   }
 
@@ -59,6 +60,7 @@ export class TherapySectionComponent implements OnInit {
   {
 
     if (selectedTherapy.length > 0)
+    {
       this.isSomeTherapySelected = true;
       this.selectedTherapy = selectedTherapy[0].id;
 
@@ -69,6 +71,8 @@ export class TherapySectionComponent implements OnInit {
       this.therapyTextLong = selectedTherapy[0].detalhado;
       this.therapyBenefits = selectedTherapy[0].beneficios;
       this.therapyInformation= selectedTherapy[0].outrasInformacoes;
+    }
+
   }
 
 

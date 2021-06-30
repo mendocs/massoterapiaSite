@@ -9,6 +9,8 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { FormBaseModule } from '../shared-kernel/forms/form.-base.module';
 import { PortugueseBooleanPipe } from './pipes/portuguese-boolean.pipe';
 import { UtilsService} from "./tools/utils.service";
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 
 
@@ -19,7 +21,10 @@ import { UtilsService} from "./tools/utils.service";
     NgxBootsrapModule,
     FormBaseModule,
     //TagCloudModule,
-    ScrollToModule.forRoot()
+    ScrollToModule.forRoot(),
+    ShareButtonsModule,
+    ShareIconsModule
+
   ],
   exports: [
     NgxBootsrapModule,
@@ -28,6 +33,8 @@ import { UtilsService} from "./tools/utils.service";
     DotToParagraphPipe,
     PortugueseBooleanPipe,
     ParallaxDirective,
+    ShareButtonsModule,
+    ShareIconsModule,
     ScrollSpyDirective],
     providers : [UtilsService]
 })

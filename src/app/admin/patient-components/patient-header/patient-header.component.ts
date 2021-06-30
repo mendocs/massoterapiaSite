@@ -66,6 +66,7 @@ getError(err : HttpErrorResponse): void{
 }
 
 getNewpatient(newPatient : patientList[]): void{
+
   this.newPatient = newPatient;
   this.showPatient = true;
   this.isLoading = false;

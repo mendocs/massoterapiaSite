@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import {SharedKernelModule} from "./shared-kernel/shared-kernel.module";
+import { CommonComponentsModule } from "./common-components/common-components.module";
 
 import {PublicSiteModule} from "./public-site/public-site.module"
 
@@ -20,6 +21,7 @@ import { AuthService } from './admin/services/auth.service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -28,6 +30,7 @@ import { AuthService } from './admin/services/auth.service';
     HttpClientModule,
     BrowserModule,
     SharedKernelModule,
+    CommonComponentsModule,
     PublicSiteModule,
     TherapyModule,
     BrowserAnimationsModule,

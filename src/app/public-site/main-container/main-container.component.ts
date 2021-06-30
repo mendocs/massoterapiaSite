@@ -5,6 +5,8 @@ import { CloudData, CloudOptions, ZoomOnHoverOptions } from 'angular-tag-cloud-m
 import { PublicSiteService } from '../public-site.service';
 
 import {section} from '../../section/models/Isection'
+import { CommonComponentsModule } from 'src/app/common-components/common-components.module';
+import { CommomComponentsService } from 'src/app/common-components/commom-components.service';
 
 @Component({
   selector: 'app-main-container',
@@ -13,15 +15,21 @@ import {section} from '../../section/models/Isection'
 })
 export class MainContainerComponent implements OnInit {
 
-
+  whatsapplink : string;
+  phoneContactNoMask : string;
+  phoneContactMask : string;
 
 
 
   sections : section[] ;
 
-  constructor(private publicSiteService: PublicSiteService, private _scrollToService: ScrollToService) { }
+  constructor(private publicSiteService: PublicSiteService, private _scrollToService: ScrollToService, private _CommomComponentsService : CommomComponentsService) { }
 
   ngOnInit(): void {
+
+    this.whatsapplink = this._CommomComponentsService.whatsapplink;
+    this.phoneContactNoMask = this._CommomComponentsService.phoneContactNoMask;
+    this.phoneContactMask = this._CommomComponentsService.phoneContactMask;
 
     this.sections = this.publicSiteService.sections;
 

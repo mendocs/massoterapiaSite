@@ -12,6 +12,8 @@ import { SharedKernelModule } from '../shared-kernel/shared-kernel.module';
 import { PatientHeaderComponent } from './patient-components/patient-header/patient-header.component';
 import { PatientRegisterLineComponent } from './patient-components/patient-register-line/patient-register-line.component';
 import {DashboardService } from "./services/dashboard.service";
+import { BlogListComponent } from './blog/blog-list/blog-list.component';
+import { BlogRegisterComponent } from './blog/blog-register/blog-register.component';
 
 
 
@@ -20,7 +22,9 @@ import {DashboardService } from "./services/dashboard.service";
     DashboardComponent,
     LoginComponent,
     PatientHeaderComponent,
-    PatientRegisterLineComponent
+    PatientRegisterLineComponent,
+    BlogListComponent,
+    BlogRegisterComponent
   ],
   imports: [
     CommonModule,

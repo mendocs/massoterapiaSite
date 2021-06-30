@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
-  constructor() { }
+  constructor( private domSanitizer: DomSanitizer) { }
 
 
   getDateFormated(dateCurrent: Date) : string
@@ -92,12 +93,37 @@ export class UtilsService {
       return  "intervalo: " + this.timeConvert(interval);
     else
     return  "intervalo: 00" ;
-
-
-
-
   }
 
+  removeAccent(text : string) : string
+  {
+    let result : string = text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    result = result.replace(/[^0-9a-zA-Zs]/g, "-")
 
+    while (result.includes("--"))
+      result = result.replace("--","-");
+
+    if (result.endsWith("-"))
+      result = result.substring(0,result.length-1);
+
+    return result.toLowerCase();
+  }
+
+  convertToPlain(html: string ) : string {
+
+    // Create a new div element
+    var tempDivElement = document.createElement("div");
+
+    // Set the HTML content with the given value
+    tempDivElement.innerHTML = html;
+
+    // Retrieve the text property of the element
+    return tempDivElement.textContent || tempDivElement.innerText || "";
+  }
+
+  htmldomSanitizer(_html : string  ) : SafeHtml {
+    let retorno = this.domSanitizer.bypassSecurityTrustHtml(_html);
+    return retorno;
+  }
 
 }

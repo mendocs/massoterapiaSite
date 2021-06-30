@@ -1,3 +1,5 @@
+@import '~ngx-sharebuttons/themes/circles/circles-light-theme';
+
 body
 {
  background-color: rgba(249, 249, 249, 1);
@@ -21,7 +23,12 @@ $base-color:  rgba(191, 194, 164);
   //background-image: url("./assets/images/background/marmore.jpg");
 }
 
-
+.shadow-bg-site-middle
+{
+  -webkit-box-shadow: 15px 15px 13px 2px rgba($base-color,0.79);
+  -moz-box-shadow: 15px 15px 13px 2px rgba($base-color,0.79);
+  box-shadow: 15px 15px 13px 2px rgba($base-color,0.79);
+}
 
 .bg-site-clear
 {

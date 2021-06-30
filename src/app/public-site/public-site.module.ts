@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainContainerComponent } from './main-container/main-container.component';
-import { TopToolbarComponent } from './top-toolbar/top-toolbar.component';
 
 import {SharedKernelModule} from "../shared-kernel/shared-kernel.module";
 import { BigCarouselComponent } from './big-carousel/big-carousel.component';
@@ -12,11 +11,8 @@ import {PublicSiteService} from "./public-site.service";
 import { TherapistComponent } from './therapist/therapist.component';
 import { ContactComponent } from './contact/contact.component';
 import { PriceComponent } from './price/price.component';
-import { FooterComponent } from './footer/footer.component';
-import { TopLogoComponent } from './top-logo/top-logo.component';
 import { RouterModule } from '@angular/router';
-import { WhatsappComponent } from './whatsapp/whatsapp.component';
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import { CommonComponentsModule } from '../common-components/common-components.module';
 
 
 
@@ -24,20 +20,17 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 @NgModule({
   declarations: [
     MainContainerComponent,
-    TopToolbarComponent,
     BigCarouselComponent,
     TagCloudComponent,
     TherapySectionComponent,
     TherapistComponent,
     ContactComponent,
-    PriceComponent,
-    FooterComponent,
-    TopLogoComponent,
-    PageNotFoundComponent,
-    WhatsappComponent],
+    PriceComponent
+    ],
   imports: [
     CommonModule,
     SharedKernelModule,
+    CommonComponentsModule,
     RouterModule
   ],
   providers: [PublicSiteService],

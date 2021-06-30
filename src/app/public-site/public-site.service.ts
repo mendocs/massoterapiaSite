@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ScrollToConfigOptions, ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
 import { Subject } from 'rxjs';
 import { section } from '../section/models/Isection';
-import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +11,12 @@ export class PublicSiteService {
   public selectTherapy$: Subject<string> = new Subject<string>();
 
   therapyListVisited : string[] = [];
-  phoneContactMask : string;
-  phoneContactNoMask : string;
-  whatsapplink : string;
-  addressLocalService : string;
+
 
   public currentSection:string = 'home_spied';
 
   constructor(private _scrollToService: ScrollToService) {
-    this.phoneContactMask = environment.phoneContactMask;
-    this.phoneContactNoMask = environment.phoneContactnoMask;
-    this.whatsapplink = environment.whatsapplink;
-    this.addressLocalService = environment.address;
+
   }
 
 
@@ -33,7 +26,8 @@ export class PublicSiteService {
     {name: "Terapias", nameSpied: "tag_cloud_spied"},
     {name: "Terapeuta", nameSpied: "therapist_spied"},
     {name: "Valores", nameSpied: "price_spied"},
-    {name: "Contato", nameSpied: "contact_spied"}
+    {name: "Contato", nameSpied: "contact_spied"},
+    {name: "Blog", nameSpied: "blog_ext"}
   ]
 
 

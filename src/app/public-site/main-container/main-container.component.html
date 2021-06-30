@@ -44,8 +44,19 @@
 
 
 
-
+<!--
 <app-top-logo></app-top-logo>
+-->
+<app-header>
+  <div textoLateralDireito>
+    <h5>seu espaço exclusivamente feminino para massagem terapêutica em Santo André </h5>
+    <a  target="_blank"
+    href="{{whatsapplink}}{{phoneContactNoMask}}&text=Olá, Gostaria de agendar para dia e horario: "
+    >
+      <h6> <app-whatsapp></app-whatsapp> : {{phoneContactMask}}  </h6>
+    </a>
+  </div>
+</app-header>
 
 <div appScrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)" >
     <div id="home_spied" #home_spied></div>
@@ -74,7 +85,7 @@
 
     <div class="mb-3" ><br></div>
 
-    <app-footer></app-footer>
+   <app-footer></app-footer>
 
 </div>
 

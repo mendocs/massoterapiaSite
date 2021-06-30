@@ -52,7 +52,7 @@ export class PatientRegisterLineComponent implements OnInit {
     if (this.SearchDateRange?.length==2)
       this.patientViewModelSearchListFromDB = this.setIntervalDescription(this.patientViewModelSearchListFromDB);
 
-    console.log(this.patientViewModelSearchListFromDB);
+
 
   }
 
@@ -84,7 +84,8 @@ export class PatientRegisterLineComponent implements OnInit {
     if (dateVerification && dateVerification.length==2)
       return ( new Date(dateBase) >= new Date(dateVerification[0]) && new Date(dateBase) <= new Date(dateVerification[1]))
     else
-      return ( new Date(dateBase) >= new Date(Date.now()));
+      return true;
+      //return ( new Date(dateBase) >= new Date(Date.now()));
 
   }
 

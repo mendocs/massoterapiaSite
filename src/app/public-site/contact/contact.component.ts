@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { CommomComponentsService } from 'src/app/common-components/commom-components.service';
 
 import { PublicSiteService } from '../public-site.service';
 
@@ -16,16 +17,16 @@ export class ContactComponent implements OnInit {
   whatsapplink : string;
   addressLocalService : string;
 
-  constructor(private publicSiteService: PublicSiteService) { }
+  constructor(private publicSiteService: PublicSiteService, private _CommomComponentsService : CommomComponentsService) { }
 
   ngOnInit(): void {
 
     var myvar = document.getElementById("squareContainer");
 
-    this.phoneContactMask = this.publicSiteService.phoneContactMask;
-    this.phoneContactNoMask = this.publicSiteService.phoneContactNoMask;
-    this.whatsapplink = this.publicSiteService.whatsapplink;
-    this.addressLocalService = this.publicSiteService.addressLocalService;
+    this.phoneContactMask = this._CommomComponentsService.phoneContactMask;
+    this.phoneContactNoMask = this._CommomComponentsService.phoneContactNoMask;
+    this.whatsapplink = this._CommomComponentsService.whatsapplink;
+    this.addressLocalService = this._CommomComponentsService.addressLocalService;
   }
 
   ngAfterViewInit1() : void

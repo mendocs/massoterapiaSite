@@ -7,19 +7,19 @@ import {PatientRoutingModule} from "./patient-routing.module";
 import { PatientService} from "../patient/patient-data/services/patient.service"
 
 import { PatientRegisterComponent } from "./patient-register/patient-register.component"
-import { PatientRegisterLogoTopComponent } from "./patient-register/patient-register-logo-top/patient-register-logo-top.component"
 import { ScheduleRegisterComponent } from "./schedule-register/schedule-register.component"
+import { CommonComponentsModule } from '../common-components/common-components.module';
 
 
 
 @NgModule({
   declarations: [
     PatientRegisterComponent,
-    PatientRegisterLogoTopComponent,
     ScheduleRegisterComponent
   ],
   imports: [
     CommonModule,
+    CommonComponentsModule,
     PatientRoutingModule,
     SharedKernelModule
   ],
