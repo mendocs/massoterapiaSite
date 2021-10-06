@@ -18,7 +18,7 @@
         <div class="col-7 align-self-center mb-n4">
           <mat-form-field appearance="fill" >
             <mat-label>Data </mat-label>
-            <input matInput [matDatepicker]="startdDate" [readonly]="readonly" [(ngModel)]="innerValue['startdDate']" (ngModelChange) = "sincronizeSchedule()" > <!--formControlName="startdDate"-->
+            <input matInput [matDatepicker]="startdDate" [readonly]="readonly" [(ngModel)]="innerValue['StartdDate']" (ngModelChange) = "sincronizeSchedule()" > <!--formControlName="startdDate"-->
             <mat-datepicker-toggle matSuffix [for]="startdDate" *ngIf="!readonly"></mat-datepicker-toggle>
             <mat-datepicker #startdDate></mat-datepicker>
           </mat-form-field>
@@ -44,7 +44,7 @@
         <div class="col-4">
           <div class="checkbox" >
             <label class="checkbox-inline"  >
-              <input type="checkbox" [(ngModel)]="innerValue['canceled']" (click)="!readonly" > Cancelado
+              <input type="checkbox" [(ngModel)]="innerValue['Canceled']" (click)="!readonly" > Cancelado
             </label>
           </div>
         </div>
@@ -53,7 +53,7 @@
         <div class="col-4">
           <div class="checkbox" >
             <label class="checkbox-inline"  >
-              <input type="checkbox" [(ngModel)]="innerValue['confirmed']" (click)="!readonly" > Confirmado
+              <input type="checkbox" [(ngModel)]="innerValue['Confirmed']" (click)="!readonly" > Confirmado
             </label>
           </div>
         </div>
@@ -61,7 +61,7 @@
         <div class="col-4">
           <div class="checkbox" >
             <label class="checkbox-inline" >
-              <input type="checkbox" [(ngModel)]="innerValue['executed']" (click)="!readonly"> Realizado
+              <input type="checkbox" [(ngModel)]="innerValue['Executed']" (click)="!readonly"> Realizado
             </label>
           </div>
         </div>
@@ -70,7 +70,7 @@
       <div  class="row" *ngIf="!readonly">
         <mat-form-field appearance="fill" >
           <mat-label> Comentários  </mat-label>
-          <textarea matInput [(ngModel)]="innerValue['comments']"   [readonly]="readonly"></textarea> <!--formControlName="comments"-->
+          <textarea matInput [(ngModel)]="innerValue['Comments']"   [readonly]="readonly"></textarea> <!--formControlName="comments"-->
         </mat-form-field>
       </div>
 

@@ -5,22 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import {SharedKernelModule} from "./shared-kernel/shared-kernel.module";
 import { CommonComponentsModule } from "./common-components/common-components.module";
 
 import {PublicSiteModule} from "./public-site/public-site.module"
-
 import {TherapyModule} from "./therapy/therapy.module";
-
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './admin/services/auth.service';
-
-
-
-
 
 @NgModule({
   declarations: [

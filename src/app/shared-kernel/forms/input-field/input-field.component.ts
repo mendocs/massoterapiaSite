@@ -23,7 +23,7 @@ export class InputFieldComponent implements ControlValueAccessor  {
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  getErrorMessage() {
+  getErrorMessage() : string {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }

@@ -16,6 +16,7 @@ import { AuthService } from 'src/app/admin/services/auth.service';
 import { patientSaved } from '../patient-data/models/patientSavedResult.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UtilsService } from "../../shared-kernel/tools/utils.service";
+import { Subscription } from 'rxjs';
 //import { _rollupMoment} from 'moment';
 
 const moment =  _moment;
@@ -67,13 +68,14 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   isLoading : boolean = true;
   isError : boolean = false;
   messageErrorLoading : string = "";
+  SavedSuccess : boolean = false;
 
 
 
-  motivation = ['Relaxamento', 'Terapêutico', 'Apoio ao esporte', 'Estética'];
-  disease = ['Hipertensão Arterial', 'Hipotensão Arterial', 'Diabetes'];
-  healthChanges = ['Cardíacas','Vasculares','Respiratórias','Digestórias','Hormonais','Dermatológicas','Neurológicas','Articulares','Músculo Esqueléticas','Urinárias','Genitais','Hematológicas','Psicoemocionais','Cabeça','Olhos','Nariz','Boca','Ouvidos'];
-  treatments = ['Alopat','Homeo','Psiquiátrico','Psicológico','Fisioterapêutico'];
+  Motivation = ['Relaxamento', 'Terapêutico', 'Apoio ao esporte', 'Estética'];
+  Disease = ['Hipertensão Arterial', 'Hipotensão Arterial', 'Diabetes'];
+  HealthChanges = ['Cardíacas','Vasculares','Respiratórias','Digestórias','Hormonais','Dermatológicas','Neurológicas','Articulares','Músculo Esqueléticas','Urinárias','Genitais','Hematológicas','Psicoemocionais','Cabeça','Olhos','Nariz','Boca','Ouvidos'];
+  Treatments = ['Alopat','Homeo','Psiquiátrico','Psicológico','Fisioterapêutico'];
 
 
   patientObserver = {
@@ -105,7 +107,10 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
  savedData : number = 0;
  saveTime : string;
  enable_gotoTop : boolean = false;
-
+ updatePatientSubscription$ : Subscription;
+ removedorSubscription$ : Subscription;
+ routeParamsSubscription$ : Subscription;
+ getPatientByIdSubscription$ : Subscription;
 
   constructor(
     private patientService : PatientService,
@@ -119,22 +124,13 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
 
   getError(err : HttpErrorResponse): void{
-
+    super.getError(err);
     const msgErrorReturn : string =  JSON.stringify(err.error);
 
     if (msgErrorReturn.includes("One or more validation errors occurred"))
       this.router.navigate(["/paginanaoencontrada"]);
 
-    this.isLoading = false;
     this.isLoadingSaveData = false;
-
-    this.isError = true;
-
-    if (err.statusText.includes("Unknown Error") )
-      this.messageErrorLoading = "Aconteceu um erro no carregamento : Sem conexão com o servidor";
-    else
-      this.messageErrorLoading = err.error;
-
 
   }
 
@@ -146,32 +142,28 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
 
   submit():void{
-
     this.savedData = 0;
     this.isLoadingSaveData = true;
 
     let valueSubmit = Object.assign({}, this.formulario.value);
 
-    valueSubmit = this.convertFormArrayToValues ("motivation",valueSubmit);
-    valueSubmit = this.convertFormArrayToValues ("disease",valueSubmit);
-    valueSubmit = this.convertFormArrayToValues ("healthChanges",valueSubmit);
-    valueSubmit = this.convertFormArrayToValues ("treatments",valueSubmit);
+    valueSubmit = this.convertFormArrayToValues ("Motivation",valueSubmit);
+    valueSubmit = this.convertFormArrayToValues ("Disease",valueSubmit);
+    valueSubmit = this.convertFormArrayToValues ("HealthChanges",valueSubmit);
+    valueSubmit = this.convertFormArrayToValues ("Treatments",valueSubmit);
 
     valueSubmit = this.convertFormArrayToSchedules (valueSubmit);
 
-    this.patientService.updatePatient(valueSubmit).subscribe(this.savePatientObserver);
-
+    this.updatePatientSubscription$ =  this.patientService.updatePatient(valueSubmit).subscribe(this.savePatientObserver);
 
   }
 
   convertFormArrayToSchedules( valueSubmit: any) : any
   {
-
      let objeto = new Object()
      return Object.assign(valueSubmit, {
        "Schedules": valueSubmit["Schedules"]
        .map((v, i) => v ? this.formulario.get("Schedules")["controls"][i].value : null)
-
      });
   }
 
@@ -183,84 +175,88 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
     this.buildFormulario();
     this.getParameters();
-    this.patientService.removedor$.subscribe(this.removeScheduleObserver);
+    this.removedorSubscription$ =  this.patientService.removedor$.subscribe(this.removeScheduleObserver);
 
     if (!this.isAuthenticated())
       this.accordionGroupOpen = [true,false,false,false];
   }
 
+  ngOnDestroy() : void{
+    this.updatePatientSubscription$?.unsubscribe();
+    this.removedorSubscription$?.unsubscribe();
+    this.routeParamsSubscription$?.unsubscribe();
+    this.getPatientByIdSubscription$?.unsubscribe();
+  }
 
-  buildFormulario()
+
+  buildFormulario() : void
   {
     this.formulario =
     new FormGroup (
       {
-        key : new FormControl(''),
+        Key : new FormControl(''),
         Updated : new FormControl(''),
         Created : new FormControl(''),
-        phone : new FormControl(''),
-        name:  new FormControl('',  ),
-        dateFillData:  new FormControl() ,
-        maritalStatus: new FormControl() ,
-        sons: new FormControl() ,
-        dateBorn:  new FormControl() ,
-        weight: new FormControl() ,
-        phoneContact: new FormControl(''),
-        occupation: new FormControl(''),
-        motivation: this.builddFormArray(this.motivation),
-        mainComplaint: new FormControl(''),
-        historyComplaint: new FormControl(''),
-        secundaryComplaint: new FormControl(''),
-        ingestionLiquid: new FormControl(''),
-        liquidTypes: new FormControl(''),
-        smoking: new FormControl(''),
-        alcohol: new FormControl(''),
-        psychoactive: new FormControl(''),
-        addiction: new FormControl(''),
-        physicalActivity: new FormControl(''),
-        physicalActivityFrequency: new FormControl(''),
-        qualitySleep: new FormControl(''),
-        food: new FormControl(''),
-        feces: new FormControl(''),
-        lastFeces: new FormControl(''),
-        leisureActivities: new FormControl(''),
-        leisureRestWork: new FormControl(''),
-        disease: this.builddFormArray(this.disease),
-        healthChanges: this.builddFormArray(this.healthChanges),
-        treatments : this.builddFormArray(this.treatments),
-        othersTreatments: new FormControl(''),
-        medicines: new FormControl(''),
-        diu: new FormControl(''),
-        dum: new FormControl(''),
-        subcutaneous: new FormControl(''),
-        subcutaneousOther: new FormControl(''),
-        surgeries: new FormControl(''),
-        familyIllnessess: new FormControl(''),
-
-
+        Phone : new FormControl(''),
+        Name:  new FormControl('',  ),
+        DateFillData:  new FormControl() ,
+        MaritalStatus: new FormControl() ,
+        Sons: new FormControl() ,
+        DateBorn:  new FormControl() ,
+        Weight: new FormControl() ,
+        PhoneContact: new FormControl(''),
+        Occupation: new FormControl(''),
+        Motivation: this.builddFormArray(this.Motivation),
+        MainComplaint: new FormControl(''),
+        HistoryComplaint: new FormControl(''),
+        SecundaryComplaint: new FormControl(''),
+        IngestionLiquid: new FormControl(''),
+        LiquidTypes: new FormControl(''),
+        Smoking: new FormControl(''),
+        Alcohol: new FormControl(''),
+        Psychoactive: new FormControl(''),
+        Addiction: new FormControl(''),
+        PhysicalActivity: new FormControl(''),
+        PhysicalActivityFrequency: new FormControl(''),
+        QualitySleep: new FormControl(''),
+        Food: new FormControl(''),
+        Feces: new FormControl(''),
+        LastFeces: new FormControl(''),
+        LeisureActivities: new FormControl(''),
+        LeisureRestWork: new FormControl(''),
+        Disease: this.builddFormArray(this.Disease),
+        HealthChanges: this.builddFormArray(this.HealthChanges),
+        Treatments : this.builddFormArray(this.Treatments),
+        OthersTreatments: new FormControl(''),
+        Medicines: new FormControl(''),
+        Diu: new FormControl(''),
+        Dum: new FormControl(''),
+        Subcutaneous: new FormControl(''),
+        SubcutaneousOther: new FormControl(''),
+        Surgeries: new FormControl(''),
+        FamilyIllnessess: new FormControl(''),
       }
       );
 
-
-      this.formulario.get("name").setValidators([ Validators.required, Validators.minLength(3)]);
-      this.formulario.get("name").updateValueAndValidity();
+      this.formulario.get("Name").setValidators([ Validators.required, Validators.minLength(3)]);
+      this.formulario.get("Name").updateValueAndValidity();
   }
 
-  getParameters()
+  getParameters() : void
   {
-    this.route.params.subscribe(this.parameterIdObserver);
+    this.routeParamsSubscription$ =  this.route.params.subscribe(this.parameterIdObserver);
   }
 
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.startDate = new Date( this.formulario.get("dateBorn").value );
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) : void {
+    this.startDate = new Date( this.formulario.get("DateBorn").value );
   }
 
-  getPatient(id: string)
+  getPatient(id: string) : void
   {
-    this.patientService.getPatientById(id).subscribe(this.patientObserver);
+    this.getPatientByIdSubscription$ = this.patientService.getPatientById(id).subscribe(this.patientObserver);
   }
 
-  patientSaved(result: number)
+  patientSaved(result: number) : void
   {
     this.saveTime =  this.utilsService.getDateFormated(new Date( Date.now()));
     this.isLoadingSaveData = false;
@@ -271,36 +267,36 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
         this.isError = true;
         this.messageErrorLoading = "Registro não foi gravado, tente recarregar a pagina e tente novamente";
     }
+    else
+      this.SavedSuccess = true;
   }
 
 
-  getSchedules() //: schedule[]
+  getSchedules() : schedule[]
   {
-    return this.patientSelected.schedules;
-
+    return this.patientSelected.Schedules;
   }
 
-  functionSort (a : schedule, b : schedule){
-    return new Date(a.startdDate).getTime() - new Date(b.startdDate).getTime()}
+  functionSort (a : schedule, b : schedule) : number {
+    return new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime()}
 
 
-  builddFormArraySchedules() {
-    const values = this.patientSelected.schedules.sort(
-      (a,b)=> new Date(a.startdDate).getTime() - new Date(b.startdDate).getTime()
+  builddFormArraySchedules() : FormArray {
+    const values = this.patientSelected.Schedules.sort(
+      (a,b)=> new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime()
       ).map(v => new FormControl(v));
     return this.formBuilder.array(values);
-
   }
 
 
   setNullDateTime(currentPatient : patient) : void
   {
 
-    if (currentPatient.dateBorn.toString().includes("0001"))
-      this.formulario.get("dateBorn").setValue('');
+    if (currentPatient.DateBorn.toString().includes("0001"))
+      this.formulario.get("DateBorn").setValue('');
 
-    if (currentPatient.dateFillData.toString().includes("0001"))
-      this.formulario.get("dateFillData").setValue("");
+    if (currentPatient.DateFillData.toString().includes("0001"))
+      this.formulario.get("DateFillData").setValue("");
 
   }
 
@@ -309,12 +305,12 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     this.patientSelected = currentPatient;
     this.formulario.patchValue(currentPatient);
 
-    this.startDate = new Date(currentPatient.dateBorn);
+    this.startDate = new Date(currentPatient.DateBorn);
 
-    this.getArray(currentPatient,"motivation");
-    this.getArray(currentPatient,"disease");
-    this.getArray(currentPatient,"healthChanges");
-    this.getArray(currentPatient,"treatments");
+    this.getArray(currentPatient,"Motivation");
+    this.getArray(currentPatient,"Disease");
+    this.getArray(currentPatient,"HealthChanges");
+    this.getArray(currentPatient,"Treatments");
 
     this.formulario.addControl ("Schedules" , this.builddFormArraySchedules());
     this.schedulesPopulated = true;
@@ -326,9 +322,8 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   }
 
 
-  nextStepOnClick(index : number)
+  nextStepOnClick(index : number) : void
   {
-
     this.onSubmit();
     this.accordionGroupOpen[index] = true; //!this.accordionGroupOpen[index] ;
     this.accordionGroupOpen[index-1] = false; // !this.accordionGroupOpen[index-1];
@@ -336,26 +331,17 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
   addSchedule() : void
   {
-
-    let newschedule : schedule = {startdDate : new Date(), comments: "", confirmed : false, executed: false , canceled: false };
-    this.patientSelected.schedules.push(newschedule);
+    let newschedule : schedule = {StartdDate : new Date(), Comments: "", Confirmed : false, Executed: false , Canceled: false };
+    this.patientSelected.Schedules.push(newschedule);
     let items = this.formulario.get("Schedules") as FormArray;
-    items.push(new FormControl(this.patientSelected.schedules[this.patientSelected.schedules.length-1]));
+    items.push(new FormControl(this.patientSelected.Schedules[this.patientSelected.Schedules.length-1]));
 
   }
 
   RemoveSchedule(index : number) : void
   {
-
-    this.patientSelected.schedules.splice(index,1) ;
+    this.patientSelected.Schedules.splice(index,1) ;
     (<FormArray>this.formulario.get('Schedules')).removeAt(index);
-
-  }
-
-
-
-  onClosed(dismissedAlert: any): void {
-    this.savedData = 0;
   }
 
 

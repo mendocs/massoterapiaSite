@@ -1,1 +1,35 @@
-<p>blog-list works!</p>
+<div class="container">
+
+  <a routerLink="/admin" class="mb-3" >Voltar</a> <a routerLink="novo" class="m-3" >Novo</a>
+
+  <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+  <app-error-message [isError]="isError" [messageError]="messageError"></app-error-message>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Titulo</th>
+        <th>Ativo</th>
+        <th>Criação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let currentBlog of blogsListRegister">
+        <td><a routerLink="{{currentBlog.Key}}" >{{currentBlog.Title}}</a></td>
+        <td>
+          <div>
+            {{currentBlog.Active | portugueseBoolean}}
+          </div>
+        </td>
+
+        <td>
+          <div>
+            {{dateformated(currentBlog.Created)}}
+          </div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,5 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
 import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
 import { blogs } from '../models/blogs.model';
 import { PublicBlogService } from '../services/public-blog.service';
@@ -9,7 +11,7 @@ import { PublicBlogService } from '../services/public-blog.service';
   templateUrl: './blog-main.component.html',
   styleUrls: ['./blog-main.component.scss']
 })
-export class BlogMainComponent implements OnInit {
+export class BlogMainComponent extends BaseComponent implements OnInit {
 
   blogsFile = {
 		next: (_blogs : blogs[]) => this.populateBlogs(_blogs),
@@ -18,24 +20,29 @@ export class BlogMainComponent implements OnInit {
 	  };
 
     blogsListRegister : blogs[];
+    getAllBlogSubscription$ : Subscription;
 
   constructor(private _PublicBlogService : PublicBlogService,
-              private utilsService : UtilsService) { }
+              private utilsService : UtilsService) { super(); }
 
-  getError(err : HttpErrorResponse): void{
-    console.log(err);
-  }
 
   populateBlogs (_blogs : blogs[]) : void{
+    this.isLoading = false;
     this.blogsListRegister = _blogs;
   }
 
   ngOnInit(): void {
-    this._PublicBlogService.getAllBlog$().subscribe(this.blogsFile);
+    this.isLoading = true;
+    this.getAllBlogSubscription$ =  this._PublicBlogService.getAllBlog$().subscribe(this.blogsFile);
+  }
+
+  ngOnDestroy() : void{
+    this.getAllBlogSubscription$?.unsubscribe();
   }
 
   getPlainTextblog(_text : string) : string{
     return this.utilsService.convertToPlain(_text).substring(0,250) + '...';
   }
+
 
 }

@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { Subscription } from 'rxjs';
 import { PublicSiteService } from 'src/app/public-site/public-site.service';
 import { section } from 'src/app/section/models/Isection';
 import { therapy } from 'src/app/therapy/models/therapy-model';
@@ -27,6 +28,8 @@ export class TopToolbarComponent implements OnInit {
 
   sections : section[] ;
 
+  getAllTherapiesSubscription$ : Subscription;
+
   therapiesFile = {
 		next: (_therapies : therapy[]) => this.populateControlsFromTherapies(_therapies),
 		error: err => this.getError(err),
@@ -41,7 +44,11 @@ export class TopToolbarComponent implements OnInit {
   ngOnInit(): void {
     this.sections = this.publicSiteService.sections;
 
-    this.therapyDataService.getAllTherapies().subscribe(this.therapiesFile);
+    this.getAllTherapiesSubscription$ =  this.therapyDataService.getAllTherapies().subscribe(this.therapiesFile);
+  }
+
+  ngOnDestroy() : void{
+    this.getAllTherapiesSubscription$?.unsubscribe();
   }
 
   populateControlsFromTherapies(_therapies: therapy[])
@@ -59,18 +66,6 @@ export class TopToolbarComponent implements OnInit {
     this.isCollapsed = true;
 
     this.publicSiteService.navigateTo(navigateId);
-
-    //para dar tempo do navbar fechar, ajustar o scroll e depois posicionar
-    /*
-    setTimeout(()=>{
-        if (navigateId.includes("spied"))
-          this.triggerScrollTo(navigateId)
-        else if (navigateId.includes("ext")) //externo
-          this.router.navigate(["/blog"]);
-        else
-          this.publicSiteService.SetTherapy(navigateId);
-    }, 200);
-    */
   }
 
   toggleCollapsed() {

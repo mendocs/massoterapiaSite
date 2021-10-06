@@ -28,36 +28,24 @@
       </div>
     </td>
 
-
-
     <td>
       <div *ngIf = "patientSelected.lineSchedule" >
-        {{patientSelected.description}} <!--({{patientSelected.schedules.length}})-->
+        {{patientSelected.description}}
       </div>
       <div *ngIf = "!patientSelected.lineSchedule">
         <div class="text-success">{{patientSelected.description}}</div>
       </div>
     </td>
-
     <td>
       <div *ngIf = "patientSelected.lineSchedule" >
         {{patientSelected.confirmed | portugueseBoolean}}
       </div>
     </td>
-
-
-
     <td>
       <div *ngIf = "patientSelected.lineSchedule" >
         {{patientSelected.executed | portugueseBoolean}}
       </div>
     </td>
-
-
-
-
-
-
 
   </tr>
 

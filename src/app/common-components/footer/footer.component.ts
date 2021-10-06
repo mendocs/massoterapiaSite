@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { PublicSiteService } from 'src/app/public-site/public-site.service';
 import { therapy } from 'src/app/therapy/models/therapy-model';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
@@ -26,6 +27,8 @@ export class FooterComponent implements OnInit {
 
   therapies : therapy[];
 
+  getAllTherapiesSubscription$ : Subscription;
+
   constructor(
     private therapyDataService : TherapyDataService,
     private publicSiteService: PublicSiteService,
@@ -35,13 +38,17 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.therapyDataService.getAllTherapies().subscribe(this.therapiesFile);
+    this.getAllTherapiesSubscription$ = this.therapyDataService.getAllTherapies().subscribe(this.therapiesFile);
 
     this.phoneContactMask = this._CommomComponentsService.phoneContactMask;
     this.phoneContactNoMask = this._CommomComponentsService.phoneContactNoMask;
     this.whatsapplink = this._CommomComponentsService.whatsapplink;
     this.addressLocalService = this._CommomComponentsService.addressLocalService;
 
+  }
+
+  ngOnDestroy() : void{
+    this.getAllTherapiesSubscription$?.unsubscribe();
   }
 
   populateControlsFromTherapies(_therapies: therapy[])

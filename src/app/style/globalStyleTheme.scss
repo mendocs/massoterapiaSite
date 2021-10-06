@@ -1,8 +1,16 @@
 @import '~ngx-sharebuttons/themes/circles/circles-light-theme';
 
+
+$background-color-Base: rgba(249, 249, 249);//, 1);
+
 body
 {
- background-color: rgba(249, 249, 249, 1);
+ background-color: rgba($background-color-Base,1) ;
+}
+
+.bg-background-color-Base
+{
+  background-color: rgba($background-color-Base,1) ;
 }
 
 .transparent-background

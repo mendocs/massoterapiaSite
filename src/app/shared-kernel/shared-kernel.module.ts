@@ -11,11 +11,15 @@ import { PortugueseBooleanPipe } from './pipes/portuguese-boolean.pipe';
 import { UtilsService} from "./tools/utils.service";
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
-
+import { HttpClientModule} from '@angular/common/http';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { SuccessMessageComponent } from './components/success-message/success-message.component';
 
 
 @NgModule({
-  declarations: [ScrollSpyDirective, ParallaxDirective, DotToParagraphPipe, PortugueseBooleanPipe],
+  declarations: [ScrollSpyDirective, ParallaxDirective, DotToParagraphPipe, PortugueseBooleanPipe, LoadingSpinnerComponent, ErrorMessageComponent, SuccessMessageComponent],
   imports: [
     CommonModule,
     NgxBootsrapModule,
@@ -23,7 +27,9 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     //TagCloudModule,
     ScrollToModule.forRoot(),
     ShareButtonsModule,
-    ShareIconsModule
+    ShareIconsModule,
+    HttpClientModule,
+    AngularEditorModule
 
   ],
   exports: [
@@ -35,7 +41,13 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     ParallaxDirective,
     ShareButtonsModule,
     ShareIconsModule,
-    ScrollSpyDirective],
+    ScrollSpyDirective,
+    HttpClientModule,
+    AngularEditorModule,
+    LoadingSpinnerComponent,
+    ErrorMessageComponent,
+    SuccessMessageComponent
+  ],
     providers : [UtilsService]
 })
 export class SharedKernelModule { }

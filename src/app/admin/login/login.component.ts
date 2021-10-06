@@ -5,6 +5,7 @@ import {BaseFormComponent} from "../../shared-kernel/forms/core/base-form.compon
 import { AuthService } from '../services/auth.service';
 import { loginResult} from "../models/loginResult"
 import { HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +20,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 		complete: () => {},
 	  };
 
-   messageError : string;
-   isLoading : boolean = false;
-
-  authenticatefail : boolean = false;
+  authenticateSubscription$ : Subscription;
 
   constructor(private router: Router, private authService : AuthService) { super() }
 
@@ -42,20 +40,18 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 
     this.isLoading = true;
 
-    this.authService.authenticate(this.formulario.get("user").value, this.formulario.get("password").value).subscribe(this.loginObserver);
+    this.authenticateSubscription$ = this.authService.authenticate(this.formulario.get("user").value, this.formulario.get("password").value).subscribe(this.loginObserver);
 
   }
 
-  getError(err : HttpErrorResponse): void{
-
-    this.messageError =  "Sem conexão com o Servidor ";
-    this.authenticatefail = true;
-    this.isLoading = false;
+  ngOnDestroy() : void{
+    this.authenticateSubscription$?.unsubscribe();
   }
+
+
 
   submitResult(LoginResult : loginResult)
   {
-
 
     if (LoginResult.result)
     {
@@ -64,7 +60,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
     else
     {
       this.messageError =  "Usuário ou senha inválidos";
-      this.authenticatefail = true;
+      this.isError = true;
       this.isLoading = false;
     }
   }
@@ -72,7 +68,6 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 
   submitFail(): void
   {
-
   }
 
 

@@ -84,9 +84,8 @@ export class PatientService {
     }
 
     if (parametersSerach)
-    {
       parametersSerach = parametersSerach.replace("/","-").replace(" ","%20").substring(0,parametersSerach.length + 1);
-    }
+
 
     return this.http.get<patientList[]>(environment.UrlApi + "patient/search?" + parametersSerach)
     .pipe(tap(results => this.lastCreatedPatient = results));
@@ -94,9 +93,6 @@ export class PatientService {
   }
 
   getPatientById (key: string) : Observable<patient> {
-
-    console.log(key);
-
     //return this.http.get<patient>('assets/data/patientFull.json');
     return this.http.get<patient>(environment.UrlApi + 'patient/getkey/' + key, {observe: 'response'})
     .pipe(

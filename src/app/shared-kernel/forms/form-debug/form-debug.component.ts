@@ -21,15 +21,13 @@ export class FormDebugComponent implements OnInit {
 ValuesSubmit()
 {
 	this.valueSubmit = Object.assign({}, this.form.value);
-
-
-/*
-    valueSubmit = Object.assign(valueSubmit, {
-      frameworks: valueSubmit.frameworks
-      .map((v, i) => v ? this.frameworks[i] : null)
-      .filter(v => v !== null)
-	});
-	*/
+  /*
+      valueSubmit = Object.assign(valueSubmit, {
+        frameworks: valueSubmit.frameworks
+        .map((v, i) => v ? this.frameworks[i] : null)
+        .filter(v => v !== null)
+    });
+    */
 
 }
 

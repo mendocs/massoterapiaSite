@@ -1,1 +1,89 @@
-<p>blog-register works!</p>
+<div class="container">
+
+  <a routerLink="/admin/blog" class="mb-3" >voltar..</a>
+  <br>
+
+  <div class="jumbotron">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <h1> Cadastro de Blog</h1>
+      <app-loading-spinner [isLoading]="isLoadingPage" [showText]="true"></app-loading-spinner>
+
+      <div class="row">
+        <div class="col-12 m-4">
+          <input type="checkbox" class="custom-control-input"
+            id="Active"
+            formControlName="Active">
+          <label class="custom-control-label" for="Active">Ativo</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <app-input-field  formControlName="Title"
+          [classeCss]="aplicaCssErro('Title')"
+          id="Title" label="Titulo" [control]="formulario.get('Title')"
+          ></app-input-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <app-input-field  formControlName="ImageCard"
+          [classeCss]="aplicaCssErro('ImageCard')"
+          id="ImageCard" label="Imagem" [control]="formulario.get('ImageCard')"
+          ></app-input-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <app-input-field  formControlName="Tags"
+          [classeCss]="aplicaCssErro('Tags')"
+          id="Tags" label="Tags" [control]="formulario.get('Tags')"
+          ></app-input-field>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-10">
+
+          <app-input-field  formControlName="ImagemAddressAux"
+          [(ngModel)]="ImagemAddressAuxText"
+          [classeCss]="aplicaCssErro('ImagemAddressAux')"
+          id="ImagemAddressAux" label="Imagem inserida no conteudo do texto usar _img no texto" [control]="formulario.get('ImagemAddressAux')"
+          ></app-input-field>
+
+
+        </div>
+        <div class="col-2">
+          <button type="button" class="btn btn-success mt-4" (click)="insertImage()">
+            <i class="far fa-image"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <angular-editor formControlName="Text" [(ngModel)]="text_Content" [config]="editorConfig" ></angular-editor>
+        </div>
+      </div>
+
+
+
+
+      <div class="row mt-4">
+        <button type="submit" class="btn btn-success " [disabled]="isLoading">
+          Gravar
+        </button>
+        <app-loading-spinner [isLoading]="isLoading" [showText]="false"></app-loading-spinner>
+
+        <app-error-message [isError]="isError" [messageError]="messageError"></app-error-message>
+
+        <app-success-message [recordSuccess]="SavedSuccess"></app-success-message>
+
+
+      </div>
+    </form>
+  </div>
+</div>

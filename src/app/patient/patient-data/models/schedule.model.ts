@@ -1,7 +1,7 @@
 export class schedule {
-	public startdDate: Date;
-	public comments: string;
-  public confirmed: boolean;
-  public executed: boolean;
-  public canceled: boolean;
+	public StartdDate: Date;
+	public Comments: string;
+  public Confirmed: boolean;
+  public Executed: boolean;
+  public Canceled: boolean;
 }

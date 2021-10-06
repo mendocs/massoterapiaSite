@@ -4,31 +4,21 @@
 
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
-
   <app-input-field  formControlName="user"
   [classeCss]="aplicaCssErro('user')"
   id="user" label="Usuário" [control]="formulario.get('user')"
   ></app-input-field>
-
 
   <app-input-field  formControlName="password"
   [classeCss]="aplicaCssErro('password')"
   id="password" label="Senha" type="password" [control]="formulario.get('password')"
   ></app-input-field>
 
-
-
-
   <button type="submit" class="btn btn-outline-success" [disabled]="isLoading" >Logar </button>
-  <div class="d-inline ml-2" *ngIf = "isLoading"> <mat-progress-spinner class="d-inline" diameter="30" value="30" mode="indeterminate" ></mat-progress-spinner> </div>
-
+  <app-loading-spinner [isLoading]="isLoading" [showText]="false"></app-loading-spinner>
 
 </form>
 
-<div *ngIf= "authenticatefail"  class="alert alert-danger alert-dismissible fade show mt-4">
-  {{messageError}}
-</div>
-
-
+<app-error-message [isError]="isError" [messageError]="messageError"></app-error-message>
 
 </div>

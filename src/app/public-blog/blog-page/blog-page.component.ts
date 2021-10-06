@@ -5,6 +5,7 @@ import { blogs } from '../models/blogs.model'
 import { HttpErrorResponse } from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-blog-page',
@@ -33,8 +34,12 @@ export class BlogPageComponent implements OnInit {
 
   blogsListSeeAlso : blogs[];
   currentBlogRegister : blogs;
-  currentBlogRegister_title : string;
-  currentBlogRegister_text : string;
+  currentBlogRegister_title : string = "Carregando...";
+  currentBlogRegister_text : string = "Carregando...";
+
+  routeParamsSubscription$ : Subscription;
+  getBlogByTitleSubscription$ : Subscription;
+  getSeeAlsoBlogSubscription$ : Subscription;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -45,10 +50,20 @@ export class BlogPageComponent implements OnInit {
     this.getParameters();
   }
 
+  ngOnDestroy() : void{
+    this.routeParamsSubscription$?.unsubscribe();
+    this.getBlogByTitleSubscription$?.unsubscribe();
+    this.getSeeAlsoBlogSubscription$?.unsubscribe();
+  }
+
   populateBlog(currentBlog : blogs): void {
-    this.currentBlogRegister = currentBlog;
-    this.currentBlogRegister_title = currentBlog.title;
-    this.currentBlogRegister_text = currentBlog.text;
+    if (currentBlog){
+      this.currentBlogRegister = currentBlog;
+      this.currentBlogRegister_title = currentBlog.Title;
+      this.currentBlogRegister_text = currentBlog.Text;
+    }
+    else
+      this.router.navigate(["/paginanaoencontrada"]);
   }
 
   populateSeeAlsoBlog(first3Blogs : blogs[]): void {
@@ -59,16 +74,15 @@ export class BlogPageComponent implements OnInit {
     return this._UtilsService.htmldomSanitizer(this.currentBlogRegister_text);
   }
 
-
   getParameters(): void
   {
-    this.route.params.subscribe(this.parameterIdObserver);
+    this.routeParamsSubscription$ = this.route.params.subscribe(this.parameterIdObserver);
   }
 
   getBlogRegister(title: string): void
   {
-    this._PublicBlogService.getBlogByTitle$(title).subscribe(this.blogObserver);
-    this._PublicBlogService.getSeeAlsoBlog$(title).subscribe(this.blogSeeAlsoObserver);
+    this.getBlogByTitleSubscription$ = this._PublicBlogService.getBlogByTitle$(title).subscribe(this.blogObserver);
+    this.getSeeAlsoBlogSubscription$ =  this._PublicBlogService.getSeeAlsoBlog$(title).subscribe(this.blogSeeAlsoObserver);
   }
 
 

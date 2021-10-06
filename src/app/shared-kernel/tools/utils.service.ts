@@ -11,20 +11,14 @@ export class UtilsService {
 
   getDateFormated(dateCurrent: Date) : string
   {
-
-    //const index = patientCurrent.schedules.length-1;
     let data : Date = new Date(dateCurrent);
     return `${this.formatNumber2Digts(data.getDate())}/${ this.formatNumber2Digts((data.getMonth() + 1)) }/${this.formatNumber2Digts( data.getFullYear())} as ${this.formatNumber2Digts(data.getHours())}:${this.formatNumber2Digts(data.getMinutes())}`;
-
   }
 
   getDateFormatedHourMinutes(dateCurrent: Date) : string
   {
-
-    //const index = patientCurrent.schedules.length-1;
     let data : Date = new Date(dateCurrent);
     return ` ${this.formatNumber2Digts(data.getHours())}:${this.formatNumber2Digts(data.getMinutes())}`;
-
   }
 
 
@@ -57,7 +51,6 @@ export class UtilsService {
 
     let interval : number = this.getIntervalMinutes(dt1,dt2);
 
-    console.log(interval);
     if (interval >= 0)
       returnDescription += `${this.getDateFormatedHourMinutes(dt1)} ~ ${this.getDateFormatedHourMinutes(dt2)}`;
     else
@@ -69,7 +62,6 @@ export class UtilsService {
 
   getIntervalMinutes(date1: Date, date2: Date) : number
   {
-
     date1.setSeconds(0);
     date2.setSeconds(0);
 
@@ -80,13 +72,11 @@ export class UtilsService {
 
   getIntervalDescription(date1: Date, date2: Date) : string
   {
-
     let dt1: Date = new Date(date1);
 
     var returnDescription :string = "";
 
     dt1.setMinutes(dt1.getMinutes() + 50);
-
 
     let interval : number = this.getIntervalMinutes(dt1,date2);
     if (interval >0)

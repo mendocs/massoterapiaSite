@@ -12,12 +12,12 @@
 
 
   <div  *ngFor="let section of sections">
-    <button type="button" (click)="triggerScrollTo(section.nameSpied)" class="btn btn-outline-light text-dark border-0"
+    <button type="button" (click)="navigateTo(section.nameSpied)" class="btn btn-outline-light text-dark border-0"
     [ngClass] = "{'d-none ':verifyCurrentSection(section.nameSpied)}"
      > <span style="color: black; text-shadow: 0px -2px 0px white;"> {{section.name}} </span>  </button>
 
 
-    <button type="button" (click)="triggerScrollTo(section.nameSpied)" class="btn btn-outline-light text-dark border shadow"
+    <button type="button" (click)="navigateTo(section.nameSpied)" class="btn btn-outline-light text-dark border shadow"
     [ngClass] = "{'d-none ':!verifyCurrentSection(section.nameSpied)}"
     > <span style="color: black; text-shadow: 0px -2px 0px white;"> {{section.name}} </span> </button>
   </div>

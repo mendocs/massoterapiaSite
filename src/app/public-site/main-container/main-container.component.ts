@@ -27,7 +27,6 @@ export class MainContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //console.log(this.publicSiteService.lastVisited);
     if (this.publicSiteService.LinkVisited)
       this.publicSiteService.navigateTo(this.publicSiteService.LinkVisited);
 
@@ -42,9 +41,10 @@ export class MainContainerComponent implements OnInit {
   }
 
 
-  public triggerScrollTo(destination : string) {
+  public navigateTo(destination : string) {
 
-    this.publicSiteService.triggerScrollTo(destination);
+    this.publicSiteService.navigateTo(destination);
+    //this.publicSiteService.triggerScrollTo(destination);
 
   }
 

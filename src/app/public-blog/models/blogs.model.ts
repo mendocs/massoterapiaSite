@@ -1,9 +1,10 @@
 export class blogs {
-	public key: string;
-	public title: string;
-  public titleNFD: string;
-	public imageCard: string;
-  public active: string;
-  public text : string;
-  public tags: string;
+	public Key: string;
+	public Title: string;
+  public TitleNFD: string;
+	public ImageCard: string;
+  public Active: boolean;
+  public Text : string;
+  public Tags: string;
+  public Created: Date;
 }

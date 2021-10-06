@@ -23,25 +23,9 @@ export class PatientRegisterLineComponent implements OnInit {
 
   public href: string = "";
 
-
-
-
-  constructor(private utilsService : UtilsService) {
-
-
-
-  }
-
-  populatePatientViewModelSearchList()
-  {
-    if (this.SearchDateRange.length==2)
-    {
-
-    }
-  }
+  constructor(private utilsService : UtilsService) {}
 
   ngOnInit(): void {
-
 
     this.href = environment.pathUrl;
 
@@ -51,15 +35,11 @@ export class PatientRegisterLineComponent implements OnInit {
 
     if (this.SearchDateRange?.length==2)
       this.patientViewModelSearchListFromDB = this.setIntervalDescription(this.patientViewModelSearchListFromDB);
-
-
-
   }
 
   getDateFormated(patientCurrent: patientList) : string
   {
-    //const index = patientCurrent.schedules.length-1;
-    let data : Date = new Date(this.getNextSchedule(patientCurrent).startdDate.toString());
+    let data : Date = new Date(this.getNextSchedule(patientCurrent).StartdDate.toString());
     return this.utilsService.getDateFormated(data);
   }
 
@@ -74,8 +54,8 @@ export class PatientRegisterLineComponent implements OnInit {
 
   getLastSchedule(patientCurrent: patientList) : schedule
   {
-    const index = patientCurrent.schedules.length-1;
-    return patientCurrent.schedules[index];
+    const index = patientCurrent.Schedules.length-1;
+    return patientCurrent.Schedules[index];
 
   }
 
@@ -85,7 +65,6 @@ export class PatientRegisterLineComponent implements OnInit {
       return ( new Date(dateBase) >= new Date(dateVerification[0]) && new Date(dateBase) <= new Date(dateVerification[1]))
     else
       return true;
-      //return ( new Date(dateBase) >= new Date(Date.now()));
 
   }
 
@@ -98,34 +77,31 @@ export class PatientRegisterLineComponent implements OnInit {
     this.patientViewModelSearchListFromDBCount = 0;
     let _patientViewModelSearchListFromDB : patientViewModelSearchList[] = [];
 
-
     patienties.map(patientCurrent =>
-    patientCurrent.schedules.sort(
-      (a,b)=> new Date(a.startdDate).getTime() - new Date(b.startdDate).getTime()
-      ).map((scheduleCurrent,index) => {
-      if (!scheduleCurrent.canceled  && this.compareDateScheduleToShow(scheduleCurrent.startdDate,dateRange))
-      {
-        const _patientViewModelSearchList: patientViewModelSearchList = new patientViewModelSearchList(
-                                                                                                patientCurrent.key,
-                                                                                                `${patientCurrent.name} (${patientCurrent.schedules.length}) `,
-                                                                                                patientCurrent.phone,
-                                                                                                new Date(scheduleCurrent.startdDate),
-                                                                                                scheduleCurrent.executed,
-                                                                                                scheduleCurrent.confirmed,
-                                                                                                `${this.utilsService.getDateFormated(scheduleCurrent.startdDate)} (${index +1})`,
-                                                                                                true);
-          _patientViewModelSearchListFromDB.push(_patientViewModelSearchList);
-          this.patientViewModelSearchListFromDBCount++;
-
-          if (dateRange && dateRange.length==2)
+      patientCurrent.Schedules
+        .sort((a,b)=> new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime())
+        .map((scheduleCurrent,index) => {
+          if (!scheduleCurrent.Canceled  && this.compareDateScheduleToShow(scheduleCurrent.StartdDate,dateRange))
           {
-            let patientListt = this.getPatientViewModelSearchList(_patientViewModelSearchList.scheduleStart);
-            _patientViewModelSearchListFromDB.push(patientListt);
+            const _patientViewModelSearchList: patientViewModelSearchList = new patientViewModelSearchList(
+                                                                                                    patientCurrent.Key,
+                                                                                                    `${patientCurrent.Name} (${patientCurrent.Schedules.length}) `,
+                                                                                                    patientCurrent.Phone,
+                                                                                                    new Date(scheduleCurrent.StartdDate),
+                                                                                                    scheduleCurrent.Executed,
+                                                                                                    scheduleCurrent.Confirmed,
+                                                                                                    `${this.utilsService.getDateFormated(scheduleCurrent.StartdDate)} (${index +1})`,
+                                                                                                    true);
+            _patientViewModelSearchListFromDB.push(_patientViewModelSearchList);
+            this.patientViewModelSearchListFromDBCount++;
+
+            if (dateRange && dateRange.length==2)
+            {
+              let patientListt = this.getPatientViewModelSearchList(_patientViewModelSearchList.scheduleStart);
+              _patientViewModelSearchListFromDB.push(patientListt);
+            }
           }
-
-      }
-
-    }));
+        }));
 
     return _patientViewModelSearchListFromDB.sort(
       (a,b)=> new Date(a.scheduleStart).getTime() - new Date(b.scheduleStart).getTime()
@@ -175,10 +151,10 @@ export class PatientRegisterLineComponent implements OnInit {
   getNextSchedule(patientCurrent: patientList) : schedule
   {
     let returnnedValue : schedule = null;
-    patientCurrent.schedules.sort(
-      (a,b)=> new Date(a.startdDate).getTime() - new Date(b.startdDate).getTime()
+    patientCurrent.Schedules.sort(
+      (a,b)=> new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime()
       ).every(scheduleCurrent => {
-      if (!(scheduleCurrent.canceled || scheduleCurrent.executed) && new Date(scheduleCurrent.startdDate) > new Date(Date.now()))
+      if (!(scheduleCurrent.Canceled || scheduleCurrent.Executed) && new Date(scheduleCurrent.StartdDate) > new Date(Date.now()))
       {
         returnnedValue = scheduleCurrent;
         return false;

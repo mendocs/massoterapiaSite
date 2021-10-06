@@ -80,8 +80,8 @@ export class ScheduleRegisterComponent implements OnInit , ControlValueAccessor 
     if (v !== this.innerValue) {
       //this.formulario.patchValue(v);
       this.innerValue = v;
-      this.innerValue.startdDate = new Date (this.innerValue.startdDate);
-      this.timepicker = new Date (this.innerValue.startdDate);
+      this.innerValue.StartdDate = new Date (this.innerValue.StartdDate);
+      this.timepicker = new Date (this.innerValue.StartdDate);
 
       this.onChangeCb(v);
       }
@@ -140,9 +140,9 @@ export class ScheduleRegisterComponent implements OnInit , ControlValueAccessor 
 
   sincronizeSchedule() : void
 {
-  this.innerValue.startdDate = new Date (this.innerValue.startdDate);
-  this.innerValue.startdDate.setHours(this.timepicker.getHours())
-  this.innerValue.startdDate.setMinutes(this.timepicker.getMinutes())
+  this.innerValue.StartdDate = new Date (this.innerValue.StartdDate);
+  this.innerValue.StartdDate.setHours(this.timepicker.getHours())
+  this.innerValue.StartdDate.setMinutes(this.timepicker.getMinutes())
 }
 
 

@@ -4,6 +4,8 @@ import {therapy} from "../../therapy/models/therapy-model";
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommomComponentsService } from 'src/app/common-components/commom-components.service';
+import { Subscription } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-therapy-section',
@@ -29,6 +31,9 @@ export class TherapySectionComponent implements OnInit {
   therapyBenefits: string[];
   therapyInformation: string[];
 
+  selectTherapySubscription$ : Subscription;
+  SubscriptionAlive = true;
+
 
    therapiesFile = {
 		next: (selectedTherapy : therapy[]) => this.populateControlsFromSelectedTherapy(selectedTherapy),
@@ -42,8 +47,8 @@ export class TherapySectionComponent implements OnInit {
   constructor(private publicSiteService: PublicSiteService, private therapyDataService : TherapyDataService, private _CommomComponentsService : CommomComponentsService) { }
 
   ngOnInit(): void {
-      this.publicSiteService.selectTherapy$.subscribe( valor =>
-      this.therapyDataService.getTherapyByName(valor).subscribe(this.therapiesFile));
+      this.selectTherapySubscription$ = this.publicSiteService.selectTherapy$.subscribe( valor =>
+            this.therapyDataService.getTherapyByName(valor).pipe(takeWhile(() => this.SubscriptionAlive)).subscribe(this.therapiesFile));
 
       this.phoneContactMask = this._CommomComponentsService.phoneContactMask;
       this.phoneContactNoMask = this._CommomComponentsService.phoneContactNoMask;
@@ -55,6 +60,10 @@ export class TherapySectionComponent implements OnInit {
     console.log(err);
   }
 
+  ngOnDestroy() : void{
+    this.selectTherapySubscription$?.unsubscribe();
+    this.SubscriptionAlive = false;
+  }
 
   populateControlsFromSelectedTherapy(selectedTherapy: therapy[]) : void
   {

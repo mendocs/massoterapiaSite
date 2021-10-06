@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 
-import {AdminRoutingModule} from "./admin-routing/admin-routing.module";
+import {AdminRoutingModule} from "./admin-routing.module";
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 //import {AuthService} from "./services/auth.service";
@@ -14,6 +14,7 @@ import { PatientRegisterLineComponent } from './patient-components/patient-regis
 import {DashboardService } from "./services/dashboard.service";
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
 import { BlogRegisterComponent } from './blog/blog-register/blog-register.component';
+import { AdminBlogService } from './blog/services/admin-blog.service';
 
 
 
@@ -31,6 +32,6 @@ import { BlogRegisterComponent } from './blog/blog-register/blog-register.compon
     AdminRoutingModule,
     SharedKernelModule
   ],
-  providers: [ AuthGuard, PatientService, DashboardService]
+  providers: [ AuthGuard, PatientService, DashboardService, AdminBlogService]
 })
 export class AdminModule { }

@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { asLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { therapy } from 'src/app/therapy/models/therapy-model';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
 import { PublicSiteService } from '../public-site.service';
@@ -26,6 +27,8 @@ export class TagCloudComponent implements OnInit {
     complete: () => {},
     };
 
+    getAllTherapiesSubscription$ : Subscription;
+
   constructor(private publicSiteService: PublicSiteService,
               private therapyDataService : TherapyDataService,
               private router: Router
@@ -38,13 +41,18 @@ export class TagCloudComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.therapyDataService.getAllTherapies().subscribe(this.therapiesFile);
+    this.getAllTherapiesSubscription$ =  this.therapyDataService.getAllTherapies().subscribe(this.therapiesFile);
 
   }
 
   getError(err : HttpErrorResponse): void{
     console.log(err)
   }
+
+  ngOnDestroy() : void{
+    this.getAllTherapiesSubscription$?.unsubscribe();
+  }
+
 
   ngAfterViewChecked(): void {
 
