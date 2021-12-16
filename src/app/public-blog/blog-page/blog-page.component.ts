@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PublicBlogService } from '../services/public-blog.service';
 import { blogs } from '../models/blogs.model'
 import { HttpErrorResponse } from '@angular/common/http';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
 import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
 import { Subscription } from 'rxjs';
 
@@ -44,7 +44,8 @@ export class BlogPageComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private _PublicBlogService : PublicBlogService,
-              private _UtilsService: UtilsService) { }
+              private _UtilsService: UtilsService,
+              private _titleService: Title) { }
 
   ngOnInit(): void {
     this.getParameters();
@@ -58,6 +59,7 @@ export class BlogPageComponent implements OnInit {
 
   populateBlog(currentBlog : blogs): void {
     if (currentBlog){
+      this._titleService.setTitle(currentBlog.Title);
       this.currentBlogRegister = currentBlog;
       this.currentBlogRegister_title = currentBlog.Title;
       this.currentBlogRegister_text = currentBlog.Text;

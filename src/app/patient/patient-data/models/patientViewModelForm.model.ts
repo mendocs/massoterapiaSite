@@ -4,4 +4,5 @@ export class patientForm {
   public scheduledateRange : Date[];
   public scheduledate : Date;
   public scheduletime : Date;
+  public duration : number;
 }

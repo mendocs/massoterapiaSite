@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,10 +9,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _titleService: Title) { }
 
   ngOnInit(): void {
-
+    this._titleService.setTitle("Massoterapia Admin - Paciente");
   }
 
 

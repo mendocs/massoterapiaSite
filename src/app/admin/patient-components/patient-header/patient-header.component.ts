@@ -87,6 +87,7 @@ getNewpatient(newPatient : patientList[]): void{
         scheduledate:  new FormControl(new Date(), ),
         scheduletime:  new FormControl(new Date(), ),
         formMode :  new FormControl(false) ,
+        duration:  new FormControl('50')
       }
       );
 
@@ -127,6 +128,7 @@ getNewpatient(newPatient : patientList[]): void{
     {
       this.formulario.get("phone").setValidators([Validators.required, Validators.minLength(11), Validators.maxLength(11)]);
       this.formulario.get("name").setValidators([ Validators.required, Validators.minLength(3)]);
+      this.formulario.get("duration").setValidators([ Validators.required, Validators.minLength(2)]);
     }
     this.formulario.get("phone").updateValueAndValidity();
     this.formulario.get("name").updateValueAndValidity();
@@ -155,7 +157,7 @@ getNewpatient(newPatient : patientList[]): void{
     {
       if (this.formulario.get("scheduledate").value === "" )
       {
-        this.formulario.get("scheduledate").setValue ( this.formulario.get("scheduletime").value);
+        this.formulario.get("scheduledate").setValue (new Date(this.formulario.get("scheduletime").value));
       }
 
       this.sincronizeSchedule();
@@ -170,35 +172,42 @@ getNewpatient(newPatient : patientList[]): void{
 
   sincronizeSchedule() : void
   {
-    this.formulario.get("scheduletime").value.setDate(this.formulario.get("scheduledate").value.getDate());
-    this.formulario.get("scheduletime").value.setMonth(this.formulario.get("scheduledate").value.getMonth());
+    let _StartdDate : Date = new Date(this.formulario.get("scheduledate").value);
+    _StartdDate.setHours(this.formulario.get("scheduletime").value.getHours());
+    _StartdDate.setMinutes(this.formulario.get("scheduletime").value.getMinutes());
+    this.formulario.get("scheduletime").setValue( _StartdDate);
   }
 
 
   onValueChangeScheduledate(value: Date): void {
     if (this.formulario.get("scheduletime").value === "" )
     {
-      this.formulario.get("scheduletime").setValue ( this.formulario.get("scheduledate").value);
+      this.formulario.get("scheduletime").setValue(new Date(this.formulario.get("scheduledate").value));
     }
     this.sincronizeSchedule();
   }
 
   getScheduleDateRange() : Date[]
   {
-    try{
-      let dateRange : Date[] =[] ;
-      dateRange.push(new Date(this.formulario.get("scheduledateRange").value[0]))
-      dateRange.push(new Date(this.formulario.get("scheduledateRange").value[1]))
+    if(!this.formulario.get("formMode").value)
+      return null
+    else
+    {
+      try{
+        let dateRange : Date[] =[] ;
+        dateRange.push(new Date(this.formulario.get("scheduledateRange").value[0]))
+        dateRange.push(new Date(this.formulario.get("scheduledateRange").value[1]))
 
-      dateRange[0].setHours(0);
-      dateRange[0].setMinutes(0);
+        dateRange[0].setHours(0);
+        dateRange[0].setMinutes(0);
 
-      dateRange[1].setHours(23);
-      dateRange[1].setMinutes(59);
-      return dateRange;
-    }
-    catch{
-      return null;
+        dateRange[1].setHours(23);
+        dateRange[1].setMinutes(59);
+        return dateRange;
+      }
+      catch{
+        return null;
+      }
     }
   }
 

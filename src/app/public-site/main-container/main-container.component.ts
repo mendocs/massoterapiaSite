@@ -7,6 +7,7 @@ import { PublicSiteService } from '../public-site.service';
 import {section} from '../../section/models/Isection'
 import { CommonComponentsModule } from 'src/app/common-components/common-components.module';
 import { CommomComponentsService } from 'src/app/common-components/commom-components.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main-container',
@@ -23,9 +24,15 @@ export class MainContainerComponent implements OnInit {
 
   sections : section[] ;
 
-  constructor(private publicSiteService: PublicSiteService, private _scrollToService: ScrollToService, private _CommomComponentsService : CommomComponentsService) { }
+  constructor(
+              private publicSiteService: PublicSiteService,
+              private _scrollToService: ScrollToService,
+              private _CommomComponentsService : CommomComponentsService,
+              private _titleService: Title) { }
 
   ngOnInit(): void {
+
+    this._titleService.setTitle("Massoterapia Integral");
 
     if (this.publicSiteService.LinkVisited)
       this.publicSiteService.navigateTo(this.publicSiteService.LinkVisited);

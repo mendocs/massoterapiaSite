@@ -17,8 +17,8 @@
       <div class="col-6 col-lg-2 ">
         <div class="d-flex flex-column">
           <div class="p-2 shadow">Terapias</div>
-          <div class="p-2 pointer1" *ngFor="let therapy of therapies" >
-            <button type="button" class="btn btn-success text-white border-0 bg-site-strong" (click)="navigateTo(therapy.id)">{{therapy.id}}</button>
+          <div class="p-2 pointer1 text-left" *ngFor="let therapy of therapies" >
+            <button type="button" class="btn btn-success text-left text-white border-0 bg-site-strong" (click)="navigateTo('tag_cloud_spied')">{{therapy.titulo_reduzido}}</button>
 
 
           </div>

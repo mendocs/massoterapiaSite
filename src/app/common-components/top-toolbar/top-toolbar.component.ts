@@ -5,6 +5,8 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { Subscription } from 'rxjs';
 import { PublicSiteService } from 'src/app/public-site/public-site.service';
 import { section } from 'src/app/section/models/Isection';
+import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
+import { therapyCategory } from 'src/app/therapy/models/therapy-category-model';
 import { therapy } from 'src/app/therapy/models/therapy-model';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
 
@@ -15,7 +17,7 @@ import { TherapyDataService } from 'src/app/therapy/services/therapy-data.servic
   styleUrls: ['./top-toolbar.component.scss'],
   providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }]
 })
-export class TopToolbarComponent implements OnInit {
+export class TopToolbarComponent extends BaseComponent implements OnInit {
 
   pathsFirst= ["Sobre"];
   pathsLast= ["Espaço e Terapeuta", "Valores","Contato e Localização", "Blog"];
@@ -24,14 +26,14 @@ export class TopToolbarComponent implements OnInit {
   isCollapsed = true;
 
 
-  therapies : therapy[];
+  therapies : therapyCategory[];
 
   sections : section[] ;
 
   getAllTherapiesSubscription$ : Subscription;
 
   therapiesFile = {
-		next: (_therapies : therapy[]) => this.populateControlsFromTherapies(_therapies),
+		next: (_therapies : therapyCategory[]) => this.populateControlsFromTherapies(_therapies),
 		error: err => this.getError(err),
 		complete: () => {},
 	  };
@@ -39,7 +41,7 @@ export class TopToolbarComponent implements OnInit {
 
   constructor(private publicSiteService: PublicSiteService,
               private therapyDataService : TherapyDataService,
-              private router: Router) { }
+              private router: Router) { super(); }
 
   ngOnInit(): void {
     this.sections = this.publicSiteService.sections;
@@ -51,33 +53,22 @@ export class TopToolbarComponent implements OnInit {
     this.getAllTherapiesSubscription$?.unsubscribe();
   }
 
-  populateControlsFromTherapies(_therapies: therapy[])
-  {
+  populateControlsFromTherapies(_therapies: therapyCategory[]){
     this.therapies = _therapies;
-
   }
 
-  getError(err : HttpErrorResponse): void{
-    console.log(err);
-  }
-
-  navigateTo(navigateId: string)
-  {
+  navigateTo(navigateId: string){
     this.isCollapsed = true;
-
     this.publicSiteService.navigateTo(navigateId);
   }
 
   toggleCollapsed() {
 	  this.isCollapsed = !this.isCollapsed;
-
   }
 
 
   public triggerScrollTo(destination : string) {
-
     this.publicSiteService.triggerScrollTo(destination);
-
   }
 
 }

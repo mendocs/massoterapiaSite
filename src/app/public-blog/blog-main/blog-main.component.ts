@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
 import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
@@ -23,7 +24,8 @@ export class BlogMainComponent extends BaseComponent implements OnInit {
     getAllBlogSubscription$ : Subscription;
 
   constructor(private _PublicBlogService : PublicBlogService,
-              private utilsService : UtilsService) { super(); }
+              private utilsService : UtilsService,
+              private _titleService: Title) { super(); }
 
 
   populateBlogs (_blogs : blogs[]) : void{
@@ -34,6 +36,7 @@ export class BlogMainComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.getAllBlogSubscription$ =  this._PublicBlogService.getAllBlog$().subscribe(this.blogsFile);
+    this._titleService.setTitle("Massoterapia Integral - Blog");
   }
 
   ngOnDestroy() : void{

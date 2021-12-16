@@ -6,6 +6,7 @@ import { AuthService } from '../services/auth.service';
 import { loginResult} from "../models/loginResult"
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -22,9 +23,13 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 
   authenticateSubscription$ : Subscription;
 
-  constructor(private router: Router, private authService : AuthService) { super() }
+  constructor(private router: Router,
+              private authService : AuthService,
+              private _titleService: Title) { super() }
 
   ngOnInit(): void {
+
+    this._titleService.setTitle("Massoterapia Admin - Login");
 
     this.formulario =
 		new FormGroup (

@@ -25,14 +25,27 @@
         </div>
 
 
-          <div class="col-5 aling-self-center">
-            <timepicker id="scheduletime" #scheduletime [readonlyInput]="readonly" [showMeridian]="ismeridian" [(ngModel)]="timepicker" (ngModelChange) = "sincronizeSchedule()"
-            ></timepicker>
+        <div class="col-5 aling-self-center">
+          <timepicker id="scheduletime" #scheduletime [readonlyInput]="readonly" [showMeridian]="ismeridian" [(ngModel)]="timepicker" (ngModelChange) = "sincronizeSchedule()"
+          ></timepicker>
+        </div>
 
-          </div>
+      </div>
 
+      <div class="row h-100" *ngIf="!readonly" >
+        <div class="col-7 align-self-center mb-n4">
+          <mat-form-field appearance="fill">
+            <mat-label>Duração</mat-label>
+            <input type="number" matInput placeholder="" [(ngModel)]="innerValue['Duration']" (ngModelChange) = "sincronizeEndTime()" >
+          </mat-form-field>
+        </div>
 
-    </div>
+        <div class="col-5 align-self-center ">
+          <div>Fim: {{endTimeFormated}}</div>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -70,7 +83,7 @@
       <div  class="row" *ngIf="!readonly">
         <mat-form-field appearance="fill" >
           <mat-label> Comentários  </mat-label>
-          <textarea matInput [(ngModel)]="innerValue['Comments']"   [readonly]="readonly"></textarea> <!--formControlName="comments"-->
+          <textarea matInput [(ngModel)]="innerValue['Comments']"   [readonly]="readonly" ></textarea> <!--formControlName="comments"-->
         </mat-form-field>
       </div>
 

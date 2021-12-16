@@ -17,6 +17,7 @@ import { patientSaved } from '../patient-data/models/patientSavedResult.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UtilsService } from "../../shared-kernel/tools/utils.service";
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 //import { _rollupMoment} from 'moment';
 
 const moment =  _moment;
@@ -61,13 +62,8 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   searchMode=true;
   startDate = new Date(1923, 0,1);
   accordionGroupOpen : boolean[] = [false,false,false,false];
-
   schedulesPopulated = false;
-
   isLoadingSaveData : boolean = false;
-  isLoading : boolean = true;
-  isError : boolean = false;
-  messageErrorLoading : string = "";
   SavedSuccess : boolean = false;
 
 
@@ -118,7 +114,8 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     private router: Router,
     public formBuilder: FormBuilder,
     private authService : AuthService,
-    private utilsService : UtilsService
+    private utilsService : UtilsService,
+    private _titleService: Title
 
     ) { super(formBuilder); }
 
@@ -172,7 +169,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   submitFail():void{}
 
   ngOnInit(): void {
-
+    this._titleService.setTitle("Massoterapia Integral - Área Cliente");
     this.buildFormulario();
     this.getParameters();
     this.removedorSubscription$ =  this.patientService.removedor$.subscribe(this.removeScheduleObserver);
@@ -265,7 +262,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     if (this.savedData == 0)
     {
         this.isError = true;
-        this.messageErrorLoading = "Registro não foi gravado, tente recarregar a pagina e tente novamente";
+        this.messageError = "Registro não foi gravado, tente recarregar a pagina e tente novamente";
     }
     else
       this.SavedSuccess = true;
@@ -282,9 +279,9 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
 
   builddFormArraySchedules() : FormArray {
-    const values = this.patientSelected.Schedules.sort(
-      (a,b)=> new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime()
-      ).map(v => new FormControl(v));
+    const values = this.patientSelected.Schedules
+    .sort((a,b)=> new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime())
+    .map(v => new FormControl(v));
     return this.formBuilder.array(values);
   }
 
@@ -331,7 +328,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
   addSchedule() : void
   {
-    let newschedule : schedule = {StartdDate : new Date(), Comments: "", Confirmed : false, Executed: false , Canceled: false };
+    let newschedule : schedule = new schedule(); //{StartdDate : new Date(), Comments: "", Confirmed : false, Executed: false , Canceled: false };
     this.patientSelected.Schedules.push(newschedule);
     let items = this.formulario.get("Schedules") as FormArray;
     items.push(new FormControl(this.patientSelected.Schedules[this.patientSelected.Schedules.length-1]));

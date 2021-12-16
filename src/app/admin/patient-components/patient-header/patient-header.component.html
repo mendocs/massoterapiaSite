@@ -26,15 +26,26 @@
           ></app-input-field>
         </div>
 
-        <div class="col-3 align-self-center ">
+        <div class="col-2 align-self-center ">
           <app-input-field  formControlName="phone"
 
           [classeCss]="aplicaCssErro('phone')"
           id="phone" label="telefone" [control]="formulario.get('phone')"
           mask="(00)00000-0000"
           placeholder="(__)_____-____"
-
           ></app-input-field>
+        </div>
+
+        <div class="col-1 align-self-center ">
+          <app-input-field
+          *ngIf="!searchMode"
+          formControlName="duration"
+          [classeCss]="aplicaCssErro('duration')"
+          id="phone" label="Duração" [control]="formulario.get('duration')"
+          mask="00"
+          placeholder="__"
+          ></app-input-field>
+
         </div>
 
 
@@ -55,6 +66,8 @@
                 bsDaterangepicker
                 [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', rangeInputFormat: 'DD/MM/YYYY' }">
         </div>
+
+
 
 
 

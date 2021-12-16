@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PublicSiteService } from 'src/app/public-site/public-site.service';
+import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
+import { therapyCategory } from 'src/app/therapy/models/therapy-category-model';
 import { therapy } from 'src/app/therapy/models/therapy-model';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
 import { CommomComponentsService } from '../commom-components.service';
@@ -12,10 +14,10 @@ import { CommomComponentsService } from '../commom-components.service';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent extends BaseComponent implements OnInit {
 
   therapiesFile = {
-		next: (_therapies : therapy[]) => this.populateControlsFromTherapies(_therapies),
+		next: (_therapies : therapyCategory[]) => this.populateControlsFromTherapies(_therapies),
 		error: err =>this.getError(err) ,
 		complete: () => {},
 	  };
@@ -25,7 +27,7 @@ export class FooterComponent implements OnInit {
   whatsapplink : string;
   addressLocalService : string;
 
-  therapies : therapy[];
+  therapies : therapyCategory[];
 
   getAllTherapiesSubscription$ : Subscription;
 
@@ -34,7 +36,7 @@ export class FooterComponent implements OnInit {
     private publicSiteService: PublicSiteService,
     private _CommomComponentsService : CommomComponentsService,
     private router: Router
-    ) { }
+    ) { super(); }
 
   ngOnInit(): void {
 
@@ -51,7 +53,7 @@ export class FooterComponent implements OnInit {
     this.getAllTherapiesSubscription$?.unsubscribe();
   }
 
-  populateControlsFromTherapies(_therapies: therapy[])
+  populateControlsFromTherapies(_therapies: therapyCategory[])
   {
     this.therapies = _therapies;
   }
@@ -59,12 +61,7 @@ export class FooterComponent implements OnInit {
   navigateTo(navigateId: string)
   {
       this.router.navigate(["/"]);
-      this.publicSiteService.SetTherapy(navigateId);
-
-  }
-
-  getError(err : HttpErrorResponse): void{
-    console.log(err);
+      this.publicSiteService.navigateTo(navigateId);
   }
 
 }

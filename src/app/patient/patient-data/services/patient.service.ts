@@ -44,8 +44,6 @@ export class PatientService {
   }
 
 
-
-
   lasPatientCreateStatus() : number{
     return this.lastCreatedPatientStatusCode;
   }

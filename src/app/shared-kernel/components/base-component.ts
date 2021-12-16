@@ -15,7 +15,7 @@ export abstract class BaseComponent implements OnInit {
   }
 
   getError(err : HttpErrorResponse): void{
-    console.log(err);
+
     this.isError = true;
     //this.messageError = err.message;
     this.isLoading = false;
@@ -23,7 +23,7 @@ export abstract class BaseComponent implements OnInit {
     if (err.statusText.includes("Unknown Error") )
       this.messageError =  `Sem conexão com o servidor (${err.message})`;
     else
-      this.messageError = err.message;
+      this.messageError = err.status==400 ? JSON.stringify(err.error) : err.message;
 
 
   }

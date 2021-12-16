@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Subscription } from 'rxjs';
@@ -106,7 +107,8 @@ export class BlogRegisterComponent extends BaseFormComponent implements OnInit  
                 private route: ActivatedRoute,
                 private router: Router,
                 public formBuilder: FormBuilder,
-                private utilsService : UtilsService
+                private utilsService : UtilsService,
+                private _titleService: Title
       ) { super(formBuilder); }
 
 
@@ -181,6 +183,7 @@ export class BlogRegisterComponent extends BaseFormComponent implements OnInit  
     }
 
     ngOnInit(): void {
+      this._titleService.setTitle("Massoterapia Admin - Blog");
       this.buildFormulario();
       this.getParameters();
 

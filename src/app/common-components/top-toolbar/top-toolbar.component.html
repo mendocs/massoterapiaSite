@@ -30,8 +30,8 @@
         <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu bg-site-middle"
         role="menu" aria-labelledby="button-animated">
           <li class="nav-item" role="menuitem" *ngFor="let therapy of therapies" >
-            <a class="nav-link pointer" (click)="navigateTo(therapy.id)">
-              <h5 class="">{{therapy.id}}</h5>
+            <a class="nav-link pointer" (click)="navigateTo('tag_cloud_spied')">
+              <h5 class="">{{therapy.titulo_reduzido}}</h5>
             </a>
           </li>
         </ul>

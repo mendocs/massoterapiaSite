@@ -90,7 +90,7 @@ export class PublicSiteService {
     //para dar tempo do navbar fechar, ajustar o scroll e depois posicionar
     setTimeout(()=>{
         if (navigateId.includes("spied"))
-          this.triggerScrollTo(navigateId)
+          this.triggerScrollTo(navigateId);
         else if (navigateId.includes("ext")) //externo
           this.router.navigate(["/blog"]);
         else

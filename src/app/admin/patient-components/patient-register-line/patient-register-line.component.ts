@@ -33,8 +33,12 @@ export class PatientRegisterLineComponent implements OnInit {
 
     this.patientViewModelSearchListFromDB = this.getScheduleInRange(this.patientRegisters,this.SearchDateRange)
 
+
     if (this.SearchDateRange?.length==2)
+    {
       this.patientViewModelSearchListFromDB = this.setIntervalDescription(this.patientViewModelSearchListFromDB);
+      this.patientViewModelSearchListFromDB = this.setFirstIntervalDescription(this.patientViewModelSearchListFromDB);
+    }
   }
 
   getDateFormated(patientCurrent: patientList) : string
@@ -48,8 +52,6 @@ export class PatientRegisterLineComponent implements OnInit {
   {
     return this.utilsService.getDateFormated(dateBase);
   }
-
-
 
 
   getLastSchedule(patientCurrent: patientList) : schedule
@@ -90,8 +92,9 @@ export class PatientRegisterLineComponent implements OnInit {
                                                                                                     new Date(scheduleCurrent.StartdDate),
                                                                                                     scheduleCurrent.Executed,
                                                                                                     scheduleCurrent.Confirmed,
-                                                                                                    `${this.utilsService.getDateFormated(scheduleCurrent.StartdDate)} (${index +1})`,
-                                                                                                    true);
+                                                                                                    `${this.utilsService.getDateFormated(scheduleCurrent.StartdDate)} - ${this.utilsService.getDateFormatedHourMinutes(scheduleCurrent.EndDate)} (${index +1})`,
+                                                                                                    true,
+                                                                                                    scheduleCurrent.Duration);
             _patientViewModelSearchListFromDB.push(_patientViewModelSearchList);
             this.patientViewModelSearchListFromDBCount++;
 
@@ -113,17 +116,38 @@ export class PatientRegisterLineComponent implements OnInit {
 
     let data1 :Date;
     let data2 : Date;
+    let duration : number;
 
     for (var i = 0; i < _patientViewModelSearchListFromDB.length; i = i+2) {
       try{
         data1 = _patientViewModelSearchListFromDB[i].scheduleStart;
+        duration = _patientViewModelSearchListFromDB[i].scheduleDuration;
         data2 = _patientViewModelSearchListFromDB[i+2].scheduleStart;
-        _patientViewModelSearchListFromDB[i+1].description = this.utilsService.getSchedulAvaliableDescription(data1,data2);
-        _patientViewModelSearchListFromDB[i+1].phone = this.utilsService.getIntervalDescription(data1,data2);
-      }  catch (e) {}
+
+        _patientViewModelSearchListFromDB[i+1].description = this.utilsService.getSchedulAvaliableDescription(data1,duration,data2);
+        _patientViewModelSearchListFromDB[i+1].phone = this.utilsService.getIntervalDescription(data1,duration,data2);
+      }  catch (e) {
+        _patientViewModelSearchListFromDB[i+1].description = this.utilsService.getSchedulAvaliableDescription(data1,duration,null);
+      }
     }
 
     return _patientViewModelSearchListFromDB;
+
+  }
+
+  setFirstIntervalDescription(_patientViewModelSearchListFromDB : patientViewModelSearchList[]) : patientViewModelSearchList[]
+  {
+
+    if (_patientViewModelSearchListFromDB.length > 0)
+    {
+      let patientListt = this.getPatientViewModelSearchList(_patientViewModelSearchListFromDB[0].scheduleStart);
+
+      patientListt.description = this.utilsService.getSchedulAvaliableDescription(null,0,_patientViewModelSearchListFromDB[0].scheduleStart);
+
+      _patientViewModelSearchListFromDB.unshift(patientListt);
+
+      return _patientViewModelSearchListFromDB;
+    }
 
   }
 
@@ -142,7 +166,8 @@ export class PatientRegisterLineComponent implements OnInit {
       null,
       null,
       "",
-      false);
+      false,
+      0);
 
       return _patient;
 

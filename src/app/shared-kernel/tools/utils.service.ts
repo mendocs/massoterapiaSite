@@ -12,7 +12,7 @@ export class UtilsService {
   getDateFormated(dateCurrent: Date) : string
   {
     let data : Date = new Date(dateCurrent);
-    return `${this.formatNumber2Digts(data.getDate())}/${ this.formatNumber2Digts((data.getMonth() + 1)) }/${this.formatNumber2Digts( data.getFullYear())} as ${this.formatNumber2Digts(data.getHours())}:${this.formatNumber2Digts(data.getMinutes())}`;
+    return `${this.formatNumber2Digts(data.getDate())}/${ this.formatNumber2Digts((data.getMonth() + 1)) }/${this.formatNumber2Digts( data.getFullYear())} as ${this.getDateFormatedHourMinutes(data)}`;
   }
 
   getDateFormatedHourMinutes(dateCurrent: Date) : string
@@ -39,22 +39,36 @@ export class UtilsService {
     return this.formatNumber2Digts(rhours) + ":" + this.formatNumber2Digts(rminutes);
   }
 
-  getSchedulAvaliableDescription(date1: Date, date2: Date) : string
+  getSchedulAvaliableDescription(date1: Date, duration : number , date2: Date) : string
   {
+    let dt1: Date = new Date();
     var returnDescription :string = "Agenda: ";
 
-    let dt1: Date = new Date(date1);
-    let dt2: Date = new Date(date2);
+    if (date1){
+      dt1 = new Date(date1);
+      dt1.setMinutes(dt1.getMinutes() + duration);
+    }
 
-    dt1.setMinutes(dt1.getMinutes() + 50);
-    dt2.setMinutes(dt2.getMinutes() -50);
-
-    let interval : number = this.getIntervalMinutes(dt1,dt2);
-
-    if (interval >= 0)
-      returnDescription += `${this.getDateFormatedHourMinutes(dt1)} ~ ${this.getDateFormatedHourMinutes(dt2)}`;
+    if (!date2)
+      returnDescription += `${this.getDateFormatedHourMinutes(dt1)} em diante`;
+    else if (!date1)
+    {
+      let dt2: Date = new Date(date2);
+      dt2.setMinutes(dt2.getMinutes() - 50);
+      returnDescription += `Antes de ${this.getDateFormatedHourMinutes(dt2)} `;
+    }
     else
-      returnDescription += "indisponível";
+    {
+      let dt2: Date = new Date(date2);
+      dt2.setMinutes(dt2.getMinutes() - 50); //50 duração minima estimada para agenda livre
+
+      let interval : number = this.getIntervalMinutes(dt1,dt2);
+
+      if (interval >= 0)
+        returnDescription += `${this.getDateFormatedHourMinutes(dt1)} ~ ${this.getDateFormatedHourMinutes(dt2)}`;
+      else
+        returnDescription += "indisponível";
+    }
 
     return returnDescription;
 
@@ -70,19 +84,20 @@ export class UtilsService {
     return Math.round(diff);
   }
 
-  getIntervalDescription(date1: Date, date2: Date) : string
+  getIntervalDescription(date1: Date, duration : number, date2: Date) : string
   {
     let dt1: Date = new Date(date1);
 
     var returnDescription :string = "";
 
-    dt1.setMinutes(dt1.getMinutes() + 50);
+    dt1.setMinutes(dt1.getMinutes() + duration); //50);
 
     let interval : number = this.getIntervalMinutes(dt1,date2);
+
     if (interval >0)
       return  "intervalo: " + this.timeConvert(interval);
     else
-    return  "intervalo: 00" ;
+      return  "intervalo: 00" ;
   }
 
   removeAccent(text : string) : string

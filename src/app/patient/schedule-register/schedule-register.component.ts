@@ -13,6 +13,7 @@ import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from 
 import { InputFieldComponent } from 'src/app/shared-kernel/forms/input-field/input-field.component';
 import { schedule } from '../patient-data/models/schedule.model';
 import { PatientService } from '../patient-data/services/patient.service';
+import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
 
 const moment =  _moment;
 
@@ -66,9 +67,12 @@ export class ScheduleRegisterComponent implements OnInit , ControlValueAccessor 
   ismeridian: boolean = false;
   innerValue: schedule = new schedule;
   timepicker : Date;
+  endTime : Date;
+  endTimeFormated : string;
 
 
-  constructor(private patientService : PatientService) { }
+  constructor(private patientService : PatientService,
+              private utilsService : UtilsService) { }
 
 
 	get value() {
@@ -82,6 +86,7 @@ export class ScheduleRegisterComponent implements OnInit , ControlValueAccessor 
       this.innerValue = v;
       this.innerValue.StartdDate = new Date (this.innerValue.StartdDate);
       this.timepicker = new Date (this.innerValue.StartdDate);
+      this.sincronizeEndTime();
 
       this.onChangeCb(v);
       }
@@ -137,12 +142,20 @@ export class ScheduleRegisterComponent implements OnInit , ControlValueAccessor 
 
 	}
 
+sincronizeEndTime() : void
+{
+  //this.endTime = this.innerValue.StartdDate;
+  this.endTime = new Date(this.innerValue.StartdDate.getTime() + (this.innerValue.Duration * 60 * 1000))
+  this.endTimeFormated = this.utilsService.getDateFormatedHourMinutes(this.endTime);
+}
 
-  sincronizeSchedule() : void
+
+sincronizeSchedule() : void
 {
   this.innerValue.StartdDate = new Date (this.innerValue.StartdDate);
-  this.innerValue.StartdDate.setHours(this.timepicker.getHours())
-  this.innerValue.StartdDate.setMinutes(this.timepicker.getMinutes())
+  this.innerValue.StartdDate.setHours(this.timepicker.getHours());
+  this.innerValue.StartdDate.setMinutes(this.timepicker.getMinutes());
+  this.sincronizeEndTime();
 }
 
 

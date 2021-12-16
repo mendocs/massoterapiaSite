@@ -5,6 +5,7 @@ import { blogs } from 'src/app/public-blog/models/blogs.model';
 import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
 import { AdminBlogService } from '../services/admin-blog.service';
 import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog-list',
@@ -32,11 +33,12 @@ export class BlogListComponent extends BaseComponent implements OnInit {
 
   constructor(
     private _AdminBlogService: AdminBlogService,
-    private _UtilsService : UtilsService
+    private _UtilsService : UtilsService,
+    private _titleService: Title
     ) { super(); }
 
   ngOnInit(): void {
-
+    this._titleService.setTitle("Massoterapia Admin - Blog");
     this.isLoading = true;
     this.getAllBlogSubscription$ = this._AdminBlogService.getAllBlog$().subscribe(this.blogsFile);
   }
