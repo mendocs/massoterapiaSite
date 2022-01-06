@@ -42,6 +42,7 @@ export const MY_FORMATS = {
   templateUrl: './patient-register.component.html',
   styleUrls: ['./patient-register.component.scss'],
   providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
@@ -64,9 +65,10 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   accordionGroupOpen : boolean[] = [false,false,false,false];
   schedulesPopulated = false;
   isLoadingSaveData : boolean = false;
-  SavedSuccess : boolean = false;
+  //SavedSuccess : boolean = false;
+  //isLoading: boolean = true;
 
-
+  //recordSuccess: boolean = false;
 
   Motivation = ['Relaxamento', 'Terapêutico', 'Apoio ao esporte', 'Estética'];
   Disease = ['Hipertensão Arterial', 'Hipotensão Arterial', 'Diabetes'];
@@ -117,7 +119,10 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     private utilsService : UtilsService,
     private _titleService: Title
 
-    ) { super(formBuilder); }
+    ) {
+      super(formBuilder);
+      this.isLoading = true;
+    }
 
 
   getError(err : HttpErrorResponse): void{
@@ -232,6 +237,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
         SubcutaneousOther: new FormControl(''),
         Surgeries: new FormControl(''),
         FamilyIllnessess: new FormControl(''),
+        scheduleData: new FormControl(new schedule())
       }
       );
 
@@ -265,7 +271,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
         this.messageError = "Registro não foi gravado, tente recarregar a pagina e tente novamente";
     }
     else
-      this.SavedSuccess = true;
+      this.recordSuccess = true;
   }
 
 

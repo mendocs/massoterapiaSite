@@ -8,6 +8,11 @@ import { DashboardService } from '../../services/dashboard.service';
 import { ThrowStmt } from '@angular/compiler';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { schedule } from 'src/app/patient/patient-data/models/schedule.model';
+//import { BsLocaleService } from 'ngx-bootstrap/datepicker/bs-locale.service';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { listLocales } from 'ngx-bootstrap/chronos';
+//import { BsLocaleService, defineLocale, itLocale } from 'ngx-bootstrap/bs-moment';
 
 
 
@@ -29,70 +34,64 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
   searchPatientSubscription$ : Subscription;
   createPatientSubscription$ : Subscription;
 
+  locale = 'pt-br';
+  locales = listLocales();
+
   patientObserver = {
 		next: (newPatient : patientList[]) => this.getNewpatient(newPatient),
 		error: err => this.getError(err) ,
 		complete: () => {},
 	  };
 
-  constructor(private patientService : PatientService, private dashboardService: DashboardService) { super();}
+  constructor(private patientService : PatientService,
+              private dashboardService: DashboardService,
+              private _localeService: BsLocaleService) { super();
 
-submit(): void{
+                this._localeService.use(this.locale);
+              }
 
-  this.isLoading = true;
-  this.showPatient = false;
-  this.isError = false;
-  var patientCurrentForm = Object.assign(new patientForm, this.formulario.value);
-
-  if(this.formulario.get("formMode").value)
-    this.searchPatientSubscription$ =  this.patientService.searchPatient(patientCurrentForm).subscribe(this.patientObserver);
-  else
-    this.createPatientSubscription$ =  this.patientService.createPatient(patientCurrentForm).subscribe(this.patientObserver);
-
-  this.dashboardService.saveDashboardForm(patientCurrentForm) ;
-
-}
-
-submitFail():void{}
-
-getNewpatient(newPatient : patientList[]): void{
-
-
-  this.newPatient = newPatient;
-  this.showPatient = true;
-  this.isLoading = false;
-
-  if (this.patientService.lasPatientCreateStatus() == 200)
-  {
-    this.isError = true;
-    this.messageError = "Paciente já existente";
-  }
-  else
+  submit(): void{
+    this.isLoading = true;
+    this.showPatient = false;
     this.isError = false;
+    var patientCurrentForm = Object.assign(new patientForm, this.formulario.value);
 
-}
+    if(this.formulario.get("formMode").value)
+      this.searchPatientSubscription$ =  this.patientService.searchPatient(patientCurrentForm).subscribe(this.patientObserver);
+    else
+      this.createPatientSubscription$ =  this.patientService.createPatient(patientCurrentForm).subscribe(this.patientObserver);
 
+    this.dashboardService.saveDashboardForm(patientCurrentForm) ;
+  }
 
+  submitFail():void{}
 
+  getNewpatient(newPatient : patientList[]): void{
+    this.newPatient = newPatient;
+    this.showPatient = true;
+    this.isLoading = false;
 
+    if (this.patientService.lasPatientCreateStatus() == 200)
+    {
+      this.isError = true;
+      this.messageError = "Paciente já existente";
+    }
+    else
+      this.isError = false;
+  }
 
   ngOnInit(): void {
-
     this.formulario =
     new FormGroup (
       {
         phone : new FormControl(''),
         name:  new FormControl(''),
         scheduledateRange:  new FormControl() ,
-        scheduledate:  new FormControl(new Date(), ),
-        scheduletime:  new FormControl(new Date(), ),
         formMode :  new FormControl(false) ,
-        duration:  new FormControl('50')
+        scheduleData: new FormControl(new schedule())
       }
       );
-
       this.chooseFormMode();
-
       this.getSavedForm();
   }
 
@@ -117,7 +116,6 @@ getNewpatient(newPatient : patientList[]): void{
 
   chooseFormMode(): void
   {
-
     this.searchMode = this.formulario.get("formMode").value;
     if (this.formulario.get("formMode").value )
     {
@@ -128,7 +126,6 @@ getNewpatient(newPatient : patientList[]): void{
     {
       this.formulario.get("phone").setValidators([Validators.required, Validators.minLength(11), Validators.maxLength(11)]);
       this.formulario.get("name").setValidators([ Validators.required, Validators.minLength(3)]);
-      this.formulario.get("duration").setValidators([ Validators.required, Validators.minLength(2)]);
     }
     this.formulario.get("phone").updateValueAndValidity();
     this.formulario.get("name").updateValueAndValidity();

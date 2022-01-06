@@ -6,6 +6,11 @@ export class schedule {
   public Executed: boolean;
   public Canceled: boolean;
   public Duration: number;
+  public Protocol: string;
+  public Price: number;
+  public Package: string;
+  public PackageSession: number;
+
 
   constructor(
     ) {
@@ -16,9 +21,12 @@ export class schedule {
       this.Executed = false;
       this.Canceled = false;
       this.Duration = 50;
+      this.Protocol = "";
+      this.Price = 0;
+      this.Package = "";
+      this.PackageSession = 0;
 
-      this.EndDate = this.StartdDate;
-      this.EndDate.setMinutes(this.Duration);
+      this.EndDate = new Date(this.StartdDate.getTime() + (this.Duration * 60 * 1000));
 
 }
 

@@ -9,20 +9,22 @@ import { PatientService} from "../patient/patient-data/services/patient.service"
 import { PatientRegisterComponent } from "./patient-register/patient-register.component"
 import { ScheduleRegisterComponent } from "./schedule-register/schedule-register.component"
 import { CommonComponentsModule } from '../common-components/common-components.module';
+import { AdminModule } from '../admin/admin.module';
 
 
 
 @NgModule({
   declarations: [
     PatientRegisterComponent,
-    ScheduleRegisterComponent
+    /*ScheduleRegisterComponent*/
   ],
   imports: [
+    AdminModule,
     CommonModule,
     CommonComponentsModule,
     PatientRoutingModule,
     SharedKernelModule
   ],
-  providers: [PatientService, ScheduleRegisterComponent]
+  providers: [PatientService, /*ScheduleRegisterComponent*/]
 })
 export class PatientModule { }

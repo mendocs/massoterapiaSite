@@ -1,0 +1,67 @@
+@import "../../shared-kernel/css/mediaqueries.scss";
+
+#bottom {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+
+.border-3 {
+  border-width:8px !important;
+  border-color: black !important;
+
+}
+
+/*
+.left-side
+{
+  transform: translate(10%,25px);
+  z-index: 4;
+}
+
+.right-side
+{
+  transform: translate(0%,-105px);
+  z-index: 1;
+}
+
+*/
+
+@include respond-above(md) { //lg
+  /*
+  .left-side
+  {
+    transform: translate(15%,25px);
+    z-index: 2;
+  }
+
+  .right-side
+  {
+    transform: translate(-15%,-25px);
+    z-index: 4;
+  }
+*/
+
+}
+
+@include respond-above(lg) { //xl
+
+  .circle-protocol-title
+  {
+    transform: translate(-10px,0px);
+    z-index: 1;
+  }
+
+  .category-title
+  {
+    transform: translate(0px,-50px);
+    z-index: 4;
+  }
+
+  .protocol-title
+  {
+    transform: translate(0px,-30px);
+    z-index: 4;
+  }
+
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScrollToConfigOptions, ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { section } from '../section/models/Isection';
 
 @Injectable({
@@ -17,6 +17,8 @@ export class PublicSiteService {
 
 
   public currentSection:string = 'home_spied';
+
+  public menuProtocols$ : Subject<boolean> = new Subject<boolean>();
 
   constructor(private _scrollToService: ScrollToService, private router: Router) {
 
@@ -41,6 +43,10 @@ export class PublicSiteService {
   }
 
 
+  closeMenuProtocols() : void
+  {
+    this.menuProtocols$.next(false);
+  }
 
 
   goBackTherapy() : void

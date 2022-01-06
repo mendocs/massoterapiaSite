@@ -389,7 +389,7 @@
          formArrayName="Schedules"
          *ngFor="let item of getSchedules(); let i = index" >
 
-         <app-schedule-register [formControlName]="i" [index]="i"  [readonly]= "!isAuthenticated()"></app-schedule-register>
+         <app-schedule-register [formControlName]="i" [index]="i" [removeButtonActive]="isAuthenticated()"  [readonly]= "!isAuthenticated()"></app-schedule-register>
        </div>
      </div>
 
@@ -401,7 +401,7 @@
         </div>
       </div>
 
-      <app-success-message [recordSuccess]="SavedSuccess"></app-success-message>
+      <app-success-message [recordSuccess]="recordSuccess"></app-success-message>
 
     </div>
 

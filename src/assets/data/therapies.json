@@ -1,11 +1,83 @@
 [
   {
-    "categoria" : "Massagens para relaxar",
+    "categoria" : "finalidade estética",
+    "titulo_reduzido" : "Estética",
+    "image" : "modeladora",
+    "cor" : "#f8cde9",
+    "image_background" : "fundo_estetica.png",
+    "protocolos": [
+              {
+                "id": "Shiatsu",
+                "titulo_reduzido" : "Shiatsu",
+                "duracao" : 70,
+                "preco" : 110,
+                "titulo" : "Massagem oriental Shiatsu (terapêutica) e auriculoterapia",
+                "background" : "shiatsu",
+                "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
+                "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
+                "beneficiosTitulo" : "A massoterapia lida com:",
+                "beneficios" :[
+                                "Alívio de dores 1" ,
+                                "Melhora da circulação sanguínea e linfática 1" ,
+                                "Melhora da nutrição dos tecidos 1"
+                              ],
+                "outrasInformacoesTitulo": "Outras técnicas integrativas",
+                "outrasInformacoes" : [
+                                "Trombose" ,
+                                "Marcapasso" ,
+                                "Insuficiência cardíaca, renal e pulmonar"
+                            ]
+              },
+              {
+                "id": "TUI NA",
+                "titulo_reduzido" : "tui na",
+                "duracao" : 80,
+                "preco" : 120,
+                "titulo" : "Massagem oriental Tui Na (terapêutica e relaxante)",
+                "background" : "tuina",
+                "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
+                "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
+                "beneficiosTitulo" : "A massoterapia lida com:",
+                "beneficios" :[
+                                "Alívio de dores 1" ,
+                                "Melhora da circulação sanguínea e linfática 1" ,
+                                "Melhora da nutrição dos tecidos 1"
+                              ],
+                "outrasInformacoesTitulo": "Outras técnicas integrativas",
+                "outrasInformacoes" : [
+                                "Trombose" ,
+                                "Marcapasso" ,
+                                "Insuficiência cardíaca, renal e pulmonar"
+                            ]
+              }
+             ],
+    "pacotes":[
+                {
+                  "titulo" : "Estetica 1",
+                  "sessoes" : 4,
+                  "preco" : 180,
+                  "descricao" : "São 4 sessões com scalda pes e tuiná"
+                },
+                {
+                  "titulo" : "Estetica 2",
+                  "sessoes" : 5,
+                  "preco" : 250,
+                  "descricao" : "São 5 sessões com scalda pes e tuiná"
+                }
+              ]
+  },
+  {
+    "categoria" : "relaxar",
     "titulo_reduzido" : "Relaxantes",
     "image" : "massoterapia",
-    "tipos": [
+    "cor" : "#cccc99",
+    "image_background" : "fundo_estetica.png",
+    "protocolos": [
                 {
                   "id": "Massoterapia",
+                  "titulo_reduzido" : "óleos Essenciais",
+                  "duracao" : 50,
+                  "preco" : 80,
                   "titulo" : "Massagem relaxante com óleos essenciais",
                   "background" : "massoterapia",
                   "resumido": "Os vários estilos dessa antiga terapia são capazes de promover benefícios físicos, fisiológicos, energéticos e emocionais para a saúde e qualidade de vida",
@@ -28,6 +100,9 @@
                 },
                 {
                   "id": "Relaxante",
+                  "titulo_reduzido" : "escalda pés",
+                  "duracao" : 40,
+                  "preco" : 75,
                   "titulo" : "Spa dos pés (escalda-pés, massagem relaxante nos pés e ventosaterapia nos pés",
                   "background" : "relaxante",
                   "resumido": "Relaxamento muscular e geral do organismo",
@@ -45,16 +120,34 @@
                                   "Insuficiência cardíaca, renal e pulmonar"
                               ]
                 }
+             ],
+    "pacotes":[
+                {
+                  "titulo" : "Pacote Relaxar 1",
+                  "sessoes" : 4,
+                  "preco" : 180,
+                  "descricao" : "São 4 sessões com scalda pes e tuiná"
+                },
+                {
+                  "titulo" : "Pacote Relaxar 2",
+                  "sessoes" : 5,
+                  "preco" : 250,
+                  "descricao" : "São 5 sessões com scalda pes e tuiná"
+                }
               ]
-
   },
   {
-    "categoria" : "Massagens para dores e desconfortos",
+    "categoria" : "dores e desconfortos",
     "titulo_reduzido" : "Dores e Desconfortos",
     "image" : "tuina",
-    "tipos": [
+    "cor" : "#b4ccb0",
+    "image_background" : "fundo_estetica.png",
+    "protocolos": [
                 {
                   "id": "Terapêutica",
+                  "titulo_reduzido" : "tui na",
+                  "duracao" : 35,
+                  "preco" : 70,
                   "titulo" : "Massagem oriental Tui Na (terapêutica e relaxante)",
                   "background" : "terapeutica",
                   "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
@@ -74,6 +167,9 @@
                 },
                 {
                   "id": "Modeladora",
+                  "titulo_reduzido" : "spa rosto",
+                  "duracao" : 30,
+                  "preco" : 65,
                   "titulo" : "Spa do rosto e cabeça (higienização do rosto, massagem relaxante na cabeça e rosto e máscara facial)",
                   "background" : "modeladora",
                   "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
@@ -91,15 +187,34 @@
                                   "Insuficiência cardíaca, renal e pulmonar"
                               ]
                 }
-             ]
+             ],
+    "pacotes":[
+                {
+                  "titulo" : "Pacote dores 1",
+                  "sessoes" : 4,
+                  "preco" : 180,
+                  "descricao" : "São 4 sessões com scalda pes e tuiná"
+                },
+                {
+                  "titulo" : "Pacote dores 2",
+                  "sessoes" : 5,
+                  "preco" : 250,
+                  "descricao" : "São 5 sessões com scalda pes e tuiná"
+                }
+              ]
   },
   {
-    "categoria" : "Massagens para praticantes de esportes (Tratar dores e melhorar rendimento)",
+    "categoria" : "praticantes de esportes ",
     "titulo_reduzido" : "Prática de Esportes",
     "image" : "desportiva",
-    "tipos": [
+    "cor" : "#999999",
+    "image_background" : "fundo_estetica.png",
+    "protocolos": [
               {
                 "id": "Desportiva",
+                "titulo_reduzido" : "desportiva bambu",
+                "duracao" : 25,
+                "preco" : 60,
                 "titulo" : "Massagem desportiva e bambuterapia",
                 "background" : "desportiva",
                 "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
@@ -119,6 +234,9 @@
               },
               {
                 "id": "Linfática",
+                "titulo_reduzido" : "linfatica",
+                "duracao" : 20,
+                "preco" : 55,
                 "titulo" : "Drenagem linfática facial (higienização do rosto, drenagem linfática facial e máscara facial)",
                 "background" : "linfatica",
                 "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
@@ -136,53 +254,24 @@
                                 "Insuficiência cardíaca, renal e pulmonar"
                             ]
               }
-             ]
-  },
-  {
-    "categoria" : "Massagens com finalidade estética",
-    "titulo_reduzido" : "Estética",
-    "image" : "modeladora",
-    "tipos": [
-              {
-                "id": "Shiatsu",
-                "titulo" : "Massagem oriental Shiatsu (terapêutica) e auriculoterapia",
-                "background" : "shiatsu",
-                "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
-                "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
-                "beneficiosTitulo" : "A massoterapia lida com:",
-                "beneficios" :[
-                                "Alívio de dores 1" ,
-                                "Melhora da circulação sanguínea e linfática 1" ,
-                                "Melhora da nutrição dos tecidos 1"
-                              ],
-                "outrasInformacoesTitulo": "Outras técnicas integrativas",
-                "outrasInformacoes" : [
-                                "Trombose" ,
-                                "Marcapasso" ,
-                                "Insuficiência cardíaca, renal e pulmonar"
-                            ]
-              },
-              {
-                "id": "TUI NA",
-                "titulo" : "Massagem oriental Tui Na (terapêutica e relaxante)",
-                "background" : "tuina",
-                "resumido": "Tratamento e alívio de dores; relaxamento muscular e geral do organismo.",
-                "detalhado": "A massagem terapêutica busca utilizar manobras de massagem e técnicas integrativas que visem o tratamento e o alívio das queixas apresentadas pela cliente. Para além da melhora dos sintomas que incomodam a cliente, a massagem terapêutica promove o relaxamento muscular e geral do organismo. Através de manobras de deslizamento, pressão, fricção, amassamento e percussão, o massoterapeuta consegue atuar sobre vários sistemas, trazer inúmeras melhorias e benefícios; veja a lista abaixo.  O massoterapeuta pode integrar técnicas para que o melhor resultado seja atingido, como: Shiatsu, reflexologia podal, reflexologia manual, escalda-pés, auriculoterapia, ventosaterapia, moxaterapia, termoterapia, cromoterapia e aromaterapia. Todas as técnicas são avaliadas como tratamento de acordo com as queixas, necessidades e características fisiológicas da cliente e em concordância com esta. A massagem terapêutica não pretende substituir qualquer tratamento médico, sua intenção é ser uma aliada na busca de uma vida com menos dor e incômodos e com maior qualidade e bem-estar.",
-                "beneficiosTitulo" : "A massoterapia lida com:",
-                "beneficios" :[
-                                "Alívio de dores 1" ,
-                                "Melhora da circulação sanguínea e linfática 1" ,
-                                "Melhora da nutrição dos tecidos 1"
-                              ],
-                "outrasInformacoesTitulo": "Outras técnicas integrativas",
-                "outrasInformacoes" : [
-                                "Trombose" ,
-                                "Marcapasso" ,
-                                "Insuficiência cardíaca, renal e pulmonar"
-                            ]
-              }
-             ]
+             ],
+    "pacotes":[
+                {
+                  "titulo" : "Esportivo 1",
+                  "sessoes" : 4,
+                  "preco" : 180,
+                  "descricao" : "São 4 sessões com scalda pes e tuiná"
+                },
+                {
+                  "titulo" : "Esportivo 2",
+                  "sessoes" : 5,
+                  "preco" : 250,
+                  "descricao" : "São 5 sessões com scalda pes e tuiná"
+                }
+              ]
+
   }
+
 ]
 
 

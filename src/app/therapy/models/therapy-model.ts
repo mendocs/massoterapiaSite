@@ -1,5 +1,8 @@
 export class therapy {
 	public id: string;
+  public titulo_reduzido: string;
+  public duracao: number;
+  public preco: number;
 	public background: string;
 	public resumido: string;
   public detalhado: string;
@@ -7,4 +10,5 @@ export class therapy {
   public beneficios: string[];
   public outrasInformacoesTitulo : string;
   public outrasInformacoes: string[];
+
 }

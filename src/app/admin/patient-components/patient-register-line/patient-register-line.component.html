@@ -8,6 +8,7 @@
         <th>Paciente</th>
         <th>telefone</th>
         <th>Atendimento ({{patientViewModelSearchListFromDBCount}})</th>
+        <th>Protocolo | Pacote </th>
         <th>confirmada</th>
         <th>executada</th>
       </tr>
@@ -34,6 +35,11 @@
       </div>
       <div *ngIf = "!patientSelected.lineSchedule">
         <div class="text-success">{{patientSelected.description}}</div>
+      </div>
+    </td>
+    <td>
+      <div *ngIf = "patientSelected.lineSchedule" >
+        {{patientSelected.protocol}}
       </div>
     </td>
     <td>

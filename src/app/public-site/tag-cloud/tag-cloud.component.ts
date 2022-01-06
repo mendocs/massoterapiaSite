@@ -43,7 +43,7 @@ export class TagCloudComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getAllTherapiesSubscription$ =  this.therapyDataService.getAllTherapies().subscribe(this.therapiesFile);
+    this.getAllTherapiesSubscription$ =  this.therapyDataService.getAlltherapyCategories().subscribe(this.therapiesFile);
 
   }
 

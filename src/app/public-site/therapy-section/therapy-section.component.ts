@@ -46,12 +46,12 @@ export class TherapySectionComponent extends BaseComponent implements OnInit {
 
 
 
-
   constructor(private publicSiteService: PublicSiteService, private therapyDataService : TherapyDataService, private _CommomComponentsService : CommomComponentsService) { super(); }
 
   ngOnInit(): void {
       this.selectTherapySubscription$ = this.publicSiteService.selectTherapy$.subscribe( valor =>
             this.therapyDataService.getTherapyByName(valor).pipe(takeWhile(() => this.SubscriptionAlive)).subscribe(this.therapiesFile));
+
 
       this.phoneContactMask = this._CommomComponentsService.phoneContactMask;
       this.phoneContactNoMask = this._CommomComponentsService.phoneContactNoMask;

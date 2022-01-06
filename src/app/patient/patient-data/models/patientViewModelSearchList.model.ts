@@ -8,6 +8,7 @@ export class patientViewModelSearchList {
   public description: string;
   public lineSchedule: boolean;
   public scheduleDuration: number;
+  public protocol : string;
 
   constructor(_key : string,
               _name: string ,
@@ -17,7 +18,8 @@ export class patientViewModelSearchList {
               _confirmed: boolean,
               _description : string,
               _lineSchedule: boolean,
-              _scheduleDuration: number) {
+              _scheduleDuration: number,
+              _protocol : string) {
 
      this.key = _key;
      this.name = _name;
@@ -28,6 +30,7 @@ export class patientViewModelSearchList {
      this.description = _description;
      this.lineSchedule = _lineSchedule;
      this.scheduleDuration = _scheduleDuration;
+     this.protocol = _protocol;
 
   }
 }

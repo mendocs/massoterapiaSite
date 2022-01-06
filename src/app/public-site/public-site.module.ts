@@ -13,6 +13,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PriceComponent } from './price/price.component';
 import { RouterModule } from '@angular/router';
 import { CommonComponentsModule } from '../common-components/common-components.module';
+import { TherapyCategoryMenuComponent } from './therapy-category-menu/therapy-category-menu.component';
 
 
 
@@ -25,7 +26,8 @@ import { CommonComponentsModule } from '../common-components/common-components.m
     TherapySectionComponent,
     TherapistComponent,
     ContactComponent,
-    PriceComponent
+    PriceComponent,
+    TherapyCategoryMenuComponent
     ],
   imports: [
     CommonModule,

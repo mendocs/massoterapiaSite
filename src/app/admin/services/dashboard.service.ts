@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { patientForm } from 'src/app/patient/patient-data/models/patientViewModelForm.model';
 import {dashboardFields } from "../models/dashboard-fields"
 
 @Injectable({
@@ -6,18 +7,18 @@ import {dashboardFields } from "../models/dashboard-fields"
 })
 export class DashboardService {
 
-  dashboardForm : dashboardFields
+  dashboardForm : patientForm
 
   constructor() {}
 
 
-  saveDashboardForm (dashboardCurrentForm : dashboardFields ) : void
+  saveDashboardForm (dashboardCurrentForm : patientForm ) : void
   {
     this.dashboardForm = dashboardCurrentForm;
   }
 
 
-  getDashboardForm () : dashboardFields
+  getDashboardForm () : patientForm
   {
     return this.dashboardForm;
   }

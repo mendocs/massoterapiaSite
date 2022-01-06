@@ -26,7 +26,7 @@
           ></app-input-field>
         </div>
 
-        <div class="col-2 align-self-center ">
+        <div class="col-2 align-self-center">
           <app-input-field  formControlName="phone"
 
           [classeCss]="aplicaCssErro('phone')"
@@ -36,48 +36,19 @@
           ></app-input-field>
         </div>
 
-        <div class="col-1 align-self-center ">
-          <app-input-field
-          *ngIf="!searchMode"
-          formControlName="duration"
-          [classeCss]="aplicaCssErro('duration')"
-          id="phone" label="Duração" [control]="formulario.get('duration')"
-          mask="00"
-          placeholder="__"
-          ></app-input-field>
+        <div class="col-5  align-self-center">
 
+          <input type="text" *ngIf="searchMode"
+                  placeholder="Data Agendamento"
+                  formControlName="scheduledateRange"
+                  class="form-control"
+                  bsDaterangepicker
+                  [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', rangeInputFormat: 'DD/MM/YYYY' }">
+
+
+          <app-schedule-register *ngIf="!searchMode" formControlName="scheduleData" index="0"  [readonly]= "false" [removeButtonActive]="false"></app-schedule-register>
         </div>
 
-
-        <div class="col-3  align-self-center">
-        <input type="text" *ngIf="!searchMode"
-              placeholder="Data Agendamento"
-              formControlName="scheduledate"
-              class="form-control"
-              bsDatepicker
-              (bsValueChange)="onValueChangeScheduledate($event)"
-              [bsConfig]="{ isAnimated: true,  dateInputFormat: 'DD/MM/YYYY' }">
-
-
-        <input type="text" *ngIf="searchMode"
-                placeholder="Data Agendamento"
-                formControlName="scheduledateRange"
-                class="form-control"
-                bsDaterangepicker
-                [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', rangeInputFormat: 'DD/MM/YYYY' }">
-        </div>
-
-
-
-
-
-
-        <div class="col-3 aling-self-center">
-          <timepicker formControlName="scheduletime" [showMeridian]="ismeridian" (ngModelChange)="onCcheduletimeChanged()" *ngIf="!searchMode"></timepicker>
-
-
-
-        </div>
       </div>
       <div class="row mt-3">
 

@@ -1,0 +1,52 @@
+
+  <div class="col-5 w-100 d-inline-block text-center " >
+
+    <button type="button"  (click) = "showProtocols()" class="align-top rounded-circle border-0 " [style.background]="therapyCategoryCurrent.cor" style="height: 300px; width: 300px ;">
+      <img src="../assets/images/therapies/{{therapyCategoryCurrent.image}}_thumb.jpg" data-aos="fade-up"  class="mx-auto rounded-circle" style="height: 229px; width: 229px ;" >
+    </button>
+
+
+    <div (click) = "showProtocols()" class="category-title text-center pointer" style="font-size: 250%; font-family: Dr Sugiyama; font-style: italic; color: rgb(82, 85, 60);">
+      <h1 >Massagens para</h1>
+      <h1 >{{therapyCategoryCurrent.categoria}}</h1>
+    </div>
+
+
+    <!--
+    <div class="col-12 align-self-center left-side ">
+      <img src="../assets/images/therapies/{{therapyCategoryCurrent.image}}_thumb.jpg" data-aos="fade-up" class="rounded-circle" width="250" height="250">
+    </div>
+
+    <div class="col-12 align-bottom text-right right-side " style="height: 100px; width: 400px;" [style.background]="therapyCategoryCurrent.cor" >
+
+      <h3>Massagens</h3>
+      <h3 id="bottom">{{therapyCategoryCurrent.categoria}}</h3>
+
+    </div>
+    -->
+
+
+
+    <div class="col-12 w-100 rounded shadow border border-3 border-right-0 border-left-0 border-bottom-0 mt-n5 mb-3" style="background-color: white;"
+    [ngStyle]="{'background-image': 'url(' + getProtocolsBackground(therapyCategoryCurrent.image_background) + ')' }"
+
+    *ngIf="showProtocolsActive">
+      <div *ngFor="let protocol of therapyCategoryCurrent.protocolos, let i = index" class="row w-100 text-left  ">
+
+        <div class="col-10 mb-n4">
+          <div class="rounded-circle circle-protocol-title " style="height: 39px; width: 39px ;" [style.background]="therapyCategoryCurrent.cor" ></div>
+          <p class="protocol-title ">{{protocol.titulo}}</p>
+        </div>
+        <div class="col-2 p-2"><span class="align-self-center badge badge-success badge-pill " [style.background]="therapyCategoryCurrent.cor">R$ {{protocol.preco}},00</span></div>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+

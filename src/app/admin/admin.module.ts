@@ -15,7 +15,10 @@ import {DashboardService } from "./services/dashboard.service";
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
 import { BlogRegisterComponent } from './blog/blog-register/blog-register.component';
 import { AdminBlogService } from './blog/services/admin-blog.service';
-
+import { ScheduleRegisterComponent } from '../patient/schedule-register/schedule-register.component';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+defineLocale('pt-br', ptBrLocale);
 
 
 @NgModule({
@@ -25,13 +28,15 @@ import { AdminBlogService } from './blog/services/admin-blog.service';
     PatientHeaderComponent,
     PatientRegisterLineComponent,
     BlogListComponent,
-    BlogRegisterComponent
+    BlogRegisterComponent,
+    ScheduleRegisterComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedKernelModule
   ],
-  providers: [ AuthGuard, PatientService, DashboardService, AdminBlogService]
+  exports:[ScheduleRegisterComponent],
+  providers: [ AuthGuard, PatientService, DashboardService, AdminBlogService, ScheduleRegisterComponent]
 })
 export class AdminModule { }

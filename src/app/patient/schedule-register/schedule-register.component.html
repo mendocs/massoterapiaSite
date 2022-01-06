@@ -2,11 +2,12 @@
 <!-- <form [formGroup]="formulario" (ngSubmit)="onSubmit()">-->
   <div class="form-group" >
 
+
   <div class="card my-3 schedule-card rounded ">
     <div class="card-header">
 
       <div class="row clearfix">
-        <div class="w-100 " *ngIf="!readonly">
+        <div class="w-100 " *ngIf="(!readonly && removeButtonActive)">
           <a class=" text-white  mx-2 float-right" (click)="removeMySelf()">
             <span class="material-icons remove-icon pointer">delete_forever</span>
           </a>
@@ -14,7 +15,7 @@
       </div>
 
 
-      <div class="row">
+      <div class="row h-100">
         <div class="col-7 align-self-center mb-n4">
           <mat-form-field appearance="fill" >
             <mat-label>Data </mat-label>
@@ -25,14 +26,14 @@
         </div>
 
 
-        <div class="col-5 aling-self-center">
-          <timepicker id="scheduletime" #scheduletime [readonlyInput]="readonly" [showMeridian]="ismeridian" [(ngModel)]="timepicker" (ngModelChange) = "sincronizeSchedule()"
+        <div class="col-5 align-self-center mx-auto ">
+          <timepicker id="scheduletime" #scheduletime [readonlyInput]="readonly" [showSpinners]="!readonly" [showMeridian]="ismeridian" [(ngModel)]="timepicker" (ngModelChange) = "sincronizeSchedule()"
           ></timepicker>
         </div>
 
       </div>
 
-      <div class="row h-100" *ngIf="!readonly" >
+      <div class="row h-100 mt-3" *ngIf="!readonly" >
         <div class="col-7 align-self-center mb-n4">
           <mat-form-field appearance="fill">
             <mat-label>Duração</mat-label>
@@ -40,54 +41,90 @@
           </mat-form-field>
         </div>
 
-        <div class="col-5 align-self-center ">
+        <div class="col-5 align-self-center mx-auto">
           <div>Fim: {{endTimeFormated}}</div>
+        </div>
+      </div>
 
+      <div class="row h-100 mt-3" *ngIf="!readonly">
+        <div class="col-9 align-self-center mb-n4">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Protocolo</mat-label>
+              <mat-select [(ngModel)]="selectedTherapy" #comboProtocol (selectionChange)="protocolChange($event.value)">
+                <mat-option value="--Nenhum--">--Nenhum--</mat-option>
+                <mat-option *ngFor="let _therapy of allTherapy$ | async" [value]="_therapy.titulo_reduzido"> {{_therapy.titulo_reduzido}} ({{_therapy.duracao}}min - R${{_therapy.preco}}) </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="col-3 align-self-center mb-n4 p-1">
+          <mat-form-field appearance="fill">
+            <mat-label>Preço</mat-label>
+            <input type="number" matInput placeholder="" [(ngModel)]="innerValue['Price']">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row h-100 mt-3" *ngIf="!readonly">
+        <div class="col-9 align-self-center mb-n4">
+          <mat-form-field appearance="fill">
+            <mat-label>Pacote</mat-label>
+            <mat-select [(ngModel)]="selectedPlan" #comboPlan (selectionChange)="planChange($event.value)" >
+              <mat-option value="--Nenhum--">--Nenhum--</mat-option>
+              <mat-option *ngFor="let _plan of allPlans$ | async" [value]="_plan.titulo"> {{_plan.titulo}} ({{_plan.sessoes}} R${{_plan.preco}}) </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-3 align-self-center mb-n4 p-1">
+          <mat-form-field appearance="fill">
+            <mat-label>Sessão</mat-label>
+            <input type="number" matInput placeholder="" [(ngModel)]="innerValue['PackageSession']">
+          </mat-form-field>
         </div>
 
       </div>
 
-    </div>
+      <div class="card-body">
 
-
-
-    <div class="card-body">
-
-      <div class="row">
-        <div class="col-4">
-          <div class="checkbox" >
-            <label class="checkbox-inline"  >
-              <input type="checkbox" [(ngModel)]="innerValue['Canceled']" (click)="!readonly" > Cancelado
-            </label>
+        <div class="row">
+          <div class="col-4">
+            <div class="checkbox" >
+              <label class="checkbox-inline"  >
+                <input type="checkbox" [(ngModel)]="innerValue['Canceled']" (click)="!readonly" > Cancelado
+              </label>
+            </div>
           </div>
+
+
+          <div class="col-4">
+            <div class="checkbox" >
+              <label class="checkbox-inline"  >
+                <input type="checkbox" [(ngModel)]="innerValue['Confirmed']" (click)="!readonly" > Confirmado
+              </label>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="checkbox" >
+              <label class="checkbox-inline" >
+                <input type="checkbox" [(ngModel)]="innerValue['Executed']" (click)="!readonly"> Realizado
+              </label>
+            </div>
+          </div>
+
         </div>
 
-
-        <div class="col-4">
-          <div class="checkbox" >
-            <label class="checkbox-inline"  >
-              <input type="checkbox" [(ngModel)]="innerValue['Confirmed']" (click)="!readonly" > Confirmado
-            </label>
-          </div>
+        <div  class="row p-1" *ngIf="!readonly">
+          <mat-form-field appearance="fill" >
+            <mat-label> Comentários  </mat-label>
+            <textarea matInput [(ngModel)]="innerValue['Comments']"   [readonly]="readonly" ></textarea> <!--formControlName="comments"-->
+          </mat-form-field>
         </div>
 
-        <div class="col-4">
-          <div class="checkbox" >
-            <label class="checkbox-inline" >
-              <input type="checkbox" [(ngModel)]="innerValue['Executed']" (click)="!readonly"> Realizado
-            </label>
-          </div>
-        </div>
       </div>
-
-      <div  class="row" *ngIf="!readonly">
-        <mat-form-field appearance="fill" >
-          <mat-label> Comentários  </mat-label>
-          <textarea matInput [(ngModel)]="innerValue['Comments']"   [readonly]="readonly" ></textarea> <!--formControlName="comments"-->
-        </mat-form-field>
-      </div>
-
-    </div>
 
   </div>
 

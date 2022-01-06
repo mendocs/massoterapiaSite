@@ -14,6 +14,12 @@ import { InputFieldComponent } from 'src/app/shared-kernel/forms/input-field/inp
 import { schedule } from '../patient-data/models/schedule.model';
 import { PatientService } from '../patient-data/services/patient.service';
 import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
+import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
+import { Observable } from 'rxjs';
+import { therapy } from 'src/app/therapy/models/therapy-model';
+import { plan } from 'src/app/therapy/models/plan-model';
+import { MatSelect } from '@angular/material/select';
+import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
 
 const moment =  _moment;
 
@@ -45,7 +51,7 @@ const SCHEDULE_VALUE_ACCESSOR: any = {
   templateUrl: './schedule-register.component.html',
   styleUrls: ['./schedule-register.component.scss'],
   providers: [
-
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
@@ -57,106 +63,183 @@ const SCHEDULE_VALUE_ACCESSOR: any = {
     SCHEDULE_VALUE_ACCESSOR
   ],
 })
-export class ScheduleRegisterComponent implements OnInit , ControlValueAccessor  {
+export class ScheduleRegisterComponent extends BaseComponent implements OnInit , ControlValueAccessor  {
 
   @Input() index: number;
   @Input() readonly: boolean = true;
-
-  @ViewChild('scheduletime') scheduletime: any;
+  @Input() removeButtonActive: boolean = true;
 
   ismeridian: boolean = false;
-  innerValue: schedule = new schedule;
+  innerValue: schedule = new schedule();
   timepicker : Date;
   endTime : Date;
   endTimeFormated : string;
 
+  selectedTherapy : string;
+  selectedTherapyObj : therapy;
+  selectedPlan : string;
+  selectedPlanObj : plan;
 
-  constructor(private patientService : PatientService,
-              private utilsService : UtilsService) { }
+  allTherapy$: Observable<therapy[]>;
+  allPlans$: Observable<plan[]>;
+
+  protocolFile = {
+		next: (selectedTherapy : therapy) => this.selectTherapy(selectedTherapy),
+		error: err => this.getError(err),
+		complete: () => {},
+	  };
+
+  planFile = {
+    next: (selectedPlan : plan) => this.selectPlan(selectedPlan),
+    error: err => this.getError(err),
+    complete: () => {},
+    };
+
+    constructor(private patientService : PatientService,
+                private utilsService : UtilsService,
+                private therapyDataService : TherapyDataService){super();}
 
 
-	get value() {
-	  return this.innerValue;
-	}
+    get value() {
+      return this.innerValue;
+    }
 
-	set value(v: any) {
+    set value(v: any) {
+      if (v !== this.innerValue) {
+        //this.formulario.patchValue(v);
+          this.innerValue = v;
+          this.innerValue.StartdDate = new Date (this.innerValue.StartdDate);
+          this.timepicker = new Date (this.innerValue.StartdDate);
 
-    if (v !== this.innerValue) {
-      //this.formulario.patchValue(v);
-      this.innerValue = v;
-      this.innerValue.StartdDate = new Date (this.innerValue.StartdDate);
-      this.timepicker = new Date (this.innerValue.StartdDate);
-      this.sincronizeEndTime();
+          this.innerValue.Protocol = this.innerValue.Protocol ? this.innerValue.Protocol : "--Nenhum--";
+          this.innerValue.Package = this.innerValue.Package ? this.innerValue.Package : "--Nenhum--";
+          this.selectedPlan = this.innerValue.Package;
+          this.selectedTherapy = this.innerValue.Protocol;
 
-      this.onChangeCb(v);
+          this.sincronizeEndTime();
+          this.onChangeCb(v);
+        }
+    }
+
+
+
+    removeMySelf()
+    {
+        this.patientService.removeSchedule(this.index);
+    }
+
+
+    ngOnInit(): void {
+      this.allTherapy$ = this.therapyDataService.getAlltherapy();
+      this.allPlans$ = this.therapyDataService.getAllPlans();
+    }
+
+    writeValue(v: any): void {
+      this.value = v;
+    }
+
+    onChange(event) {
+
+    }
+
+    onChangeCb: (_: any) => void = () => {};
+    //onTouchedCb: (_: any) => void = () => {};
+    onTouchedCb: () => void = () => {};
+
+
+    registerOnChange(fn: any): void {
+      this.onChangeCb = fn;
+    }
+
+    registerOnTouched(fn: any): void {
+      this.onTouchedCb = fn;
+    }
+
+    onBlur()
+    {
+      this.onTouchedCb();
+    }
+
+    onFocus(){
+      //this.control.markAsUntouched();
+    }
+
+    setDisabledState?(isDisabled: boolean): void {
+      //this.isReadOnly = isDisabled;
+    }
+
+
+    isValido()
+    {
+
+    }
+
+    calculatePrice() : void
+    {
+
+      if (this.innerValue.Protocol !== "--Nenhum--"){
+        this.innerValue.Price = this.selectedTherapyObj.preco;
       }
-	}
 
-  removeMySelf()
-  {
-      this.patientService.removeSchedule(this.index);
-  }
+      if (this.innerValue.Package !== "--Nenhum--"){
+        this.innerValue.Price = this.selectedPlanObj.preco / this.selectedPlanObj.sessoes;
+      }
+    }
 
-
-  ngOnInit(): void {
-
-  }
-
-	writeValue(v: any): void {
-	  this.value = v;
-	}
-
-	onChange(event) {
-
-	}
-
-	onChangeCb: (_: any) => void = () => {};
-	//onTouchedCb: (_: any) => void = () => {};
-	onTouchedCb: () => void = () => {};
+    sincronizeEndTime() : void
+    {
+      //this.endTime = this.innerValue.StartdDate;
+      this.endTime = new Date(this.innerValue.StartdDate.getTime() + (this.innerValue.Duration * 60 * 1000));
+      this.innerValue.EndDate = this.endTime;
+      this.endTimeFormated = this.utilsService.getDateFormatedHourMinutes(this.endTime);
+    }
 
 
-	registerOnChange(fn: any): void {
-	  this.onChangeCb = fn;
-	}
-
-	registerOnTouched(fn: any): void {
-	  this.onTouchedCb = fn;
-	}
-
-	onBlur()
-	{
-		this.onTouchedCb();
-	}
-
-	onFocus(){
-		//this.control.markAsUntouched();
-	}
-
-	setDisabledState?(isDisabled: boolean): void {
-	  //this.isReadOnly = isDisabled;
-	}
+    sincronizeSchedule() : void
+    {
+      this.innerValue.StartdDate = new Date (this.innerValue.StartdDate);
+      this.innerValue.StartdDate.setHours(this.timepicker.getHours());
+      this.innerValue.StartdDate.setMinutes(this.timepicker.getMinutes());
+      this.sincronizeEndTime();
+    }
 
 
-	isValido()
-	{
+    protocolChange(value : string) : void
+    {
+      if (value === "--Nenhum--"){
+        this.innerValue.Protocol = value;
+        this.calculatePrice();
+      }
+      else
+        this.therapyDataService.getTherapybyTitle(value).subscribe(this.protocolFile);
 
-	}
+    }
 
-sincronizeEndTime() : void
-{
-  //this.endTime = this.innerValue.StartdDate;
-  this.endTime = new Date(this.innerValue.StartdDate.getTime() + (this.innerValue.Duration * 60 * 1000))
-  this.endTimeFormated = this.utilsService.getDateFormatedHourMinutes(this.endTime);
-}
+    selectTherapy(_therapy : therapy): void
+    {
+      this.innerValue.Duration = _therapy.duracao;
+      this.innerValue.Protocol = _therapy.titulo_reduzido
+      this.selectedTherapyObj = _therapy;
+      this.calculatePrice();
+      this.sincronizeEndTime();
+    }
 
+    selectPlan(_plan : plan): void
+    {
+      this.innerValue.Package = _plan.titulo;
+      this.selectedPlanObj = _plan;
+      this.calculatePrice();
+      this.sincronizeEndTime();
+    }
 
-sincronizeSchedule() : void
-{
-  this.innerValue.StartdDate = new Date (this.innerValue.StartdDate);
-  this.innerValue.StartdDate.setHours(this.timepicker.getHours());
-  this.innerValue.StartdDate.setMinutes(this.timepicker.getMinutes());
-  this.sincronizeEndTime();
-}
-
+    planChange(value : string) : void
+    {
+      if (value === "--Nenhum--"){
+        this.innerValue.Package = value;
+        this.calculatePrice();
+      }
+      else
+        this.therapyDataService.getPlanbyTitle(value).subscribe(this.planFile);
+    }
 
 }

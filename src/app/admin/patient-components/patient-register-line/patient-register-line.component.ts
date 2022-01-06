@@ -94,7 +94,8 @@ export class PatientRegisterLineComponent implements OnInit {
                                                                                                     scheduleCurrent.Confirmed,
                                                                                                     `${this.utilsService.getDateFormated(scheduleCurrent.StartdDate)} - ${this.utilsService.getDateFormatedHourMinutes(scheduleCurrent.EndDate)} (${index +1})`,
                                                                                                     true,
-                                                                                                    scheduleCurrent.Duration);
+                                                                                                    scheduleCurrent.Duration,
+                                                                                                    `${scheduleCurrent.Protocol} | ${scheduleCurrent.Package}(${scheduleCurrent.PackageSession}) `);
             _patientViewModelSearchListFromDB.push(_patientViewModelSearchList);
             this.patientViewModelSearchListFromDBCount++;
 
@@ -105,6 +106,8 @@ export class PatientRegisterLineComponent implements OnInit {
             }
           }
         }));
+
+
 
     return _patientViewModelSearchListFromDB.sort(
       (a,b)=> new Date(a.scheduleStart).getTime() - new Date(b.scheduleStart).getTime()
@@ -167,7 +170,8 @@ export class PatientRegisterLineComponent implements OnInit {
       null,
       "",
       false,
-      0);
+      0,
+      "");
 
       return _patient;
 
