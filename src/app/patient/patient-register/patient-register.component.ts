@@ -73,7 +73,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   Motivation = ['Relaxamento', 'Terapêutico', 'Apoio ao esporte', 'Estética'];
   Disease = ['Hipertensão Arterial', 'Hipotensão Arterial', 'Diabetes'];
   HealthChanges = ['Cardíacas','Vasculares','Respiratórias','Digestórias','Hormonais','Dermatológicas','Neurológicas','Articulares','Músculo Esqueléticas','Urinárias','Genitais','Hematológicas','Psicoemocionais','Cabeça','Olhos','Nariz','Boca','Ouvidos'];
-  Treatments = ['Alopat','Homeo','Psiquiátrico','Psicológico','Fisioterapêutico'];
+  Treatments = ['Alopático','Homeopático','Psiquiátrico','Psicológico','Fisioterapêutico'];
 
 
   patientObserver = {
@@ -216,8 +216,8 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
         LiquidTypes: new FormControl(''),
         Smoking: new FormControl(''),
         Alcohol: new FormControl(''),
-        Psychoactive: new FormControl(''),
-        Addiction: new FormControl(''),
+        //Psychoactive: new FormControl(''),
+        //Addiction: new FormControl(''),
         PhysicalActivity: new FormControl(''),
         PhysicalActivityFrequency: new FormControl(''),
         QualitySleep: new FormControl(''),
@@ -225,18 +225,19 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
         Feces: new FormControl(''),
         LastFeces: new FormControl(''),
         LeisureActivities: new FormControl(''),
-        LeisureRestWork: new FormControl(''),
+        //LeisureRestWork: new FormControl(''),
         Disease: this.builddFormArray(this.Disease),
         HealthChanges: this.builddFormArray(this.HealthChanges),
         Treatments : this.builddFormArray(this.Treatments),
         OthersTreatments: new FormControl(''),
         Medicines: new FormControl(''),
         Diu: new FormControl(''),
+        Prosthesis: new FormControl(''),
         Dum: new FormControl(''),
         Subcutaneous: new FormControl(''),
-        SubcutaneousOther: new FormControl(''),
+        Comments: new FormControl(''),
         Surgeries: new FormControl(''),
-        FamilyIllnessess: new FormControl(''),
+        //FamilyIllnessess: new FormControl(''),
         scheduleData: new FormControl(new schedule())
       }
       );

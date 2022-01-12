@@ -5,12 +5,32 @@
       <img src="../assets/images/therapies/{{therapyCategoryCurrent.image}}_thumb.jpg" data-aos="fade-up"  class="mx-auto rounded-circle" style="height: 229px; width: 229px ;" >
     </button>
 
+    <div class="row">
+      <div class="col-2"></div>
+      <div #titleProtocol
+        (click) = "showProtocols()"
+        class="col-8 category-title  text-center pointer pb-3"
+        style="font-size: 250%; font-family: Dr Sugiyama; font-style: italic; color: rgb(82, 85, 60); "
 
-    <div (click) = "showProtocols()" class="category-title text-center pointer" style="font-size: 250%; font-family: Dr Sugiyama; font-style: italic; color: rgb(82, 85, 60);">
-      <h1 >Massagens para</h1>
-      <h1 >{{therapyCategoryCurrent.categoria}}</h1>
+        [style.background]=" showProtocolsActive ? getCategoryBackground(therapyCategoryCurrent.cor) : ''"
+
+
+
+      >
+        <h1 >Massagens para</h1>
+        <h1 >{{therapyCategoryCurrent.categoria}}</h1>
+      </div>
     </div>
 
+    <!--
+    <div class="row retangule-link">
+      <div class="col-2"></div>
+      <div class="col-8 bg-site-clear-opacity border" style="z-index: 10; ">
+        <br>
+        <div class="d-lg-none1" style="height: 100px; "> </div>
+      </div>
+    </div>
+    -->
 
     <!--
     <div class="col-12 align-self-center left-side ">
@@ -24,20 +44,18 @@
 
     </div>
     -->
-
-
-
-    <div class="col-12 w-100 rounded shadow border border-3 border-right-0 border-left-0 border-bottom-0 mt-n5 mb-3" style="background-color: white;"
+    <div class="col-12 w-100 protocol-box rounded shadow border border-3 border-right-0 border-left-0 border-bottom-0 mt-n5 mb-3 pt-4" style="background-color: white;"
     [ngStyle]="{'background-image': 'url(' + getProtocolsBackground(therapyCategoryCurrent.image_background) + ')' }"
 
     *ngIf="showProtocolsActive">
       <div *ngFor="let protocol of therapyCategoryCurrent.protocolos, let i = index" class="row w-100 text-left  ">
 
-        <div class="col-10 mb-n4">
-          <div class="rounded-circle circle-protocol-title " style="height: 39px; width: 39px ;" [style.background]="therapyCategoryCurrent.cor" ></div>
-          <p class="protocol-title ">{{protocol.titulo}}</p>
-        </div>
-        <div class="col-2 p-2"><span class="align-self-center badge badge-success badge-pill " [style.background]="therapyCategoryCurrent.cor">R$ {{protocol.preco}},00</span></div>
+          <div class="col-10 mb-n4 pointer" (click)="logClicked(protocol.id)">
+            <div class="rounded-circle circle-protocol-title " style="height: 39px; width: 39px ;" [style.background]="therapyCategoryCurrent.cor" ></div>
+            <p class="protocol-title ">{{protocol.titulo}}</p>
+          </div>
+          <div class="col-2 p-2 pointer " (click)="logClicked(protocol.id)"><span class="align-self-center badge badge-success badge-pill " [style.background]="therapyCategoryCurrent.cor">R$ {{protocol.preco}},00</span></div>
+
       </div>
     </div>
 

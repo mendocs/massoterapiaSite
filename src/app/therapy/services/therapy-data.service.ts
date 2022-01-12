@@ -4,7 +4,7 @@ import {therapy} from "../models/therapy-model";
 import { map, switchMap } from 'rxjs/operators';
 import { from, Observable, of } from 'rxjs';
 import { therapyCategory } from '../models/therapy-category-model';
-import { plan } from '../models/plan-model';
+import { pack } from '../models/pack-model';
 
 @Injectable({
   providedIn: 'root'
@@ -81,16 +81,16 @@ getTherapybyTitle(titulo : string): Observable<therapy> {
 }
 
 
-getPlanbyTitle(titulo : string): Observable<plan> {
+getPlanbyTitle(titulo : string): Observable<pack> {
 
-  let resultado : plan ;
+  let resultado : pack ;
 
   return this.http.get<therapyCategory[]>('assets/data/therapies.json')
   .pipe(
     map((therapies: therapyCategory[]) =>
           therapies.map((_therapyCategory : therapyCategory) =>
-          _therapyCategory.pacotes.filter((_plan : plan)=> _plan.titulo == titulo )
-          .map ((_plan : plan) => resultado = _plan)
+          _therapyCategory.pacotes.filter((_plan : pack)=> _plan.titulo == titulo )
+          .map ((_plan : pack) => resultado = _plan)
         )
       ),
       switchMap(()=> of(resultado))
@@ -98,21 +98,25 @@ getPlanbyTitle(titulo : string): Observable<plan> {
 }
 
 
-getAllPlans(): Observable<plan[]> {
+getAllPacks_old(): Observable<pack[]> {
 
-  let resultado : plan[] = [];
+  let resultado : pack[] = [];
 
   return this.http.get<therapyCategory[]>('assets/data/therapies.json')
   .pipe(
     map((therapies: therapyCategory[]) =>
           therapies.map((_therapyCategory : therapyCategory) =>
-          _therapyCategory.pacotes.map((_plan : plan)=> resultado.push(_plan) )
+          _therapyCategory.pacotes.map((_plan : pack)=> resultado.push(_plan) )
         )
       ),
       switchMap(()=> of(resultado))
   );
 }
 
+
+getAllPacks(): Observable<pack[]> {
+  return this.http.get<pack[]>('assets/data/packages.json')
+}
 
 
   filterTherapyName(nomeParcialToFind: string,therapyCurrent: therapy) : boolean

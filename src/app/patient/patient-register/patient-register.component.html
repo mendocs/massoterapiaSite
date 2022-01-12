@@ -182,6 +182,7 @@
             ></app-input-field>
           </div>
 
+          <!--
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="Psychoactive"
             [classeCss]="aplicaCssErro('Psychoactive')"
@@ -195,6 +196,7 @@
             id="Addiction" label="Apresenta outros vícios:" [control]="formulario.get('Addiction')"
             ></app-input-field>
           </div>
+          -->
 
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="PhysicalActivity"
@@ -248,20 +250,21 @@
           </mat-form-field>
         </div>
 
+        <!--
         <div  class="row">
           <mat-form-field appearance="fill" >
             <mat-label>Qual a relação entre: trabalho X descanso X lazer (em uma semana)?  </mat-label>
             <textarea matInput formControlName="LeisureRestWork"></textarea>
           </mat-form-field>
         </div>
-
+        -->
 
 
         <div class="row">
           <a class="btn text-white bg-button mx-2" (click)="nextStepOnClick(3)">Próximo</a>
         </div>
       </accordion-group>
-      <accordion-group id="accordion_disease" heading="Histórico  Clinico" [(isOpen)]="accordionGroupOpen[3]" (isOpenChange)="gotoTop($event, 'accordion_disease')">
+      <accordion-group id="accordion_disease" heading="Histórico  Clínico" [(isOpen)]="accordionGroupOpen[3]" (isOpenChange)="gotoTop($event, 'accordion_disease')">
 
         <div id="disease" class="row">
           <div class="checkbox" class="col-6 col-sm-3"
@@ -350,11 +353,21 @@
           </div>
 
           <div [ngClass]="cssCol">
+            <div class="checkbox" >
+              <label class="checkbox-inline">
+                <input type="checkbox" formControlName="Prosthesis"> É portador de prótese, placas ou pinos
+              </label>
+            </div>
+          </div>
+
+          <!--
+          <div [ngClass]="cssCol">
             <app-input-field  formControlName="SubcutaneousOther"
             [classeCss]="aplicaCssErro('SubcutaneousOther')"
             id="SubcutaneousOther" label="Outros" [control]="formulario.get('SubcutaneousOther')"
             ></app-input-field>
           </div>
+          -->
 
 
 
@@ -362,15 +375,24 @@
 
         <div  class="row">
           <mat-form-field appearance="fill" >
-            <mat-label> Histórico de Cirurgias: (quais e há quanto tempo), Realizou cirurgia de retirada de cisto na região do pescoço posterior  </mat-label>
+            <mat-label> Histórico de Cirurgias: (quais e há quanto tempo)</mat-label>
             <textarea matInput formControlName="Surgeries"></textarea>
           </mat-form-field>
         </div>
 
+        <!--
         <div  class="row">
           <mat-form-field appearance="fill" >
             <mat-label> Doenças familiares pregressas: (pais e avós)  </mat-label>
             <textarea matInput formControlName="FamilyIllnessess"></textarea>
+          </mat-form-field>
+        </div>
+        -->
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label> Outras Informações  </mat-label>
+            <textarea matInput formControlName="Comments"></textarea>
           </mat-form-field>
         </div>
 

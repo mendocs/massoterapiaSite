@@ -31,6 +31,7 @@ export class PatientRegisterLineComponent implements OnInit {
 
     this.whatsapplink = environment.whatsapplink;
 
+
     this.patientViewModelSearchListFromDB = this.getScheduleInRange(this.patientRegisters,this.SearchDateRange)
 
 
@@ -78,6 +79,9 @@ export class PatientRegisterLineComponent implements OnInit {
   {
     this.patientViewModelSearchListFromDBCount = 0;
     let _patientViewModelSearchListFromDB : patientViewModelSearchList[] = [];
+    let presentDay : number = 0;
+
+    console.log(presentDay + " --- " );
 
     patienties.map(patientCurrent =>
       patientCurrent.Schedules
@@ -121,6 +125,9 @@ export class PatientRegisterLineComponent implements OnInit {
     let data2 : Date;
     let duration : number;
 
+    let indiceToAdd : number[] = [];
+    let descriptionToAdd : string[] = [];
+
     for (var i = 0; i < _patientViewModelSearchListFromDB.length; i = i+2) {
       try{
         data1 = _patientViewModelSearchListFromDB[i].scheduleStart;
@@ -129,14 +136,46 @@ export class PatientRegisterLineComponent implements OnInit {
 
         _patientViewModelSearchListFromDB[i+1].description = this.utilsService.getSchedulAvaliableDescription(data1,duration,data2);
         _patientViewModelSearchListFromDB[i+1].phone = this.utilsService.getIntervalDescription(data1,duration,data2);
+
+
+        if (data1.getDate() != data2.getDate())
+        {
+          console.log(data1.getDate() + " -- " + data2.getDate());
+          _patientViewModelSearchListFromDB[i+1].phone = "";
+          _patientViewModelSearchListFromDB[i+1].description = this.utilsService.getSchedulAvaliableDescription(data1,duration,null); + "novo dia";
+          indiceToAdd.push(i+2);
+          descriptionToAdd.push(this.utilsService.getSchedulAvaliableDescription(null,0,data2));
+        }
+
       }  catch (e) {
         _patientViewModelSearchListFromDB[i+1].description = this.utilsService.getSchedulAvaliableDescription(data1,duration,null);
       }
     }
 
+    console.log(indiceToAdd);
+    indiceToAdd.forEach((currentValue, index) =>
+    {
+      const novodia = _patientViewModelSearchListFromDB[currentValue  + (index * 2) + 1].scheduleStart.getDate();
+      const newLineDay = this.getPatientViewModelSearchListNewDay(descriptionToAdd[index]);
+      const newLineEmpty = this.getPatientViewModelSearchListNewDay(". . . D I A . . . " + novodia);
+      _patientViewModelSearchListFromDB.splice(currentValue + (index * 2),0, newLineEmpty,newLineDay);
+    });
+
+
     return _patientViewModelSearchListFromDB;
 
   }
+
+  getClassNewDayText(_description : string): string
+  {
+    return _description.indexOf("D I A")>-1 ? "text-light" : "text-success";
+  }
+
+  getClassNewDayLine(_description : string): string
+  {
+    return _description.indexOf("D I A")>-1 ? "bg-dark" : "";
+  }
+
 
   setFirstIntervalDescription(_patientViewModelSearchListFromDB : patientViewModelSearchList[]) : patientViewModelSearchList[]
   {
@@ -146,14 +185,36 @@ export class PatientRegisterLineComponent implements OnInit {
       let patientListt = this.getPatientViewModelSearchList(_patientViewModelSearchListFromDB[0].scheduleStart);
 
       patientListt.description = this.utilsService.getSchedulAvaliableDescription(null,0,_patientViewModelSearchListFromDB[0].scheduleStart);
-
       _patientViewModelSearchListFromDB.unshift(patientListt);
+
+      const novodia = _patientViewModelSearchListFromDB[1].scheduleStart.getDate();
+      const newLineEmpty = this.getPatientViewModelSearchListNewDay(". . . D I A . . . " + novodia);
+      _patientViewModelSearchListFromDB.unshift(newLineEmpty);
 
       return _patientViewModelSearchListFromDB;
     }
 
   }
 
+  getPatientViewModelSearchListNewDay(_description : string) : patientViewModelSearchList
+  {
+    let dateSc : Date = new Date();
+
+    let _patient =  new patientViewModelSearchList(
+      "---novo dia---",
+      "",
+      "",
+      dateSc,
+      null,
+      null,
+      _description,
+      false,
+      0,
+      "");
+
+      return _patient;
+
+  }
 
 
   getPatientViewModelSearchList(dateScheduleplus : Date) : patientViewModelSearchList

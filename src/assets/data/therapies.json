@@ -3,7 +3,7 @@
     "categoria" : "finalidade estética",
     "titulo_reduzido" : "Estética",
     "image" : "modeladora",
-    "cor" : "#f8cde9",
+    "cor" : "rgba(248, 205, 233,1)",
     "image_background" : "fundo_estetica.png",
     "protocolos": [
               {
@@ -50,27 +50,13 @@
                                 "Insuficiência cardíaca, renal e pulmonar"
                             ]
               }
-             ],
-    "pacotes":[
-                {
-                  "titulo" : "Estetica 1",
-                  "sessoes" : 4,
-                  "preco" : 180,
-                  "descricao" : "São 4 sessões com scalda pes e tuiná"
-                },
-                {
-                  "titulo" : "Estetica 2",
-                  "sessoes" : 5,
-                  "preco" : 250,
-                  "descricao" : "São 5 sessões com scalda pes e tuiná"
-                }
-              ]
+                  ]
   },
   {
     "categoria" : "relaxar",
     "titulo_reduzido" : "Relaxantes",
     "image" : "massoterapia",
-    "cor" : "#cccc99",
+    "cor" : "rgba(204, 204, 153,1)",
     "image_background" : "fundo_estetica.png",
     "protocolos": [
                 {
@@ -120,27 +106,13 @@
                                   "Insuficiência cardíaca, renal e pulmonar"
                               ]
                 }
-             ],
-    "pacotes":[
-                {
-                  "titulo" : "Pacote Relaxar 1",
-                  "sessoes" : 4,
-                  "preco" : 180,
-                  "descricao" : "São 4 sessões com scalda pes e tuiná"
-                },
-                {
-                  "titulo" : "Pacote Relaxar 2",
-                  "sessoes" : 5,
-                  "preco" : 250,
-                  "descricao" : "São 5 sessões com scalda pes e tuiná"
-                }
-              ]
+                  ]
   },
   {
     "categoria" : "dores e desconfortos",
     "titulo_reduzido" : "Dores e Desconfortos",
     "image" : "tuina",
-    "cor" : "#b4ccb0",
+    "cor" : "rgba(180, 204, 176,1)",
     "image_background" : "fundo_estetica.png",
     "protocolos": [
                 {
@@ -187,27 +159,13 @@
                                   "Insuficiência cardíaca, renal e pulmonar"
                               ]
                 }
-             ],
-    "pacotes":[
-                {
-                  "titulo" : "Pacote dores 1",
-                  "sessoes" : 4,
-                  "preco" : 180,
-                  "descricao" : "São 4 sessões com scalda pes e tuiná"
-                },
-                {
-                  "titulo" : "Pacote dores 2",
-                  "sessoes" : 5,
-                  "preco" : 250,
-                  "descricao" : "São 5 sessões com scalda pes e tuiná"
-                }
-              ]
+                  ]
   },
   {
     "categoria" : "praticantes de esportes ",
     "titulo_reduzido" : "Prática de Esportes",
     "image" : "desportiva",
-    "cor" : "#999999",
+    "cor" : "rgba(153, 153, 153,1)",
     "image_background" : "fundo_estetica.png",
     "protocolos": [
               {
@@ -254,22 +212,7 @@
                                 "Insuficiência cardíaca, renal e pulmonar"
                             ]
               }
-             ],
-    "pacotes":[
-                {
-                  "titulo" : "Esportivo 1",
-                  "sessoes" : 4,
-                  "preco" : 180,
-                  "descricao" : "São 4 sessões com scalda pes e tuiná"
-                },
-                {
-                  "titulo" : "Esportivo 2",
-                  "sessoes" : 5,
-                  "preco" : 250,
-                  "descricao" : "São 5 sessões com scalda pes e tuiná"
-                }
-              ]
-
+                  ]
   }
 
 ]

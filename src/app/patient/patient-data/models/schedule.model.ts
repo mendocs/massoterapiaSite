@@ -20,7 +20,7 @@ export class schedule {
       this.Confirmed = false;
       this.Executed = false;
       this.Canceled = false;
-      this.Duration = 50;
+      this.Duration = 60;
       this.Protocol = "";
       this.Price = 0;
       this.Package = "";

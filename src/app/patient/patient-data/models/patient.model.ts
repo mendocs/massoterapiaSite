@@ -19,8 +19,8 @@ export class patient {
   LiquidTypes: string;
   Smoking: string;
   Alcohol: string;
-  Psychoactive: string;
-  Addiction: string;
+  //Psychoactive: string;
+  //Addiction: string;
   PhysicalActivity: string;
   PhysicalActivityFrequency: string;
   QualitySleep: string;
@@ -28,7 +28,7 @@ export class patient {
   Feces: string;
   LastFeces: string;
   LeisureActivities: string;
-  LeisureRestWork: string;
+  //LeisureRestWork: string;
   Disease: string[];
   HealthChanges: string[];
   Treatments: string[];
@@ -37,9 +37,10 @@ export class patient {
   Diu: boolean;
   Dum: string;
   Subcutaneous: boolean;
-  SubcutaneousOther: string;
+  Prosthesis : boolean;
+  //SubcutaneousOther: string;
   Surgeries: string;
-  FamilyIllnessess: string;
+  //FamilyIllnessess: string;
 
 
   public Schedules: schedule[];

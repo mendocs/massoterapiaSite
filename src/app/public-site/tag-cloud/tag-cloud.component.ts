@@ -8,6 +8,7 @@ import { therapyCategory } from 'src/app/therapy/models/therapy-category-model';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
 import { PublicSiteService } from '../public-site.service';
 import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
+import { pack } from 'src/app/therapy/models/pack-model';
 
 @Component({
   selector: 'app-tag-cloud',
@@ -22,14 +23,22 @@ export class TagCloudComponent extends BaseComponent implements OnInit {
     currentTerapia :string = "";
 
     therapies : therapyCategory[] ;
+    packs : pack[] ;
 
-    therapiesFile = {
+    protocolsFile = {
     next: (_therapies : therapyCategory[]) => this.populateControlsFromTherapies(_therapies),
     error: err => this.getError(err),
     complete: () => {},
     };
 
+    packsFile = {
+      next: (_packs : pack[]) => this.populateControlsFromPacks(_packs),
+      error: err => this.getError(err),
+      complete: () => {},
+      };
+
     getAllTherapiesSubscription$ : Subscription;
+    getAllPacksSubscription$ : Subscription;
 
   constructor(private publicSiteService: PublicSiteService,
               private therapyDataService : TherapyDataService,
@@ -43,12 +52,15 @@ export class TagCloudComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getAllTherapiesSubscription$ =  this.therapyDataService.getAlltherapyCategories().subscribe(this.therapiesFile);
+    this.getAllTherapiesSubscription$ =  this.therapyDataService.getAlltherapyCategories().subscribe(this.protocolsFile);
+
+    this.getAllPacksSubscription$ =  this.therapyDataService.getAllPacks().subscribe(this.packsFile);
 
   }
 
   ngOnDestroy() : void{
     this.getAllTherapiesSubscription$?.unsubscribe();
+    this.getAllPacksSubscription$?.unsubscribe();
   }
 
 
@@ -91,6 +103,12 @@ export class TagCloudComponent extends BaseComponent implements OnInit {
   {
     this.therapies = _therapies;
     //this.publicSiteService.SetTherapy("Modeladora",true);
+  }
+
+  populateControlsFromPacks(_packs : pack[])
+  {
+    console.log(_packs);
+    this.packs = _packs;
   }
 
 }

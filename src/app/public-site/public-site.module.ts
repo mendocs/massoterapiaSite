@@ -14,6 +14,7 @@ import { PriceComponent } from './price/price.component';
 import { RouterModule } from '@angular/router';
 import { CommonComponentsModule } from '../common-components/common-components.module';
 import { TherapyCategoryMenuComponent } from './therapy-category-menu/therapy-category-menu.component';
+import { PackageMenuComponent } from './package-menu/package-menu.component';
 
 
 
@@ -27,7 +28,8 @@ import { TherapyCategoryMenuComponent } from './therapy-category-menu/therapy-ca
     TherapistComponent,
     ContactComponent,
     PriceComponent,
-    TherapyCategoryMenuComponent
+    TherapyCategoryMenuComponent,
+    PackageMenuComponent
     ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 import { therapy } from "./therapy-model";
-import { plan } from "./plan-model";
+import { pack } from "./pack-model";
 
 export class therapyCategory {
 	public categoria: string;
@@ -7,5 +7,5 @@ export class therapyCategory {
   public cor: string;
   public image_background : string;
   public protocolos: therapy[];
-  public pacotes: plan[];
+  public pacotes: pack[];
 }

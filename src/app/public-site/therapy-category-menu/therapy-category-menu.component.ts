@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
 import { therapyCategory } from 'src/app/therapy/models/therapy-category-model';
@@ -19,6 +19,8 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
 
 
   @Input() therapyCategoryCurrent: therapyCategory;
+
+  //@ViewChild('titleProtocol') classParentSquares: any;
 
   showProtocolsActive : boolean = false;
 
@@ -52,6 +54,18 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
     return `../assets/images/therapies/${image_background}` ;
   }
 
+  getCategoryBackground_() : string
+  {
+    return this.showProtocolsActive ? `bg-${this.therapyCategoryCurrent.image}` : "" ;
+  }
 
+  getCategoryBackground (rgbColor : string ) : string
+  {
+    return rgbColor.replace(",1)",",0.45)") ;
+  }
+
+  logClicked(therapyId: string) :void {
+    this.publicSiteService.SetTherapy(therapyId);
+  }
 
 }

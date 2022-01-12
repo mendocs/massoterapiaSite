@@ -7,10 +7,17 @@
 }
 
 .border-3 {
-  border-width:8px !important;
+  border-width:0px !important;
   border-color: black !important;
-
 }
+
+.bg-site-clear-opacity
+{
+  //background-color:rgb(232, 233, 232)
+  //background-color:rgba(232, 232, 232,0.8);
+  background-color:rgba(248, 205, 233,0.55);
+}
+
 
 /*
 .left-side
@@ -52,16 +59,29 @@
     z-index: 1;
   }
 
+  .retangule-link
+  {
+    transform: translate(0px,-160px);
+    z-index: -3;
+    visibility: hidden;
+  }
+
   .category-title
   {
     transform: translate(0px,-50px);
-    z-index: 4;
+    z-index: 9;
   }
 
   .protocol-title
   {
     transform: translate(0px,-30px);
     z-index: 4;
+  }
+
+  .protocol-box
+  {
+    transform: translate(0px,-30px);
+    //z-index: 4;
   }
 
 }

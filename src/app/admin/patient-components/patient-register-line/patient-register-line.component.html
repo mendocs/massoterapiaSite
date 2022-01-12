@@ -17,7 +17,7 @@
     <tbody>
 
 
-  <tr *ngFor = "let patientSelected of patientViewModelSearchListFromDB">
+  <tr *ngFor = "let patientSelected of patientViewModelSearchListFromDB" [ngClass]="getClassNewDayLine(patientSelected.description)">
     <td><a routerLink="/areacliente/{{patientSelected.key}}" >{{patientSelected.name}}</a></td>
     <td>
       <div *ngIf = "patientSelected.lineSchedule" >
@@ -34,7 +34,7 @@
         {{patientSelected.description}}
       </div>
       <div *ngIf = "!patientSelected.lineSchedule">
-        <div class="text-success">{{patientSelected.description}}</div>
+        <div class="text-success" [ngClass] = "getClassNewDayText(patientSelected.description)">{{patientSelected.description}}</div>
       </div>
     </td>
     <td>

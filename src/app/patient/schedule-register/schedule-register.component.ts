@@ -17,7 +17,7 @@ import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
 import { Observable } from 'rxjs';
 import { therapy } from 'src/app/therapy/models/therapy-model';
-import { plan } from 'src/app/therapy/models/plan-model';
+import { pack } from 'src/app/therapy/models/pack-model';
 import { MatSelect } from '@angular/material/select';
 import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
 
@@ -78,10 +78,10 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
   selectedTherapy : string;
   selectedTherapyObj : therapy;
   selectedPlan : string;
-  selectedPlanObj : plan;
+  selectedPlanObj : pack;
 
   allTherapy$: Observable<therapy[]>;
-  allPlans$: Observable<plan[]>;
+  allPlans$: Observable<pack[]>;
 
   protocolFile = {
 		next: (selectedTherapy : therapy) => this.selectTherapy(selectedTherapy),
@@ -90,7 +90,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 	  };
 
   planFile = {
-    next: (selectedPlan : plan) => this.selectPlan(selectedPlan),
+    next: (selectedPlan : pack) => this.selectPlan(selectedPlan),
     error: err => this.getError(err),
     complete: () => {},
     };
@@ -131,7 +131,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
     ngOnInit(): void {
       this.allTherapy$ = this.therapyDataService.getAlltherapy();
-      this.allPlans$ = this.therapyDataService.getAllPlans();
+      this.allPlans$ = this.therapyDataService.getAllPacks();
     }
 
     writeValue(v: any): void {
@@ -224,7 +224,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
       this.sincronizeEndTime();
     }
 
-    selectPlan(_plan : plan): void
+    selectPlan(_plan : pack): void
     {
       this.innerValue.Package = _plan.titulo;
       this.selectedPlanObj = _plan;
