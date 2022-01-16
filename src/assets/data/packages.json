@@ -2,14 +2,14 @@
   {
     "id" : "pacote1",
     "titulo" : "Pacote 1: 5 sessões de estética corporal e bem-estar",
-    "sessoes" : 4,
+    "sessoes" : 5,
     "preco" : 360,
     "desconto" : 10,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "Cuidados com o corpo na estética corporal e benefícios do relaxamento físico e mental. OBS: O tipo de massagem previsto no pacote poderá ser alterado conforme sua necessidade.",
     "protocolos" : [
-      "2 sessões de Drenagem linfática corporal 60 min ($80)",
-      "2 sessões de Massagem Modeladora 50 min ($80)",
-      "1 sessão de Massagem relaxante com óleos essenciais 60 min ($80)"
+      "2 sessões de Drenagem linfática corporal 60 min (RR$80)",
+      "2 sessões de Massagem modeladora 50 min (R$80)",
+      "1 sessão de Massagem relaxante com óleos essenciais 60 min (R$80)"
     ]
   },
   {
@@ -18,12 +18,12 @@
     "sessoes" : 10,
     "preco" : 700,
     "desconto" : 12.5,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "Cuidados com o corpo na estética corporal e benefícios do relaxamento físico e mental.",
     "protocolos" : [
-      "4 sessões de Drenagem linfática corporal 60 min ($80)",
-      "4 sessões de Massagem Modeladora 50 min ($80)",
-      "1 sessão de Massagem relaxante com óleos essenciais 60 min ($80)",
-      "1 sessão de Massagem relaxante com óleos essenciais e termoterapia 60 min ($80)"
+      "4 sessões de Drenagem linfática corporal 60 min (R$80)",
+      "4 sessões de Massagem modeladora 50 min (R$80)",
+      "1 sessão de Massagem relaxante com óleos essenciais 60 min (R$80)",
+      "1 sessão de Massagem relaxante com óleos essenciais e termoterapia 60 min (R$80)"
     ]
   },
   {
@@ -32,10 +32,10 @@
     "sessoes" : 4,
     "preco" : 288,
     "desconto" : 10,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "O máximo em cuidados com o corpo na estética corporal.",
     "protocolos" : [
-      "2 sessões de Drenagem linfática corporal 60 min ($80)",
-      "2 sessões de Massagem Modeladora 50 min ($80)"
+      "2 sessões de Drenagem linfática corporal 60 min (R$80)",
+      "2 sessões de Massagem modeladora 50 min (R$80)"
     ]
   },
   {
@@ -44,10 +44,10 @@
     "sessoes" : 10,
     "preco" : 700,
     "desconto" : 12.5,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "O máximo em cuidados com o corpo na estética corporal.",
     "protocolos" : [
-      "5 sessões de Drenagem linfática corporal 60 min ($80)",
-      "5 sessões de Massagem Modeladora 50 min ($80)"
+      "5 sessões de Drenagem linfática corporal 60 min (R$80)",
+      "5 sessões de Massagem modeladora 50 min (R$80)"
     ]
   },
   {
@@ -56,12 +56,12 @@
     "sessoes" : 5,
     "preco" : 350,
     "desconto" : 10,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "Cuidado completo, da cabeça aos pés.",
     "protocolos" : [
-      "2 sessões de Drenagem linfática corporal 60 min ($80)",
-      "1 sessão de Massagem Modeladora e relaxante  60 min ($90)",
-      "1 sessão de Massagem relaxante com óleos essenciais 60 min ($80)",
-      "1 sessão de Drenagem linfática facial 40 min ($60)"
+      "2 sessões de Drenagem linfática corporal 60 min (R$80)",
+      "1 sessão de Massagem modeladora e relaxante  60 min (R$90)",
+      "1 sessão de Massagem relaxante com óleos essenciais 60 min (R$80)",
+      "1 sessão de Drenagem linfática facial 40 min (R$60)"
     ]
   },
   {
@@ -70,12 +70,12 @@
     "sessoes" : 4,
     "preco" : 288,
     "desconto" : 10,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "Massagem desportiva para treinar melhor.",
     "protocolos" : [
-      "1 sessão de Massagem desportiva 60 min ($80)",
-      "1 sessão de Massagem desportiva e ventosaterapia 60 min ($80)",
-      "1 sessão de Massagem desportiva e bambuterapia 60 min ($80)",
-      "1 sessão de Massagem desportiva e Guasha 60 min ($80)"
+      "1 sessão de Massagem desportiva 60 min (R$80)",
+      "1 sessão de Massagem desportiva e ventosaterapia 60 min (R$80)",
+      "1 sessão de Massagem desportiva e bambuterapia 60 min (R$80)",
+      "1 sessão de Massagem desportiva e Guasha 60 min (R$80)"
     ]
   },
   {
@@ -84,13 +84,13 @@
     "sessoes" : 5,
     "preco" : 360,
     "desconto" : 10,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "Massagens para alívio dos desconfortos e reequíbrio enerégico e emocional.",
     "protocolos" : [
-      "1 sessão de Massagem oriental Shiatsu (terapêutica) e auriculoterapia 60 min ($80)",
-      "1 sessão de Massagem oriental Zen Shiatsu (terapêutica e relaxante) 60 min ($80)",
-      "1 sessão de Massagem oriental Shiatsu (terapêutica) e ventosaterapia ou moxaterapia 60 min ($80)",
-      "1 sessão de Massagem oriental Tui Na (terapêutica e relaxante) 60 min ($80)",
-      "1 sessão de Massagem Sueca (terapêutica) e ventosaterapia 60 min ($80)"
+      "1 sessão de Massagem oriental Shiatsu (terapêutica) e auriculoterapia 60 min (R$80)",
+      "1 sessão de Massagem oriental Zen Shiatsu (terapêutica e relaxante) 60 min (R$80)",
+      "1 sessão de Massagem oriental Shiatsu (terapêutica) e ventosaterapia ou moxaterapia 60 min (R$80)",
+      "1 sessão de Massagem oriental Tui Na (terapêutica e relaxante) 60 min (R$80)",
+      "1 sessão de Massagem Sueca (terapêutica) e ventosaterapia 60 min (R$80)"
     ]
   },
   {
@@ -99,12 +99,12 @@
     "sessoes" : 4,
     "preco" : 288,
     "desconto" : 10,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "Massagens relaxantes para a semana ficar mais leve.",
     "protocolos" : [
-      "1 sessão de Massagem relaxante com óleos essenciais 60 min ($80)",
-      "1 sessão de Massagem relaxante com pedras quentes 60 min ($80)",
-      "1 sessão de Massagem relaxante com bambuterapia 60 min ($80)",
-      "1 sessão de Escalda-pés e Massagem relaxante com óleos essenciais 60 min ($80)"
+      "1 sessão de Massagem relaxante com óleos essenciais 60 min (R$80)",
+      "1 sessão de Massagem relaxante com pedras quentes 60 min (R$80)",
+      "1 sessão de Massagem relaxante com bambuterapia 60 min (R$80)",
+      "1 sessão de Escalda-pés e Massagem relaxante com óleos essenciais 60 min (R$80)"
     ]
   },
   {
@@ -113,12 +113,12 @@
     "sessoes" : 4,
     "preco" : 270,
     "desconto" : 10,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "Massagens relaxantes para a semana ficar mais leve.",
     "protocolos" : [
-      "1 sessão de Escalda-pés e Massagem relaxante com óleos essenciais 60 min ($80)",
-      "1 sessão de Massagem relaxante com pedras quentes 60 min ($80)",
-      "1 sessão de Escalda-pés e Massagem oriental Tui Na (terapêutica e relaxante) 60 min ($80)",
-      "1 sessão de Spa do rosto e cabeça (higienização do rosto, massagem relaxante na cabeça e rosto e máscara facial) 40 min ($60)"
+      "1 sessão de Escalda-pés e Massagem relaxante com óleos essenciais 60 min (R$80)",
+      "1 sessão de Massagem relaxante com pedras quentes 60 min (R$80)",
+      "1 sessão de Escalda-pés e Massagem oriental Tui Na (terapêutica e relaxante) 60 min (R$80)",
+      "1 sessão de Spa do rosto e cabeça (higienização do rosto, massagem relaxante na cabeça e rosto e máscara facial) 40 min (R$60)"
     ]
   },
   {
@@ -127,13 +127,13 @@
     "sessoes" : 5,
     "preco" : 360,
     "desconto" : 10,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "descricao" : "Massagens relaxantes e para alívio dos desconfortos para a semana ficar mais leve.",
     "protocolos" : [
-      "1 sessão de Massagem relaxante com óleos essenciais 60 min ($80)",
-      "1 sessão de Massagem relaxante com pedras quentes 60 min ($80)",
-      "1 sessão de Massagem oriental Tui Na (terapêutica e relaxante) 60 min ($80)",
-      "1 sessão de Massagem relaxante e bambuterapia 60 min ($80)",
-      "1 sessão de Massagem oriental Zen Shiatsu (terapêutica e relaxante) 60 min ($80)"
+      "1 sessão de Massagem relaxante com óleos essenciais 60 min (R$80)",
+      "1 sessão de Massagem relaxante com pedras quentes 60 min (R$80)",
+      "1 sessão de Massagem oriental Tui Na (terapêutica e relaxante) 60 min (R$80)",
+      "1 sessão de Massagem relaxante e bambuterapia 60 min (R$80)",
+      "1 sessão de Massagem oriental Zen Shiatsu (terapêutica e relaxante) 60 min (R$80)"
     ]
   },
   {
@@ -141,8 +141,8 @@
     "titulo" : "Pacote 11: 5 sessões de massagem",
     "sessoes" : 5,
     "preco" : 360,
-    "desconto" : 0,
-    "descricao" : "São 4 sessões com scalda pes e tuiná cada uma de 50min, com todos os ",
+    "desconto" : 10,
+    "descricao" : "Aqui quem monta o pacote é você!",
     "protocolos" : [
       "Monte seu pacote de 5 sessões (as massagens que desejar ou receba a massagem que estiver precisando no momento da sessão)"
     ]

@@ -39,7 +39,8 @@
             <h2 class="text" data-aos="flip-left" data-aos-delay="300"><h1 > {{selectedTherapy}} </h1></h2>
           </div>
 
-          <h6 class="text-center p-3 pl-4 pr-5 mr-3"> {{therapyTextShort}}</h6>
+          <h6 class="text-center p-3 pl-4 pr-5 mr-3" [innerHTML]="therapyTextShort | dotToParagraph"> </h6>
+
         </div>
 
         <div class="row ">

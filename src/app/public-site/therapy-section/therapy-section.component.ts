@@ -72,7 +72,7 @@ export class TherapySectionComponent extends BaseComponent implements OnInit {
     {
       this.isVisible = true;
       this.isSomeTherapySelected = true;
-      this.selectedTherapy = selectedTherapy.id;
+      this.selectedTherapy = selectedTherapy.titulo;
 
       this.therapyBenefitsTitle = selectedTherapy.beneficiosTitulo;
       this.therapyInformationTitle = selectedTherapy.outrasInformacoesTitulo;

@@ -98,6 +98,20 @@ getPlanbyTitle(titulo : string): Observable<pack> {
 }
 
 
+getPackbyTitle(titulo : string): Observable<pack> {
+
+  let resultado : pack ;
+
+  return this.http.get<pack[]>('assets/data/packages.json')
+  .pipe(
+    map((packs: pack[]) =>
+          packs.find(_pack => _pack.titulo === titulo)
+        )
+  );
+}
+
+
+
 getAllPacks_old(): Observable<pack[]> {
 
   let resultado : pack[] = [];

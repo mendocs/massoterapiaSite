@@ -101,13 +101,13 @@ export class TagCloudComponent extends BaseComponent implements OnInit {
 
   populateControlsFromTherapies(_therapies: therapyCategory[])
   {
+    console.log(_therapies);
     this.therapies = _therapies;
     //this.publicSiteService.SetTherapy("Modeladora",true);
   }
 
   populateControlsFromPacks(_packs : pack[])
   {
-    console.log(_packs);
     this.packs = _packs;
   }
 

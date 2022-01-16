@@ -25,6 +25,7 @@ export abstract class BaseComponent implements OnInit {
     else
       this.messageError = err.status==400 ? JSON.stringify(err.error) : err.message;
 
+   console.log(err);
 
   }
 

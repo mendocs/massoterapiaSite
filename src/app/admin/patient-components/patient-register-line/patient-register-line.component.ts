@@ -81,8 +81,6 @@ export class PatientRegisterLineComponent implements OnInit {
     let _patientViewModelSearchListFromDB : patientViewModelSearchList[] = [];
     let presentDay : number = 0;
 
-    console.log(presentDay + " --- " );
-
     patienties.map(patientCurrent =>
       patientCurrent.Schedules
         .sort((a,b)=> new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime())
@@ -140,7 +138,6 @@ export class PatientRegisterLineComponent implements OnInit {
 
         if (data1.getDate() != data2.getDate())
         {
-          console.log(data1.getDate() + " -- " + data2.getDate());
           _patientViewModelSearchListFromDB[i+1].phone = "";
           _patientViewModelSearchListFromDB[i+1].description = this.utilsService.getSchedulAvaliableDescription(data1,duration,null); + "novo dia";
           indiceToAdd.push(i+2);
@@ -152,7 +149,6 @@ export class PatientRegisterLineComponent implements OnInit {
       }
     }
 
-    console.log(indiceToAdd);
     indiceToAdd.forEach((currentValue, index) =>
     {
       const novodia = _patientViewModelSearchListFromDB[currentValue  + (index * 2) + 1].scheduleStart.getDate();

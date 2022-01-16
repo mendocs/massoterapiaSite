@@ -15,7 +15,7 @@ import { schedule } from '../patient-data/models/schedule.model';
 import { PatientService } from '../patient-data/services/patient.service';
 import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
 import { TherapyDataService } from 'src/app/therapy/services/therapy-data.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { therapy } from 'src/app/therapy/models/therapy-model';
 import { pack } from 'src/app/therapy/models/pack-model';
 import { MatSelect } from '@angular/material/select';
@@ -69,35 +69,54 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
   @Input() readonly: boolean = true;
   @Input() removeButtonActive: boolean = true;
 
+
   ismeridian: boolean = false;
   innerValue: schedule = new schedule();
   timepicker : Date;
   endTime : Date;
   endTimeFormated : string;
 
-  selectedTherapy : string;
-  selectedTherapyObj : therapy;
-  selectedPlan : string;
-  selectedPlanObj : pack;
+  selectedProtocol : string;
+  selectedProtocolObj : therapy;
+  selectedPack : string;
+  selectedPackObj : pack;
 
-  allTherapy$: Observable<therapy[]>;
-  allPlans$: Observable<pack[]>;
+  allProtocol: therapy[];
+  allPacks: pack[];
 
-  protocolFile = {
-		next: (selectedTherapy : therapy) => this.selectTherapy(selectedTherapy),
+  //allTherapy$: Observable<therapy[]>;
+  //allPlans$: Observable<pack[]>;
+
+  allTherapySubscription$ : Subscription;
+  allPackSubscription$ : Subscription;
+
+  allProtocolFile = {
+		next: (_therapies : therapy[]) => this.getProtocols(_therapies),
 		error: err => this.getError(err),
 		complete: () => {},
 	  };
 
-  planFile = {
-    next: (selectedPlan : pack) => this.selectPlan(selectedPlan),
+  allPackFile = {
+    next: (_packs : pack[]) => this.getPacks(_packs),
+    error: err => this.getError(err),
+    complete: () => {},
+    };
+
+  protocolFile = {
+		next: (selectedTherapy : therapy) => this.selectProtocol(selectedTherapy),
+		error: err => this.getError(err),
+		complete: () => {},
+	  };
+
+  packFile = {
+    next: (selectedPlan : pack) => this.selectPack(selectedPlan),
     error: err => this.getError(err),
     complete: () => {},
     };
 
     constructor(private patientService : PatientService,
                 private utilsService : UtilsService,
-                private therapyDataService : TherapyDataService){super();}
+                private therapyDataService : TherapyDataService){super(); }
 
 
     get value() {
@@ -113,15 +132,30 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
           this.innerValue.Protocol = this.innerValue.Protocol ? this.innerValue.Protocol : "--Nenhum--";
           this.innerValue.Package = this.innerValue.Package ? this.innerValue.Package : "--Nenhum--";
-          this.selectedPlan = this.innerValue.Package;
-          this.selectedTherapy = this.innerValue.Protocol;
+          this.selectedPack = this.innerValue.Package;
+          this.selectedProtocol = this.innerValue.Protocol;
 
           this.sincronizeEndTime();
           this.onChangeCb(v);
         }
     }
 
+    addProtocolOld(oldProtocol : string, preco : number, duracao : number) : void
+    {
+      let oldTherapy : therapy = new therapy(oldProtocol,preco,duracao);
 
+      this.allProtocol.push(oldTherapy);
+      this.selectedProtocolObj = oldTherapy;
+    }
+
+    addPackOld(oldPackTitle : string, preco : number) : void
+    {
+      let _oldPack : pack = new pack(oldPackTitle,preco);
+
+      this.allPacks.push(_oldPack);
+      this.selectedPackObj = _oldPack;
+
+    }
 
     removeMySelf()
     {
@@ -130,8 +164,18 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
 
     ngOnInit(): void {
-      this.allTherapy$ = this.therapyDataService.getAlltherapy();
-      this.allPlans$ = this.therapyDataService.getAllPacks();
+      this.readonly = false;
+      //this.allTherapy$ = this.therapyDataService.getAlltherapy();
+      this.allTherapySubscription$ = this.therapyDataService.getAlltherapy().subscribe(this.allProtocolFile);
+      this.allPackSubscription$ = this.therapyDataService.getAllPacks().subscribe(this.allPackFile);
+      //this.allPlans$ = this.therapyDataService.getAllPacks();
+
+
+    }
+
+    ngOnDestroy() : void {
+      this.allTherapySubscription$?.unsubscribe();
+      this.allPackSubscription$?.unsubscribe();
     }
 
     writeValue(v: any): void {
@@ -176,13 +220,12 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
     calculatePrice() : void
     {
-
       if (this.innerValue.Protocol !== "--Nenhum--"){
-        this.innerValue.Price = this.selectedTherapyObj.preco;
+        this.innerValue.Price = this.selectedProtocolObj.preco;
       }
 
       if (this.innerValue.Package !== "--Nenhum--"){
-        this.innerValue.Price = this.selectedPlanObj.preco / this.selectedPlanObj.sessoes;
+        this.innerValue.Price = this.selectedPackObj.preco / this.selectedPackObj.sessoes;
       }
     }
 
@@ -204,6 +247,60 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
     }
 
 
+
+
+    getProtocols(_protocols : therapy[]) : void
+    {
+      this.allProtocol = _protocols;
+
+      if (this.innerValue.Protocol != "--Nenhum--" && !this.allProtocol.some(searchElement => searchElement.titulo_reduzido === this.innerValue.Protocol))
+        this.addProtocolOld(this.innerValue.Protocol, this.innerValue.Price, this.innerValue.Duration);
+      else
+        this.selectedProtocolObj = this.allProtocol.find(searchElement => searchElement.titulo_reduzido == this.innerValue.Protocol);
+    }
+
+    getPacks(_packs : pack[]) : void
+    {
+      this.allPacks = _packs;
+
+      if (this.innerValue.Package != "--Nenhum--" && !this.allPacks.some(searchElement => searchElement.titulo === this.innerValue.Package))
+        this.addPackOld(this.innerValue.Package, this.innerValue.Price);
+      else
+        this.selectedPackObj = this.allPacks.find(searchElement => searchElement.titulo == this.innerValue.Package);
+
+    }
+
+    selectProtocol(_protocol : therapy): void
+    {
+      if (_protocol){
+        this.innerValue.Duration = _protocol.duracao;
+        this.innerValue.Protocol = _protocol.titulo_reduzido;
+        this.selectedProtocolObj = _protocol;
+      }
+      else{
+        this.innerValue.Duration = this.allProtocol[this.allProtocol.length-1].duracao;
+        this.innerValue.Protocol = this.allProtocol[this.allProtocol.length-1].titulo_reduzido;
+        this.selectedProtocolObj = this.allProtocol[this.allProtocol.length-1];
+      }
+      this.calculatePrice();
+      this.sincronizeEndTime();
+    }
+
+    selectPack(_pack : pack): void
+    {
+
+      if (_pack){
+        this.innerValue.Package = _pack.titulo;
+        this.selectedPackObj = _pack;
+      }
+      else{
+        this.innerValue.Package = this.allPacks[this.allPacks.length-1].titulo;
+        this.selectedPackObj = this.allPacks[this.allPacks.length-1];
+      }
+      this.calculatePrice();
+      this.sincronizeEndTime();
+    }
+
     protocolChange(value : string) : void
     {
       if (value === "--Nenhum--"){
@@ -215,31 +312,15 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
     }
 
-    selectTherapy(_therapy : therapy): void
+    packChange(value : string) : void
     {
-      this.innerValue.Duration = _therapy.duracao;
-      this.innerValue.Protocol = _therapy.titulo_reduzido
-      this.selectedTherapyObj = _therapy;
-      this.calculatePrice();
-      this.sincronizeEndTime();
-    }
-
-    selectPlan(_plan : pack): void
-    {
-      this.innerValue.Package = _plan.titulo;
-      this.selectedPlanObj = _plan;
-      this.calculatePrice();
-      this.sincronizeEndTime();
-    }
-
-    planChange(value : string) : void
-    {
+      console.log(value);
       if (value === "--Nenhum--"){
         this.innerValue.Package = value;
         this.calculatePrice();
       }
       else
-        this.therapyDataService.getPlanbyTitle(value).subscribe(this.planFile);
+        this.therapyDataService.getPackbyTitle(value).subscribe(this.packFile);
     }
 
 }

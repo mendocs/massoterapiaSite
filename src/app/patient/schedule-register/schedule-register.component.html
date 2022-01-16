@@ -51,9 +51,9 @@
 
             <mat-form-field appearance="fill">
               <mat-label>Protocolo</mat-label>
-              <mat-select [(ngModel)]="selectedTherapy" #comboProtocol (selectionChange)="protocolChange($event.value)">
+              <mat-select [(ngModel)]="selectedProtocol" #comboProtocol (selectionChange)="protocolChange($event.value)">
                 <mat-option value="--Nenhum--">--Nenhum--</mat-option>
-                <mat-option *ngFor="let _therapy of allTherapy$ | async" [value]="_therapy.titulo_reduzido"> {{_therapy.titulo_reduzido}} ({{_therapy.duracao}}min - R${{_therapy.preco}}) </mat-option>
+                <mat-option *ngFor="let _protocol of allProtocol" [value]="_protocol.titulo_reduzido"> {{_protocol.titulo_reduzido}} ({{_protocol.duracao}}min - R${{_protocol.preco}}) </mat-option>
               </mat-select>
             </mat-form-field>
 
@@ -71,9 +71,9 @@
         <div class="col-9 align-self-center mb-n4">
           <mat-form-field appearance="fill">
             <mat-label>Pacote</mat-label>
-            <mat-select [(ngModel)]="selectedPlan" #comboPlan (selectionChange)="planChange($event.value)" >
+            <mat-select [(ngModel)]="selectedPack" #comboPlan (selectionChange)="packChange($event.value)" >
               <mat-option value="--Nenhum--">--Nenhum--</mat-option>
-              <mat-option *ngFor="let _plan of allPlans$ | async" [value]="_plan.titulo"> {{_plan.titulo}} ({{_plan.sessoes}} R${{_plan.preco}}) </mat-option>
+              <mat-option *ngFor="let _pack of allPacks" [value]="_pack.titulo"> {{_pack.titulo}} ({{_pack.sessoes}} R${{_pack.preco}}) </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
