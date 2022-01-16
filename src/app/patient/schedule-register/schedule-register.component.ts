@@ -124,6 +124,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
     }
 
     set value(v: any) {
+
       if (v !== this.innerValue) {
         //this.formulario.patchValue(v);
           this.innerValue = v;
@@ -137,6 +138,8 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
           this.sincronizeEndTime();
           this.onChangeCb(v);
+          this.allPackSubscription$ = this.therapyDataService.getAllPacks().subscribe(this.allPackFile);
+          this.allTherapySubscription$ = this.therapyDataService.getAlltherapy().subscribe(this.allProtocolFile);
         }
     }
 
@@ -164,10 +167,11 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
 
     ngOnInit(): void {
+
       this.readonly = false;
       //this.allTherapy$ = this.therapyDataService.getAlltherapy();
-      this.allTherapySubscription$ = this.therapyDataService.getAlltherapy().subscribe(this.allProtocolFile);
-      this.allPackSubscription$ = this.therapyDataService.getAllPacks().subscribe(this.allPackFile);
+
+
       //this.allPlans$ = this.therapyDataService.getAllPacks();
 
 
@@ -251,6 +255,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
     getProtocols(_protocols : therapy[]) : void
     {
+
       this.allProtocol = _protocols;
 
       if (this.innerValue.Protocol != "--Nenhum--" && !this.allProtocol.some(searchElement => searchElement.titulo_reduzido === this.innerValue.Protocol))
@@ -261,6 +266,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
     getPacks(_packs : pack[]) : void
     {
+
       this.allPacks = _packs;
 
       if (this.innerValue.Package != "--Nenhum--" && !this.allPacks.some(searchElement => searchElement.titulo === this.innerValue.Package))

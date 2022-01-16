@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {therapy} from "../models/therapy-model";
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { from, Observable, of } from 'rxjs';
 import { therapyCategory } from '../models/therapy-category-model';
 import { pack } from '../models/pack-model';
+import { relativeTimeRounding } from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ export class TherapyDataService {
 
   nomeParcialToFind : string;
 
+  packArray : pack[] =[];
+  protocolArray : therapyCategory[] =[];
+
   constructor(private http: HttpClient) { }
 
 
@@ -20,7 +24,8 @@ export class TherapyDataService {
 
     this.nomeParcialToFind = nomeParcial;
 
-		return this.http.get<therapyCategory[]>('assets/data/therapies.json')
+		//return this.http.get<therapyCategory[]>('assets/data/therapies.json')
+    return this.getAlltherapyCategories()
 		.pipe(
 		  map(
         (therapies: therapyCategory[]) => therapies.filter(c => c.protocolos.find(this.filterTherapyName.bind(this, nomeParcial)))[0].protocolos.find(this.filterTherapyName.bind(this, nomeParcial))
@@ -52,7 +57,8 @@ getAlltherapy(): Observable<therapy[]> {
 
   let resultado : therapy[] = [];
 
-  return this.http.get<therapyCategory[]>('assets/data/therapies.json')
+  //return this.http.get<therapyCategory[]>('assets/data/therapies.json')
+  return this.getAlltherapyCategories()
   .pipe(
     map((therapies: therapyCategory[]) =>
           therapies.map((_therapyCategory : therapyCategory) =>
@@ -68,7 +74,8 @@ getTherapybyTitle(titulo : string): Observable<therapy> {
 
   let resultado : therapy ;
 
-  return this.http.get<therapyCategory[]>('assets/data/therapies.json')
+  //return this.http.get<therapyCategory[]>('assets/data/therapies.json')
+  return this.getAlltherapyCategories()
   .pipe(
     map((therapies: therapyCategory[]) =>
           therapies.map((_therapyCategory : therapyCategory) =>
@@ -85,7 +92,8 @@ getPlanbyTitle(titulo : string): Observable<pack> {
 
   let resultado : pack ;
 
-  return this.http.get<therapyCategory[]>('assets/data/therapies.json')
+  //return this.http.get<therapyCategory[]>('assets/data/therapies.json')
+  return this.getAlltherapyCategories()
   .pipe(
     map((therapies: therapyCategory[]) =>
           therapies.map((_therapyCategory : therapyCategory) =>
@@ -97,21 +105,32 @@ getPlanbyTitle(titulo : string): Observable<pack> {
   );
 }
 
+getPackArray() : Observable<pack[]> {
+
+  if (this.packArray.length>0)
+    return of(this.packArray);
+  else
+    return this.http.get<pack[]>('assets/data/packages.json')
+      .pipe(
+        tap(results =>  this.packArray = results)
+      )
+
+  }
+
 
 getPackbyTitle(titulo : string): Observable<pack> {
 
-  let resultado : pack ;
-
-  return this.http.get<pack[]>('assets/data/packages.json')
+ //return this.http.get<pack[]>('assets/data/packages.json')
+ return this.getPackArray()
   .pipe(
     map((packs: pack[]) =>
           packs.find(_pack => _pack.titulo === titulo)
         )
   );
+
 }
 
-
-
+/*
 getAllPacks_old(): Observable<pack[]> {
 
   let resultado : pack[] = [];
@@ -126,10 +145,10 @@ getAllPacks_old(): Observable<pack[]> {
       switchMap(()=> of(resultado))
   );
 }
-
+*/
 
 getAllPacks(): Observable<pack[]> {
-  return this.http.get<pack[]>('assets/data/packages.json')
+  return this.getPackArray();
 }
 
 
@@ -139,13 +158,19 @@ getAllPacks(): Observable<pack[]> {
   }
 
 
+
   getAlltherapyCategories(): Observable<therapyCategory[]> {
-    return this.http.get<therapyCategory[]>('assets/data/therapies.json').
-    pipe(
-      //switchMap((therapies: therapy[]) => of(this.removeFistItem(therapies)))
-    )
+
+    if (this.protocolArray.length>0)
+      return of(this.protocolArray);
+    else
+      return this.http.get<therapyCategory[]>('assets/data/therapies.json').
+        pipe(
+          tap(results =>  this.protocolArray = results)
+        )
     ;
   }
+
 
   removeFistItem(therapies: therapy[]) : therapy[]
   {
