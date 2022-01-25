@@ -103,7 +103,6 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
  patientSelected : patient;
  savedData : number = 0;
- saveTime : string;
  enable_gotoTop : boolean = false;
  updatePatientSubscription$ : Subscription;
  removedorSubscription$ : Subscription;
@@ -262,14 +261,14 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
   patientSaved(result: number) : void
   {
-    this.saveTime =  this.utilsService.getDateFormated(new Date( Date.now()));
+    this.recordSuccess = false;
     this.isLoadingSaveData = false;
     this.savedData = result;
     this.isError = false;
     if (this.savedData == 0)
     {
         this.isError = true;
-        this.messageError = "Registro não foi gravado, tente recarregar a pagina e tente novamente";
+        this.messageError = "Registro não foi gravado, recarregue a pagina e tente novamente";
     }
     else
       this.recordSuccess = true;

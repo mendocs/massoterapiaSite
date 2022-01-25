@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  phoneContactMask : "(11) 98099-0048",
-  phoneContactnoMask : "5511980990048",
+  phoneContactMask : "(11) 93139-1011",
+  phoneContactnoMask : "5511931391011",
   whatsapplink : "https://api.whatsapp.com/send?l=pt-BR&phone=",
   address : "Rua Porto Rico, 27.Parque das Nações - Santo André.(espaço para estacionar em Frente))",
   pathUrl : "http://www.massoterapiaintegral.com.br/areacliente/",

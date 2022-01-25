@@ -65,10 +65,21 @@ $MassoterapiaSite-theme: mat-light-theme((
 
 @import "./app//style/globalStyleTheme.scss";
 
+@font-face {
+  font-family: "mistral";
+  src: local("mistral"), url(./assets/fonts/mistral.ttf) format("truetype");
+}
 
 
+@font-face {
+  font-family: "nirmala";
+  src: local("nirmala-ui-2"), url(./assets/fonts/nirmala-ui-2.ttf) format("truetype");
+}
 
-
+@font-face {
+  font-family: "rage-italic";
+  src: local("rage-italic"), url(./assets/fonts/rage-italic.ttf) format("truetype");
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

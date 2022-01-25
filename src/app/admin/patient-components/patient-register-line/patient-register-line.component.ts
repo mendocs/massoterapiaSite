@@ -90,6 +90,7 @@ export class PatientRegisterLineComponent implements OnInit {
             const _patientViewModelSearchList: patientViewModelSearchList = new patientViewModelSearchList(
                                                                                                     patientCurrent.Key,
                                                                                                     `${patientCurrent.Name} (${patientCurrent.Schedules.length}) `,
+                                                                                                    patientCurrent.Name,
                                                                                                     patientCurrent.Phone,
                                                                                                     new Date(scheduleCurrent.StartdDate),
                                                                                                     scheduleCurrent.Executed,
@@ -200,6 +201,7 @@ export class PatientRegisterLineComponent implements OnInit {
       "---novo dia---",
       "",
       "",
+      "",
       dateSc,
       null,
       null,
@@ -219,6 +221,7 @@ export class PatientRegisterLineComponent implements OnInit {
     dateSc.setMinutes(dateSc.getMinutes() + 1);
 
     let _patient =  new patientViewModelSearchList(
+      "",
       "",
       "",
       "",
