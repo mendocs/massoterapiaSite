@@ -8,12 +8,18 @@ import { pack } from 'src/app/therapy/models/pack-model';
 })
 export class PackageMenuComponent implements OnInit {
 
+  isCollapsed:boolean = true;
+
   @Input() packCurrent: pack;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
 
+  getPriceWithouthDiscont() : number  {
+    //this.packCurrent. .getPriceWithouthDiscont();
+    return Math.round(this.packCurrent.preco / ((100-this.packCurrent.desconto)/100));
   }
 
 }

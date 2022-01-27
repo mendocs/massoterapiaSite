@@ -3,37 +3,59 @@
 
 <div class="col-5 w-100 d-inline-block pt-5 text-center " >
     <div class="card m-2 shadow">
-      <div class="card-header">
-        <div class="row h-100">
-          <div class="col-4 align-self-center mt-n3">
-            <i class="material-icons main-icons mt-n5" >feed</i>
+      <div class="card-header pointer" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+        <div class="row h-100  ">
+          <div class="col-2 mt-n3 ">
+            <i class="material-icons main-icons mt-n3" >feed</i>
           </div>
-          <div class="col-8 align-self-center">
+          <div class="col-6 p-2 align-self-center">
             {{packCurrent.titulo}}
+          </div>
+          <div class="col-3 h-100 ">
+            <div class="row h-100 text-left " style="font-size: 85%;">
+
+              <div class="col-8 pl-2 text-left  ">
+                <span class="ml-n2" style="text-decoration: line-through">R${{getPriceWithouthDiscont()}},00</span>
+              </div>
+              <div class="col-4 pl-0 text-left" style="text-align: left !important;">
+                <span class="badge badge-danger">{{packCurrent.desconto}}% 🡫</span>
+              </div>
+
+
+
+            </div>
+
+            <span class="badge badge-success badge-pill mt-2 valores align-self-center  ">R$ {{packCurrent.preco}},00</span>
+
+          </div>
+          <div class="col-1 align-self-center h-100 pl-0 ">
+            <span class="material-icons main-icons align-self-center pl-0" >{{isCollapsed?"navigate_next":"navigate_before"}} </span>
           </div>
         </div>
       </div>
-      <div class="card-body">
+      <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+        <div class="card-body">
+            <div class="row h-100">
+              <div class="col-1 align-self-center">
+              <i class="material-icons" style="font-size:36px;color:green">event_available</i>
+              </div>
+              <div class="col-11 align-self-center">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let _protocolo of packCurrent.protocolos">
+                    {{_protocolo}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="card-footer">
           <div class="row h-100">
             <div class="col-1 align-self-center">
-            <i class="material-icons" style="font-size:36px;color:green">event_available</i>
+              <i class="material-icons" style="font-size:24px;color:green">notes</i>
             </div>
             <div class="col-11 align-self-center">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between align-items-center">{{packCurrent.sessoes}} Sessões<span class="badge badge-success badge-pill valores">R$ {{packCurrent.preco}},00</span></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">{{packCurrent.descricao}}</li>
-
-              </ul>
+              {{packCurrent.descricao}}
             </div>
-          </div>
-      </div>
-      <div class="card-footer">
-        <div class="row h-100">
-          <div class="col-1 align-self-center">
-            <i class="material-icons" style="font-size:24px;color:green">notes</i>
-          </div>
-          <div class="col-11 align-self-center">
-            Sessões realizadas entre 2 e 3 meses
           </div>
         </div>
       </div>

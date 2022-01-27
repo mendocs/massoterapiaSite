@@ -20,4 +20,8 @@ export class pack {
 
   }
 
+  getPriceWithouthDiscont() : number  {
+    return this.preco / ((100-this.desconto)/100);
+  }
+
 }

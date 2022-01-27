@@ -36,7 +36,7 @@ export class BlogMainComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.getAllBlogSubscription$ =  this._PublicBlogService.getAllBlog$().subscribe(this.blogsFile);
-    this._titleService.setTitle("Massoterapia Integral - Blog");
+    this._titleService.setTitle("NEL Zen Massoterapia - Blog");
   }
 
   ngOnDestroy() : void{

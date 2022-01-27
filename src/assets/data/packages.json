@@ -3,8 +3,8 @@
     "id" : "pacote1",
     "titulo" : "Pacote 1: 5 sessões de estética corporal e bem-estar",
     "sessoes" : 5,
-    "preco" : 360,
-    "desconto" : 10,
+    "preco" : 350,
+    "desconto" : 12.5,
     "descricao" : "Cuidados com o corpo na estética corporal e benefícios do relaxamento físico e mental. OBS: O tipo de massagem previsto no pacote poderá ser alterado conforme sua necessidade.",
     "protocolos" : [
       "2 sessões de Drenagem linfática corporal 60 min (RR$80)",
@@ -16,8 +16,8 @@
     "id" : "pacote2",
     "titulo" : "Pacote 2: 10 sessões de estética corporal e bem-estar",
     "sessoes" : 10,
-    "preco" : 700,
-    "desconto" : 12.5,
+    "preco" : 680,
+    "desconto" : 15,
     "descricao" : "Cuidados com o corpo na estética corporal e benefícios do relaxamento físico e mental.",
     "protocolos" : [
       "4 sessões de Drenagem linfática corporal 60 min (R$80)",
@@ -42,8 +42,8 @@
     "id" : "pacote4",
     "titulo" : "Pacote 4: 10 sessões de estética corporal",
     "sessoes" : 10,
-    "preco" : 700,
-    "desconto" : 12.5,
+    "preco" : 680,
+    "desconto" : 15,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal.",
     "protocolos" : [
       "5 sessões de Drenagem linfática corporal 60 min (R$80)",
@@ -54,8 +54,8 @@
     "id" : "pacote5",
     "titulo" : "Pacote 5: 5 sessões de estética corporal e facial, e bem-estar",
     "sessoes" : 5,
-    "preco" : 350,
-    "desconto" : 10,
+    "preco" : 340,
+    "desconto" : 12.5,
     "descricao" : "Cuidado completo, da cabeça aos pés.",
     "protocolos" : [
       "2 sessões de Drenagem linfática corporal 60 min (R$80)",
@@ -82,8 +82,8 @@
     "id" : "pacote7",
     "titulo" : "Pacote 7: 5 sessões de massagem terapêutica",
     "sessoes" : 5,
-    "preco" : 360,
-    "desconto" : 10,
+    "preco" : 350,
+    "desconto" : 12.5,
     "descricao" : "Massagens para alívio dos desconfortos e reequíbrio enerégico e emocional.",
     "protocolos" : [
       "1 sessão de Massagem oriental Shiatsu (terapêutica) e auriculoterapia 60 min (R$80)",
@@ -125,8 +125,8 @@
     "id" : "pacote10",
     "titulo" : "Pacote 10: 5 sessões de massagem relaxante e terapêutica",
     "sessoes" : 5,
-    "preco" : 360,
-    "desconto" : 10,
+    "preco" : 350,
+    "desconto" : 12.5,
     "descricao" : "Massagens relaxantes e para alívio dos desconfortos para a semana ficar mais leve.",
     "protocolos" : [
       "1 sessão de Massagem relaxante com óleos essenciais 60 min (R$80)",
@@ -140,8 +140,8 @@
     "id" : "pacote11",
     "titulo" : "Pacote 11: 5 sessões de massagem",
     "sessoes" : 5,
-    "preco" : 360,
-    "desconto" : 10,
+    "preco" : 350,
+    "desconto" : 12.5,
     "descricao" : "Aqui quem monta o pacote é você!",
     "protocolos" : [
       "Monte seu pacote de 5 sessões (as massagens que desejar ou receba a massagem que estiver precisando no momento da sessão)"

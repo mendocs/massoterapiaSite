@@ -13,13 +13,24 @@
       </div>
 
 
-      <h4 class=" m-3">Pacotes</h4>
+      <h4 class=" ml-3">Pacotes</h4>
 
-      <div class="m-1 p-1 d-inline align-top" *ngFor="let _pack of packs">
-
+        <div class="m-1 p-1 d-inline align-top" *ngFor="let _pack of packs">
             <app-package-menu  [packCurrent]="_pack"></app-package-menu>
-
         </div>
+
+        <div class="text-white pointer ml-3 mt-3" style="font-size: 150%;" *ngIf="isCollapsed" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+          <span class="align-top ">Veja mais Pacotes</span>
+          <span class="material-icons main-icons " >{{isCollapsed?"navigate_next":"navigate_before"}} </span>
+        </div>
+
+        <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+          <div class="m-1 p-1 d-inline align-top" *ngFor="let _pack of packsLast">
+            <app-package-menu  [packCurrent]="_pack"></app-package-menu>
+          </div>
+        </div>
+
 
 
 

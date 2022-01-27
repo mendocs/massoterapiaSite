@@ -32,7 +32,7 @@ export class MainContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this._titleService.setTitle("Massoterapia Integral");
+    this._titleService.setTitle("NEL Zen Massoterapia");
 
     if (this.publicSiteService.LinkVisited)
       this.publicSiteService.navigateTo(this.publicSiteService.LinkVisited);

@@ -320,7 +320,6 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
     packChange(value : string) : void
     {
-      console.log(value);
       if (value === "--Nenhum--"){
         this.innerValue.Package = value;
         this.calculatePrice();

@@ -19,11 +19,13 @@ export class TagCloudComponent extends BaseComponent implements OnInit {
 
     ButtonsInitialized : boolean= false;
 
+    isCollapsed:boolean = true;
 
     currentTerapia :string = "";
 
     therapies : therapyCategory[] ;
-    packs : pack[] ;
+    packs : pack[] = [];
+    packsLast : pack[] = [];
 
     protocolsFile = {
     next: (_therapies : therapyCategory[]) => this.populateControlsFromTherapies(_therapies),
@@ -101,14 +103,14 @@ export class TagCloudComponent extends BaseComponent implements OnInit {
 
   populateControlsFromTherapies(_therapies: therapyCategory[])
   {
-    console.log(_therapies);
     this.therapies = _therapies;
     //this.publicSiteService.SetTherapy("Modeladora",true);
   }
 
   populateControlsFromPacks(_packs : pack[])
   {
-    this.packs = _packs;
+    this.packs = _packs.splice(0,4);
+    this.packsLast = _packs;
   }
 
 }
