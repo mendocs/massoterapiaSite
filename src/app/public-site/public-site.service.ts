@@ -71,14 +71,14 @@ export class PublicSiteService {
 
   }
 
- GoToScrollTherapySelected(therapySelected:string): void
- {
+  GoToScrollTherapySelected(therapySelected:string): void
+  {
 
-   if (this.currentSection != "therapy_section_spied")
-      this.triggerScrollTo("therapy_section_spied");
+    if (this.currentSection != "therapy_section_spied")
+        this.triggerScrollTo("therapy_section_spied");
 
-   this.LinkVisited = therapySelected;
- }
+    this.LinkVisited = therapySelected;
+  }
 
 
   SetTherapyListVisited(therapySelected: string ): void

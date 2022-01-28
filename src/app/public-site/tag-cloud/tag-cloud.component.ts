@@ -104,6 +104,7 @@ export class TagCloudComponent extends BaseComponent implements OnInit {
   populateControlsFromTherapies(_therapies: therapyCategory[])
   {
     this.therapies = _therapies;
+    this.publicSiteService.SetTherapy("about",true);
     //this.publicSiteService.SetTherapy("Modeladora",true);
   }
 

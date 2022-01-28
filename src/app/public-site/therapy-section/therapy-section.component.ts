@@ -70,6 +70,13 @@ export class TherapySectionComponent extends BaseComponent implements OnInit {
 
     if (selectedTherapy)
     {
+
+      if(selectedTherapy.id === "about" )
+        this.isCollapsed = false;
+      else
+      this.isCollapsed = true;
+
+
       this.isVisible = true;
       this.isSomeTherapySelected = true;
       this.selectedTherapy = selectedTherapy.titulo;

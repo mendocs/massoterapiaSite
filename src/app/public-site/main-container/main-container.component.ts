@@ -45,6 +45,8 @@ export class MainContainerComponent implements OnInit {
     this.sections = this.publicSiteService.sections;
 
     AOS.init();
+
+
   }
 
 
