@@ -7,17 +7,19 @@ import { FooterComponent } from './footer/footer.component';
 import { SharedKernelModule } from '../shared-kernel/shared-kernel.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
-import { TopToolbarComponent } from "./top-toolbar/top-toolbar.component"
+import { TopToolbarComponent } from "./top-toolbar/top-toolbar.component";
+import { MainNameComponent } from './main-name/main-name.component';
+import { SloganComponent } from './slogan/slogan.component'
 
 
 @NgModule({
-  declarations: [HeaderComponent, WhatsappComponent, FooterComponent, PageNotFoundComponent, TopToolbarComponent],
+  declarations: [HeaderComponent, WhatsappComponent, FooterComponent, PageNotFoundComponent, TopToolbarComponent, MainNameComponent, SloganComponent],
   imports: [
     CommonModule,
     SharedKernelModule,
     RouterModule
   ],
-  exports : [ HeaderComponent, WhatsappComponent, FooterComponent, PageNotFoundComponent, TopToolbarComponent],
+  exports : [ HeaderComponent, WhatsappComponent, FooterComponent, PageNotFoundComponent, TopToolbarComponent, SloganComponent],
   providers: [CommomComponentsService],
 })
 export class CommonComponentsModule { }

@@ -22,4 +22,8 @@ export class PackageMenuComponent implements OnInit {
     return Math.round(this.packCurrent.preco / ((100-this.packCurrent.desconto)/100));
   }
 
+  getCategoryTitleWithouthPrice(protocolTitle : string) : string {
+    return protocolTitle.split("(R$")[0];
+  }
+
 }

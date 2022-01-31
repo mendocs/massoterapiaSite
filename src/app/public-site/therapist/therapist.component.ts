@@ -9,7 +9,7 @@ export class TherapistComponent implements OnInit {
 
 
 
-  features: string[] = ["Formada no Senac", "Especializada em tratamento feminino", "Curso com 1600 horas", "Ambiente higienzado"];
+  features: string[] = ["Formada no Senac", "Curso com 1200 horas", "Especializada em tratamento feminino", "Ambiente acolhedor"];
 
   activeSlideIndex = 0;
   @ViewChild('lgModal') modalTherapistCarrousel: any

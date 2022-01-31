@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PublicSiteService } from '../public-site.service';
 
 @Component({
   selector: 'app-price',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PriceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private publicSiteService: PublicSiteService) { }
 
   ngOnInit(): void {
   }
+
+  public navigateTo(destination : string) {
+    this.publicSiteService.navigateTo(destination);
+  }
+
 
 }

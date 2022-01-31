@@ -10,7 +10,7 @@
       <div #titleProtocol
         (click) = "showProtocols()"
         class="col-8 category-title  text-center pointer pb-3"
-        style="font-size: 250%; font-family: Dr Sugiyama; font-style: italic; color: rgb(82, 85, 60); "
+        style="font-size: 250%; font-family: Dr Sugiyama; font-style: rage-italic; color: rgb(82, 85, 60); "
 
         [style.background]=" showProtocolsActive ? getCategoryBackground(therapyCategoryCurrent.cor) : ''"
 
@@ -18,7 +18,8 @@
 
       >
         <h1 >Massagens para</h1>
-        <h1 >{{therapyCategoryCurrent.categoria}}</h1>
+        <h1 >{{getCategoryTitleWithouthParentheses()}}</h1>
+        <h3 >{{getCategoryTitleInsideParentheses()}}</h3>
       </div>
     </div>
 

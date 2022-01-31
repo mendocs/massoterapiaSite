@@ -68,4 +68,15 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
     this.publicSiteService.SetTherapy(therapyId);
   }
 
+  getCategoryTitleWithouthParentheses() : string {
+    return this.therapyCategoryCurrent.categoria.split("(")[0];
+  }
+
+  getCategoryTitleInsideParentheses() : string {
+    if (this.therapyCategoryCurrent.categoria.includes("("))
+      return "(" + this.therapyCategoryCurrent.categoria.split("(")[1];
+    else
+      return "";
+  }
+
 }
