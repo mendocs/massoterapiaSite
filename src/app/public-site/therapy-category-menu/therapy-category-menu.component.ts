@@ -45,8 +45,11 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
 
   showProtocols() : void{
     const showProtocolsActiveState : boolean =  this.showProtocolsActive;
-    this.publicSiteService.closeMenuProtocols();
+    //this.publicSiteService.closeMenuProtocols();
     this.showProtocolsActive = !showProtocolsActiveState;
+
+    this.publicSiteService.navigateTo(this.therapyCategoryCurrent.id + "_spied");
+
   }
 
   getProtocolsBackground(image_background : string) : string
@@ -78,5 +81,6 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
     else
       return "";
   }
+
 
 }

@@ -14,7 +14,7 @@ export class BigCarouselComponent implements OnInit {
   public slides :slide[] =
   [
     { titulo: "O espaço",
-      resumido: "Mais saúde, bem-estar e qualidade de vida com Massoterapia Integral em espaço exclusivamente feminino",
+      resumido: "Mais saúde, bem-estar e qualidade de vida com NEL Zen em espaço exclusivamente feminino",
       detalhado: "Um espaço voltado para o público feminino que tem como objetivo oferecer um serviço de alta qualidade em massoterapia e técnicas integrativas a fim de proporcionar bem-estar, saúde e qualidade de vida",
       image : "therapist" ,
       link : "therapist_spied"

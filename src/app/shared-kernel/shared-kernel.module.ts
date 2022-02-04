@@ -16,10 +16,11 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { SuccessMessageComponent } from './components/success-message/success-message.component';
+import { SizeBarDebugComponent } from './components/size-bar-debug/size-bar-debug.component';
 
 
 @NgModule({
-  declarations: [ScrollSpyDirective, ParallaxDirective, DotToParagraphPipe, PortugueseBooleanPipe, LoadingSpinnerComponent, ErrorMessageComponent, SuccessMessageComponent],
+  declarations: [ScrollSpyDirective, ParallaxDirective, DotToParagraphPipe, PortugueseBooleanPipe, LoadingSpinnerComponent, ErrorMessageComponent, SuccessMessageComponent, SizeBarDebugComponent],
   imports: [
     CommonModule,
     NgxBootsrapModule,
@@ -46,7 +47,8 @@ import { SuccessMessageComponent } from './components/success-message/success-me
     AngularEditorModule,
     LoadingSpinnerComponent,
     ErrorMessageComponent,
-    SuccessMessageComponent
+    SuccessMessageComponent,
+    SizeBarDebugComponent
   ],
     providers : [UtilsService]
 })

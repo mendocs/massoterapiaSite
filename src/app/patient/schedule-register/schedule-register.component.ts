@@ -90,6 +90,8 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
   allTherapySubscription$ : Subscription;
   allPackSubscription$ : Subscription;
 
+  displayShort : boolean;
+
   allProtocolFile = {
 		next: (_therapies : therapy[]) => this.getProtocols(_therapies),
 		error: err => this.getError(err),
@@ -140,6 +142,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
           this.onChangeCb(v);
           this.allPackSubscription$ = this.therapyDataService.getAllPacks().subscribe(this.allPackFile);
           this.allTherapySubscription$ = this.therapyDataService.getAlltherapy().subscribe(this.allProtocolFile);
+          this.displayShort = (this.innerValue.Executed || this.innerValue.Canceled) && (!this.readonly && this.removeButtonActive);
         }
     }
 
@@ -168,7 +171,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
     ngOnInit(): void {
 
-      this.readonly = false;
+      //this.readonly = false;
       //this.allTherapy$ = this.therapyDataService.getAlltherapy();
 
 
@@ -326,6 +329,10 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
       }
       else
         this.therapyDataService.getPackbyTitle(value).subscribe(this.packFile);
+    }
+
+    getDateShort(dateTobeShorted) : string {
+      return this.utilsService.getDateFormated(dateTobeShorted);
     }
 
 }

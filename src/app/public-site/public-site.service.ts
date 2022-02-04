@@ -123,6 +123,21 @@ export class PublicSiteService {
 
   }
 
+  public triggerScrollToWithoutAnimation(destination : string): void {
 
+    this.LinkVisited = destination;
+
+    this.router.navigate(["/"]);
+
+
+    const config: ScrollToConfigOptions = {
+	  target: destination,
+	  duration: 0,
+	  offset: -100
+    };
+
+    this._scrollToService.scrollTo(config);
+
+  }
 
 }

@@ -404,7 +404,7 @@
 
 
 
-     <h1 class="mt-4 mb-1">Atendimentos <a class="btn" (click)="addSchedule()" *ngIf="isAuthenticated()"><span class="material-icons" >note_add</span></a> </h1>
+     <h1 class="mt-4 mb-1">Atendimentos ({{getSchedulesLength()}}) <a class="btn" (click)="addSchedule()" *ngIf="isAuthenticated()"><span class="material-icons" >note_add</span></a> </h1>
 
      <div id="Schedules" class="row" *ngIf="schedulesPopulated" #container>
        <div class="col-12 col-md-6 col-lg-4"

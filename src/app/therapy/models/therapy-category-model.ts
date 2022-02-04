@@ -2,6 +2,7 @@ import { therapy } from "./therapy-model";
 import { pack } from "./pack-model";
 
 export class therapyCategory {
+  public id : string;
 	public categoria: string;
   public image: string;
   public cor: string;

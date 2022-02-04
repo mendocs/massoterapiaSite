@@ -13,9 +13,9 @@
       </div>
 
 
-      <h4 class=" ml-3">Pacotes</h4>
+      <h4 class="ml-3 ml-lg-0">Pacotes</h4>
 
-        <div class="m-1 p-1 d-inline align-top" *ngFor="let _pack of packs">
+        <div class="m-1 p-1 ml-lg-n3 d-inline align-top" *ngFor="let _pack of packs">
             <app-package-menu  [packCurrent]="_pack"></app-package-menu>
         </div>
 
@@ -26,7 +26,7 @@
         </div>
 
         <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
-          <div class="m-1 p-1 d-inline align-top" *ngFor="let _pack of packsLast">
+          <div class="m-1 p-1 ml-lg-n3 d-inline align-top" *ngFor="let _pack of packsLast">
             <app-package-menu  [packCurrent]="_pack"></app-package-menu>
           </div>
         </div>

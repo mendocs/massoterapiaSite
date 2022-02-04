@@ -1,5 +1,6 @@
 [
   {
+    "id" : "relaxar",
     "categoria" : "relaxar",
     "titulo_reduzido" : "Relaxantes",
     "image" : "relaxante",
@@ -456,6 +457,7 @@
                   ]
   },
   {
+    "id" : "dores",
     "categoria" : "dores e desconfortos",
     "titulo_reduzido" : "Dores e Desconfortos",
     "image" : "dores",
@@ -786,6 +788,7 @@
                   ]
   },
   {
+    "id" : "esportes",
     "categoria" : "praticantes de esportes (Tratar dores e melhorar rendimento)",
     "titulo_reduzido" : "Prática de Esportes",
     "image" : "desportiva",
@@ -995,6 +998,7 @@
                   ]
   },
   {
+      "id" : "estetica",
       "categoria" : "finalidade estética",
       "titulo_reduzido" : "Estética",
       "image" : "estetica",

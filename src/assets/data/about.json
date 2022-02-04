@@ -27,7 +27,7 @@
                   "Favorece o metabolismo celular e a lipólise" ,
                   "Aumento nas trocas de substâncias entre o meio celular e a circulação sanguínea" ,
                   "Previne lesões, tonifica e recupera o músculo" ,
-                  "Trata nódulos e pontos gatilho" ,
+                  "Trata nódulos e pontos gatilho musculares" ,
                   "Evita aderências pós microlesões e diminui a inflamação muscular" ,
                   "Melhora o rendimento esportivo" ,
                   "Rosto: higienização e remoção de células mortas" ,
@@ -42,6 +42,7 @@
   "outrasInformacoesTitulo": "Contraindicações",
   "outrasInformacoes" : [
                           "Febre nas últimas 48h" ,
+                          "Trombose" ,
                           "Insuficiência renal/cardíaca/pulmonar" ,
                           "Marcapasso" ,
                           "Transplante de órgãos" ,

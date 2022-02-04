@@ -1,13 +1,28 @@
 
+<div class="card my-3 p-2 schedule-card rounded pointer" (click)="this.displayShort = !this.displayShort" *ngIf="this.displayShort">
+  <p>{{getDateShort(innerValue['StartdDate'])}}
+    <span style="color: red;">{{this.innerValue.Canceled ? "Cancelado" : ""}}</span>
+    <span style="color: rgb(7, 11, 245);">{{this.innerValue.Executed ? "Realizado" : ""}}</span>
+    <span style="color: rgba(7, 149, 7, 0.924);">{{(!this.innerValue.Executed && this.innerValue.Confirmed) ? "Confirmado" : ""}}</span>
+  </p>
+  <p>{{selectedProtocol}}  </p>
+</div>
+
+
 <!-- <form [formGroup]="formulario" (ngSubmit)="onSubmit()">-->
-  <div class="form-group" >
+  <div class="form-group" *ngIf="!this.displayShort">
 
 
   <div class="card my-3 schedule-card rounded ">
     <div class="card-header">
 
       <div class="row clearfix">
+
         <div class="w-100 " *ngIf="(!readonly && removeButtonActive)">
+          <a class=" text-white  mx-2 float-left" (click)="this.displayShort = !this.displayShort">
+            <span class="material-icons dysplay-short-icon pointer">visibility_off</span>
+          </a>
+
           <a class=" text-white  mx-2 float-right" (click)="removeMySelf()">
             <span class="material-icons remove-icon pointer">delete_forever</span>
           </a>

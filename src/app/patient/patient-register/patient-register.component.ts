@@ -280,6 +280,12 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     return this.patientSelected.Schedules;
   }
 
+  getSchedulesLength() : number {
+
+    return this.schedulesPopulated ? this.patientSelected.Schedules.length  : 0;
+  }
+
+
   functionSort (a : schedule, b : schedule) : number {
     return new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime()}
 

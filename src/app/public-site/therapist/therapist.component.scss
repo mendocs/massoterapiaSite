@@ -18,6 +18,12 @@
 	background-size: 100% auto;
 }
 
+.image-round-title
+{
+  transform: translate(0px,-50px);
+  z-index: 9;
+}
+
 
   @include respond-above(md) { //lg
     .parallaxParent {
