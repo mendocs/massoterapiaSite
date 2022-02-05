@@ -14,7 +14,7 @@ export class TherapistComponent implements OnInit {
   imagesTitle : string[] = ["Espaço novo em folha, feito com carinho para você",
                             "Ambiente higienizado, confortável e aconchegante",
                             "Lenções confortáveis e trocados a cada cliente",
-                            "Escolh e utilização de produtos de 1 linha de marccas renomadas, livres de parabenos e petrolatos"
+                            "Escolha e utilização de produtos de 1° linha de marcas renomadas, livres de parabenos e petrolatos"
                            ];
 
   imagesIndex : number[] = [0,3,6,8];
