@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class TherapistComponent implements OnInit {
 
-
+  carrouselModalShow : boolean = false;
 
   features: string[] = ["Formada no Senac", "Curso com 1200 horas", "Especializada em tratamento feminino", "Ambiente acolhedor"];
 
@@ -34,6 +34,7 @@ export class TherapistComponent implements OnInit {
 
   showtherapistPics(imageIndex: number)
   {
+    this.carrouselModalShow = true;
     this.activeSlideIndex = this.imagesIndex[imageIndex];
     this.modalTherapistCarrousel.show();
   }

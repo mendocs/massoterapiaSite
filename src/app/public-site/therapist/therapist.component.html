@@ -78,9 +78,7 @@
         </button>
       </div>
       <div class="modal-body">
-
-
-        <carousel [(activeSlide)]="activeSlideIndex">
+        <carousel [(activeSlide)]="activeSlideIndex" *ngIf="carrouselModalShow">
           <slide>
             <h3>{{imagesTitle[0]}}</h3>
             <img src="assets/images/therapist/clinic/espaco1.jpeg" alt="first slide" style="display: block; width: 100%;">
@@ -130,10 +128,6 @@
             <img src="assets/images/therapist/clinic/produtos4.jpeg" alt="second slide" style="display: block; width: 100%;">
           </slide>
         </carousel>
-
-
-
-
       </div>
     </div>
   </div>
