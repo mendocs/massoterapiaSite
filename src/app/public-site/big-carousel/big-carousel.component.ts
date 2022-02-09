@@ -29,7 +29,7 @@ export class BigCarouselComponent implements OnInit {
       resumido: "Benefícios da massagem: relaxamento, tratamento da dor, apoio à prática esportiva, estética, edema, reequilíbrio fisiológico, energético e emocional,  consciência corporal,  e mais...",
       detalhado: "A massoterapia atua em diversas áreas que envolvem a promoção, prevenção e  recuperação da saúde e bem-estar. Desta forma, atua sobre aspectos como o relaxamento, o apoio à prática esportiva, tratamento da dor, estética, cuidados pré e pós-cirúrgicos, consciência corporal, reequilíbrio fisiológico, energético e emocional.",
       image : "home" ,
-      link : "Massoterapia"
+      link : "about"
     }
   ]
 

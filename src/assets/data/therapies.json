@@ -5,7 +5,7 @@
     "titulo_reduzido" : "Relaxantes",
     "image" : "relaxante",
     "cor" : "rgba(248, 205, 233,1)",
-    "image_background" : "fundo_estetica.png",
+    "image_background" : "fundo_relaxar.png",
     "protocolos": [
                 {
                   "id": "relax_oleos_essenciais",
@@ -462,7 +462,7 @@
     "titulo_reduzido" : "Dores e Desconfortos",
     "image" : "dores",
     "cor" : "rgba(204, 204, 153,1)",
-    "image_background" : "fundo_estetica.png",
+    "image_background" : "fundo_dores.png",
     "protocolos": [
                 {
                   "id": "shiatsu_auriculo",
@@ -793,7 +793,7 @@
     "titulo_reduzido" : "Prática de Esportes",
     "image" : "desportiva",
     "cor" : "rgba(180, 204, 176,1)",
-    "image_background" : "fundo_estetica.png",
+    "image_background" : "fundo_desportiva.png",
     "protocolos": [
               {
                 "id": "desportiva",

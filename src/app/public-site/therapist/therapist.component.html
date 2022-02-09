@@ -2,19 +2,15 @@
 
 <div class="mx-3 mb-2 pt-5 pb-5 text-center align-middle " style="position: relative;">
 
-<div appParallax [ratio]="-.2"  [BackGround]="true"  class="mx-3 mb-n5 text-center parallaxParent align-middle parallaxBgPosition"> </div>
+  <div appParallax [ratio]="-.2"  [BackGround]="true"  class="mx-3 mb-n5 text-center parallaxParent align-middle parallaxBgPosition"> </div>
 
 <!--
 <div class="parallaxFront parallaxBgPosition" appParallax [ratio]="0.1" [BackGround]="true" [BackGroundHorizontallPosition]=5 [BackGroundImageHeigth]=550 > </div>
 <div class="parallaxFront parallaxBgPosition" appParallax [ratio]="-0.49" [BackGround]="true" [BackGroundHorizontallPosition]=30 [BackGroundImageHeigth]=250 >  </div>
 -->
 
-<div class="parallaxFront parallaxBgPosition" appParallax [ratio]="0.15" [BackGround]="true" [BackGroundHorizontallPosition]=20 [BackGroundImageTop]=-20 > </div>
-<div class="parallaxFront parallaxBgPosition" appParallax [ratio]="-0.15" [BackGround]="true" [BackGroundHorizontallPosition]=0 [BackGroundImageTop]=0 >  </div>
-
-
-
-
+  <div class="parallaxFront parallaxBgPosition" appParallax [ratio]="0.15" [BackGround]="true" [BackGroundHorizontallPosition]=20 [BackGroundImageTop]=-20 > </div>
+  <div class="parallaxFront parallaxBgPosition" appParallax [ratio]="-0.15" [BackGround]="true" [BackGroundHorizontallPosition]=0 [BackGroundImageTop]=0 >  </div>
 
     <div class="row h-100 p-5 px-5" >
       <div class="col-12 col-sm-11 col-md-10 col-lg-6 col-xl-5 align-self-center float-right ">
@@ -56,7 +52,6 @@
     </div>
     </div>
 
-
     <div class="mx-3  row " >
       <div *ngFor="let title of imagesTitle, let i = index" class="col-12 col-md-6 col-lg-4 col-xl-3 text-center mt-4 "  >
         <button type="button"  (click) = "showtherapistPics(i)" class="rounded-circle border-0  " style="height: 250px; width: 250px ;">
@@ -70,23 +65,14 @@
       </div>
     </div>
 
-
 </div>
-
-
-
-
-
-
-
-
 
 <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1"
      role="dialog" aria-labelledby="dialog-sizes-name1">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Nosso espaço feito com carinho</h4>
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">NEL Zen Espaço Feminino Massoterapia</h4>
         <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
