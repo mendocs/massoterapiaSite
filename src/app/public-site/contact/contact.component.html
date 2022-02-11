@@ -38,23 +38,25 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-6 quad h-100 p-2" >
-          <a  target="_blank"
-          href="{{whatsapplink}}{{phoneContactNoMask}}&text=Ola, Gostaria de agendar para dia e horario: "
-          >
+        <div class="col-12 col-md-6 quad h-100 p-2 " >
 
-              <div class=" h-100 bg-light shadow border">
-                <div class="row h-100 ">
-                  <div class="col-12 align-self-start">
+
+              <div class=" h-100 bg-light shadow border ">
+                <div class="row h-100 w-100 text-center  ">
+                  <app-whatsapp-link-message-schedule-template class="w-100">
+                    <div contentButton>
+                  <div class="col-12 align-self-start ">
                     <i class="fab fa-whatsapp size-icons" ></i>
                   </div>
                   <div class="col-12  m-2">
                     <p>{{phoneContactMask}}</p>
                     <app-whatsapp></app-whatsapp>
                   </div>
+                    </div>
+                </app-whatsapp-link-message-schedule-template>
                 </div>
               </div>
-          </a>
+
         </div>
 
         <div class="col-12 col-md-6 quad h-100 p-2" >

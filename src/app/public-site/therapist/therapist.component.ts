@@ -24,16 +24,13 @@ export class TherapistComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  getherapistPics(imageIndex: number)
-  {
+  getherapistPics(imageIndex: number) : string {
     return `assets/images/therapist/clinic/foto${imageIndex}_thumb.jpg`;
   }
 
-  showtherapistPics(imageIndex: number)
-  {
+  showtherapistPics(imageIndex: number) : void {
     this.carrouselModalShow = true;
     this.activeSlideIndex = this.imagesIndex[imageIndex];
     this.modalTherapistCarrousel.show();

@@ -9,21 +9,18 @@ export class UtilsService {
   constructor( private domSanitizer: DomSanitizer) { }
 
 
-  getDateFormated(dateCurrent: Date) : string
-  {
+  getDateFormated(dateCurrent: Date) : string {
     let data : Date = new Date(dateCurrent);
     return `${this.formatNumber2Digts(data.getDate())}/${ this.formatNumber2Digts((data.getMonth() + 1)) }/${this.formatNumber2Digts( data.getFullYear())} as ${this.getDateFormatedHourMinutes(data)}`;
   }
 
-  getDateFormatedHourMinutes(dateCurrent: Date) : string
-  {
+  getDateFormatedHourMinutes(dateCurrent: Date) : string {
     let data : Date = new Date(dateCurrent);
     return ` ${this.formatNumber2Digts(data.getHours())}:${this.formatNumber2Digts(data.getMinutes())}`;
   }
 
 
-  formatNumber2Digts(numberToBeFormated : number): string
-  {
+  formatNumber2Digts(numberToBeFormated : number): string {
      return numberToBeFormated.toLocaleString('en-US', {
       minimumIntegerDigits: 2,
       useGrouping: false
@@ -39,8 +36,7 @@ export class UtilsService {
     return this.formatNumber2Digts(rhours) + ":" + this.formatNumber2Digts(rminutes);
   }
 
-  getSchedulAvaliableDescription(date1: Date, duration : number , date2: Date) : string
-  {
+  getSchedulAvaliableDescription(date1: Date, duration : number , date2: Date) : string {
     let dt1: Date = new Date();
     var returnDescription :string = "Agenda: ";
 
@@ -74,8 +70,7 @@ export class UtilsService {
 
   }
 
-  getIntervalMinutes(date1: Date, date2: Date) : number
-  {
+  getIntervalMinutes(date1: Date, date2: Date) : number {
     date1.setSeconds(0);
     date2.setSeconds(0);
 
@@ -84,8 +79,7 @@ export class UtilsService {
     return Math.round(diff);
   }
 
-  getIntervalDescription(date1: Date, duration : number, date2: Date) : string
-  {
+  getIntervalDescription(date1: Date, duration : number, date2: Date) : string {
     let dt1: Date = new Date(date1);
 
     var returnDescription :string = "";
@@ -100,8 +94,7 @@ export class UtilsService {
       return  "intervalo: 00" ;
   }
 
-  removeAccent(text : string) : string
-  {
+  removeAccent(text : string) : string {
     let result : string = text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
     result = result.replace(/[^0-9a-zA-Zs]/g, "-")
 
@@ -112,6 +105,10 @@ export class UtilsService {
       result = result.substring(0,result.length-1);
 
     return result.toLowerCase();
+  }
+
+  removeLastName(name : string) : string{
+    return name.split(" ")[0];
   }
 
   convertToPlain(html: string ) : string {

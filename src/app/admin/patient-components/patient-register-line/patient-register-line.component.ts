@@ -71,7 +71,9 @@ export class PatientRegisterLineComponent implements OnInit {
 
   }
 
-
+  removeLastName (nameComplete : string) : string{
+    return this.utilsService.removeLastName(nameComplete);
+  }
 
 
 

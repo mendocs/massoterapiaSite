@@ -9,17 +9,18 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule } from '@angular/router';
 import { TopToolbarComponent } from "./top-toolbar/top-toolbar.component";
 import { MainNameComponent } from './main-name/main-name.component';
-import { SloganComponent } from './slogan/slogan.component'
+import { SloganComponent } from './slogan/slogan.component';
+import { WhatsappLinkMessageScheduleTemplateComponent } from './whatsapp-link-message-schedule-template/whatsapp-link-message-schedule-template.component'
 
 
 @NgModule({
-  declarations: [HeaderComponent, WhatsappComponent, FooterComponent, PageNotFoundComponent, TopToolbarComponent, MainNameComponent, SloganComponent],
+  declarations: [HeaderComponent, WhatsappComponent, FooterComponent, PageNotFoundComponent, TopToolbarComponent, MainNameComponent, SloganComponent, WhatsappLinkMessageScheduleTemplateComponent],
   imports: [
     CommonModule,
     SharedKernelModule,
     RouterModule
   ],
-  exports : [ HeaderComponent, WhatsappComponent, FooterComponent, PageNotFoundComponent, TopToolbarComponent, SloganComponent],
+  exports : [ HeaderComponent, WhatsappComponent, FooterComponent, PageNotFoundComponent, TopToolbarComponent, SloganComponent,WhatsappLinkMessageScheduleTemplateComponent],
   providers: [CommomComponentsService],
 })
 export class CommonComponentsModule { }

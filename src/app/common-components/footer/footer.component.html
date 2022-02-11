@@ -49,13 +49,13 @@
           <div class="p-2 ">
 
 
-              <a  target="_blank"
-              href="{{whatsapplink}}{{phoneContactNoMask}}&text=Ola, Gostaria de agendar para dia e horario: "
-              >
-                <p><app-whatsapp></app-whatsapp></p>
-                <p>{{phoneContactMask}}</p>
+              <app-whatsapp-link-message-schedule-template>
+                <div contentButton>
+                  <p><app-whatsapp></app-whatsapp></p>
+                  <p>{{phoneContactMask}}</p>
+                </div>
 
-              </a>
+              </app-whatsapp-link-message-schedule-template>
           </div>
         </div>
 
@@ -66,12 +66,12 @@
         <div class="d-flex flex-column">
           <div class="p-2 shadow">Contato</div>
           <div class="p-2 ">
-            <a  target="_blank"
-            href="{{whatsapplink}}{{phoneContactNoMask}}&text=Ola, Gostaria de agendar para dia e horario: "
-            >
-              <p><app-whatsapp></app-whatsapp></p>
-              <p>{{phoneContactMask}}</p>
-            </a>
+            <app-whatsapp-link-message-schedule-template>
+              <div contentButton>
+                <p><app-whatsapp></app-whatsapp></p>
+                <p>{{phoneContactMask}}</p>
+              </div>
+            </app-whatsapp-link-message-schedule-template>
           </div>
         </div>
       </div>

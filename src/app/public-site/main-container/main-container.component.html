@@ -44,11 +44,11 @@
 <app-header>
   <div textoLateralDireito>
     <h5 style="font-family: nirmala; ">Espaço exclusivamente feminino para massagens terapêuticas e estéticas em Santo André </h5>
-    <a  target="_blank"
-    href="{{whatsapplink}}{{phoneContactNoMask}}&text=Olá, Gostaria de agendar para dia e horario: "
-    >
-      <h6> <app-whatsapp></app-whatsapp> : {{phoneContactMask}}  </h6>
-    </a>
+    <app-whatsapp-link-message-schedule-template>
+      <div contentButton>
+        <h6> <app-whatsapp></app-whatsapp> : {{phoneContactMask}}  </h6>
+      </div>
+    </app-whatsapp-link-message-schedule-template>
     <app-slogan></app-slogan>
 
   </div>
