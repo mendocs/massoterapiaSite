@@ -9,18 +9,32 @@ import { UtilsService } from '../../tools/utils.service';
 export class SuccessMessageComponent implements OnInit {
 
   @Input() recordSuccess: boolean = true;
+  dateSaved : Date;
 
   constructor(private utilsService : UtilsService) { }
 
   ngOnInit(): void {
   }
 
+
+  ngOnChanges(): void {
+    if (!this.recordSuccess)
+      this.dateSaved = null;
+  }
+
+
   getTimeNow() : string {
-    return this.utilsService.getDateFormated(new Date( Date.now()));
+    if (!this.dateSaved)
+      this.dateSaved = new Date( Date.now());
+
+    return this.utilsService.getDateFormated(this.dateSaved);
   }
 
   onClosed(dismissedAlert: any): void {
     this.recordSuccess = false;
+    this.dateSaved = null;
   }
+
+
 
 }
