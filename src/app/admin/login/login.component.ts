@@ -37,7 +37,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 				password : new FormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(10)]),
 				user:  new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(35)]),
 			}
-			)
+		)
 
   }
 
@@ -45,7 +45,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 
     this.isLoading = true;
 
-    this.authenticateSubscription$ = this.authService.authenticate(this.formulario.get("user").value, this.formulario.get("password").value).subscribe(this.loginObserver);
+    this.authenticateSubscription$ = this.authService.authenticate$(this.formulario.get("user").value, this.formulario.get("password").value).subscribe(this.loginObserver);
 
   }
 
@@ -55,8 +55,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
 
 
 
-  submitResult(LoginResult : loginResult)
-  {
+  submitResult(LoginResult : loginResult) : void {
 
     if (LoginResult.result)
     {

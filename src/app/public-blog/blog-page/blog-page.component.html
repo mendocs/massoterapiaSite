@@ -22,9 +22,11 @@
         [show]="12"
         [showText]="true"
         [size]="-3"
-        [tags]="'Masssoterapia '"
-        [description]="'Masssoterapia Integral - espaço de massagem terapêutica em Santo André-SP'"
-        [autoSetMeta]="false"
+        [url] = "currentBlogRegister_url"
+        [tags]="'Masssoterapia,' + currentBlogRegister_tags"
+        [description]="'Nel Zen Massoterapia - ' + currentBlogRegister_title"
+        [title]="'Nel Zen Massoterapia - ' + currentBlogRegister_title"
+        [autoSetMeta]="true"
       ></share-buttons>
 
     </div>

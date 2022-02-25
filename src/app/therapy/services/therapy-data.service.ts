@@ -20,14 +20,13 @@ export class TherapyDataService {
   constructor(private http: HttpClient) { }
 
 
-  getTherapyByName(nomeParcial: string): Observable<therapy> {
-
+  getTherapyByName$(nomeParcial: string): Observable<therapy> {
     this.nomeParcialToFind = nomeParcial;
 
     if (nomeParcial === "about")
-      return this.getAbout()
+      return this.getAbout$()
 		else
-      return this.getAlltherapyCategories()
+      return this.getAlltherapyCategories$()
       .pipe(
         map(
           (therapies: therapyCategory[]) => therapies.filter(c => c.protocolos.find(this.filterTherapyName.bind(this, nomeParcial)))[0].protocolos.find(this.filterTherapyName.bind(this, nomeParcial))
@@ -37,31 +36,12 @@ export class TherapyDataService {
       );
 	}
 
-/*
-  getAlltherapy(): Observable<therapy[]> {
 
-		return this.http.get<therapyCategory[]>('assets/data/therapies.json')
-		.pipe(
-		  map((therapies: therapyCategory[]) =>
-            therapies.map((_therapyCategory : therapyCategory) =>
-            _therapyCategory.tipos[0]
-          )
-        )
-		);
-	}
-
-
-*/
-
-
-
-
-  getAlltherapy(): Observable<therapy[]> {
-
+  getAlltherapy$(): Observable<therapy[]> {
     let resultado : therapy[] = [];
 
     //return this.http.get<therapyCategory[]>('assets/data/therapies.json')
-    return this.getAlltherapyCategories()
+    return this.getAlltherapyCategories$()
     .pipe(
       map((therapies: therapyCategory[]) =>
             therapies.map((_therapyCategory : therapyCategory) =>
@@ -73,12 +53,10 @@ export class TherapyDataService {
   }
 
 
-  getTherapybyTitle(titulo : string): Observable<therapy> {
-
+  getTherapybyTitle$(titulo : string): Observable<therapy> {
     let resultado : therapy ;
 
-    //return this.http.get<therapyCategory[]>('assets/data/therapies.json')
-    return this.getAlltherapyCategories()
+    return this.getAlltherapyCategories$()
     .pipe(
       map((therapies: therapyCategory[]) =>
             therapies.map((_therapyCategory : therapyCategory) =>
@@ -91,12 +69,10 @@ export class TherapyDataService {
   }
 
 
-  getPlanbyTitle(titulo : string): Observable<pack> {
-
+  getPlanbyTitle$(titulo : string): Observable<pack> {
     let resultado : pack ;
 
-    //return this.http.get<therapyCategory[]>('assets/data/therapies.json')
-    return this.getAlltherapyCategories()
+    return this.getAlltherapyCategories$()
     .pipe(
       map((therapies: therapyCategory[]) =>
             therapies.map((_therapyCategory : therapyCategory) =>
@@ -108,8 +84,7 @@ export class TherapyDataService {
     );
   }
 
-  getPackArray() : Observable<pack[]> {
-
+  getPackArray$() : Observable<pack[]> {
     if (this.packArray.length>0)
       return of(this.packArray);
     else
@@ -121,35 +96,31 @@ export class TherapyDataService {
   }
 
 
-  getPackbyTitle(titulo : string): Observable<pack> {
-
-  //return this.http.get<pack[]>('assets/data/packages.json')
-  return this.getPackArray()
-    .pipe(
-      map((packs: pack[]) =>
-            packs.find(_pack => _pack.titulo === titulo)
-          )
-    );
+  getPackbyTitle$(titulo : string): Observable<pack> {
+    return this.getPackArray$()
+      .pipe(
+        map((packs: pack[]) =>
+              packs.find(_pack => _pack.titulo === titulo)
+            )
+      );
 
   }
 
 
-  getAllPacks(): Observable<pack[]> {
-    return this.getPackArray();
+  getAllPacks$(): Observable<pack[]> {
+    return this.getPackArray$();
   }
 
 
-  filterTherapyName(nomeParcialToFind: string,therapyCurrent: therapy) : boolean
-  {
+  filterTherapyName(nomeParcialToFind: string,therapyCurrent: therapy) : boolean   {
     return therapyCurrent.id.toLowerCase().indexOf(nomeParcialToFind.toLowerCase())>-1
   }
 
-  getAbout(): Observable<therapy>{
+  getAbout$(): Observable<therapy>{
     return this.http.get<therapy>('assets/data/about.json')
   }
 
-  getAlltherapyCategories(): Observable<therapyCategory[]> {
-
+  getAlltherapyCategories$(): Observable<therapyCategory[]> {
     if (this.protocolArray.length>0)
       return of(this.protocolArray);
     else

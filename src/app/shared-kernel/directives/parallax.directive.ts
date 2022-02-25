@@ -27,21 +27,14 @@ export class ParallaxDirective implements OnInit {
 	@HostListener("window:scroll", ["$event"])
 	onWindowScroll(event){
 
-
 		const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 		let posicao = this.eleRef.nativeElement.getBoundingClientRect().top;
 
 		if (this.parallaxBackGround){
-
 			if(posicao < vh){
-
-				//let diferencaAltura = (this.BackGroundImageTop != 0 ? ((vh- this.BackGroundImageTop)) : 0);
         let diferencaAltura = (this.BackGroundImageTop != 0 ? (( this.BackGroundImageTop)) : 0);
-
 				let alturaCalulada = ((vh - posicao  ) * this.parallaxRatio) + diferencaAltura; //- 100;
-
 				this.eleRef.nativeElement.style.backgroundPosition = `${this.BackGroundHorizontallPosition}px  ${ alturaCalulada }px`
-
 			}
 			else
 				this.eleRef.nativeElement.style.backgroundPosition =  `${this.BackGroundHorizontallPosition}% 100%`;

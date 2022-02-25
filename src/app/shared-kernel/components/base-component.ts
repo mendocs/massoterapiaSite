@@ -14,10 +14,9 @@ export abstract class BaseComponent implements OnInit {
   ngOnInit() {
   }
 
-  getError(err : HttpErrorResponse): void{
+  getError(err : HttpErrorResponse): void {
 
     this.isError = true;
-    //this.messageError = err.message;
     this.isLoading = false;
 
     if (err.statusText.includes("Unknown Error") )
@@ -25,12 +24,8 @@ export abstract class BaseComponent implements OnInit {
     else
       this.messageError = err.status==400 ? JSON.stringify(err.error) : err.message;
 
-   console.log(err);
+    console.log(err);
 
   }
-
-
-
-
 
 }

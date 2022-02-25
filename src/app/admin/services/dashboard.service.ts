@@ -12,14 +12,12 @@ export class DashboardService {
   constructor() {}
 
 
-  saveDashboardForm (dashboardCurrentForm : patientForm ) : void
-  {
+  saveDashboardForm (dashboardCurrentForm : patientForm ) : void {
     this.dashboardForm = dashboardCurrentForm;
   }
 
 
-  getDashboardForm () : patientForm
-  {
+  getDashboardForm () : patientForm {
     return this.dashboardForm;
   }
 

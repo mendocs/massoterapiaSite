@@ -20,8 +20,7 @@ export class AuthService {
   }
 
 
-  authenticate(name: string, password : string) : Observable<{}>
-  {
+  authenticate$(name: string, password : string) : Observable<{}> {
 
     let user = {
       name: name,

@@ -36,17 +36,30 @@
           ></app-input-field>
         </div>
 
-        <div class="col-5  align-self-center">
+        <div class="col-5  align-self-center" *ngIf="searchMode">
+          <div class="row">
+            <div class="col-8">
+              <input type="text"
+                      placeholder="Data Agendamento"
+                      formControlName="scheduledateRange"
+                      class="form-control"
+                      bsDaterangepicker
+                      [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', rangeInputFormat: 'DD/MM/YYYY' }">
+            </div>
+            <div class="col-4">
+              <button type="button" class="btn btn-info" (click)="setScheduledateRangeDay(0)">
+                <span >Hj</span>
+              </button>
+              <button type="button" class="btn btn-info ml-1" (click)="setScheduledateRangeDay(1)">
+                <span >Anhã</span>
+              </button>
+            </div>
+          </div>
+        </div>
 
-          <input type="text" *ngIf="searchMode"
-                  placeholder="Data Agendamento"
-                  formControlName="scheduledateRange"
-                  class="form-control"
-                  bsDaterangepicker
-                  [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD/MM/YYYY', rangeInputFormat: 'DD/MM/YYYY' }">
+        <div class="col-5  align-self-center" *ngIf="!searchMode">
 
-
-          <app-schedule-register *ngIf="!searchMode" formControlName="scheduleData" index="0"  [readonly]= "false" [removeButtonActive]="false"></app-schedule-register>
+          <app-schedule-register formControlName="scheduleData" index="0"  [readonly]= "false" [removeButtonActive]="false"></app-schedule-register>
         </div>
 
       </div>

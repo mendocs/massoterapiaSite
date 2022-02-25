@@ -64,6 +64,14 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
     this.dashboardService.saveDashboardForm(patientCurrentForm) ;
   }
 
+  setScheduledateRangeDay(_day : number) : void{
+    let daySelected : Date = new Date();
+    daySelected.setDate(daySelected.getDate() + _day);
+
+    const scheduledateRangeValue: Date[] = [daySelected,daySelected];
+    this.formulario.get("scheduledateRange").setValue(scheduledateRangeValue);
+  }
+
   submitFail():void{}
 
   getNewpatient(newPatient : patientList[]): void{
@@ -96,13 +104,12 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
   }
 
 
-  ngOnDestroy() : void{
+  ngOnDestroy() : void {
     this.searchPatientSubscription$?.unsubscribe();
     this.createPatientSubscription$?.unsubscribe();
   }
 
-  getSavedForm(): void
-  {
+  getSavedForm(): void {
     if (this.dashboardService.getDashboardForm() !== undefined)
     {
       this.formulario.patchValue(this.dashboardService.getDashboardForm());
@@ -114,8 +121,7 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
 
 
 
-  chooseFormMode(): void
-  {
+  chooseFormMode(): void {
     this.searchMode = this.formulario.get("formMode").value;
     if (this.formulario.get("formMode").value )
     {
@@ -133,8 +139,7 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
 
 
 
-  isScheduleSincronized(): boolean
-  {
+  isScheduleSincronized(): boolean {
     if (this.formulario.get("scheduletime").value.getDate() != this.formulario.get("scheduledate").value.getDate() )
       return false;
 
@@ -148,8 +153,7 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
   }
 
 
-  onCcheduletimeChanged() : void
-  {
+  onCcheduletimeChanged() : void {
     if (this.formulario.get("scheduledate").value != null)
     {
       if (this.formulario.get("scheduledate").value === "" )

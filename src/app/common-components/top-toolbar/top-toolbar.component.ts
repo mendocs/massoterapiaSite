@@ -46,7 +46,7 @@ export class TopToolbarComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.sections = this.publicSiteService.sections;
 
-    this.getAllTherapiesSubscription$ =  this.therapyDataService.getAlltherapyCategories().subscribe(this.therapiesFile);
+    this.getAllTherapiesSubscription$ =  this.therapyDataService.getAlltherapyCategories$().subscribe(this.therapiesFile);
   }
 
   ngOnDestroy() : void{

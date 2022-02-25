@@ -27,7 +27,7 @@ export class PatientRegisterLineComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.href = environment.pathUrl;
+    this.href = environment.pathUrl + "/areacliente/";
 
     this.whatsapplink = environment.whatsapplink;
 

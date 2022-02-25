@@ -5,7 +5,7 @@ import { TherapyDataService } from 'src/app/therapy/services/therapy-data.servic
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommomComponentsService } from 'src/app/common-components/commom-components.service';
 import { Subscription } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
+import { takeWhile, tap } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
 
 @Component({
@@ -50,13 +50,11 @@ export class TherapySectionComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
       this.selectTherapySubscription$ = this.publicSiteService.selectTherapy$.subscribe( valor =>
-            this.therapyDataService.getTherapyByName(valor).pipe(takeWhile(() => this.SubscriptionAlive)).subscribe(this.therapiesFile));
-
+            this.therapyDataService.getTherapyByName$(valor).pipe(takeWhile(() => this.SubscriptionAlive)).subscribe(this.therapiesFile));
 
       this.phoneContactMask = this._CommomComponentsService.phoneContactMask;
       this.phoneContactNoMask = this._CommomComponentsService.phoneContactNoMask;
       this.whatsapplink = this._CommomComponentsService.whatsapplink;
-
   }
 
 
@@ -65,22 +63,17 @@ export class TherapySectionComponent extends BaseComponent implements OnInit {
     this.SubscriptionAlive = false;
   }
 
-  populateControlsFromSelectedTherapy(selectedTherapy: therapy) : void
-  {
-
+  populateControlsFromSelectedTherapy(selectedTherapy: therapy) : void  {
     if (selectedTherapy)
     {
-
       if(selectedTherapy.id === "about" )
         this.isCollapsed = false;
       else
-      this.isCollapsed = true;
-
+        this.isCollapsed = true;
 
       this.isVisible = true;
       this.isSomeTherapySelected = true;
       this.selectedTherapy = selectedTherapy.titulo;
-
       this.therapyBenefitsTitle = selectedTherapy.beneficiosTitulo;
       this.therapyInformationTitle = selectedTherapy.outrasInformacoesTitulo;
       this.therapyBackground = selectedTherapy.background;
@@ -89,20 +82,14 @@ export class TherapySectionComponent extends BaseComponent implements OnInit {
       this.therapyBenefits = selectedTherapy.beneficios;
       this.therapyInformation= selectedTherapy.outrasInformacoes;
     }
-
   }
 
-
-  goBackTherapy(): void
-  {
+  goBackTherapy(): void {
     this.publicSiteService.goBackTherapy();
   }
 
-  verifyBackPossibilit(): boolean
-  {
+  verifyBackPossibilit(): boolean  {
     return this.publicSiteService.verifyBackPossibilit();
   }
-
-
 
 }

@@ -107,7 +107,7 @@ export class PatientService {
         );
   }
 
-  removeSchedule ( scheduleSelected : number)
+  removeSchedule ( scheduleSelected : number) : void
   {
     this.removedor$.next(scheduleSelected);
   }

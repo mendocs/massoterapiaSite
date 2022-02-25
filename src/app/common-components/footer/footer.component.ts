@@ -40,7 +40,7 @@ export class FooterComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getAllTherapiesSubscription$ = this.therapyDataService.getAlltherapyCategories().subscribe(this.therapiesFile);
+    this.getAllTherapiesSubscription$ = this.therapyDataService.getAlltherapyCategories$().subscribe(this.therapiesFile);
 
     this.phoneContactMask = this._CommomComponentsService.phoneContactMask;
     this.phoneContactNoMask = this._CommomComponentsService.phoneContactNoMask;

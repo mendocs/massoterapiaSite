@@ -35,22 +35,15 @@ export class PublicSiteService {
     {name: "Blog", nameSpied: "blog_ext"}
   ]
 
-
-
-  verifyBackPossibilit():boolean
-  {
+  verifyBackPossibilit():boolean {
     return (this.therapyListVisited.length > 1);
   }
 
-
-  closeMenuProtocols() : void
-  {
+  closeMenuProtocols() : void  {
     this.menuProtocols$.next(false);
   }
 
-
-  goBackTherapy() : void
-  {
+  goBackTherapy() : void   {
     if (this.therapyListVisited.length > 1)
     {
       this.therapyListVisited.pop();
@@ -58,8 +51,7 @@ export class PublicSiteService {
     }
   }
 
-  SetTherapy (therapySelected:string, ignoreGoToScrollTherapySelected? : boolean) : void
-  {
+  SetTherapy (therapySelected:string, ignoreGoToScrollTherapySelected? : boolean) : void  {
 
     this.router.navigate(["/"]);
     this.SetTherapyListVisited(therapySelected);
@@ -68,11 +60,9 @@ export class PublicSiteService {
       this.GoToScrollTherapySelected(therapySelected);
 
     this.selectTherapy$.next(therapySelected);
-
   }
 
-  GoToScrollTherapySelected(therapySelected:string): void
-  {
+  GoToScrollTherapySelected(therapySelected:string): void  {
 
     if (this.currentSection != "therapy_section_spied")
         this.triggerScrollTo("therapy_section_spied");
@@ -81,18 +71,14 @@ export class PublicSiteService {
   }
 
 
-  SetTherapyListVisited(therapySelected: string ): void
-  {
-
+  SetTherapyListVisited(therapySelected: string ): void   {
     if (this.therapyListVisited[this.therapyListVisited.length - 1] != therapySelected){
       this.therapyListVisited.push(therapySelected);
     }
-
   }
 
 
-  navigateTo(navigateId: string)
-  {
+  navigateTo(navigateId: string) : void  {
     //para dar tempo do navbar fechar, ajustar o scroll e depois posicionar
     setTimeout(()=>{
         if (navigateId.includes("spied"))
@@ -112,15 +98,13 @@ export class PublicSiteService {
 
     this.router.navigate(["/"]);
 
-
     const config: ScrollToConfigOptions = {
-	  target: destination,
-	  duration: 1800,
-	  offset: -100
+      target: destination,
+      duration: 1800,
+      offset: -100
     };
 
     this._scrollToService.scrollTo(config);
-
   }
 
   public triggerScrollToWithoutAnimation(destination : string): void {
@@ -129,15 +113,13 @@ export class PublicSiteService {
 
     this.router.navigate(["/"]);
 
-
     const config: ScrollToConfigOptions = {
-	  target: destination,
-	  duration: 0,
-	  offset: -100
+	    target: destination,
+	    duration: 0,
+	    offset: -100
     };
 
     this._scrollToService.scrollTo(config);
-
   }
 
 }

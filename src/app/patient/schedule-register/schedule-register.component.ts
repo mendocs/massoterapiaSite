@@ -140,8 +140,8 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
 
           this.sincronizeEndTime();
           this.onChangeCb(v);
-          this.allPackSubscription$ = this.therapyDataService.getAllPacks().subscribe(this.allPackFile);
-          this.allTherapySubscription$ = this.therapyDataService.getAlltherapy().subscribe(this.allProtocolFile);
+          this.allPackSubscription$ = this.therapyDataService.getAllPacks$().subscribe(this.allPackFile);
+          this.allTherapySubscription$ = this.therapyDataService.getAlltherapy$().subscribe(this.allProtocolFile);
           this.displayShort = (this.innerValue.Executed || this.innerValue.Canceled) && (!this.readonly && this.removeButtonActive);
         }
     }
@@ -317,7 +317,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
         this.calculatePrice();
       }
       else
-        this.therapyDataService.getTherapybyTitle(value).subscribe(this.protocolFile);
+        this.therapyDataService.getTherapybyTitle$(value).subscribe(this.protocolFile);
 
     }
 
@@ -328,7 +328,7 @@ export class ScheduleRegisterComponent extends BaseComponent implements OnInit ,
         this.calculatePrice();
       }
       else
-        this.therapyDataService.getPackbyTitle(value).subscribe(this.packFile);
+        this.therapyDataService.getPackbyTitle$(value).subscribe(this.packFile);
     }
 
     getDateShort(dateTobeShorted) : string {

@@ -1,5 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+#JSON test
+_test_*.json
+
+
 # compiled output
 /dist
 /tmp
