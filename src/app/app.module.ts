@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Meta } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import {TherapyModule} from "./therapy/therapy.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './admin/services/auth.service';
+import { NgGoogleAnalyticsModule } from "ng-google-analytics";
 
 @NgModule({
   declarations: [
@@ -28,9 +29,10 @@ import { AuthService } from './admin/services/auth.service';
     TherapyModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    NgGoogleAnalyticsModule.forRoot({ id: "UA-224092970-1" })
   ],
-  providers: [HttpClientModule , AuthService],
+  providers: [Meta, HttpClientModule , AuthService],
   bootstrap: [AppComponent],
   exports : [RouterModule]
 })

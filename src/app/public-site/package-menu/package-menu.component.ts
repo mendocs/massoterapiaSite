@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { pack } from 'src/app/therapy/models/pack-model';
+import { NgGoogleAnalyticsTracker } from "ng-google-analytics";
 
 @Component({
   selector: 'app-package-menu',
@@ -12,7 +13,7 @@ export class PackageMenuComponent implements OnInit {
 
   @Input() packCurrent: pack;
 
-  constructor() { }
+  constructor(public ngAnalytics: NgGoogleAnalyticsTracker) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,14 @@ export class PackageMenuComponent implements OnInit {
 
   getCategoryTitleWithouthPrice(protocolTitle : string) : string {
     return protocolTitle.split("(R$")[0];
+  }
+
+  ShowHide() : void{
+    this.isCollapsed = !this.isCollapsed;
+
+    if (!this.isCollapsed)
+      this.ngAnalytics.eventTracker("Package", "ShowMore", this.packCurrent.id,1);
+
   }
 
 }

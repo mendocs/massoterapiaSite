@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgGoogleAnalyticsTracker } from "ng-google-analytics";
 
 @Component({
   selector: 'app-therapist',
@@ -22,7 +23,7 @@ export class TherapistComponent implements OnInit {
   activeSlideIndex = 0;
   @ViewChild('lgModal') modalTherapistCarrousel: any
 
-  constructor() { }
+  constructor(public ngAnalytics: NgGoogleAnalyticsTracker) { }
 
   ngOnInit(): void {}
 
@@ -31,8 +32,9 @@ export class TherapistComponent implements OnInit {
   }
 
   showtherapistPics(imageIndex: number) : void {
-    this.carrouselModalShow = true;
+    this.ngAnalytics.eventTracker("therapist", "ShowPics","PicChose_" + imageIndex,1);
     this.activeSlideIndex = this.imagesIndex[imageIndex];
+    this.carrouselModalShow = true;
     this.modalTherapistCarrousel.show();
   }
 

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PublicBlogService } from '../services/public-blog.service';
 import { blogs } from '../models/blogs.model'
 import { HttpErrorResponse } from '@angular/common/http';
-import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
 import { UtilsService } from 'src/app/shared-kernel/tools/utils.service';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -48,7 +48,8 @@ export class BlogPageComponent implements OnInit {
               private router: Router,
               private _PublicBlogService : PublicBlogService,
               private _UtilsService: UtilsService,
-              private _titleService: Title) { }
+              private _titleService: Title,
+              private _meta:Meta) { }
 
   ngOnInit(): void {
     this.getParameters();
@@ -67,6 +68,7 @@ export class BlogPageComponent implements OnInit {
       this.currentBlogRegister = currentBlog;
       this.currentBlogRegister_title = currentBlog.Title;
       this.currentBlogRegister_text = currentBlog.Text;
+      this._meta.updateTag( { name:'description', content:'Massoterapia, BLOG,' + currentBlog.Tags},"name='description'");
     }
     else
       this.router.navigate(["/paginanaoencontrada"]);
