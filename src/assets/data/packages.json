@@ -3,12 +3,12 @@
     "id" : "pacote1",
     "titulo" : "Pacote 1: 5 sessões de estética corporal e bem-estar",
     "sessoes" : 5,
-    "preco" : 350,
+    "preco" : 368,
     "desconto" : 12.5,
     "descricao" : "Cuidados com o corpo na estética corporal e benefícios do relaxamento físico e mental.",
     "protocolos" : [
       "2 sessões de Drenagem linfática corporal 60 min (R$80)",
-      "2 sessões de Massagem modeladora 50 min (R$80)",
+      "2 sessões de Massagem modeladora zen 60 min (R$90)",
       "1 sessão de Massagem relaxante com óleos essenciais 60 min (R$80)"
     ]
   },
@@ -16,12 +16,12 @@
     "id" : "pacote2",
     "titulo" : "Pacote 2: 10 sessões de estética corporal e bem-estar",
     "sessoes" : 10,
-    "preco" : 680,
+    "preco" : 714,
     "desconto" : 15,
     "descricao" : "Cuidados com o corpo na estética corporal e benefícios do relaxamento físico e mental.",
     "protocolos" : [
       "4 sessões de Drenagem linfática corporal 60 min (R$80)",
-      "4 sessões de Massagem modeladora 50 min (R$80)",
+      "4 sessões de Massagem modeladora zen 60 min (R$90)",
       "1 sessão de Massagem relaxante com óleos essenciais 60 min (R$80)",
       "1 sessão de Massagem relaxante com óleos essenciais e termoterapia 60 min (R$80)"
     ]
@@ -30,36 +30,36 @@
     "id" : "pacote3",
     "titulo" : "Pacote 3: 4 sessões de estética corporal",
     "sessoes" : 4,
-    "preco" : 288,
+    "preco" : 306,
     "desconto" : 10,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal.",
     "protocolos" : [
       "2 sessões de Drenagem linfática corporal 60 min (R$80)",
-      "2 sessões de Massagem modeladora 50 min (R$80)"
+      "2 sessões de Massagem modeladora zen 60 min (R$90)"
     ]
   },
   {
     "id" : "pacote4",
     "titulo" : "Pacote 4: 10 sessões de estética corporal",
     "sessoes" : 10,
-    "preco" : 680,
+    "preco" : 723,
     "desconto" : 15,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal.",
     "protocolos" : [
       "5 sessões de Drenagem linfática corporal 60 min (R$80)",
-      "5 sessões de Massagem modeladora 50 min (R$80)"
+      "5 sessões de Massagem modeladora zen 60 min (R$90)"
     ]
   },
   {
     "id" : "pacote5",
     "titulo" : "Pacote 5: 5 sessões de estética corporal e facial, e bem-estar",
     "sessoes" : 5,
-    "preco" : 340,
+    "preco" : 341,
     "desconto" : 12.5,
     "descricao" : "Cuidado completo, da cabeça aos pés.",
     "protocolos" : [
       "2 sessões de Drenagem linfática corporal 60 min (R$80)",
-      "1 sessão de Massagem modeladora e relaxante  60 min (R$90)",
+      "1 sessão de Massagem modeladora zen 60 min (R$90)",
       "1 sessão de Massagem relaxante com óleos essenciais 60 min (R$80)",
       "1 sessão de Drenagem linfática facial 40 min (R$60)"
     ]
@@ -134,17 +134,6 @@
       "1 sessão de Massagem oriental Tui Na (terapêutica e relaxante) 60 min (R$80)",
       "1 sessão de Massagem relaxante e bambuterapia 60 min (R$80)",
       "1 sessão de Massagem oriental Zen Shiatsu (terapêutica e relaxante) 60 min (R$80)"
-    ]
-  },
-  {
-    "id" : "pacote11",
-    "titulo" : "Pacote 11: 5 sessões de massagem",
-    "sessoes" : 5,
-    "preco" : 350,
-    "desconto" : 12.5,
-    "descricao" : "Aqui quem monta o pacote é você!",
-    "protocolos" : [
-      "Monte seu pacote de 5 sessões (as massagens que desejar ou receba a massagem que estiver precisando no momento da sessão)"
     ]
   }
 ]

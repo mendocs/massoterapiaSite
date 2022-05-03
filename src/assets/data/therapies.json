@@ -1046,49 +1046,11 @@
                                         ]
                 },
                 {
-                  "id": "modeladora",
-                  "titulo_reduzido" : "Modeladora",
-                  "duracao" : 50,
-                  "preco" : 80,
-                  "titulo" : "Massagem modeladora",
-                  "background" : "modeladora",
-                  "resumido": "Atua na modelagem da silhueta do corpo, combate a celulite, estimula e favorece a queima de gordura localizada.",
-                  "detalhado": "A massagem modeladora <b>delineia a silhueta do corpo</b>, <b>estimula o metabolismo celular</b>, <b>facilita a descompactação da gordura localizada</b>, favorece a lipólise (queima de gordura), ameniza o aspecto da celulite, previne a evolução da celulite, ativa a circulação sanguínea e melhora a oxigenação dos tecidos. A modelagem é realizada de forma a suavizar o aspecto da gordura localizada que não valoriza a silhueta, direcionando a gordura para locais do corpo em que a mesma ficará menos evidente. O protocolo realizado na região desejada inclui higienização, esfoliação, ativação por cosmético termogênico, aquecimento com manta térmica e massagem modeladora com cosmético lipolítico associado a óleos essenciais. Esta massagem pode ser percebida como vigorosa e quando em tratamento pode ser intercalada com a drenagem linfática. Um cuidado e atenção especiais são dirigidas à escolha e uso dos cosméticos utilizados na massagem modeladora. Somente são utilizados <b>produtos de alta qualidade</b>, de marcas renomadas e confiáveis, além da escolha por cosméticos livre de parabenos e livre de substâncias derivadas do petróleo, pois este é um investimento que vale a pena. A massagem modeladora, realizada com certa frequência, associada a uma dieta balanceada, em que alimentos energéticos não excedam a necessidade calórica do organismo, e à prática regular de atividade física, contribui para a perda de medidas através da estimulação da lipólise, o que a eleva para além do chamado 'efeito cinderela'. A tão desejada silhueta feminina, depende de diversos fatores como biotipo, tipo físico feminino, característica metabólica, alimentação, atividade física, doenças existentes, ingestão de medicamentos, regulação hormonal, qualidade do sono, postura corporal, entre outros. A massagem modeladora, portanto, além de modelar, irá contribuir com o estímulo para que o metabolismo seja ativado e passe a funcionar a favor da modelagem realizada.",
-                  "beneficiosTitulo" : "Benefícios:",
-                  "beneficios" :[
-                                    "Modela e delineia a silhueta" ,
-                                    "Suaviza o aspecto da gordura localizada" ,
-                                    "Estimula a lipólise" ,
-                                    "Estimula o metabolismo" ,
-                                    "Auxilia no combate à celulite" ,
-                                    "Previne a evolução da celulite" ,
-                                    "Ativa a circulação sanguínea" ,
-                                    "Melhora a oxigenação dos tecidos"
-
-                                ],
-                  "outrasInformacoesTitulo": "Contraindicações",
-                  "outrasInformacoes" : [
-                                            "Febre nas últimas 48h" ,
-                                            "Doenças infecto contagiosas" ,
-                                            "Em tratamento com antibiótico" ,
-                                            "Insuficiência renal/cardíaca/pulmonar" ,
-                                            "Transplante de órgãos" ,
-                                            "Marcapasso" ,
-                                            "Trombose" ,
-                                            "Hipertensão (descompensada)" ,
-                                            "Glicemia (descompensada)" ,
-                                            "Edema localizado (anormal e causa desconhecida)",
-                                            "Câncer (em curso ou há menos de 3 anos após tratamento)" ,
-                                            "Gestação (sem indicação médica)" ,
-                                            "Pós cirúrgico (sem indicação médica)"
-                                        ]
-                },
-                {
                   "id": "modeladora_relax",
                   "titulo_reduzido" : "Modeladora relaxante",
                   "duracao" : 60,
                   "preco" : 90,
-                  "titulo" : "Massagem modeladora e relaxante",
+                  "titulo" : "Massagem modeladora zen (modela, reduz medidas e relaxa)",
                   "background" : "modeladora_relax",
                   "resumido": "Atua na modelagem da silhueta do corpo, combate a celulite, estimula a queima de gordura localizada e proporciona relaxamento muscular.",
                   "detalhado": "Esta massagem modela e <b>delineia a silhueta do corpo</b>, <b>estimula o metabolismo celular</b>, <b>facilita a descompactação da gordura localizada</b>, favorece a lipólise (queima de gordura), ameniza o aspecto da celulite, previne a evolução da celulite, ativa a circulação sanguínea, melhora a oxigenação dos tecidos, proporciona relaxamento muscular, auxilia no controle dos sintomas do estresse e da ansiedade e auxilia o equilíbrio emocional. A modelagem é realizada de forma a suavizar o aspecto da gordura localizada que não valoriza a silhueta, direcionando a gordura para locais do corpo em que a mesma ficará menos evidente. O protocolo de massagem modeladora realizado na região desejada inclui higienização, esfoliação, ativação por cosmético termogênico, aquecimento com manta térmica e massagem modeladora com cosmético lipolítico associado a óleos essenciais. Esta massagem pode ser percebida como vigorosa e quando em tratamento pode ser intercalada com a drenagem linfática. Um cuidado e atenção especiais são dirigidas à escolha e uso dos cosméticos utilizados na massagem modeladora. Somente são utilizados <b>produtos de alta qualidade</b>, de marcas renomadas e confiáveis, além da escolha por cosméticos livre de parabenos e livre de substâncias derivadas do petróleo, pois este é um investimento que vale a pena. A massagem modeladora, realizada com certa frequência, associada a uma dieta balanceada, em que alimentos energéticos não excedam a necessidade calórica do organismo, e à prática regular de atividade física, contribui para a perda de medidas através da estimulação da lipólise, o que a eleva para além do chamado 'efeito cinderela'. A tão desejada silhueta feminina, depende de diversos fatores como biotipo, tipo físico feminino, característica metabólica, alimentação, atividade física, doenças existentes, ingestão de medicamentos, regulação hormonal, qualidade do sono, postura corporal, entre outros. A massagem modeladora, portanto, além de modelar, irá contribuir com o estímulo para que o metabolismo seja ativado e passe a funcionar a favor da modelagem realizada. Um 'plus' neste protocolo é dado pela massagem relaxante, que aqui visa <b>proporcionar relaxamento físico e mental<b>, o alívio de dores e tensões, a promoção do reequilíbrio energético, o aumento na liberação de endorfinas, serotonina e ocitocina (neurotransmissores do bem-estar), auxílio no controle dos sintomas do estresse e da ansiedade e <b>auxílio no equilíbrio emocional</b>.",
