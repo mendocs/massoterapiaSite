@@ -30,6 +30,12 @@ export class BigCarouselComponent implements OnInit {
       detalhado: "A massoterapia atua em diversas áreas que envolvem a promoção, prevenção e  recuperação da saúde e bem-estar. Desta forma, atua sobre aspectos como o relaxamento, o apoio à prática esportiva, tratamento da dor, estética, cuidados pré e pós-cirúrgicos, consciência corporal, reequilíbrio fisiológico, energético e emocional.",
       image : "home" ,
       link : "about"
+    },
+    { titulo: "Day Spa Dia dos Namorados",
+      resumido: "Inclui Spa do rosto e cabeça + massagem relaxante de corpo todo em 1:30h de puro relax, por apenas R$ 125,00. Período da promoção: de 25/05 até 12/06",
+      detalhado: "Inclui Spa do rosto e cabeça + massagem relaxante de corpo todo em 1:30h de puro relax, por apenas R$ 125,00. Período da promoção: de 25/05 até 12/06",
+      image : "dia_dos_namorados" ,
+      link : "contact_spied"
     }
   ]
 
