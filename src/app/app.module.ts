@@ -30,7 +30,7 @@ import { NgGoogleAnalyticsModule } from "ng-google-analytics";
     BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule,
-    NgGoogleAnalyticsModule.forRoot({ id: "UA-224092970-1" })
+    NgGoogleAnalyticsModule.forRoot({ id: "G-5YJTERYP2K" }) // UA-224092970-1" })
   ],
   providers: [Meta, HttpClientModule , AuthService],
   bootstrap: [AppComponent],

@@ -23,7 +23,7 @@
     <td><a routerLink="/areacliente/{{patientSelected.key}}" >{{patientSelected.name}}</a></td>
     <td>
       <div *ngIf = "patientSelected.lineSchedule" >
-        <a target="_blank" href="{{whatsapplink}}55{{patientSelected.phone}}&text=Olá {{removeLastName(patientSelected.nameClean)}}! Você poderia preencher alguns dados de saúde para que seu atendimento seja agilizado e personalizado? Só clicar no link abaixo leva apenas 5 minutinhos... {{this.href}}{{patientSelected.key}}" >{{patientSelected.phone.substring(0,7)}}</a>
+        <a target="_blank" href="{{whatsapplink}}55{{patientSelected.phone}}&text=Agora, vou pedir que você preencha alguns dados de saúde para que seu atendimento seja agilizado e personalizado, ok? Só clicar no link abaixo leva apenas 5 minutinhos... {{this.href}}{{patientSelected.key}}" >{{patientSelected.phone.substring(0,7)}}</a>
         <a target="_blank" href="{{whatsapplink}}55{{patientSelected.phone}}&text=Olá {{removeLastName(patientSelected.nameClean)}}! Você confirma seu atendimento em {{getDateFormatedToShow(patientSelected.scheduleStart)}}, para confirmar é só responder : sim" >-{{patientSelected.phone.substring(7,12)}}</a>
       </div>
       <div *ngIf = "!patientSelected.lineSchedule">
