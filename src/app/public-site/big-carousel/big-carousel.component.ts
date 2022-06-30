@@ -31,10 +31,16 @@ export class BigCarouselComponent implements OnInit {
       image : "home" ,
       link : "about"
     },
-    { titulo: "Day Spa Dia dos Namorados",
-      resumido: "Inclui Spa do rosto e cabeça + massagem relaxante de corpo todo em 1:30h de puro relax, por apenas R$ 125,00. Período da promoção: de 25/05 até 12/06",
-      detalhado: "Inclui Spa do rosto e cabeça + massagem relaxante de corpo todo em 1:30h de puro relax, por apenas R$ 125,00. Período da promoção: de 25/05 até 12/06",
-      image : "dia_dos_namorados" ,
+    { titulo: "Vale presente Dia da Avó",
+      resumido: "Dê de presente um Day Spa para a sua avó, neste mês de comemoração ao Dia dos Avós. Inclui: Spa dos pés + Massagem relaxante corporal em 1:30h de puro relax, por apenas R$ 125,00",
+      detalhado: "Dê de presente um Day Spa para a sua avó, neste mês de comemoração ao Dia dos Avós. Inclui: Spa dos pés + Massagem relaxante corporal em 1:30h de puro relax, por apenas R$ 125,00",
+      image : "dia_da_avo" ,
+      link : "contact_spied"
+    },
+    { titulo: "Vale presente Dia da Amiga",
+      resumido: "Dê de presente um Day Spa para a sua amiga do coração, neste mês de comemoração ao Dia do Amigo. Inclui: Spa dos pés + Massagem relaxante corporal em 1:30h de puro relax, por apenas R$ 125,00",
+      detalhado: "Dê de presente um Day Spa para a sua amiga do coração, neste mês de comemoração ao Dia do Amigo. Inclui: Spa dos pés + Massagem relaxante corporal em 1:30h de puro relax, por apenas R$ 125,00",
+      image : "dia_da_amiga" ,
       link : "contact_spied"
     }
   ]
