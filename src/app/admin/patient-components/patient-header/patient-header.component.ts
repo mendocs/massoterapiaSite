@@ -5,7 +5,7 @@ import { patientForm } from 'src/app/patient/patient-data/models/patientViewMode
 import { BaseFormComponent } from 'src/app/shared-kernel/forms/core/base-form.component';
 import { PatientService} from "../../../patient/patient-data/services/patient.service"
 import { DashboardService } from '../../services/dashboard.service';
-import { ThrowStmt } from '@angular/compiler';
+//import { ThrowStmt } from '@angular/compiler';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { schedule } from 'src/app/patient/patient-data/models/schedule.model';
