@@ -119,7 +119,6 @@
       }
     }
   },
-  "defaultProject": "MassoterapiaSite",
   "cli": {
     "analytics": false
   },

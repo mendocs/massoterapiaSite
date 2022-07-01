@@ -1,15 +1,15 @@
 import { Component, OnInit, Directive, Optional } from '@angular/core';
-import { FormGroup, FormArray, FormControl, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormArray, UntypedFormControl, UntypedFormBuilder } from '@angular/forms';
 import { BaseComponent } from '../../components/base-component';
 
 @Directive()
 export abstract class BaseFormComponent extends BaseComponent implements OnInit {
 
-  formulario: FormGroup;
+  formulario: UntypedFormGroup;
 
   //constructor(private formBuilder: FormBuilder) { }
 
-  constructor(@Optional() public formBuilder?: FormBuilder) { super(); }
+  constructor(@Optional() public formBuilder?: UntypedFormBuilder) { super(); }
 
 
   ngOnInit() {
@@ -28,14 +28,14 @@ export abstract class BaseFormComponent extends BaseComponent implements OnInit 
     }
   }
 
-  verificaValidacoesForm(formGroup: FormGroup | FormArray) {
+  verificaValidacoesForm(formGroup: UntypedFormGroup | UntypedFormArray) {
 
     Object.keys(formGroup.controls).forEach(campo => {
 
       const controle = formGroup.get(campo);
       controle.markAsDirty();
       controle.markAsTouched();
-      if (controle instanceof FormGroup || controle instanceof FormArray) {
+      if (controle instanceof UntypedFormGroup || controle instanceof UntypedFormArray) {
         this.verificaValidacoesForm(controle);
       }
     });
@@ -75,12 +75,12 @@ export abstract class BaseFormComponent extends BaseComponent implements OnInit 
 
 
   builddFormArray(arrayFields : string[]) {
-    const values = arrayFields.map(v => new FormControl(false));
+    const values = arrayFields.map(v => new UntypedFormControl(false));
     return this.formBuilder.array(values);
   }
 
   getArrayControls(formArrayName : string) {
-    return this.formulario.get(formArrayName) ? (<FormArray>this.formulario.get(formArrayName)).controls : null;
+    return this.formulario.get(formArrayName) ? (<UntypedFormArray>this.formulario.get(formArrayName)).controls : null;
   }
 
  convertFormArrayToValues(formArrayName: string, valueSubmit: any) : any
@@ -101,10 +101,10 @@ export abstract class BaseFormComponent extends BaseComponent implements OnInit 
 
   if (arrayData)
   {
-    (<FormArray>this.formulario.get(formArrayName)).reset();
+    (<UntypedFormArray>this.formulario.get(formArrayName)).reset();
     this[formArrayName].forEach((value, index) => {
       if (arrayData.includes(value))
-        (<FormArray>this.formulario.get(formArrayName)).controls[index].setValue(true);
+        (<UntypedFormArray>this.formulario.get(formArrayName)).controls[index].setValue(true);
 
     });
   }

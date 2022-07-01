@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { patientList } from 'src/app/patient/patient-data/models/patientviewModelList.model';
 import { patientForm } from 'src/app/patient/patient-data/models/patientViewModelForm.model';
 import { BaseFormComponent } from 'src/app/shared-kernel/forms/core/base-form.component';
@@ -90,13 +90,13 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
 
   ngOnInit(): void {
     this.formulario =
-    new FormGroup (
+    new UntypedFormGroup (
       {
-        phone : new FormControl(''),
-        name:  new FormControl(''),
-        scheduledateRange:  new FormControl() ,
-        formMode :  new FormControl(false) ,
-        scheduleData: new FormControl(new schedule())
+        phone : new UntypedFormControl(''),
+        name:  new UntypedFormControl(''),
+        scheduledateRange:  new UntypedFormControl() ,
+        formMode :  new UntypedFormControl(false) ,
+        scheduleData: new UntypedFormControl(new schedule())
       }
       );
       this.chooseFormMode();
