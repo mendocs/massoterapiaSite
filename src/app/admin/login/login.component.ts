@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {BaseFormComponent} from "../../shared-kernel/forms/core/base-form.component";
 import { AuthService } from '../services/auth.service';
@@ -32,10 +32,10 @@ export class LoginComponent extends BaseFormComponent implements OnInit  {
     this._titleService.setTitle("Massoterapia Admin - Login");
 
     this.formulario =
-		new UntypedFormGroup (
+		new FormGroup (
 			{
-				password : new UntypedFormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(10)]),
-				user:  new UntypedFormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(35)]),
+				password : new FormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(10)]),
+				user:  new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(35)]),
 			}
 		)
 

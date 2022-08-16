@@ -1,5 +1,5 @@
 import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import {UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BaseFormComponent } from 'src/app/shared-kernel/forms/core/base-form.component';
 
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
@@ -113,7 +113,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     private patientService : PatientService,
     private route: ActivatedRoute,
     private router: Router,
-    public formBuilder: UntypedFormBuilder,
+    public formBuilder: FormBuilder,
     private authService : AuthService,
     private utilsService : UtilsService,
     private _titleService: Title
@@ -193,51 +193,51 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   buildFormulario() : void
   {
     this.formulario =
-    new UntypedFormGroup (
+    new FormGroup (
       {
-        Key : new UntypedFormControl(''),
-        Updated : new UntypedFormControl(''),
-        Created : new UntypedFormControl(''),
-        Phone : new UntypedFormControl(''),
-        Name:  new UntypedFormControl('',  ),
-        DateFillData:  new UntypedFormControl() ,
-        MaritalStatus: new UntypedFormControl() ,
-        Sons: new UntypedFormControl() ,
-        DateBorn:  new UntypedFormControl() ,
-        Weight: new UntypedFormControl() ,
-        PhoneContact: new UntypedFormControl(''),
-        Occupation: new UntypedFormControl(''),
+        Key : new FormControl(''),
+        Updated : new FormControl(''),
+        Created : new FormControl(''),
+        Phone : new FormControl(''),
+        Name:  new FormControl('',  ),
+        DateFillData:  new FormControl() ,
+        MaritalStatus: new FormControl() ,
+        Sons: new FormControl() ,
+        DateBorn:  new FormControl() ,
+        Weight: new FormControl() ,
+        PhoneContact: new FormControl(''),
+        Occupation: new FormControl(''),
         Motivation: this.builddFormArray(this.Motivation),
-        MainComplaint: new UntypedFormControl(''),
-        HistoryComplaint: new UntypedFormControl(''),
-        SecundaryComplaint: new UntypedFormControl(''),
-        IngestionLiquid: new UntypedFormControl(''),
-        LiquidTypes: new UntypedFormControl(''),
-        Smoking: new UntypedFormControl(''),
-        Alcohol: new UntypedFormControl(''),
+        MainComplaint: new FormControl(''),
+        HistoryComplaint: new FormControl(''),
+        SecundaryComplaint: new FormControl(''),
+        IngestionLiquid: new FormControl(''),
+        LiquidTypes: new FormControl(''),
+        Smoking: new FormControl(''),
+        Alcohol: new FormControl(''),
         //Psychoactive: new FormControl(''),
         //Addiction: new FormControl(''),
-        PhysicalActivity: new UntypedFormControl(''),
-        PhysicalActivityFrequency: new UntypedFormControl(''),
-        QualitySleep: new UntypedFormControl(''),
-        Food: new UntypedFormControl(''),
-        Feces: new UntypedFormControl(''),
-        LastFeces: new UntypedFormControl(''),
-        LeisureActivities: new UntypedFormControl(''),
+        PhysicalActivity: new FormControl(''),
+        PhysicalActivityFrequency: new FormControl(''),
+        QualitySleep: new FormControl(''),
+        Food: new FormControl(''),
+        Feces: new FormControl(''),
+        LastFeces: new FormControl(''),
+        LeisureActivities: new FormControl(''),
         //LeisureRestWork: new FormControl(''),
         Disease: this.builddFormArray(this.Disease),
         HealthChanges: this.builddFormArray(this.HealthChanges),
         Treatments : this.builddFormArray(this.Treatments),
-        OthersTreatments: new UntypedFormControl(''),
-        Medicines: new UntypedFormControl(''),
-        Diu: new UntypedFormControl(''),
-        Prosthesis: new UntypedFormControl(''),
-        Dum: new UntypedFormControl(''),
-        Subcutaneous: new UntypedFormControl(''),
-        Comments: new UntypedFormControl(''),
-        Surgeries: new UntypedFormControl(''),
+        OthersTreatments: new FormControl(''),
+        Medicines: new FormControl(''),
+        Diu: new FormControl(''),
+        Prosthesis: new FormControl(''),
+        Dum: new FormControl(''),
+        Subcutaneous: new FormControl(''),
+        Comments: new FormControl(''),
+        Surgeries: new FormControl(''),
         //FamilyIllnessess: new FormControl(''),
-        scheduleData: new UntypedFormControl(new schedule())
+        scheduleData: new FormControl(new schedule())
       }
       );
 
@@ -290,10 +290,10 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     return new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime()}
 
 
-  builddFormArraySchedules() : UntypedFormArray {
+  builddFormArraySchedules() : FormArray {
     const values = this.patientSelected.Schedules
     .sort((a,b)=> new Date(a.StartdDate).getTime() - new Date(b.StartdDate).getTime())
-    .map(v => new UntypedFormControl(v));
+    .map(v => new FormControl(v));
     return this.formBuilder.array(values);
   }
 
@@ -342,15 +342,15 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   {
     let newschedule : schedule = new schedule(); //{StartdDate : new Date(), Comments: "", Confirmed : false, Executed: false , Canceled: false };
     this.patientSelected.Schedules.push(newschedule);
-    let items = this.formulario.get("Schedules") as UntypedFormArray;
-    items.push(new UntypedFormControl(this.patientSelected.Schedules[this.patientSelected.Schedules.length-1]));
+    let items = this.formulario.get("Schedules") as FormArray;
+    items.push(new FormControl(this.patientSelected.Schedules[this.patientSelected.Schedules.length-1]));
 
   }
 
   RemoveSchedule(index : number) : void
   {
     this.patientSelected.Schedules.splice(index,1) ;
-    (<UntypedFormArray>this.formulario.get('Schedules')).removeAt(index);
+    (<FormArray>this.formulario.get('Schedules')).removeAt(index);
   }
 
 

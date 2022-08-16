@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { pack } from 'src/app/therapy/models/pack-model';
-import { NgGoogleAnalyticsTracker } from "ng-google-analytics";
+//import { NgGoogleAnalyticsTracker } from "ng-google-analytics";
+declare const gtag: Function;
 
 @Component({
   selector: 'app-package-menu',
@@ -13,7 +14,9 @@ export class PackageMenuComponent implements OnInit {
 
   @Input() packCurrent: pack;
 
-  constructor(public ngAnalytics: NgGoogleAnalyticsTracker) { }
+  constructor(
+    //public ngAnalytics: NgGoogleAnalyticsTracker
+    ) { }
 
   ngOnInit(): void {
   }
@@ -31,7 +34,12 @@ export class PackageMenuComponent implements OnInit {
     this.isCollapsed = !this.isCollapsed;
 
     if (!this.isCollapsed)
-      this.ngAnalytics.eventTracker("Package", "ShowMore", this.packCurrent.id,1);
+    {
+      gtag('event', 'PacoteMostrarMais', {
+        'Pacote': this.packCurrent.id
+      });
+      //this.ngAnalytics.eventTracker("Package", "ShowMore", this.packCurrent.id,1);
+    }
 
   }
 

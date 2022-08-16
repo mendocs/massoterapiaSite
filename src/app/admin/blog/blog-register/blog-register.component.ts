@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
@@ -106,7 +106,7 @@ export class BlogRegisterComponent extends BaseFormComponent implements OnInit  
     constructor(private _AdminBlogService: AdminBlogService,
                 private route: ActivatedRoute,
                 private router: Router,
-                public formBuilder: UntypedFormBuilder,
+                public formBuilder: FormBuilder,
                 private utilsService : UtilsService,
                 private _titleService: Title
       ) { super(formBuilder); }
@@ -217,16 +217,16 @@ export class BlogRegisterComponent extends BaseFormComponent implements OnInit  
     buildFormulario() : void
     {
       this.formulario =
-      new UntypedFormGroup (
+      new FormGroup (
         {
-          Title : new UntypedFormControl('',[ Validators.required, Validators.minLength(25)]),
-          ImageCard : new UntypedFormControl('',[Validators.required]),
-          Active : new UntypedFormControl(true),
-          Tags : new UntypedFormControl('',[Validators.required]),
-          Text : new UntypedFormControl('',[Validators.required]),
-          Key : new UntypedFormControl(''),
-          TitleNFD : new UntypedFormControl(''),
-          ImagemAddressAux : new UntypedFormControl('')
+          Title : new FormControl('',[ Validators.required, Validators.minLength(25)]),
+          ImageCard : new FormControl('',[Validators.required]),
+          Active : new FormControl(true),
+          Tags : new FormControl('',[Validators.required]),
+          Text : new FormControl('',[Validators.required]),
+          Key : new FormControl(''),
+          TitleNFD : new FormControl(''),
+          ImagemAddressAux : new FormControl('')
         }
         );
     }

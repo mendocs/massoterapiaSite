@@ -1,9 +1,9 @@
-import { UntypedFormArray, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 export class FormValidations {
 
   static requiredMinCheckbox(min = 1) {
-    const validator = (formArray: UntypedFormArray) => {
+    const validator = (formArray: FormArray) => {
       /* const values = formArray.controls;
       let totalChecked = 0;
       for (let i = 0; i < values.length; i++) {
@@ -19,7 +19,7 @@ export class FormValidations {
     return validator;
   }
 
-  static cepValidator(control: UntypedFormControl) {
+  static cepValidator(control: FormControl) {
 
     const cep = control.value;
     if (cep && cep !== '') {
@@ -30,16 +30,16 @@ export class FormValidations {
   }
 
   static equalsTo(otherField: string) {
-    const validator = (formControl: UntypedFormControl) => {
+    const validator = (formControl: FormControl) => {
       if (otherField == null) {
         throw new Error('É necessário informar um campo.');
       }
 
-      if (!formControl.root || !(<UntypedFormGroup>formControl.root).controls) {
+      if (!formControl.root || !(<FormGroup>formControl.root).controls) {
         return null;
       }
 
-      const field = (<UntypedFormGroup>formControl.root).get(otherField);
+      const field = (<FormGroup>formControl.root).get(otherField);
 
       if (!field) {
         throw new Error('É necessário informar um campo válido.');

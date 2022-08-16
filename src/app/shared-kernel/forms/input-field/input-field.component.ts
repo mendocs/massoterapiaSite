@@ -2,7 +2,7 @@ import { Component, Self, HostListener, OnInit } from '@angular/core';
 
 import {  forwardRef, HostBinding, Input } from '@angular/core';
 
-import { FormGroup, UntypedFormControl, Validators, NgControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
 const INPUT_FIELD_VALUE_ACCESSOR: any = {
@@ -21,7 +21,7 @@ const INPUT_FIELD_VALUE_ACCESSOR: any = {
 export class InputFieldComponent implements ControlValueAccessor  {
 
 
-  email = new UntypedFormControl('', [Validators.required, Validators.email]);
+  email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() : string {
     if (this.email.hasError('required')) {

@@ -3,7 +3,8 @@ import { Subscription } from 'rxjs';
 import { BaseComponent } from 'src/app/shared-kernel/components/base-component';
 import { therapyCategory } from 'src/app/therapy/models/therapy-category-model';
 import { PublicSiteService } from '../public-site.service';
-import { NgGoogleAnalyticsTracker } from "ng-google-analytics";
+declare const gtag: Function;
+//import { NgGoogleAnalyticsTracker } from "ng-google-analytics";
 
 @Component({
   selector: 'app-therapy-category-menu',
@@ -27,7 +28,9 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
 
   menuProtocolsSubscription$ : Subscription;
 
-  constructor(private publicSiteService: PublicSiteService, public ngAnalytics: NgGoogleAnalyticsTracker) {super(); }
+  constructor(private publicSiteService: PublicSiteService,
+    //public ngAnalytics: NgGoogleAnalyticsTracker
+    ) {super(); }
 
   ngOnInit(): void {
     this.menuProtocolsSubscription$ = this.publicSiteService.menuProtocols$.subscribe(this.protocolsMenuFile);
@@ -51,7 +54,10 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
     this.showProtocolsActive = !showProtocolsActiveState;
 
     if (this.showProtocolsActive)
-      this.ngAnalytics.eventTracker("therapyCategory", "OpenMenu", this.therapyCategoryCurrent.categoria,1);
+      gtag('event', 'Menu4Categorias', {
+        'Categorias': this.therapyCategoryCurrent.categoria
+      });
+    //  this.ngAnalytics.eventTracker("therapyCategory", "OpenMenu", this.therapyCategoryCurrent.categoria,1);
 
     this.publicSiteService.navigateTo(this.therapyCategoryCurrent.id + "_spied");
 
@@ -73,7 +79,10 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
   }
 
   logClicked(therapyId: string) :void {
-    this.ngAnalytics.eventTracker("protocol", "showDetails", therapyId,1);
+    //this.ngAnalytics.eventTracker("protocol", "showDetails", therapyId,1);
+    gtag('event', 'ProtocoloClicado', {
+      'Protocolo': therapyId
+    });
     this.publicSiteService.SetTherapy(therapyId);
   }
 

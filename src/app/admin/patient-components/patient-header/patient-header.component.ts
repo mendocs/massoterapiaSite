@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { patientList } from 'src/app/patient/patient-data/models/patientviewModelList.model';
 import { patientForm } from 'src/app/patient/patient-data/models/patientViewModelForm.model';
 import { BaseFormComponent } from 'src/app/shared-kernel/forms/core/base-form.component';
 import { PatientService} from "../../../patient/patient-data/services/patient.service"
 import { DashboardService } from '../../services/dashboard.service';
-//import { ThrowStmt } from '@angular/compiler';
+import { ThrowStmt } from '@angular/compiler';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { schedule } from 'src/app/patient/patient-data/models/schedule.model';
@@ -90,13 +90,13 @@ export class PatientHeaderComponent extends BaseFormComponent implements OnInit 
 
   ngOnInit(): void {
     this.formulario =
-    new UntypedFormGroup (
+    new FormGroup (
       {
-        phone : new UntypedFormControl(''),
-        name:  new UntypedFormControl(''),
-        scheduledateRange:  new UntypedFormControl() ,
-        formMode :  new UntypedFormControl(false) ,
-        scheduleData: new UntypedFormControl(new schedule())
+        phone : new FormControl(''),
+        name:  new FormControl(''),
+        scheduledateRange:  new FormControl() ,
+        formMode :  new FormControl(false) ,
+        scheduleData: new FormControl(new schedule())
       }
       );
       this.chooseFormMode();

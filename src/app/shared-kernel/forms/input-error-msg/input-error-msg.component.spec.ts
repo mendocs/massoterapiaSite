@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InputErrorMsgComponent } from './input-error-msg.component';
 
@@ -6,7 +6,7 @@ describe('InputErrorMsgComponent', () => {
   let component: InputErrorMsgComponent;
   let fixture: ComponentFixture<InputErrorMsgComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ InputErrorMsgComponent ]
     })
