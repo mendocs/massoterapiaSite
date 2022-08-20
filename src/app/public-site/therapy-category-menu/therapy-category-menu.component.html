@@ -37,7 +37,7 @@
           </div>
           <div class="col-2 p-2 pointer " (click)="logClicked(protocol.id)">
             <span class="align-self-center badge badge-success badge-pill " style="color: rgba(29, 28, 28, 0.8);"
-                  [style.background]="therapyCategoryCurrent.cor">R$ {{protocol.preco}},00
+                  [style.background]="therapyCategoryCurrent.cor"><span style="font-size:120% ;">R$ {{protocol.preco}},00</span> <br>{{protocol.duracao}} min
             </span>
           </div>
 
