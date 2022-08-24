@@ -30,18 +30,6 @@ export class BigCarouselComponent implements OnInit {
       detalhado: "A massoterapia atua em diversas áreas que envolvem a promoção, prevenção e  recuperação da saúde e bem-estar. Desta forma, atua sobre aspectos como o relaxamento, o apoio à prática esportiva, tratamento da dor, estética, cuidados pré e pós-cirúrgicos, consciência corporal, reequilíbrio fisiológico, energético e emocional.",
       image : "home" ,
       link : "about"
-    },
-    { titulo: "Vale presente Dia da Avó",
-      resumido: "Dê de presente um Day Spa para a sua avó, neste mês de comemoração ao Dia dos Avós. Inclui: Spa dos pés + Massagem relaxante corporal em 1:30h de puro relax, por apenas R$ 125,00",
-      detalhado: "Dê de presente um Day Spa para a sua avó, neste mês de comemoração ao Dia dos Avós. Inclui: Spa dos pés + Massagem relaxante corporal em 1:30h de puro relax, por apenas R$ 125,00",
-      image : "dia_da_avo" ,
-      link : "contact_spied"
-    },
-    { titulo: "Vale presente Dia da Amiga",
-      resumido: "Dê de presente um Day Spa para a sua amiga do coração, neste mês de comemoração ao Dia do Amigo. Inclui: Spa dos pés + Massagem relaxante corporal em 1:30h de puro relax, por apenas R$ 125,00",
-      detalhado: "Dê de presente um Day Spa para a sua amiga do coração, neste mês de comemoração ao Dia do Amigo. Inclui: Spa dos pés + Massagem relaxante corporal em 1:30h de puro relax, por apenas R$ 125,00",
-      image : "dia_da_amiga" ,
-      link : "contact_spied"
     }
   ]
 
