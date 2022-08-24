@@ -173,7 +173,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   submitFail():void{}
 
   ngOnInit(): void {
-    this._titleService.setTitle("NEL Zen Massoterapia - Área Cliente");
+    this._titleService.setTitle("Nel Zen Massoterapia - Área Cliente");
     this.buildFormulario();
     this.getParameters();
     this.removedorSubscription$ =  this.patientService.removedor$.subscribe(this.removeScheduleObserver);
