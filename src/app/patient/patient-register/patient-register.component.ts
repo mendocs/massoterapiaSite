@@ -18,6 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { UtilsService } from "../../shared-kernel/tools/utils.service";
 import { Subscription } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { PublicSiteService } from 'src/app/public-site/public-site.service';
 //import { _rollupMoment} from 'moment';
 
 const moment =  _moment;
@@ -100,7 +101,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     complete: () => {},
     };
 
-
+ modalSavedAvaliableToShow : boolean = false;
  patientSelected : patient;
  savedData : number = 0;
  enable_gotoTop : boolean = false;
@@ -108,6 +109,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
  removedorSubscription$ : Subscription;
  routeParamsSubscription$ : Subscription;
  getPatientByIdSubscription$ : Subscription;
+ @ViewChild('lgModal') modalSaved: any
 
   constructor(
     private patientService : PatientService,
@@ -116,7 +118,8 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     public formBuilder: FormBuilder,
     private authService : AuthService,
     private utilsService : UtilsService,
-    private _titleService: Title
+    private _titleService: Title,
+    private publicSiteService: PublicSiteService
 
     ) {
       super(formBuilder);
@@ -159,6 +162,21 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
   }
 
+  saveModal() : void{
+    this.modalSavedAvaliableToShow = true;
+    this.submit();
+  }
+
+  closeModal(): void{
+    this.modalSaved.hide();
+  }
+
+  navigateTo(navigateId: string)
+  {
+      this.router.navigate(["/"]);
+      this.publicSiteService.navigateTo(navigateId);
+  }
+
   convertFormArrayToSchedules( valueSubmit: any) : any
   {
      let objeto = new Object()
@@ -168,11 +186,11 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
      });
   }
 
-
-
   submitFail():void{}
 
+
   ngOnInit(): void {
+
     this._titleService.setTitle("Nel Zen Massoterapia - Área Cliente");
     this.buildFormulario();
     this.getParameters();
@@ -265,13 +283,17 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
     this.isLoadingSaveData = false;
     this.savedData = result;
     this.isError = false;
-    if (this.savedData == 0)
-    {
+    if (this.savedData == 0){
         this.isError = true;
         this.messageError = "Registro não foi gravado, recarregue a pagina e tente novamente";
     }
-    else
-      this.recordSuccess = true;
+    else {
+        if (this.modalSavedAvaliableToShow) {
+          this.modalSavedAvaliableToShow = false;
+          this.modalSaved.show();
+        }
+        this.recordSuccess = true;
+    }
   }
 
 
