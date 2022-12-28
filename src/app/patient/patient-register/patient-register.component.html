@@ -70,7 +70,7 @@
               ></app-input-field>
           </div>
 
-          <div [ngClass]="cssCol">
+          <div [ngClass]="cssColFieldSmall">
             <mat-form-field appearance="fill" >
               <mat-label>Estado Civil</mat-label>
               <mat-select formControlName="MaritalStatus" >
@@ -82,7 +82,7 @@
             </mat-form-field>
           </div>
 
-          <div [ngClass]="cssCol">
+          <div [ngClass]="cssColFieldSmall">
             <mat-form-field appearance="fill" >
               <mat-label>Filhos</mat-label>
               <mat-select formControlName="Sons" >
@@ -91,13 +91,21 @@
             </mat-form-field>
           </div>
 
-          <div [ngClass]="cssCol">
+          <div [ngClass]="cssColFieldSmall">
             <app-input-field  formControlName="Weight"
             [classeCss]="aplicaCssErro('Weight')"
-            id="Weight" label="Peso" [control]="formulario.get('Weight')"
-            mask="00,0"
-            placeholder="__,_"
+            id="Weight" label="Peso(Kg)" [control]="formulario.get('Weight')"
+            mask="000,0"
+            placeholder="___,_"
+            ></app-input-field>
+          </div>
 
+          <div [ngClass]="cssColFieldSmall">
+            <app-input-field  formControlName="Height"
+            [classeCss]="aplicaCssErro('Height')"
+            id="Height" label="Altura(m)" [control]="formulario.get('Height')"
+            mask="0,00"
+            placeholder="_,__"
             ></app-input-field>
           </div>
 
@@ -161,12 +169,14 @@
             ></app-input-field>
           </div>
 
+          <!--
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="LiquidTypes"
             [classeCss]="aplicaCssErro('LiquidTypes')"
             id="LiquidTypes" label="Quais líquidos?:" [control]="formulario.get('LiquidTypes')"
             ></app-input-field>
           </div>
+
 
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="Smoking"
@@ -175,6 +185,7 @@
             ></app-input-field>
           </div>
 
+
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="Alcohol"
             [classeCss]="aplicaCssErro('Alcohol')"
@@ -182,7 +193,7 @@
             ></app-input-field>
           </div>
 
-          <!--
+
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="Psychoactive"
             [classeCss]="aplicaCssErro('Psychoactive')"
@@ -201,52 +212,39 @@
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="PhysicalActivity"
             [classeCss]="aplicaCssErro('PhysicalActivity')"
-            id="PhysicalActivity" label="Atividade Física:" [control]="formulario.get('PhysicalActivity')"
+            id="PhysicalActivity" label="Atividade Física e frequência:" [control]="formulario.get('PhysicalActivity')"
             ></app-input-field>
           </div>
 
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="Feces"
+            [classeCss]="aplicaCssErro('Feces')"
+            id="Feces" label="Fezes/Urina: (frequência e características)" [control]="formulario.get('Feces')"
+            ></app-input-field>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <app-input-field  formControlName="LeisureActivities"
+            [classeCss]="aplicaCssErro('LeisureActivities')"
+            id="LeisureActivities" label="Realiza atividades de lazer?" [control]="formulario.get('LeisureActivities')"
+            ></app-input-field>
+          </div>
+
+
+          <!--
           <div [ngClass]="cssCol">
             <app-input-field  formControlName="PhysicalActivityFrequency"
             [classeCss]="aplicaCssErro('PhysicalActivityFrequency')"
             id="PhysicalActivityFrequency" label="Frequência: " [control]="formulario.get('PhysicalActivityFrequency')"
             ></app-input-field>
           </div>
+          -->
         </div>
 
         <div  class="row">
           <mat-form-field appearance="fill" >
-            <mat-label>Qualidade do sono: (horas de sono; ignição do sono; se é reparador; se acorda durante a noite/qual horário; se as horas dormidas são suficientes? Sono agitado; sono leve) </mat-label>
+            <mat-label>Qualidade do sono : (horas de sono, ignição do sono; se é reparador; se acorda durante a noite/qual horário; se as horas dormidas são suficientes; sono agitado ou leve?) </mat-label>
             <textarea matInput formControlName="QualitySleep"></textarea>
-          </mat-form-field>
-        </div>
-
-        <div  class="row">
-          <mat-form-field appearance="fill" >
-            <mat-label>Alimentação: (quantas refeições ao dia; qualidade e quantidade das refeições) </mat-label>
-            <textarea matInput formControlName="Food"></textarea>
-          </mat-form-field>
-        </div>
-
-        <div  class="row">
-          <div [ngClass]="cssCol">
-            <app-input-field  formControlName="Feces"
-            [classeCss]="aplicaCssErro('Feces')"
-            id="Feces" label="Fezes: (frequência e características)" [control]="formulario.get('Feces')"
-            ></app-input-field>
-          </div>
-
-          <div [ngClass]="cssCol">
-            <app-input-field  formControlName="LastFeces"
-            [classeCss]="aplicaCssErro('LastFeces')"
-            id="LastFeces" label="Urina: (frequência e características)" [control]="formulario.get('LastFeces')"
-            ></app-input-field>
-          </div>
-        </div>
-
-        <div  class="row">
-          <mat-form-field appearance="fill" >
-            <mat-label>Realiza atividades de lazer? (quais e em qual frequência?) </mat-label>
-            <textarea matInput formControlName="LeisureActivities"></textarea>
           </mat-form-field>
         </div>
 
@@ -275,6 +273,14 @@
             </label>
           </div>
         </div>
+
+        <div  class="row">
+          <mat-form-field appearance="fill" >
+            <mat-label>Distúrbios da menstruação? Quais?  </mat-label>
+            <textarea matInput formControlName="DisturbMenstruation"></textarea>
+          </mat-form-field>
+        </div>
+
 
 
         <div class="card">
@@ -356,6 +362,14 @@
             <div class="checkbox" >
               <label class="checkbox-inline">
                 <input type="checkbox" formControlName="Prosthesis"> É portador de prótese, placas ou pinos
+              </label>
+            </div>
+          </div>
+
+          <div [ngClass]="cssCol">
+            <div class="checkbox" >
+              <label class="checkbox-inline">
+                <input type="checkbox" formControlName="Locomotion"> Possui dificuldade de locomoção
               </label>
             </div>
           </div>

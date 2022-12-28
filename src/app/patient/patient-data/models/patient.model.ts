@@ -9,6 +9,7 @@ export class patient {
   Sons: number;
   DateBorn: Date;
   Weight: string;
+  Height: string;
   PhoneContact: string;
   Occupation: string;
   Motivation: string[];
@@ -29,6 +30,7 @@ export class patient {
   LastFeces: string;
   LeisureActivities: string;
   //LeisureRestWork: string;
+  DisturbMenstruation: string;
   Disease: string[];
   HealthChanges: string[];
   Treatments: string[];
@@ -38,6 +40,7 @@ export class patient {
   Dum: string;
   Subcutaneous: boolean;
   Prosthesis : boolean;
+  Locomotion : boolean;
   //SubcutaneousOther: string;
   Surgeries: string;
   //FamilyIllnessess: string;

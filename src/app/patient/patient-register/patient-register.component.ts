@@ -59,7 +59,8 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
 
   parameterID : string;
-  cssCol = "col-12 col-md-6 col-lg-4 d-flex align-items-center full-width-field ";
+  cssCol : string = "col-12 col-md-6 col-lg-4 d-flex align-items-center full-width-field ";
+  cssColFieldSmall : string = "col-12 col-md-6 col-lg-3 d-flex align-items-center full-width-field ";
 
   searchMode=true;
   startDate = new Date(1923, 0,1);
@@ -72,7 +73,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
   //recordSuccess: boolean = false;
 
   Motivation = ['Relaxamento', 'Terapêutico', 'Apoio ao esporte', 'Estética'];
-  Disease = ['Hipertensão Arterial', 'Hipotensão Arterial', 'Diabetes'];
+  Disease = ['Hipertensão Arterial', 'Hipotensão Arterial', 'Diabetes', 'Rinite'];
   HealthChanges = ['Cardíacas','Vasculares','Respiratórias','Digestórias','Hormonais','Dermatológicas','Neurológicas','Articulares','Músculo Esqueléticas','Urinárias','Genitais','Hematológicas','Psicoemocionais','Cabeça','Olhos','Nariz','Boca','Ouvidos'];
   Treatments = ['Alopático','Homeopático','Psiquiátrico','Psicológico','Fisioterapêutico'];
 
@@ -188,6 +189,10 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
 
   submitFail():void{}
 
+  /*
+  ngAfterViewInit(){
+    this.modalSaved.show();
+  }*/
 
   ngOnInit(): void {
 
@@ -223,6 +228,7 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
         Sons: new FormControl() ,
         DateBorn:  new FormControl() ,
         Weight: new FormControl() ,
+        Height: new FormControl() ,
         PhoneContact: new FormControl(''),
         Occupation: new FormControl(''),
         Motivation: this.builddFormArray(this.Motivation),
@@ -244,12 +250,14 @@ export class PatientRegisterComponent extends BaseFormComponent implements OnIni
         LeisureActivities: new FormControl(''),
         //LeisureRestWork: new FormControl(''),
         Disease: this.builddFormArray(this.Disease),
+        DisturbMenstruation: new FormControl(''),
         HealthChanges: this.builddFormArray(this.HealthChanges),
         Treatments : this.builddFormArray(this.Treatments),
         OthersTreatments: new FormControl(''),
         Medicines: new FormControl(''),
         Diu: new FormControl(''),
         Prosthesis: new FormControl(''),
+        Locomotion: new FormControl(''),
         Dum: new FormControl(''),
         Subcutaneous: new FormControl(''),
         Comments: new FormControl(''),
