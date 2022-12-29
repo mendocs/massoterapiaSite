@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
 import { PublicSiteService } from '../public-site.service';
 import {slide} from "./models/slide" ;
 

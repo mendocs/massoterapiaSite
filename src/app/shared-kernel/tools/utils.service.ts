@@ -9,25 +9,25 @@ export class UtilsService {
   constructor( private domSanitizer: DomSanitizer) { }
 
 
-  getDateFormated(dateCurrent: Date) : string {
+  public getDateFormated(dateCurrent: Date) : string {
     let data : Date = new Date(dateCurrent);
     return `${this.formatNumber2Digts(data.getDate())}/${ this.formatNumber2Digts((data.getMonth() + 1)) }/${this.formatNumber2Digts( data.getFullYear())} as ${this.getDateFormatedHourMinutes(data)}`;
   }
 
-  getDateFormatedHourMinutes(dateCurrent: Date) : string {
+  public getDateFormatedHourMinutes(dateCurrent: Date) : string {
     let data : Date = new Date(dateCurrent);
     return ` ${this.formatNumber2Digts(data.getHours())}:${this.formatNumber2Digts(data.getMinutes())}`;
   }
 
 
-  formatNumber2Digts(numberToBeFormated : number): string {
+  public formatNumber2Digts(numberToBeFormated : number): string {
      return numberToBeFormated.toLocaleString('en-US', {
       minimumIntegerDigits: 2,
       useGrouping: false
     })
   }
 
-  timeConvert(n : number): string {
+  public timeConvert(n : number): string {
     var num = n;
     var hours = (num / 60);
     var rhours = Math.floor(hours);
@@ -36,7 +36,7 @@ export class UtilsService {
     return this.formatNumber2Digts(rhours) + ":" + this.formatNumber2Digts(rminutes);
   }
 
-  getSchedulAvaliableDescription(date1: Date, duration : number , date2: Date) : string {
+  public getSchedulAvaliableDescription(date1: Date, duration : number , date2: Date) : string {
     let dt1: Date = new Date();
     var returnDescription :string = "Agenda: ";
 
@@ -70,7 +70,7 @@ export class UtilsService {
 
   }
 
-  getIntervalMinutes(date1: Date, date2: Date) : number {
+  public getIntervalMinutes(date1: Date, date2: Date) : number {
     date1.setSeconds(0);
     date2.setSeconds(0);
 
@@ -79,7 +79,7 @@ export class UtilsService {
     return Math.round(diff);
   }
 
-  getIntervalDescription(date1: Date, duration : number, date2: Date) : string {
+  public getIntervalDescription(date1: Date, duration : number, date2: Date) : string {
     let dt1: Date = new Date(date1);
 
     var returnDescription :string = "";
@@ -94,7 +94,7 @@ export class UtilsService {
       return  "intervalo: 00" ;
   }
 
-  removeAccent(text : string) : string {
+  public removeAccent(text : string) : string {
     let result : string = text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
     result = result.replace(/[^0-9a-zA-Zs]/g, "-")
 
@@ -107,11 +107,11 @@ export class UtilsService {
     return result.toLowerCase();
   }
 
-  removeLastName(name : string) : string{
+  public removeLastName(name : string) : string{
     return name.split(" ")[0];
   }
 
-  convertToPlain(html: string ) : string {
+  public convertToPlain(html: string ) : string {
 
     // Create a new div element
     var tempDivElement = document.createElement("div");
@@ -123,9 +123,50 @@ export class UtilsService {
     return tempDivElement.textContent || tempDivElement.innerText || "";
   }
 
-  htmldomSanitizer(_html : string  ) : SafeHtml {
+  public htmldomSanitizer(_html : string  ) : SafeHtml {
     let retorno = this.domSanitizer.bypassSecurityTrustHtml(_html);
     return retorno;
+  }
+
+
+  public ScrollTo(destination : string): void {
+
+    const element = document.getElementById(destination);
+
+    //element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+
+    const duration = 800;
+
+    const scrollToTarget = function (target) {
+        const top = target.getBoundingClientRect().top;
+        const startPos = window.pageYOffset;
+        const diff = top;
+
+        let startTime = null;
+        let requestId;
+
+        const loop = function (currentTime) {
+            if (!startTime) {
+                startTime = currentTime;
+            }
+
+            // Elapsed time in miliseconds
+            const time = currentTime - startTime;
+
+            const percent = Math.min(time / duration, 1);
+            window.scrollTo(0, startPos + diff * percent);
+
+            if (time < duration) {
+                // Continue moving
+                requestId = window.requestAnimationFrame(loop);
+            } else {
+                window.cancelAnimationFrame(requestId);
+            }
+        };
+        requestId = window.requestAnimationFrame(loop);
+    };
+
+    scrollToTarget(element);
   }
 
 }

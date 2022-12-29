@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ScrollToConfigOptions, ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
 import { Observable, Subject } from 'rxjs';
 import { section } from '../section/models/Isection';
+import { UtilsService } from '../shared-kernel/tools/utils.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,8 @@ export class PublicSiteService {
 
   public menuProtocols$ : Subject<boolean> = new Subject<boolean>();
 
-  constructor(private _scrollToService: ScrollToService, private router: Router) {
+  constructor(private router: Router
+    ,private utilsService : UtilsService) {
 
   }
 
@@ -98,28 +99,8 @@ export class PublicSiteService {
 
     this.router.navigate(["/"]);
 
-    const config: ScrollToConfigOptions = {
-      target: destination,
-      duration: 1800,
-      offset: -100
-    };
-
-    this._scrollToService.scrollTo(config);
+    this.utilsService.ScrollTo(destination);
   }
 
-  public triggerScrollToWithoutAnimation(destination : string): void {
-
-    this.LinkVisited = destination;
-
-    this.router.navigate(["/"]);
-
-    const config: ScrollToConfigOptions = {
-	    target: destination,
-	    duration: 0,
-	    offset: -100
-    };
-
-    this._scrollToService.scrollTo(config);
-  }
 
 }

@@ -14,7 +14,6 @@ import {TherapyModule} from "./therapy/therapy.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './admin/services/auth.service';
-import { NgGoogleAnalyticsModule } from "ng-google-analytics";
 
 @NgModule({
   declarations: [

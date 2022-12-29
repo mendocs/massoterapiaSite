@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as AOS from 'aos';
-import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 import { CloudData, CloudOptions, ZoomOnHoverOptions } from 'angular-tag-cloud-module';
 import { PublicSiteService } from '../public-site.service';
 
@@ -26,7 +25,6 @@ export class MainContainerComponent implements OnInit {
 
   constructor(
               private publicSiteService: PublicSiteService,
-              private _scrollToService: ScrollToService,
               private _CommomComponentsService : CommomComponentsService,
               private _titleService: Title) { }
 
