@@ -1,8 +1,14 @@
 
-<app-size-bar-debug></app-size-bar-debug>
+<app-size-bar-debug class="d-none"></app-size-bar-debug>
 
 
-<div id="scrollSpyDiv" style="position: fixed ; top: 50%; right: 0; z-index: 999;" class="shadow">
+
+<div class="container  h-100 d-flex ">
+
+  <div class="mx-auto  bg-warning align-self-center" ><h2 class="text-center ">Site temporariamente desativado</h2></div>
+</div>
+
+<div id="scrollSpyDiv" style="position: fixed ; top: 50%; right: 0; z-index: 999;" class="shadow d-none">
 
 
   <div  *ngFor="let section of sections">
@@ -41,7 +47,7 @@
 <!--
 <app-top-logo></app-top-logo>
 -->
-<app-header>
+<app-header class="d-none">
   <div textoLateralDireito>
     <h5 style="font-family: nirmala; ">Espaço exclusivamente feminino para massagens terapêuticas e estéticas em Santo André </h5>
     <app-whatsapp-link-message-schedule-template>
@@ -54,7 +60,7 @@
   </div>
 </app-header>
 
-<div appScrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)" >
+<div appScrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)" class="d-none">
     <div id="home_spied" #home_spied></div>
     <app-top-toolbar></app-top-toolbar>
 
