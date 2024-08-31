@@ -3,7 +3,7 @@
     "id" : "pacote1",
     "titulo" : "Pacote 1: 5 sessões de estética corporal e bem-estar",
     "sessoes" : 5,
-    "preco" : 411,
+    "preco" : 524.5,
     "desconto" : 12.5,
     "descricao" : "Cuidados com o corpo na estética corporal e benefícios do relaxamento físico e mental.",
     "protocolos" : [
@@ -16,7 +16,7 @@
     "id" : "pacote2",
     "titulo" : "Pacote 2: 10 sessões de estética corporal e bem-estar",
     "sessoes" : 10,
-    "preco" : 799,
+    "preco" : 1054,
     "desconto" : 15,
     "descricao" : "Cuidados com o corpo na estética corporal e benefícios do relaxamento físico e mental.",
     "protocolos" : [
@@ -29,7 +29,7 @@
     "id" : "pacote3",
     "titulo" : "Pacote 3: 4 sessões de estética corporal",
     "sessoes" : 4,
-    "preco" : 342,
+    "preco" : 450,
     "desconto" : 10,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal.",
     "protocolos" : [
@@ -41,7 +41,7 @@
     "id" : "pacote4",
     "titulo" : "Pacote 4: 10 sessões de estética corporal",
     "sessoes" : 10,
-    "preco" : 807,
+    "preco" : 1062.5,
     "desconto" : 15,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal.",
     "protocolos" : [
@@ -53,7 +53,7 @@
     "id" : "pacote5",
     "titulo" : "Pacote 5: 5 sessões de Drenagem linfática",
     "sessoes" : 5,
-    "preco" : 393,
+    "preco" : 525,
     "desconto" : 12.5,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal somado aos benefícios do relaxameno físico e mental",
     "protocolos" : [
@@ -64,7 +64,7 @@
     "id" : "pacote6",
     "titulo" : "Pacote 6: 10 sessões de Drenagem linfática",
     "sessoes" : 10,
-    "preco" : 765,
+    "preco" : 1020,
     "desconto" : 15,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal somado aos benefícios do relaxameno físico e mental",
     "protocolos" : [
@@ -75,7 +75,7 @@
     "id" : "pacote7",
     "titulo" : "Pacote 7: 5 sessões de Massagem terapêutica",
     "sessoes" : 5,
-    "preco" : 393,
+    "preco" : 545.5,
     "desconto" : 12.5,
     "descricao" : "Massagens para alívio dos desconfortos e reequíbrio enerégico e emocional.",
     "protocolos" : [
@@ -87,7 +87,7 @@
     "id" : "pacote8",
     "titulo" : "Pacote 8: 4 sessões de Massagem relaxante",
     "sessoes" : 4,
-    "preco" : 324,
+    "preco" : 450,
     "desconto" : 10,
     "descricao" : "Massagem relaxante com pedras quentes.",
     "protocolos" : [
@@ -99,7 +99,7 @@
     "id" : "pacote9",
     "titulo" : "Pacote 9: 5 sessões de Massagem modeladora zen",
     "sessoes" : 5,
-    "preco" : 437,
+    "preco" : 568.75,
     "desconto" : 12.5,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal somado aos benefícios do relaxameno físico e mental",
     "protocolos" : [
@@ -110,7 +110,7 @@
     "id" : "pacote10",
     "titulo" : "Pacote 10: 10 sessões de Massagem modeladora zen",
     "sessoes" : 10,
-    "preco" : 850,
+    "preco" : 1105,
     "desconto" : 15,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal somado aos benefícios do relaxameno físico e mental",
     "protocolos" : [
@@ -121,7 +121,7 @@
     "id" : "pacote11",
     "titulo" : "Pacote 11: 5 sessões de estética corporal e bem estar (tempo extendido)",
     "sessoes" : 5,
-    "preco" : 568,
+    "preco" : 787.5,
     "desconto" : 12.5,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal somado aos benefícios do relaxameno físico e mental",
     "protocolos" : [
@@ -132,7 +132,7 @@
     "id" : "pacote12",
     "titulo" : "Pacote 12: 10 sessões de estética corporal e bem estar (tempo extendido)",
     "sessoes" : 10,
-    "preco" : 1105,
+    "preco" : 1530,
     "desconto" : 15,
     "descricao" : "O máximo em cuidados com o corpo na estética corporal somado aos benefícios do relaxameno físico e mental",
     "protocolos" : [
