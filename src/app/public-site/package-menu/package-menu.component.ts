@@ -26,6 +26,11 @@ export class PackageMenuComponent implements OnInit {
     return Math.round(this.packCurrent.preco / ((100-this.packCurrent.desconto)/100));
   }
 
+
+  getPriceFormated() : string  {
+    return this.packCurrent.preco.toLocaleString('pt-BR', {style : 'currency',currency : 'BRL'});
+  }
+
   getCategoryTitleWithouthPrice(protocolTitle : string) : string {
     return protocolTitle.split("(R$")[0];
   }

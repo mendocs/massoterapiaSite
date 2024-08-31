@@ -3,7 +3,7 @@
     "id" : "pacote1",
     "titulo" : "Pacote 1: 5 sessões de estética corporal e bem-estar",
     "sessoes" : 5,
-    "preco" : 524.5,
+    "preco" : 542.5,
     "desconto" : 12.5,
     "descricao" : "Cuidados com o corpo na estética corporal e benefícios do relaxamento físico e mental.",
     "protocolos" : [
@@ -75,12 +75,12 @@
     "id" : "pacote7",
     "titulo" : "Pacote 7: 5 sessões de Massagem terapêutica",
     "sessoes" : 5,
-    "preco" : 545.5,
+    "preco" : 542.5,
     "desconto" : 12.5,
     "descricao" : "Massagens para alívio dos desconfortos e reequíbrio enerégico e emocional.",
     "protocolos" : [
       "5 sessões de Massagem terapêutica 60 min (R$80)",
-      "(livre escolha entre: Shiatsu, Zen Shiatsu, Tui Na, Sueca Clássica. Com ou sem uso de Ventosaterapia, Moxaterapia ou Auriculoterapia)"
+      "(livre escolha entre: Shiatsu, Zen Shiatsu, Tui Na, Sueca Clássica. 2 delas com uso opcional de Ventosaterapia ou Auriculoterapia)"
     ]
   },
   {
@@ -92,7 +92,7 @@
     "descricao" : "Massagem relaxante com pedras quentes.",
     "protocolos" : [
       "4 sessões de Massagem relaxante 60 min (R$80)",
-      "(livre escolha entre: Massagem relaxante com óleos essenciais, Massagem relaxante e bambuterapia, Massagem relaxante e termoterapia, escalda-pés e massagem relaxante com óleos essenciais)"
+      "(livre escolha entre: Massagem relaxante com óleos essenciais, Massagem relaxante e bambuterapia, Massagem relaxante e termoterapia, 2 delas com uso opcional de escalda-pés ou pedras quentes)"
     ]
   },
   {
