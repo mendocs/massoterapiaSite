@@ -11,7 +11,7 @@ export class TherapistComponent implements OnInit {
 
   carrouselModalShow : boolean = false;
 
-  features: string[] = ["Formada no Senac", "Curso com 1200 horas", "Especializada em tratamento feminino", "Ambiente acolhedor"];
+  features: string[] = ["Formada no Senac", "Curso com 1200 horas", "Especializada em tratamento feminino", "Massagem acolhedora e humanizada"];
 
   imagesTitle : string[] = ["Espaço novo em folha, feito com carinho para você",
                             "Ambiente higienizado, confortável e aconchegante",
