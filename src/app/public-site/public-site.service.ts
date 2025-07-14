@@ -31,7 +31,7 @@ export class PublicSiteService {
     {name: "Inicio", nameSpied: "home_spied"},
     {name: "Terapias", nameSpied: "tag_cloud_spied"},
     {name: "Terapeuta", nameSpied: "therapist_spied"},
-    {name: "Valores", nameSpied: "price_spied"},
+    {name: "Pacotes", nameSpied: "price_spied"},
     {name: "Contato", nameSpied: "contact_spied"},
     {name: "Blog", nameSpied: "blog_ext"}
   ]

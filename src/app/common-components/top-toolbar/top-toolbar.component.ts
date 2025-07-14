@@ -20,7 +20,7 @@ import { TherapyDataService } from 'src/app/therapy/services/therapy-data.servic
 export class TopToolbarComponent extends BaseComponent implements OnInit {
 
   pathsFirst= ["Sobre"];
-  pathsLast= ["Espaço e Terapeuta", "Valores","Contato e Localização", "Blog"];
+  pathsLast= ["Espaço e Terapeuta", "Pacotes","Contato e Localização", "Blog"];
 
 
   isCollapsed = true;

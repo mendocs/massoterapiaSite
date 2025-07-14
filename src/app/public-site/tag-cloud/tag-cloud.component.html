@@ -1,3 +1,6 @@
+
+
+
 <!--<div class="container-fluid mt-sm-n2 mt-md-n3 mt-lg-n4 mt-xl-n5 " style="z-index: 5;"> //mt-sm-n2 mt-md-n3 mt-lg-n4 mt-xl-n5-->
 <div class="container-fluid "   ><!--mt-sm-n2 mt-md-n3 mt-lg-n4 mt-xl-n5-->
 
@@ -8,18 +11,23 @@
 
       <h4 class=" m-3">Clique na massagem/terapia desejada</h4>
 
-      <div class="m-1 p-1 d-inline align-top" *ngFor="let therapyCategory of therapies">
-        <app-therapy-category-menu [therapyCategoryCurrent]="therapyCategory"></app-therapy-category-menu>
+      <div class="row d-block">
+        <div class="m-1 p-1 d-inline1 flex-row1 align-top col-12 col-sm-11 col-lg-5 float-left" *ngFor="let therapyCategory of therapies">
+          <app-therapy-category-menu [therapyCategoryCurrent]="therapyCategory"></app-therapy-category-menu>
+        </div>
       </div>
 
-
-      <h4 class="ml-3 ml-lg-0">Pacotes</h4>
+      <div class="row table">
+        <div class="col-11"   >
+        <h4 class="ml-1 ml-lg-0">Pacotes</h4>
+        </div>
+      </div>
 
         <div class="m-1 p-1 ml-lg-n3 d-inline align-top" *ngFor="let _pack of packs">
             <app-package-menu  [packCurrent]="_pack"></app-package-menu>
         </div>
 
-        <div class="text-white pointer ml-3 mt-3" style="font-size: 150%;" *ngIf="isCollapsed" (click)="isCollapsed = !isCollapsed"
+        <div class="text-white pointer ml-3 mt-3 " style="font-size: 150%;" *ngIf="isCollapsed" (click)="isCollapsed = !isCollapsed"
           [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
           <span class="align-top ">Veja mais Pacotes</span>
           <span class="material-icons main-icons " >{{isCollapsed?"navigate_next":"navigate_before"}} </span>

@@ -24,7 +24,7 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
 
   //@ViewChild('titleProtocol') classParentSquares: any;
 
-  showProtocolsActive : boolean = false;
+  showProtocolsActive : boolean = true;
 
   menuProtocolsSubscription$ : Subscription;
 
@@ -44,6 +44,7 @@ export class TherapyCategoryMenuComponent extends BaseComponent implements OnIni
   closeMenuProtocols(_showProtocolsActive : boolean) : void
   {
     this.showProtocolsActive = _showProtocolsActive;
+
   }
 
 

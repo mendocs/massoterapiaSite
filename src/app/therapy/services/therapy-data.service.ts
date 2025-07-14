@@ -90,6 +90,7 @@ export class TherapyDataService {
     else
       return this.http.get<pack[]>('assets/data/packages.json')
         .pipe(
+          map(results => results.filter(r => r.visivel) ),
           tap(results =>  this.packArray = results)
         )
 

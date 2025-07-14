@@ -1,8 +1,8 @@
 
-  <div class="col-12 col-lg-5 w-100 d-inline-block text-center "  >
+  <div class=" w-100 d-inline-block1 text-center "  >
 
     <button type="button"  (click) = "showProtocols()" class="align-top rounded-circle border-0 " [style.background]="therapyCategoryCurrent.cor" style="height: 300px; width: 300px ;">
-      <img src="../assets/images/categories/{{therapyCategoryCurrent.image}}_thumb.jpg" data-aos="fade-up"  class="mx-auto rounded-circle" style="height: 229px; width: 229px ;" >
+      <img src="../assets/images/categories/{{therapyCategoryCurrent.image}}_thumb.jpg"   class="mx-auto rounded-circle" style="height: 229px; width: 229px ;" > <!-- data-aos="fade-up" -->
     </button>
 
     <div class="row">
@@ -23,6 +23,7 @@
         style="background-color: white; position: relative;"
 
         *ngIf="showProtocolsActive" [id]= "therapyCategoryCurrent.id + '_spied'">
+        <h4 style="font-size: 120%;  color: rgb(82, 85, 60); text-decoration: underline; " class="m-2">(Valores para PIX, no cartão acréscimo 4%)</h4>
 
       <div class="BgImage BgImageOpacity"
       [ngStyle]="{'background-image': 'url(' + getProtocolsBackground(therapyCategoryCurrent.image_background) + ')' }"

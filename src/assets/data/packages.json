@@ -1,6 +1,7 @@
 [
   {
     "id" : "pacote1",
+    "visivel" : false,
     "titulo" : "Pacote 1: 5 sessões de estética corporal e bem-estar",
     "sessoes" : 5,
     "preco" : 542.5,
@@ -14,6 +15,7 @@
   },
   {
     "id" : "pacote2",
+    "visivel" : false,
     "titulo" : "Pacote 2: 10 sessões de estética corporal e bem-estar",
     "sessoes" : 10,
     "preco" : 1054,
@@ -27,6 +29,7 @@
   },
   {
     "id" : "pacote3",
+    "visivel" : false,
     "titulo" : "Pacote 3: 4 sessões de estética corporal",
     "sessoes" : 4,
     "preco" : 450,
@@ -39,6 +42,7 @@
   },
   {
     "id" : "pacote4",
+    "visivel" : false,
     "titulo" : "Pacote 4: 10 sessões de estética corporal",
     "sessoes" : 10,
     "preco" : 1062.5,
@@ -51,6 +55,7 @@
   },
   {
     "id" : "pacote5",
+    "visivel" : false,
     "titulo" : "Pacote 5: 5 sessões de Drenagem linfática",
     "sessoes" : 5,
     "preco" : 525,
@@ -62,6 +67,7 @@
   },
   {
     "id" : "pacote6",
+    "visivel" : false,
     "titulo" : "Pacote 6: 10 sessões de Drenagem linfática",
     "sessoes" : 10,
     "preco" : 1020,
@@ -73,6 +79,7 @@
   },
   {
     "id" : "pacote7",
+    "visivel" : false,
     "titulo" : "Pacote 7: 5 sessões de Massagem terapêutica",
     "sessoes" : 5,
     "preco" : 542.5,
@@ -85,6 +92,7 @@
   },
   {
     "id" : "pacote8",
+    "visivel" : false,
     "titulo" : "Pacote 8: 4 sessões de Massagem relaxante",
     "sessoes" : 4,
     "preco" : 450,
@@ -97,6 +105,7 @@
   },
   {
     "id" : "pacote9",
+    "visivel" : false,
     "titulo" : "Pacote 9: 5 sessões de Massagem modeladora zen",
     "sessoes" : 5,
     "preco" : 568.75,
@@ -108,6 +117,7 @@
   },
   {
     "id" : "pacote10",
+    "visivel" : false,
     "titulo" : "Pacote 10: 10 sessões de Massagem modeladora zen",
     "sessoes" : 10,
     "preco" : 1105,
@@ -119,6 +129,7 @@
   },
   {
     "id" : "pacote11",
+    "visivel" : false,
     "titulo" : "Pacote 11: 5 sessões de estética corporal e bem estar (tempo extendido)",
     "sessoes" : 5,
     "preco" : 787.5,
@@ -130,6 +141,7 @@
   },
   {
     "id" : "pacote12",
+    "visivel" : false,
     "titulo" : "Pacote 12: 10 sessões de estética corporal e bem estar (tempo extendido)",
     "sessoes" : 10,
     "preco" : 1530,
@@ -138,5 +150,90 @@
     "protocolos" : [
       "10 sessões de drenagem linfática ou modeladora e massagem relaxante 90 min (R$130)"
     ]
+  },
+  {
+    "id" : "pacote13",
+    "visivel" : true,
+    "titulo" : "Plano Mensal - Drenagem / Relaxante / Terapêutica",
+    "sessoes" : 4,
+    "preco" : 360,
+    "desconto" : 25,
+    "descricao" : "Pagamento no cartão terá acréscimo de 4%",
+    "protocolos" : [
+      "4 sessões",
+      "Plano mensal dentro do período de 1 mês",
+      "Falta ou cancelamento em menos de 24h será considerado como sessão realizada, salvo emergência médica"
+    ]
+  },
+  {
+    "id" : "pacote16",
+    "visivel" : true,
+    "titulo" : "Plano Mensal - Modeladora Zen",
+    "sessoes" : 4,
+    "preco" : 380,
+    "desconto" : 27,
+    "descricao" : "Pagamento no cartão terá acréscimo de 4%",
+    "protocolos" : [
+      "4 sessões",
+      "Plano mensal dentro do período de 1 mês",
+      "Falta ou cancelamento em menos de 24h será considerado como sessão realizada, salvo emergência médica"
+    ]
+  },
+  {
+    "id" : "pacote14",
+    "visivel" : true,
+    "titulo" : "Drenagem / Relaxante / Terapêutica - 4 sessões",
+    "sessoes" : 4,
+    "preco" : 440,
+    "desconto" : 8,
+    "descricao" : "Pagamento no cartão terá acréscimo de 4%",
+    "protocolos" : [
+      "4 sessões",
+      "Pacote de 4 sessões em até 2 meses",
+      "Falta ou cancelamento em menos de 24h será considerado como sessão realizada, salvo emergência médica"
+    ]
+  },
+  {
+    "id" : "pacote17",
+    "visivel" : true,
+    "titulo" : "Modeladora Zen - 4 sessões",
+    "sessoes" : 4,
+    "preco" : 480,
+    "desconto" : 8,
+    "descricao" : "Pagamento no cartão terá acréscimo de 4%",
+    "protocolos" : [
+      "4 sessões",
+      "Pacote de 4 sessões em até 2 meses",
+      "Falta ou cancelamento em menos de 24h será considerado como sessão realizada, salvo emergência médica"
+    ]
+  },
+  {
+    "id" : "pacote15",
+    "visivel" : true,
+    "titulo" : "Drenagem / Relaxante / Terapêutica - 10 sessões",
+    "sessoes" : 10,
+    "preco" : 1000,
+    "desconto" : 16,
+    "descricao" : "Pagamento no cartão terá acréscimo de 4%",
+    "protocolos" : [
+      "10 sessões",
+      "Pacote de 10 sessões em até 4 meses",
+      "Falta ou cancelamento em menos de 24h será considerado como sessão realizada, salvo emergência médica"
+    ]
+  },
+  {
+    "id" : "pacote18",
+    "visivel" : true,
+    "titulo" : "Modeladora Zen - 10 sessões",
+    "sessoes" : 10,
+    "preco" : 1100,
+    "desconto" : 15,
+    "descricao" : "Pagamento no cartão terá acréscimo de 4%",
+    "protocolos" : [
+      "10 sessões ",
+      "Pacote de 10 sessões em até 4 meses",
+      "Falta ou cancelamento em menos de 24h será considerado como sessão realizada, salvo emergência médica"
+    ]
   }
+
 ]

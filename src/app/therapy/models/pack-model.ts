@@ -1,5 +1,6 @@
 export class pack {
 	public id: string;
+  public visivel: boolean;
   public titulo: string;
   public titulo_reduzido: string;
   public sessoes: number;

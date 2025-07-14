@@ -92,15 +92,15 @@
           <accordion-group heading="" [isOpen]="true" panelClass="accordion-group">
               <div accordion-heading class="accordion-heading"   >{{therapyBenefitsTitle}}</div>
               <div class="row h-100 ">
-                <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 align-self-center1 " *ngFor="let benefit of therapyBenefits; index as i; first as isFirst">
+                <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 " *ngFor="let benefit of therapyBenefits; index as i; first as isFirst">
 
                   <div class="row h-100 ">
-                    <div class="col-3 align-self-center1 mr-n4">
+                    <div class="col-3 mr-n4">
                       <div class="d-flex flex-row-reverse w-100 mr-n4">
                         <i class="material-icons" style="font-size:24px;color:green">done</i>
                       </div>
                     </div>
-                    <div class="col-9 align-self-center1 border-0 border-top-0 border-left-0 border-right-0 border-success">
+                    <div class="col-9 border-0 border-top-0 border-left-0 border-right-0 border-success">
                       <div>{{benefit}}</div>
                     </div>
                   </div>
@@ -113,12 +113,12 @@
               <div class="row h-100">
                 <div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 align-self-center" *ngFor="let information of therapyInformation; index as i; first as isFirst">
                   <div class="row h-100 ">
-                    <div class="col-3 align-self-center1 mr-n4" >
+                    <div class="col-3 mr-n4" >
                       <div class="d-flex flex-row-reverse w-100 mr-n4">
                         <i class="material-icons text-right" style="font-size:24px;color:green;">add</i>
                       </div>
                     </div>
-                    <div class="col-9 align-self-center1 border-0 border-top-0 border-left-0 border-right-0 border-success ">
+                    <div class="col-9 border-0 border-top-0 border-left-0 border-right-0 border-success ">
                       <div>{{information}}</div>
                     </div>
                   </div>
